@@ -30,6 +30,8 @@
     telegram-desktop
     vscode
     go
+    bluez-alsa
+    bluez
     appimage-run # Needed For AppImage Support
     brightnessctl # For Screen Brightness Control
     cmatrix # Matrix Movie Effect In Terminal

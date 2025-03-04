@@ -26,7 +26,7 @@
         "break"
         {
           type = "os";
-          key = "OS - NixOs"; 
+          key = "OS   "; 
           keyColor = "31";  
         }
         {
@@ -105,18 +105,18 @@
           keyColor = "33";
         }
         {
-          type = "monitor";
-          key = " └  ";
-          keyColor = "33";
-        }
-        {
           type = "player";
-          key = "└ 󰥠 ";
+          key = " ├ 󰥠 ";
           keyColor = "33";
         }
         {
           type = "media";
-          key = " └ 󰝚 ";
+          key = " ├ 󰝚 ";
+          keyColor = "33";
+        }
+        {
+          type = "monitor";
+          key = " └  ";
           keyColor = "33";
         }
         "break"

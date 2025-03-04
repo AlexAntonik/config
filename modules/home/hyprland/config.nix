@@ -29,7 +29,7 @@ in {
       input = {
         kb_layout = "${keyboardLayout}";
         kb_options = [
-          "grp:alt_space_toggle "
+          "grp:alt_space_toggle"
           "caps:escape"
         ];
         numlock_by_default = true;
