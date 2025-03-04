@@ -19,7 +19,7 @@ sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/mas
 
 ## Aliases
 
-# Rebuld config
+### Rebuld config
 
 rebuild switch --flake
 
@@ -27,7 +27,7 @@ rebuild switch --flake
 fr
 ``` 
 
-# Flake update
+### Flake update
 
 nix flake update
 
@@ -35,13 +35,13 @@ nix flake update
 fu
 ```
 
-# Remove previous generations
+### Remove previous generations
 
 ```
 ncg
 ```
 
-# Use install script/backup current
+### Use install script/backup current
 
 ```
 zu
