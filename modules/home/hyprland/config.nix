@@ -29,7 +29,7 @@ in {
       input = {
         kb_layout = "${keyboardLayout}";
         kb_options = [
-          "grp:shift_alt_toggle"
+          "grp:alt_space_toggle "
           "caps:escape"
         ];
         numlock_by_default = true;
@@ -199,6 +199,7 @@ in {
         "tag +browser, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
         "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
         "tag +browser, class:^([Tt]horium-browser|[Cc]achy-browser)$"
+        "tag +browser, class:^(microsoft-edge)$"
         "tag +projects, class:^(codium|codium-url-handler|VSCodium)$"
         "tag +projects, class:^(VSCode|code-url-handler)$"
         "tag +im, class:^([Dd]iscord|[Ww]ebCord|[Vv]esktop)$"

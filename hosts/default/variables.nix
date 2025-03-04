@@ -1,18 +1,18 @@
 {
   # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "Tyler Kelley";
-  gitEmail = "tylerzanekelley@gmail.com";
+  gitUsername = "AlexAntonik";
+  gitEmail = "antonikavv@gmail.com";
 
   # Hyprland Settings
   extraMonitorSettings = "";
 
   # Waybar Settings
-  clock24h = false;
+  clock24h = true;
 
   # Program Options
-  browser = "brave"; # Set Default Browser (google-chrome-stable for google-chrome)
+  browser = "microsoft-edge"; # Set Default Browser (google-chrome-stable for google-chrome)
   terminal = "ghostty"; # Set Default System Terminal
-  keyboardLayout = "us";
+  keyboardLayout = "us,ru";
   consoleKeyMap = "us";
 
   # For Nvidia Prime support
