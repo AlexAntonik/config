@@ -59,6 +59,7 @@ in
               else '' {:L%I:%M %p}'';
             tooltip = true;
             tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+            timezone = "Etc/GMT-3";
           };
           "memory" = {
             interval = 5;
@@ -188,6 +189,7 @@ in
             border-radius: 0px;
             border: none;
             min-height: 0px;
+            background: transparent;
           }
           #workspaces {
             color: #${config.lib.stylix.colors.base00};
