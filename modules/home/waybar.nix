@@ -191,6 +191,21 @@ in
             min-height: 0px;
             background: transparent;
           }
+          #network-menu {
+            background: #${config.lib.stylix.colors.base00};
+            border: 1px solid #${config.lib.stylix.colors.base08};
+            border-radius: 12px;
+          }
+          #pulseaudio-menu {
+            background: #${config.lib.stylix.colors.base00};
+            border: 1px solid #${config.lib.stylix.colors.base08};
+            border-radius: 12px;
+          }
+          menu, tooltip, popover, .popup {
+            background: #${config.lib.stylix.colors.base00};
+            border: 1px solid #${config.lib.stylix.colors.base08};
+            border-radius: 12px;
+          }
           #workspaces {
             color: #${config.lib.stylix.colors.base00};
             background: #${config.lib.stylix.colors.base01};
