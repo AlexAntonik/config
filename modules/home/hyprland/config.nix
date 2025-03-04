@@ -29,8 +29,8 @@ in {
       input = {
         kb_layout = "${keyboardLayout}";
         kb_options = [
-          "grp:alt_space_toggle "
-          "caps:escape"
+          #"caps:escape"
+          "grp:caps_toggle"
         ];
         numlock_by_default = true;
         repeat_delay = 300;
