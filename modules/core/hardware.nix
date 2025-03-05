@@ -11,17 +11,6 @@
     graphics.enable = true;
     enableRedistributableFirmware = true;
     keyboard.qmk.enable = true;
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;  # Полная версия с поддержкой всех кодеков
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
-      extraConfig = ''
-        load-module module-switch-on-connect
-        load-module module-bluetooth-policy
-        load-module module-bluetooth-discover
-        load-module module-native-protocol-tcp
-      '';
-    };
     bluetooth = {
       enable = true;
       powerOnBoot = true;

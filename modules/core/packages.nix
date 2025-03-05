@@ -64,7 +64,6 @@
     nixfmt-rfc-style
     pavucontrol
     pamixer
-    pulseaudio
     easyeffects
     pciutils
     picard
