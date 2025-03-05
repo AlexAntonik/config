@@ -32,6 +32,8 @@
     go
     bluez-alsa
     bluez
+    bluez-tools
+    blueman
     appimage-run # Needed For AppImage Support
     brightnessctl # For Screen Brightness Control
     cmatrix # Matrix Movie Effect In Terminal
@@ -61,6 +63,9 @@
     ninja
     nixfmt-rfc-style
     pavucontrol
+    pamixer
+    pulseaudio
+    easyeffects
     pciutils
     picard
     pkg-config
