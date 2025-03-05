@@ -64,16 +64,6 @@ in {
       audio.enable = true;
       jack.enable = true;
       wireplumber.enable = true;
-    
-      # Improve audio quality settings
-      config.pipewire = {
-        "context.properties" = {
-          "default.clock.rate" = 48000;
-          "default.clock.quantum" = 1024;
-          "default.clock.min-quantum" = 32;
-          "default.clock.max-quantum" = 8192;
-        };
-      };
     };
 
     pipewire.wireplumber.extraConfig."10-bluez" = {
@@ -95,7 +85,6 @@ in {
           # Improve connection stability
           "bluez5.auto-connect" = true;
           "bluez5.reconnect-profiles" = ["hfp_hf" "hsp_hs" "a2dp_sink"];
-          "bluez5.headset-roles" = ["hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag"];
           
           # Keep existing roles
           "bluez5.roles" = [
