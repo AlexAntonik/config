@@ -14,8 +14,8 @@
     bluetooth = {
       enable = true;
       powerOnBoot = true;
-      package = pkgs.bluez5-experimental;
-      #package = pkgs.bluez;
+      #package = pkgs.bluez5-experimental;
+      package = pkgs.bluez;
       settings.Policy.AutoEnable = "true";
       settings.General = {
           Enable = "Source,Sink,Media,Socket";
