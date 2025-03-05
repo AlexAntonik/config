@@ -6,6 +6,11 @@
       extraBackends = [ pkgs.sane-airscan ];
       disabledDefaultBackends = [ "escl" ];
     };
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
     logitech.wireless.enable = false;
     logitech.wireless.enableGraphical = false;
     graphics.enable = true;
@@ -29,6 +34,9 @@
           Class = "0x240404";
           Privacy = "device";
           JustWorksRepairing = "always";
+          DiscoverableTimeout = "0";
+          PairableTimeout = "0";
+          Discovery = "dual";
       };
     };
   };
