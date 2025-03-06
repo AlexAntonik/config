@@ -20,6 +20,7 @@ in {
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
+        options = "grp:alt_shift_toggle"; #also need to be changed in hyprland config
       };
     };
     greetd = {
