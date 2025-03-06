@@ -107,6 +107,7 @@
         enableTreesitter = true;
         enableExtraDiagnostics = true;
 
+        go.enable = true;
         nix.enable = true;
         clang.enable = true;
         zig.enable = true;

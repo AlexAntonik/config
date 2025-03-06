@@ -26,8 +26,6 @@
           KernelExperimental = "true";
           MultiProfile = "multiple"; 
           AutoEnable = "true";
-          Class = "0x240404";
-          Privacy = "device";
           JustWorksRepairing = "always";
           DiscoverableTimeout = "0";
           PairableTimeout = "0";

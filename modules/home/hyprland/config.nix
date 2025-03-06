@@ -29,8 +29,8 @@ in {
       input = {
         kb_layout = "${keyboardLayout}";
         kb_options = [
-          #"caps:escape"
-          "grp:caps_toggle"
+          "caps:escape"
+          "grp:alt_shift_toggle" #also need to be changed in services xkb
         ];
         numlock_by_default = true;
         repeat_delay = 300;
@@ -46,8 +46,8 @@ in {
       general = {
         "$modifier" = "SUPER";
         layout = "dwindle";
-        gaps_in = 6;
-        gaps_out = 8;
+        gaps_in = 0;
+        gaps_out = 0;
         border_size = 2;
         resize_on_border = true;
         "col.active_border" = "rgb(${config.lib.stylix.colors.base08}) rgb(${config.lib.stylix.colors.base0C}) 45deg";
@@ -67,7 +67,7 @@ in {
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 0;
         blur = {
           enabled = true;
           size = 5;
@@ -120,13 +120,13 @@ in {
         "$modifier,S,exec,screenshootin"
         "$modifier,D,exec,discord"
         "$modifier,O,exec,obs"
-        "$modifier,C,exec,hyprpicker -a"
+        "$modifier,C,exec,code"
         "$modifier,G,exec,gimp"
         "$modifier,T,exec,pypr toggle term"
         "$modifier SHIFT,T,exec,pypr toggle thunar"
         "$modifier,M,exec,pavucontrol"
         "$modifier,Q,killactive,"
-        "$modifier,P,exec,pypr toggle volume"
+        "$modifier,P,exec,hyprpicker -a"
         "$modifier SHIFT,P,pseudo,"
         "$modifier SHIFT,I,togglesplit,"
         "$modifier,F,fullscreen,"
