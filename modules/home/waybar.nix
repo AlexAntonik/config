@@ -185,105 +185,92 @@ in
         ''
           * {
             font-family: JetBrainsMono Nerd Font Mono;
-            font-size: 16px;
-            border-radius: 0px;
+            font-size: 14px;
+            border-radius: 0;
             border: none;
-            min-height: 0px;
-            background: transparent;
+            min-height: 0;
+            margin: 0;
+            background: #${config.lib.stylix.colors.base08};
           }
           #network-menu {
-            background: #${config.lib.stylix.colors.base00};
-            border: 1px solid #${config.lib.stylix.colors.base08};
-            border-radius: 12px;
+            background: #${config.lib.stylix.colors.base02};
+            color: #${config.lib.stylix.colors.base05};
           }
+          
           #pulseaudio-menu {
-            background: #${config.lib.stylix.colors.base00};
-            border: 1px solid #${config.lib.stylix.colors.base08};
-            border-radius: 12px;
+            background: #${config.lib.stylix.colors.base02};
+            color: #${config.lib.stylix.colors.base05};
           }
+          
           menu, tooltip, popover, .popup {
-            background: #${config.lib.stylix.colors.base00};
-            border: 1px solid #${config.lib.stylix.colors.base08};
-            border-radius: 12px;
+            background: #${config.lib.stylix.colors.base02};
+            color: #${config.lib.stylix.colors.base05};
+          }
+
+          menu > *:hover {
+            background: #${config.lib.stylix.colors.base03};
+            color: #${config.lib.stylix.colors.base05};
           }
           #workspaces {
             color: #${config.lib.stylix.colors.base00};
-            background: #${config.lib.stylix.colors.base01};
-            margin: 4px 4px;
-            padding: 5px 5px;
-            border-radius: 16px;
+            background: transparent;
+            margin: 0px;
+            padding: 0px;
           }
           #workspaces button {
             font-weight: bold;
-            padding: 0px 5px;
-            margin: 0px 3px;
-            border-radius: 16px;
+            padding: 0px 0px;
+            margin: 0px;
             color: #${config.lib.stylix.colors.base00};
-            background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
+            background: #${config.lib.stylix.colors.base0D};
             opacity: 0.5;
             transition: ${betterTransition};
           }
           #workspaces button.active {
             font-weight: bold;
-            padding: 0px 5px;
-            margin: 0px 3px;
-            border-radius: 16px;
-            color: #${config.lib.stylix.colors.base00};
-            background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
+            padding: 0px 0px;
+            margin: 0px;
+            color: #${config.lib.stylix.colors.base05};
+            background: #${config.lib.stylix.colors.base0E};
             transition: ${betterTransition};
-            opacity: 1.0;
+            opacity: 0.5;
             min-width: 40px;
           }
           #workspaces button:hover {
             font-weight: bold;
-            border-radius: 16px;
             color: #${config.lib.stylix.colors.base00};
-            background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
+            background: #${config.lib.stylix.colors.base0C};
             opacity: 0.8;
             transition: ${betterTransition};
           }
           tooltip {
             background: #${config.lib.stylix.colors.base00};
             border: 1px solid #${config.lib.stylix.colors.base08};
-            border-radius: 12px;
           }
           tooltip label {
-            color: #${config.lib.stylix.colors.base08};
+            color: #${config.lib.stylix.colors.base0D};
           }
-          #pulseaudio, #cpu, #memory, #language, #idle_inhibitor {
+          #custom-startmenu, #custom-startmenu, #pulseaudio, #cpu, #memory, #language, #idle_inhibitor {
             font-weight: bold;
-            margin: 4px 0px;
-            margin-left: 7px;
-            padding: 0px 18px;
-            background: #${config.lib.stylix.colors.base04};
-            color: #${config.lib.stylix.colors.base00};
-            border-radius: 24px 10px 24px 10px;
-          }
-          #custom-startmenu {
-            color: #${config.lib.stylix.colors.base0B};
-            background: #${config.lib.stylix.colors.base02};
-            font-size: 28px;
             margin: 0px;
-            padding: 0px 30px 0px 15px;
-            border-radius: 0px 0px 40px 0px;
+            padding: 0px 18px;
+            background: transparent;
+            color: #${config.lib.stylix.colors.base00};
           }
           #custom-hyprbindings, #network, #battery,
           #custom-notification, #tray, #custom-exit {
             font-weight: bold;
-            background: #${config.lib.stylix.colors.base0F};
+            background: transparent;
             color: #${config.lib.stylix.colors.base00};
-            margin: 4px 0px;
-            margin-right: 7px;
-            border-radius: 10px 24px 10px 24px;
+            margin: 0px;
             padding: 0px 18px;
           }
           #clock {
             font-weight: bold;
             color: #0D0E15;
-            background: linear-gradient(90deg, #${config.lib.stylix.colors.base0C}, #${config.lib.stylix.colors.base0E});
+            background: transparent;
             margin: 0px;
-            padding: 0px 15px 0px 30px;
-            border-radius: 0px 0px 0px 40px;
+            padding: 0px 15px;
           }
         ''
       ];
