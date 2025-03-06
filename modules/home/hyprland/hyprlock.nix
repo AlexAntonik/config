@@ -10,14 +10,14 @@
       };
       background = [
         {
-          path = "/home/${username}/Pictures/Wallpapers/beautifulmountainscape.jpg";
+          path = "/home/${username}/Pictures/Wallpapers/beautifulmountainscape.png";
           blur_passes = 3;
           blur_size = 8;
         }
       ];
       image = [
         {
-          path = "/home/${username}/.config/face.jpg";
+          path = "/home/${username}/.config/face.png";
           size = 150;
           border_size = 4;
           border_color = "rgb(0C96F9)";
