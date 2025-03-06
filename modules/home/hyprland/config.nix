@@ -48,7 +48,7 @@ in {
         layout = "dwindle";
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 2;
+        border_size = 0;
         resize_on_border = true;
         "col.active_border" = "rgb(${config.lib.stylix.colors.base08}) rgb(${config.lib.stylix.colors.base0C}) 45deg";
         "col.inactive_border" = "rgb(${config.lib.stylix.colors.base01})";
