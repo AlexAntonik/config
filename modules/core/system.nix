@@ -27,5 +27,5 @@ in {
     LC_TIME = "en_US.UTF-8";
   };
   console.keyMap = "${consoleKeyMap}";
-  system.stateVersion = "23.11"; # Do not change!
+  system.stateVersion = "24.11"; # Do not change!
 }
