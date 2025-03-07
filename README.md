@@ -1,12 +1,14 @@
 <div align="center">
 
-# 🛠️ NixOS Configuration
+# NixOS Configuration
 
-> Personal NixOS configuration
+**And some dotFiles**
 
 **Inspired by [ZaneyOS](https://gitlab.com/Zaney/zaneyos)** 🙏
 
 </div>
+
+
 
 ## 📥 Installation
 
@@ -19,6 +21,8 @@ Run the installation:
 ```bash
 sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)
 ```
+
+
 
 ## ⚡ Quick Commands
 
