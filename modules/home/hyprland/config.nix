@@ -28,10 +28,7 @@ in {
 
       input = {
         kb_layout = "${keyboardLayout}";
-        kb_options = [
-          "caps:escape"
-          "grp:alt_shift_toggle" #also need to be changed in services xkb
-        ];
+        kb_options = "caps:escape,grp:alt_shift_toggle";#also need to be changed in services xkb
         numlock_by_default = true;
         repeat_delay = 300;
         follow_mouse = 1;
@@ -48,10 +45,10 @@ in {
         layout = "dwindle";
         gaps_in = 0;
         gaps_out = 0;
-        border_size = 0;
+        border_size = 1;
         resize_on_border = true;
-        "col.active_border" = "rgb(${config.lib.stylix.colors.base08}) rgb(${config.lib.stylix.colors.base0C}) 45deg";
-        "col.inactive_border" = "rgb(${config.lib.stylix.colors.base01})";
+        "col.active_border" = "rgb(${config.lib.stylix.colors.base01})";
+        "col.inactive_border" = "rgb(${config.lib.stylix.colors.base00})";
       };
 
       misc = {
