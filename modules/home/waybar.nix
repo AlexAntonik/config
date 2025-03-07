@@ -270,7 +270,7 @@ in
             color: #CCCCCC;
             background: transparent;
             margin: 0px;
-            padding: 0px 12bpx;
+            padding: 0px 12px;
           }
         ''
       ];
