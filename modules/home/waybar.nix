@@ -189,8 +189,8 @@ in
             border-radius: 0;
             border: none;
             min-height: 0;
-            margin: 0;
-            background: #${config.lib.stylix.colors.base08};
+            margin: 1px;
+            background: transparent;
           }
           #network-menu {
             background: #${config.lib.stylix.colors.base02};
@@ -221,8 +221,8 @@ in
             font-weight: bold;
             padding: 0px 0px;
             margin: 0px;
-            color: #${config.lib.stylix.colors.base00};
-            background: #${config.lib.stylix.colors.base0D};
+            color: #${config.lib.stylix.colors.base0D};
+            background: transparent;
             opacity: 0.5;
             transition: ${betterTransition};
           }
@@ -230,8 +230,8 @@ in
             font-weight: bold;
             padding: 0px 0px;
             margin: 0px;
-            color: #${config.lib.stylix.colors.base05};
-            background: #${config.lib.stylix.colors.base0E};
+            color: #CCCCCC;
+            background: transparent;
             transition: ${betterTransition};
             opacity: 0.5;
             min-width: 40px;
@@ -253,24 +253,24 @@ in
           #custom-startmenu, #custom-startmenu, #pulseaudio, #cpu, #memory, #language, #idle_inhibitor {
             font-weight: bold;
             margin: 0px;
-            padding: 0px 18px;
+            padding: 0px 14px;
             background: transparent;
-            color: #${config.lib.stylix.colors.base00};
+            color: #CCCCCC;
           }
           #custom-hyprbindings, #network, #battery,
           #custom-notification, #tray, #custom-exit {
             font-weight: bold;
             background: transparent;
-            color: #${config.lib.stylix.colors.base00};
+            color: #CCCCCC;
             margin: 0px;
             padding: 0px 18px;
           }
           #clock {
             font-weight: bold;
-            color: #0D0E15;
+            color: #CCCCCC;
             background: transparent;
             margin: 0px;
-            padding: 0px 15px;
+            padding: 0px 12bpx;
           }
         ''
       ];
