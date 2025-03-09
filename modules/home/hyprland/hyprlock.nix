@@ -10,7 +10,7 @@
       };
       background = [
         {
-          path = "/home/${username}/Pictures/Wallpapers/beautifulmountainscape.png";
+          path = "/home/${username}/Pictures/Wallpapers/swan.jpg";
           blur_passes = 3;
           blur_size = 8;
         }
@@ -29,7 +29,7 @@
       ];
       input-field = [
         {
-          size = "200, 50";
+          size = "300, 50";
           position = "0, -80";
           monitor = "";
           dots_center = true;

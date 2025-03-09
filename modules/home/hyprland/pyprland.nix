@@ -21,6 +21,12 @@
     lazy = true
     size = "40% 90%"
 
+    [scratchpads.telegram-desktop]
+    animation = "fromBottom"
+    command = "telegram-desktop"
+    class = "org.telegram.desktop"
+    size = "85% 75%"
+
     [scratchpads.thunar]
     animation = "fromBottom"
     command = "thunar"
