@@ -43,11 +43,21 @@ in
           };
 
           "hyprland/workspaces" = {
-            format = "{name}";
+            format = "{icon}";
             format-icons = {
-              default = " ";
-              active = " ";
-              urgent = " ";
+              "1" = "1";
+              "2" = "2";
+              "3" = "3";
+              "4" = "4";
+              "5" = "5";
+              "6" = "F1";
+              "7" = "F2";
+              "8" = "F3";
+              "9" = "F4";
+              "10" = "F5";
+              # "urgent" = "";
+              # "active" = "";
+              # "default" = "";
             };
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
