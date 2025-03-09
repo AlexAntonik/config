@@ -84,13 +84,13 @@
         }
         {
           type = "cpu";
-          format = "{1} ({3}) @ {7} GHz";
+          format = "{1} ({3}) @ {7}";
           key = " ├  ";
           keyColor = "33";
         }
         {
           type = "gpu";
-          format = "{1} {2} @ {12} GHz";
+          format = "{1} {2} @ {12}";
           key = " ├ 󰢮 ";
           keyColor = "33";
         }
