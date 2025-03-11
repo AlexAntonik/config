@@ -35,6 +35,7 @@
     ninja # Build system
     nixfmt-rfc-style # Nix code formatter
     pkg-config # Package configuration tool
+    zulu #Open JDK fast
 
     # Desk apps
     microsoft-edge # Web browser

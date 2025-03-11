@@ -6,6 +6,7 @@
       extraBackends = [ pkgs.sane-airscan ];
       disabledDefaultBackends = [ "escl" ];
     };
+    opengl.enable = true;
     logitech.wireless.enable = false;
     logitech.wireless.enableGraphical = false;
     graphics.enable = true;
