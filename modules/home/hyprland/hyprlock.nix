@@ -17,7 +17,7 @@
       ];
       image = [
         {
-          path = "/home/${username}/.config/face.png";
+          path = "/home/${username}/.config/face.jpg";
           size = 150;
           border_size = 4;
           border_color = "rgb(0C96F9)";
