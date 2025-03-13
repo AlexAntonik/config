@@ -8,21 +8,19 @@
 
 </div>
 
-
-
 ## 📥 Installation
 
 Get the required tools:
+
 ```bash
 nix-shell -p git curl
 ```
 
 Run the installation:
+
 ```bash
 sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)
 ```
-
-
 
 ## ⚡ Quick Commands
 
@@ -31,7 +29,7 @@ sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/mas
 | `fr` | 🔄 Rebuild system | `rebuild switch --flake` |
 | `fu` | 📦 Update flake | `nix flake update` |
 | `ncg` | 🧹 Clean old generations | `nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot` |
-| `zu` | 💾 Run installation script | `sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)` |
+| `su` | 💾 Run installation script | `sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)` |
 
 ---
 
