@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs,inputs, ...}: {
   programs = {
     firefox.enable = false; # Firefox is not installed by defualt
     dconf.enable = true;

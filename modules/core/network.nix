@@ -3,7 +3,7 @@
   networking = {
     hostName = "${host}";
     networkmanager.enable = true;
-    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
     # Tryed setup wireguard vpn but unsuccessful
     # firewall = {
     #   checkReversePath = false; 
@@ -21,5 +21,5 @@
     # };
   };
 
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+  environment.systemPackages = with pkgs; [networkmanagerapplet];
 }
