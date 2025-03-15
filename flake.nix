@@ -8,6 +8,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
     nvf.url = "github:notashelf/nvf";
     stylix.url = "github:danth/stylix/release-24.11";
+    yazi = {
+      url = "github:sxyazi/yazi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = {nixpkgs, ...} @ inputs: let

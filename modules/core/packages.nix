@@ -25,7 +25,8 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
- # Programming languages
+    
+    # Programming languages
     go # Go programming language
 
     # Development tools
@@ -50,6 +51,7 @@
     blueman # Bluetooth manager
 
     # Utilities
+    inputs.yazi.packages.${pkgs.system}.yazi   #TUI FileMgr
     appimage-run # Needed for AppImage support
     brightnessctl # For screen brightness control
     duf # Utility for viewing disk usage in terminal
