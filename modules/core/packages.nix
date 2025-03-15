@@ -41,7 +41,7 @@
     microsoft-edge # Web browser
     telegram-desktop # Telegram client
     protonvpn-gui # ProtonVPN client
-    tor-browser
+    tor-browser # Tor
 
     # Bluetooth
     bluez-alsa # Bluetooth ALSA support
