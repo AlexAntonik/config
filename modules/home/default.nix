@@ -10,7 +10,9 @@
     ./git.nix
     ./gtk.nix
     ./hyprland
+    ./yazi
     ./kitty.nix
+    ./zoxide.nix
     ./nvf.nix
     ./rofi
     ./qt.nix

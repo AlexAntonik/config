@@ -56,6 +56,9 @@ in {
         initial_workspace_tracking = 0;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = false;
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+
       };
 
       dwindle = {
@@ -128,6 +131,7 @@ in {
         "$modifier SHIFT,I,togglesplit,"
         "$modifier,F,fullscreen,"
         "$modifier SHIFT,F,togglefloating,"
+        "$modifier ALT,F,workspaceopt, allfloat"
         "$modifier SHIFT,C,exit,"
         "$modifier SHIFT,left,movewindow,l"
         "$modifier SHIFT,right,movewindow,r"
@@ -277,7 +281,12 @@ in {
         "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
         "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
         "SDL_VIDEODRIVER, x11"
+        "EDITOR,nvim"
         "MOZ_ENABLE_WAYLAND, 1"
+        "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
+        "GDK_SCALE,1"
+        "QT_SCALE_FACTOR,1"
+
       ];
     };
 
