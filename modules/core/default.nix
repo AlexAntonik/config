@@ -1,9 +1,7 @@
 {
   inputs,
   ...
-}:
-
-{
+}: {
   imports = [
     ./boot.nix
     ./fonts.nix
