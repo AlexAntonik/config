@@ -1,4 +1,4 @@
-{pkgs,inputs, ...}: {
+{pkgs,inputs, pkgs-unstable, ...}: {
   programs = {
     firefox.enable = false; # Firefox is not installed by defualt
     dconf.enable = true;
@@ -24,7 +24,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     
     # Programming languages
     go # Go programming language
@@ -41,7 +41,7 @@
     # Desk apps
     microsoft-edge # Web browser
     telegram-desktop # Telegram client
-    protonvpn-gui # ProtonVPN client
+    #protonvpn-gui # ProtonVPN client
     tor-browser # Tor
 
     # Bluetooth
@@ -94,5 +94,11 @@
     greetd.tuigreet # The login manager (sometimes referred to as display manager)
     hyprpicker # Color picker
     lxqt.lxqt-policykit # PolicyKit authentication agent
-  ];
+  ])
+  ++
+  (  #UNSTABLE PACKAGES!
+    with pkgs-unstable;[
+      protonvpn-gui
+    ]
+  );
 }
