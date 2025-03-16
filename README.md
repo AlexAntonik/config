@@ -26,7 +26,7 @@ sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/mas
 
 | Command | Description | Original Command |
 |---------|-------------|------------------|
-| `fr` | 🔄 Rebuild system | `rebuild switch --flake` |
+| `fr` | 🔄 Rebuild flake| `rebuild switch --flake` |
 | `fu` | 📦 Update flake | `nix flake update` |
 | `ncg` | 🧹 Clean old generations | `nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot` |
 | `su` | 💾 Run installation script | `sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)` |
