@@ -25,6 +25,8 @@ in {
       programs.home-manager.enable = true;
     };
   };
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;
