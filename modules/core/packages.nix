@@ -1,4 +1,10 @@
-{pkgs,inputs, pkgs-unstable, ...}: {
+{
+  pkgs,
+  inputs,
+  pkgs-unstable,
+  ...
+}:
+{
   programs = {
     firefox.enable = false; # Firefox is not installed by defualt
     dconf.enable = true;
@@ -24,81 +30,82 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = (with pkgs; [
-    
-    # Programming languages
-    go # Go programming language
+  environment.systemPackages =
+    (with pkgs; [
 
-    # Development tools
-    vscode # Visual Studio Code editor
-    docker-compose # Allows controlling Docker from a single file
-    meson # Build system
-    ninja # Build system
-    nixfmt-rfc-style # Nix code formatter
-    pkg-config # Package configuration tool
-    zulu #Open JDK fast
+      # Programming languages
+      go # Go programming language
+      nixd # Nix LSP
 
-    # Desk apps
-    microsoft-edge # Web browser
-    telegram-desktop # Telegram client
-    #protonvpn-gui # ProtonVPN client
-    tor-browser # Tor
+      # Development tools
+      vscode # Visual Studio Code editor
+      docker-compose # Allows controlling Docker from a single file
+      meson # Build system
+      ninja # Build system
+      nixfmt-rfc-style # Nix code formatter
+      pkg-config # Package configuration tool
+      zulu # Open JDK fast
 
-    # Bluetooth
-    bluez-alsa # Bluetooth ALSA support
-    bluez # Bluetooth utilities
-    bluez-tools # Bluetooth tools
-    blueman # Bluetooth manager
+      # Desk apps
+      microsoft-edge # Web browser
+      telegram-desktop # Telegram client
+      #protonvpn-gui # ProtonVPN client
+      tor-browser # Tor
 
-    # Utilities
-    inputs.yazi.packages.${pkgs.system}.yazi   #TUI FileMgr
-    appimage-run # Needed for AppImage support
-    brightnessctl # For screen brightness control
-    duf # Utility for viewing disk usage in terminal
-    eza # Beautiful ls replacement
-    ffmpeg # Terminal video/audio editing
-    file-roller # Archive manager
-    htop # Simple terminal-based system monitor
-    imv # Image viewer
-    inxi # System information tool
-    killall # Command to kill processes
-    libnotify # Notification library
-    lm_sensors # Hardware monitoring
-    lshw # Hardware information tool
-    ncdu # Disk usage analyzer
-    pavucontrol # PulseAudio volume control
-    pamixer # Command-line mixer for PulseAudio
-    easyeffects # Audio effects for PipeWire
-    pciutils # PCI utilities
-    playerctl # Media player controller
-    ripgrep # Fast search tool
-    socat # Multipurpose relay
-    unrar # RAR archive extractor
-    unzip # ZIP archive extractor
-    usbutils # USB utilities
-    v4l-utils # Video4Linux utilities
-    wget # Network downloader
-    ytmdl # YouTube music downloader
+      # Bluetooth
+      bluez-alsa # Bluetooth ALSA support
+      bluez # Bluetooth utilities
+      bluez-tools # Bluetooth tools
+      blueman # Bluetooth manager
 
-    # Media
-    gimp # Great photo editor
-    mpv # Media player
-    picard # Music tagger
+      # Utilities
+      inputs.yazi.packages.${pkgs.system}.yazi # TUI FileMgr
+      appimage-run # Needed for AppImage support
+      brightnessctl # For screen brightness control
+      duf # Utility for viewing disk usage in terminal
+      eza # Beautiful ls replacement
+      ffmpeg # Terminal video/audio editing
+      file-roller # Archive manager
+      htop # Simple terminal-based system monitor
+      imv # Image viewer
+      inxi # System information tool
+      killall # Command to kill processes
+      libnotify # Notification library
+      lm_sensors # Hardware monitoring
+      lshw # Hardware information tool
+      ncdu # Disk usage analyzer
+      pavucontrol # PulseAudio volume control
+      pamixer # Command-line mixer for PulseAudio
+      easyeffects # Audio effects for PipeWire
+      pciutils # PCI utilities
+      playerctl # Media player controller
+      ripgrep # Fast search tool
+      socat # Multipurpose relay
+      unrar # RAR archive extractor
+      unzip # ZIP archive extractor
+      usbutils # USB utilities
+      v4l-utils # Video4Linux utilities
+      wget # Network downloader
+      ytmdl # YouTube music downloader
 
-    # Virtualization
-    libvirt # Virtualization library
-    virt-viewer # Virtual machine viewer
+      # Media
+      gimp # Great photo editor
+      mpv # Media player
+      picard # Music tagger
 
-    # Miscellaneous
-    prismlauncher # Prism launcher
-    greetd.tuigreet # The login manager (sometimes referred to as display manager)
-    hyprpicker # Color picker
-    lxqt.lxqt-policykit # PolicyKit authentication agent
-  ])
-  ++
-  (  #UNSTABLE PACKAGES!
-    with pkgs-unstable;[
-      protonvpn-gui
-    ]
-  );
+      # Virtualization
+      libvirt # Virtualization library
+      virt-viewer # Virtual machine viewer
+
+      # Miscellaneous
+      prismlauncher # Prism launcher
+      greetd.tuigreet # The login manager (sometimes referred to as display manager)
+      hyprpicker # Color picker
+      lxqt.lxqt-policykit # PolicyKit authentication agent
+    ])
+    ++
+      # UNSTABLE PACKAGES!
+      (with pkgs-unstable; [
+        protonvpn-gui
+      ]);
 }
