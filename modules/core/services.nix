@@ -3,9 +3,11 @@
   username,
   host,
   ...
-}: let
+}:
+let
   inherit (import ../../hosts/${host}/variables.nix) keyboardLayout;
-in {
+in
+{
   # Services to start
   services = {
     libinput.enable = true;
@@ -20,7 +22,7 @@ in {
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
-        options = "grp:alt_shift_toggle"; #also need to be changed in hyprland config
+        options = "grp:alt_shift_toggle"; # also need to be changed in hyprland config
       };
     };
     greetd = {
@@ -68,42 +70,57 @@ in {
     };
 
     pipewire.wireplumber.extraConfig."10-bluez" = {
-        "monitor.bluez.properties" = {
-          # Existing settings
-          "bluez5.enable-sbc-xq" = true;
-          "bluez5.enable-msbc" = true;
-          "bluez5.enable-hw-volume" = true;
-          
-          # Add these new settings for better Bluetooth audio
-          "bluez5.headset-roles" = ["hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag"];
-          "bluez5.codecs" = ["sbc_xq" "aac" "ldac" "aptx" "aptx_hd"];
-          "bluez5.enable-faststream" = true;
-          "bluez5.enable-aac" = true;
-          "bluez5.enable-ldac" = true;
-          "bluez5.enable-aptx" = true;
-          "bluez5.enable-aptx-hd" = true;
-          
-          # Improve connection stability
-          "bluez5.auto-connect" = true;
-          "bluez5.reconnect-profiles" = ["hfp_hf" "hsp_hs" "a2dp_sink"];
-          
-          # Keep existing roles
-          "bluez5.roles" = [
-            "hsp_hs"
-            "hsp_ag"
-            "hfp_hf"
-            "hfp_ag"
-          ];
-        };
+      "monitor.bluez.properties" = {
+        # Existing settings
+        "bluez5.enable-sbc-xq" = true;
+        "bluez5.enable-msbc" = true;
+        "bluez5.enable-hw-volume" = true;
+
+        # Add these new settings for better Bluetooth audio
+        "bluez5.headset-roles" = [
+          "hsp_hs"
+          "hsp_ag"
+          "hfp_hf"
+          "hfp_ag"
+        ];
+        "bluez5.codecs" = [
+          "sbc_xq"
+          "aac"
+          "ldac"
+          "aptx"
+          "aptx_hd"
+        ];
+        "bluez5.enable-faststream" = true;
+        "bluez5.enable-aac" = true;
+        "bluez5.enable-ldac" = true;
+        "bluez5.enable-aptx" = true;
+        "bluez5.enable-aptx-hd" = true;
+
+        # Improve connection stability
+        "bluez5.auto-connect" = true;
+        "bluez5.reconnect-profiles" = [
+          "hfp_hf"
+          "hsp_hs"
+          "a2dp_sink"
+        ];
+
+        # Keep existing roles
+        "bluez5.roles" = [
+          "hsp_hs"
+          "hsp_ag"
+          "hfp_hf"
+          "hfp_ag"
+        ];
       };
+    };
 
     rpcbind.enable = true;
     nfs.server.enable = true;
   };
 
   systemd.services.flatpak-repo = {
-    wantedBy = ["multi-user.target"];
-    path = [pkgs.flatpak];
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';

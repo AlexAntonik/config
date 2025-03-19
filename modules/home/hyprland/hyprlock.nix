@@ -1,4 +1,5 @@
-{username, ...}: {
+{ username, ... }:
+{
   programs.hyprlock = {
     enable = true;
     settings = {
