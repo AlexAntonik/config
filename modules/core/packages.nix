@@ -61,6 +61,7 @@
       # Utilities
       inputs.yazi.packages.${pkgs.system}.yazi # TUI FileMgr
       appimage-run # Needed for AppImage support
+      wireguard-tools # WireGuard tools
       brightnessctl # For screen brightness control
       duf # Utility for viewing disk usage in terminal
       eza # Beautiful ls replacement
