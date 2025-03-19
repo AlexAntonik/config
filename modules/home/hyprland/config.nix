@@ -3,15 +3,16 @@
   username,
   config,
   ...
-}: let
-  inherit
-    (import ../../../hosts/${host}/variables.nix)
+}:
+let
+  inherit (import ../../../hosts/${host}/variables.nix)
     browser
     terminal
     extraMonitorSettings
     keyboardLayout
     ;
-in {
+in
+{
   wayland.windowManager.hyprland = {
     settings = {
       exec-once = [
@@ -28,7 +29,7 @@ in {
 
       input = {
         kb_layout = "${keyboardLayout}";
-        kb_options = "caps:escape,grp:alt_shift_toggle";#also need to be changed in services xkb
+        kb_options = "caps:escape,grp:alt_shift_toggle"; # also need to be changed in services xkb
         numlock_by_default = true;
         repeat_delay = 300;
         follow_mouse = 1;

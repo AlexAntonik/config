@@ -6,17 +6,27 @@
   profile,
   pkgs-unstable,
   ...
-}: let
+}:
+let
   inherit (import ../../hosts/${host}/variables.nix) gitUsername;
-in {
-  imports = [inputs.home-manager.nixosModules.home-manager];
+in
+{
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = {inherit inputs username host profile pkgs-unstable;};
+    extraSpecialArgs = {
+      inherit
+        inputs
+        username
+        host
+        profile
+        pkgs-unstable
+        ;
+    };
     users.${username} = {
-      imports = [./../home];
+      imports = [ ./../home ];
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
@@ -26,7 +36,7 @@ in {
     };
   };
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;
@@ -43,5 +53,5 @@ in {
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = ["${username}"];
+  nix.settings.allowed-users = [ "${username}" ];
 }
