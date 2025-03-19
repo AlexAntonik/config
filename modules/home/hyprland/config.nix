@@ -23,7 +23,7 @@ in {
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "pypr &"
-        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/mountainscapedark.jpg"
+        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/swan.jpg"
       ];
 
       input = {
@@ -127,7 +127,7 @@ in {
         "$modifier,M,exec,pavucontrol"
         "$modifier,Q,killactive,"
         "$modifier,P,exec,hyprpicker -a"
-        "$modifier SHIFT,P,pseudo,"
+        "$modifier SHIFT,P,pin,"
         "$modifier SHIFT,I,togglesplit,"
         "$modifier,F,fullscreen,"
         "$modifier SHIFT,F,togglefloating,"
