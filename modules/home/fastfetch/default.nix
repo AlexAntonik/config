@@ -26,8 +26,8 @@
         "break"
         {
           type = "os";
-          key = "OS   "; 
-          keyColor = "31";  
+          key = "OS   ";
+          keyColor = "31";
         }
         {
           type = "kernel";
@@ -128,4 +128,3 @@
     };
   };
 }
-

@@ -20,15 +20,15 @@
 
     networkmanager.enable = true;
     networkmanager.insertNameservers = [
-      "1.1.1.1" #BEST
-      "8.8.8.8" #Evil
-      "9.9.9.9" #Just for fun
+      "1.1.1.1" # BEST
+      "8.8.8.8" # Evil
+      "9.9.9.9" # Just for fun
     ];
 
-    nameservers = [ "10.2.0.1" ]; # ProtonVPN Wireguard DNS 
+    nameservers = [ "10.2.0.1" ]; # ProtonVPN Wireguard DNS
 
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
-    
+
     # firewall.enable = false;
     firewall = {
       checkReversePath = "loose";

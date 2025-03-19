@@ -1,4 +1,5 @@
-{host, ...}: {
+{ host, ... }:
+{
   imports = [
     ../../hosts/${host}
     ../../modules/drivers
