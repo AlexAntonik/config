@@ -16,7 +16,6 @@
         "--expose-wayland"
         "--immediate-flips"
         "--adaptive-sync"
-        "--prefer-output"
         "--output-width 2880"
         "--output-height 1620"
         "-w 2880"
