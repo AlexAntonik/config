@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "list-keybinds" ''
   # check if rofi is already running
   if pidof rofi > /dev/null; then
@@ -7,7 +7,7 @@ pkgs.writeShellScriptBin "list-keybinds" ''
 
   msg='Current keybinds'
   keybinds=$(cat ~/.config/hypr/hyprland.conf | grep -E '^bind')
-  
+
   # replace #modifier with SUPER in the displayed keybinds for rofi
   display_keybinds=$(echo "$keybinds" | sed 's/\$modifier/SUPER/g')
 
