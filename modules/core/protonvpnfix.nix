@@ -3,46 +3,21 @@
 let
   protonvpnKeepaliveScript = ''
     #!/bin/bash
+    set -e
 
-    # Функция для логирования
-    log() {
-      echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> /var/log/protonvpn-keepalive.log
-    }
+    # Get interface information
+    WG_OUTPUT=$(wg show proton0)
 
-    # Проверяем наличие утилиты wg
-    if ! command -v wg &> /dev/null; then
-      log "Утилита wireguard не установлена"
-      exit 1
-    fi
-
-    # Проверяем интерфейс и получаем информацию
-    WG_OUTPUT=$(wg show proton0 2>&1)
-    if [ $? -eq 0 ] && echo "$WG_OUTPUT" | grep -q "interface: proton0"; then
-      log "Интерфейс proton0 найден"
-      
-      # Извлекаем публичный ключ первого пира
-      peer_key=$(echo "$WG_OUTPUT" | awk '/peer:/ {print $2; exit}')
-      
-      if [ -n "$peer_key" ]; then
-        # Проверяем, установлен ли уже keepalive
-        has_keepalive=$(echo "$WG_OUTPUT" | grep -A7 "peer: $peer_key" | grep "persistent keepalive:")
-        
-        if [ -z "$has_keepalive" ]; then
-          log "Устанавливаем keepalive для пира $peer_key"
-          wg set proton0 peer "$peer_key" persistent-keepalive 25
-          if [ $? -eq 0 ]; then
-            log "Keepalive успешно установлен"
-          else
-            log "Ошибка при установке keepalive"
-          fi
-        else
-          log "Keepalive уже установлен для пира $peer_key"
-        fi
-      else
-        log "Пир не найден для интерфейса proton0"
+    # Get peer key directly
+    PEER_LINE=$(echo "$WG_OUTPUT" | grep "^peer:" | head -n1)
+    PEER_KEY=$(echo "$PEER_LINE" | cut -d' ' -f2)
+    
+    if [ -n "$PEER_KEY" ]; then
+      if ! echo "$WG_OUTPUT" | grep -q "persistent keepalive: "; then
+        wg set proton0 peer "$PEER_KEY" persistent-keepalive 25
       fi
     else
-      log "Интерфейс proton0 не найден или не активен. Ошибка: $WG_OUTPUT"
+      exit 1
     fi
   '';
 in
@@ -50,11 +25,10 @@ in
   environment.etc."protonvpn-keepalive.sh".text = protonvpnKeepaliveScript;
 
   systemd.services.protonvpn-keepalive = {
-    description = "Устанавливает persistent-keepalive для ProtonVPN";
+    description = "Sets persistent-keepalive for ProtonVPN";
     script = "${protonvpnKeepaliveScript}";
     path = with pkgs; [ 
       wireguard-tools
-      gawk
     ];
     serviceConfig = {
       Type = "oneshot";
@@ -63,7 +37,7 @@ in
   };
 
   systemd.timers.protonvpn-keepalive = {
-    description = "Таймер для сервиса protonvpn-keepalive";
+    description = "Timer for protonvpn-keepalive service";
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "10s";
