@@ -17,7 +17,6 @@
     # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
     interfaces.wlp1s0.useDHCP = lib.mkDefault true;
     # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
-    networking.wireless.powersave = false;
     networkmanager.enable = true;
     networkmanager.insertNameservers = [
       "1.1.1.1" # BEST
