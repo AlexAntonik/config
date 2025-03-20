@@ -17,19 +17,18 @@
     # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
     interfaces.wlp1s0.useDHCP = lib.mkDefault true;
     # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
-
+    networking.wireless.powersave = false;
     networkmanager.enable = true;
     networkmanager.insertNameservers = [
       "1.1.1.1" # BEST
       "8.8.8.8" # Evil
       "9.9.9.9" # Just for fun
+      "10.2.0.1" # ProtonVPN Wireguard DNS 
     ];
-
-    nameservers = [ "10.2.0.1" ]; # ProtonVPN Wireguard DNS
 
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
-    # firewall.enable = false;
+     firewall.enable = false;
     firewall = {
       checkReversePath = "loose";
       # if packets are still dropped, they will show up in dmesg
