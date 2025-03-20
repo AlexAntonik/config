@@ -69,6 +69,7 @@
       file-roller # Archive manager
       htop # Simple terminal-based system monitor
       imv # Image viewer
+      gawk # GNU awk
       inxi # System information tool
       killall # Command to kill processes
       libnotify # Notification library
