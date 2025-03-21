@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   pkgs-unstable,
   ...
 }:
@@ -59,7 +58,6 @@
       blueman # Bluetooth manager
 
       # Utilities
-      inputs.yazi.packages.${pkgs.system}.yazi # TUI FileMgr
       appimage-run # Needed for AppImage support
       wireguard-tools # WireGuard tools
       brightnessctl # For screen brightness control
@@ -77,6 +75,7 @@
       lshw # Hardware information tool
       ncdu # Disk usage analyzer
       pavucontrol # PulseAudio volume control
+      nwg-displays  #configure monitor configs via GUI
       pamixer # Command-line mixer for PulseAudio
       easyeffects # Audio effects for PipeWire
       pciutils # PCI utilities
@@ -103,11 +102,11 @@
       prismlauncher # Prism launcher
       greetd.tuigreet # The login manager (sometimes referred to as display manager)
       hyprpicker # Color picker
-      lxqt.lxqt-policykit # PolicyKit authentication agent
     ])
     ++
       # UNSTABLE PACKAGES!
       (with pkgs-unstable; [
         protonvpn-gui
+        yazi
       ]);
 }
