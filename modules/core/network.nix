@@ -29,7 +29,7 @@
 
     #  firewall.enable = false;
     firewall = {
-      checkReversePath = false;
+      checkReversePath = "loose";
       # if packets are still dropped, they will show up in dmesg
       logReversePathDrops = true;
       # wireguard trips rpfilter up
