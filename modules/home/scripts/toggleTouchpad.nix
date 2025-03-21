@@ -1,7 +1,7 @@
 #!/bin/sh
 { pkgs }:
 
-pkgs.writeShellScriptBin "toggle_touchbar" ''
+pkgs.writeShellScriptBin "toggle_touchpad" ''
 
   HYPRLAND_DEVICE="asue120b:00-04f3:31c0-touchpad"
   HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
