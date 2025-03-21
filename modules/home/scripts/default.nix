@@ -13,6 +13,7 @@
       inherit pkgs;
       inherit username;
     })
+    (import ./toggleTouchbar.nix { inherit pkgs; })
     (import ./web-search.nix { inherit pkgs; })
     (import ./rofi-launcher.nix { inherit pkgs; })
     (import ./screenshootin.nix { inherit pkgs; })
