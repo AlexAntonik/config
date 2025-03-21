@@ -10,6 +10,7 @@
     slurp
     wl-clipboard
     swappy
+    hyprpolkitagent 
     ydotool
   ];
   systemd.user.targets.hyprland-session.Unit.Wants = [
@@ -17,6 +18,12 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.hyprland;
+    systemd = {
+      enableXdgAutostart = true;
+      variables = [ "--all" ];
+    };
+
     xwayland = {
       enable = true;
       # hidpi = true;

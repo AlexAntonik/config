@@ -22,7 +22,7 @@ in
         "killall -q waybar;sleep .5 && waybar"
         "killall -q swaync;sleep .5 && swaync"
         "nm-applet --indicator"
-        "lxqt-policykit-agent"
+        "systemctl --user start hyprpolkitagent"
         "pypr &"
         "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/swan.jpg"
       ];
@@ -119,6 +119,7 @@ in
         "$modifier,W,exec,${browser}"
         "$modifier SHIFT,E,exec,emopicker9000"
         "$modifier,E,exec,pypr toggle thunar"
+        "$modifier,Y,exec,ghostty -e yazi"
         ",PRINT,exec,screenshootin"
         "$modifier,D,exec,discord"
         "$modifier,O,exec,obs"

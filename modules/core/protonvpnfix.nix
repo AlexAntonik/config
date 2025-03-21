@@ -14,7 +14,7 @@ let
     
     if [ -n "$PEER_KEY" ]; then
       if ! echo "$WG_OUTPUT" | grep -q "persistent keepalive: "; then
-        wg set proton0 peer "$PEER_KEY" persistent-keepalive 25
+        wg set proton0 peer "$PEER_KEY" persistent-keepalive 15
       fi
     else
       exit 1

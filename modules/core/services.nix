@@ -8,6 +8,12 @@ let
   inherit (import ../../hosts/${host}/variables.nix) keyboardLayout;
 in
 {
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    configPackages = [ pkgs.hyprland ];
+  };
   # Services to start
   services = {
     libinput.enable = true;
