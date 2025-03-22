@@ -7,7 +7,7 @@
   home.file."./.config/ghostty/config".text = ''
 
     #theme = Aura
-    theme = Dracula
+    theme = Dracula+
     #theme = Aardvark Blue
     #theme = GruvboxDarkHard
     adjust-cell-height = 10%
