@@ -4,9 +4,6 @@
   lib,
   ...
 }: {
-  imports = [
-    ./zshrc-personal.nix
-  ];
 
   programs.zsh = {
     enable = true;
