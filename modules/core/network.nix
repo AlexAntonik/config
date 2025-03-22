@@ -17,12 +17,23 @@
     # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
     interfaces.wlp1s0.useDHCP = lib.mkDefault true;
     # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
-    networkmanager.enable = true;
-    networkmanager.insertNameservers = [
-      "1.1.1.1" # BEST
-      "8.8.8.8" # Evil
-      "9.9.9.9" # Just for fun
-      "10.2.0.1" # ProtonVPN Wireguard DNS
+    networkmanager = {
+      enable = true;
+      insertNameservers = [
+        "1.1.1.1" # BEST
+        "8.8.8.8" # Evil
+        "9.9.9.9" # Just for fun
+        "10.2.0.1" # ProtonVPN Wireguard DNS
+      ];
+      dns = "none"; # Prevent NetworkManager from managing DNS
+    };
+
+    # Make system-wide DNS settings
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+      "9.9.9.9" 
+      "10.2.0.1"
     ];
 
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
