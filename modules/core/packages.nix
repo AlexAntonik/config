@@ -12,7 +12,7 @@
     virt-manager.enable = true;
     mtr.enable = true;
     adb.enable = true;
-
+    # amnezia-vpn.enable = true; # Right now, working only on ustable channel
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
