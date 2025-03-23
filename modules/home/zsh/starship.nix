@@ -2,7 +2,8 @@
 
 {
   programs.starship = {
-    enable = false;
+    enable = true;
     package = pkgs.starship;
+    settings = pkgs.lib.importTOML ./starship.toml;
   };
 }

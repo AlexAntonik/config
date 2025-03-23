@@ -19,7 +19,6 @@
     ./rofi
     ./qt.nix
     ./scripts
-    ./starship.nix
     ./stylix.nix
     ./swaync.nix
     ./virtmanager.nix
