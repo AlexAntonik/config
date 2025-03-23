@@ -35,15 +35,19 @@
       # Programming languages
       go # Go programming language
       nixd # Nix LSP
+      dart # Dart language
+      kotlin # Kotlin language
+      typescript # Bad language
+      zulu # Open JDK fast
 
       # Development tools
       vscode # Visual Studio Code editor
       docker-compose # Allows controlling Docker from a single file
       meson # Build system
+      gradle # Build system
       ninja # Build system
       nixfmt-rfc-style # Nix code formatter
       pkg-config # Package configuration tool
-      zulu # Open JDK fast
 
       # Desk apps
       microsoft-edge # Web browser
