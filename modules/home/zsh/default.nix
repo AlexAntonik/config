@@ -1,31 +1,34 @@
 {
   profile,
-  pkgs,
-  lib,
+  # pkgs,
+  # lib,
   ...
-}: {
-
+}:
+{
+  imports = [
+    ./starship.nix
+  ];
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+      # uncomment and tur of starship for p10k config
+    # oh-my-zsh = {
+    #   enable = true;
+    # };
 
-    oh-my-zsh = {
-      enable = true;
-    };
-
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./p10k-config;
-        file = "p10k.zsh";
-      }
-    ];
+    # plugins = [
+    #   {
+    #     name = "powerlevel10k";
+    #     src = pkgs.zsh-powerlevel10k;
+    #     file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    #   }
+    #   {
+    #     name = "powerlevel10k-config";
+    #     src = lib.cleanSource ./p10k-config;
+    #     file = "p10k.zsh";
+    #   }
+    # ];
 
     initExtra = ''
       bindkey "\eh" backward-word
@@ -40,7 +43,7 @@
       c = "clear";
       fr = "nh os switch --hostname ${profile}";
       fu = "nh os switch --hostname ${profile} --update";
-      su = "sh <(curl -L https://gitlab.com/Zaney/zaneyos/-/raw/main/install-zaneyos.sh)";
+      su = "sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       cat = "bat";
       man = "batman";
