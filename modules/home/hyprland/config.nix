@@ -270,7 +270,6 @@ in
         "keepaspectratio, title:^(Picture-in-Picture)$"
         "noblur, tag:games*"
         "fullscreen, tag:games*"
-        "rounding 0,floating:1"
       ];
 
       env = [

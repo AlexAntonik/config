@@ -6,17 +6,17 @@
 {
   programs = {
     firefox.enable = false; # Firefox is not installed by defualt
-    dconf.enable = true;
-    seahorse.enable = true;
-    fuse.userAllowOther = true;
-    virt-manager.enable = true;
-    mtr.enable = true;
-    adb.enable = true;
+    dconf.enable = true; # Configuration editor
+    seahorse.enable = true; # Password manager
+    fuse.userAllowOther = true; # Allow users to mount FUSE filesystems
+    virt-manager.enable = true; # Virtual machine manager
+    mtr.enable = true; # My traceroute
+    adb.enable = true; # Android Debug Bridge
     # amnezia-vpn.enable = true; # Right now, working only on ustable channel
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-    };
+    }; 
 
     thunar = {
       enable = true;
@@ -24,7 +24,7 @@
         thunar-archive-plugin
         thunar-volman
       ];
-    };
+    }; # File manager
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -39,6 +39,7 @@
       kotlin # Kotlin language
       typescript # Bad language
       zulu # Open JDK fast
+      android-studio #Stable channel
 
       # Development tools
       vscode # Visual Studio Code editor
@@ -110,7 +111,7 @@
     ++
       # UNSTABLE PACKAGES!
       (with pkgs-unstable; [
-        protonvpn-gui
-        yazi
+        protonvpn-gui # ProtonVPN client
+        yazi # Terminal file manager
       ]);
 }
