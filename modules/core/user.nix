@@ -45,6 +45,7 @@ in
       "adbusers"
       "docker"
       "libvirtd"
+      "kvm"
       "lp"
       "networkmanager"
       "scanner"
