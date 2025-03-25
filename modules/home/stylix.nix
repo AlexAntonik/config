@@ -1,6 +1,8 @@
 { ... }:
 {
   stylix.targets = {
+    kitty.enable = false;
+    bat.enable = false;
     waybar.enable = false;
     rofi.enable = false;
     btop.enable = false;

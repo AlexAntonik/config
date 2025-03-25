@@ -8,7 +8,10 @@
 {
   networking = {
     hostName = "${host}";
-
+    # avoid checking if IP is already taken to boot a few seconds faster
+    dhcpcd.extraConfig = "noarp";
+    # no need to wait interfaces to have an IP to continue booting
+    dhcpcd.wait = "background";
     # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
     # (the default) this is the recommended approach. When using systemd-networkd it's
     # still possible to use this option, but it's recommended to use it in conjunction
@@ -32,7 +35,7 @@
     nameservers = [
       "1.1.1.1"
       "8.8.8.8"
-      "9.9.9.9" 
+      "9.9.9.9"
       "10.2.0.1"
     ];
 
@@ -51,7 +54,7 @@
 
         iptables -A OUTPUT -o proton0 -j ACCEPT
         ip6tables -A OUTPUT -o proton0 -j ACCEPT
-        
+
         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
       '';
