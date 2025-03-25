@@ -29,7 +29,6 @@ with lib;
           "idle_inhibitor"
         ];
         modules-right = [
-          "custom/hyprbindings"
           "custom/notification"
           "custom/exit"
           "battery"
@@ -132,11 +131,6 @@ with lib;
           format = "";
           # exec = "rofi -show drun";
           on-click = "sleep 0.1 && rofi-launcher";
-        };
-        "custom/hyprbindings" = {
-          tooltip = false;
-          format = "󱕴";
-          on-click = "sleep 0.1 && list-keybinds";
         };
         "idle_inhibitor" = {
           format = "{icon}";
@@ -266,7 +260,7 @@ with lib;
           background: transparent;
           color: #CCCCCC;
         }
-        #custom-hyprbindings, #network, #battery,
+        #network, #battery,
         #custom-notification, #tray, #custom-exit {
           font-weight: bold;
           background: transparent;
