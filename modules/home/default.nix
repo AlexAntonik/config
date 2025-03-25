@@ -9,7 +9,6 @@
     ./fastfetch
     ./gh.nix
     ./ghostty.nix
-    ./git.nix
     ./gtk.nix
     ./hyprland
     ./yazi
