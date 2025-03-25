@@ -12,7 +12,7 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-      # uncomment and tur of starship for p10k config
+    # uncomment and tur of starship for p10k config
     # oh-my-zsh = {
     #   enable = true;
     # };
