@@ -17,6 +17,7 @@
       ls = "eza --icons";
       ll = "eza -lh --icons --grid --group-directories-first";
       la = "eza -lah --icons --grid --group-directories-first";
+      f ="nvim $(fzf --preview=\"bat --color=always {}\")";
       ".." = "cd ..";
     };
   };
