@@ -13,6 +13,7 @@
     ./packages.nix
     ./services.nix
     ./starfish.nix
+    ./git.nix
     ./steam.nix
     ./stylix.nix
     ./system.nix

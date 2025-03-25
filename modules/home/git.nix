@@ -4,7 +4,6 @@ let
 in
 {
   programs.git = {
-    enable = true;
     userName = "${gitUsername}";
     userEmail = "${gitEmail}";
   };
