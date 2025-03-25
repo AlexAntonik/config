@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ./bash.nix
     ./bat.nix
     ./btop.nix
     ./emoji.nix
