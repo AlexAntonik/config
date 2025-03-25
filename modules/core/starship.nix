@@ -4,6 +4,7 @@
 
 {
   programs = {
+    # System wide(Root user) strarship configuration
     starship = {
       enable = true;
       settings = {

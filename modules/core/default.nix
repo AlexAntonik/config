@@ -12,7 +12,7 @@
     ./nh.nix
     ./packages.nix
     ./services.nix
-    ./starfish.nix
+    ./starship.nix
     ./git.nix
     ./steam.nix
     ./stylix.nix
