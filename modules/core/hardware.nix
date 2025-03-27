@@ -18,18 +18,8 @@
       package = pkgs.bluez;
       settings.Policy.AutoEnable = "true";
       settings.General = {
-        Enable = "Source,Sink,Media,Socket";
-        Name = "NixOS";
-        ControllerMode = "dual";
-        FastConnectable = "true";
-        Experimental = "true";
-        KernelExperimental = "true";
+        Enable = "Control,Gateway,Headset,Media,Sink,Socket,Source";
         MultiProfile = "multiple";
-        AutoEnable = "true";
-        JustWorksRepairing = "always";
-        DiscoverableTimeout = "0";
-        PairableTimeout = "0";
-        Discovery = "dual";
       };
     };
   };

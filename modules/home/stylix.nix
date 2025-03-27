@@ -1,5 +1,6 @@
 { ... }:
 {
+  #home manager targets
   stylix.targets = {
     kitty.enable = false;
     bat.enable = false;

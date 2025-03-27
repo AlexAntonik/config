@@ -32,7 +32,9 @@
   environment.systemPackages =
     (with pkgs; [
 
+      
       # Programming languages
+      cowsay
       go # Go programming language
       nixd # Nix LSP
       dart # Dart language
@@ -55,6 +57,7 @@
       telegram-desktop # Telegram client
       #protonvpn-gui # ProtonVPN client
       tor-browser # Tor
+      anki # Flashcards
 
       # Bluetooth
       bluez-alsa # Bluetooth ALSA support
@@ -66,6 +69,8 @@
       appimage-run # Needed for AppImage support
       wireguard-tools # WireGuard tools
       brightnessctl # For screen brightness control
+      bottom #another tui system usage interface
+      cloc # Count lines of code
       duf # Utility for viewing disk usage in terminal
       eza # Beautiful ls replacement
       ffmpeg # Terminal video/audio editing
