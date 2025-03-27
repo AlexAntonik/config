@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
 {
+  #start speedup
+  systemd.services.NetworkManager-wait-online.enable = false;
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "v4l2loopback" ];
@@ -22,6 +24,11 @@
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    plymouth.enable = true;
+    # Uncomment for fancy startup loading animation
+    # plymouth.enable = true;
+    # plymouth.themePackages = [
+      # pkgs.adi1090x-plymouth-themes
+    # ];
+    # plymouth.theme = "rings";
   };
 }
