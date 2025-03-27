@@ -3,6 +3,28 @@
 {
   #start speedup
   systemd.services.NetworkManager-wait-online.enable = false;
+  #Disable hibernation or sleep (only power off, only hardcore) 
+  systemd = {
+    targets = {
+      sleep = {
+        enable = false;
+        unitConfig.DefaultDependencies = "no";
+      };
+      suspend = {
+        enable = false;
+        unitConfig.DefaultDependencies = "no";
+      };
+      hibernate = {
+        enable = false;
+        unitConfig.DefaultDependencies = "no";
+      };
+      "hybrid-sleep" = {
+        enable = false;
+        unitConfig.DefaultDependencies = "no";
+      };
+    };
+  };
+  
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "v4l2loopback" ];
@@ -27,7 +49,7 @@
     # Uncomment for fancy startup loading animation
     # plymouth.enable = true;
     # plymouth.themePackages = [
-      # pkgs.adi1090x-plymouth-themes
+    # pkgs.adi1090x-plymouth-themes
     # ];
     # plymouth.theme = "rings";
   };
