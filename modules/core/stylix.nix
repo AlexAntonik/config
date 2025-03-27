@@ -29,6 +29,13 @@
       name = "Bibata-Modern-Ice";
       size = 24;
     };
+    #System targets
+    targets = {
+      plymouth.enable = false;
+      grub.enable = false;
+      console.enable = false;
+    };
+
     fonts = {
       monospace = {
 

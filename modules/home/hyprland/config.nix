@@ -13,8 +13,12 @@ let
     ;
 in
 {
+
   wayland.windowManager.hyprland = {
     settings = {
+      
+      xwayland.force_zero_scaling = true; #Making unscale xwayland apps may be reason why some app have small intarface scaling but needed for steam for propper resolution resolving
+
       exec-once = [
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -24,7 +28,7 @@ in
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         "pypr &"
-        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/swan.jpg"
+        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/pexels-harun-tan-2311991-3980364.jpg"
       ];
 
       input = {
@@ -71,7 +75,7 @@ in
         rounding = 0;
         blur = {
           enabled = true;
-          size = 5;
+          size = 3;
           passes = 3;
           ignore_opacity = false;
           new_optimizations = true;
@@ -289,7 +293,9 @@ in
         "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
         "GDK_SCALE,1"
         "QT_SCALE_FACTOR,1"
-
+        "WINIT_X11_SCALE_FACTOR,1"
+        "QT_AUTO_SCREEN_SCALE_FACTOR,0"
+        "QT_SCREEN_SCALE_FACTORS,1"
       ];
     };
 

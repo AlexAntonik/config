@@ -14,6 +14,17 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
     configPackages = [ pkgs.hyprland ];
   };
+  # Some config from random github repo
+  # environment.etc = {
+  #   "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+  #     bluez_monitor.properties = {
+  #     	["bluez5.enable-sbc-xq"] = true,
+  #     	["bluez5.enable-msbc"] = true,
+  #     	["bluez5.enable-hw-volume"] = true,
+  #     	["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+  #     }
+  #   '';
+  # };
   # Services to start
   services = {
     libinput.enable = true;
@@ -80,62 +91,31 @@ in
       dataDir = "/home/${username}";
       configDir = "/home/${username}/.config/syncthing";
     };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-
       audio.enable = true;
       jack.enable = true;
       wireplumber.enable = true;
     };
 
-    pipewire.wireplumber.extraConfig."10-bluez" = {
-      "monitor.bluez.properties" = {
-        # Existing settings
-        "bluez5.enable-sbc-xq" = true;
-        "bluez5.enable-msbc" = true;
-        "bluez5.enable-hw-volume" = true;
-
-        # Add these new settings for better Bluetooth audio
-        "bluez5.headset-roles" = [
-          "hsp_hs"
-          "hsp_ag"
-          "hfp_hf"
-          "hfp_ag"
-        ];
-        "bluez5.codecs" = [
-          "sbc_xq"
-          "aac"
-          "ldac"
-          "aptx"
-          "aptx_hd"
-        ];
-        "bluez5.enable-faststream" = true;
-        "bluez5.enable-aac" = true;
-        "bluez5.enable-ldac" = true;
-        "bluez5.enable-aptx" = true;
-        "bluez5.enable-aptx-hd" = true;
-
-        # Improve connection stability
-        "bluez5.auto-connect" = true;
-        "bluez5.reconnect-profiles" = [
-          "hfp_hf"
-          "hsp_hs"
-          "a2dp_sink"
-        ];
-
-        # Keep existing roles
-        "bluez5.roles" = [
-          "hsp_hs"
-          "hsp_ag"
-          "hfp_hf"
-          "hfp_ag"
-        ];
-      };
-    };
-
+    # Config from nixos pipewire wiki
+    # pipewire.wireplumber.extraConfig."10-bluez" = {
+    #   "monitor.bluez.properties" = {
+    #     "bluez5.enable-sbc-xq" = true;
+    #     "bluez5.enable-msbc" = true;
+    #     "bluez5.enable-hw-volume" = true;
+    #     "bluez5.roles" = [
+    #       "hsp_hs"
+    #       "hsp_ag"
+    #       "hfp_hf"
+    #       "hfp_ag"
+    #     ];
+    #   };
+    # };
     rpcbind.enable = true;
     nfs.server.enable = true;
   };
