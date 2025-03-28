@@ -1,10 +1,11 @@
 {
   pkgs,
+  pkgs-unstable,
   username,
   ...
 }:
 {
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     swww
     grim
     slurp
@@ -12,7 +13,11 @@
     swappy
     hyprpolkitagent 
     ydotool
-  ];
+  ])++(with pkgs-unstable;[
+    hyprland-qtutils  # needed for banners and ANR messages
+  ]
+
+  );
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
