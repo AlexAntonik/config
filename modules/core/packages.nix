@@ -7,6 +7,7 @@
   programs = {
     firefox.enable = false; # Firefox is not installed by defualt
     dconf.enable = true; # Configuration editor
+    hyprland.enable = true;
     seahorse.enable = true; # Password manager
     fuse.userAllowOther = true; # Allow users to mount FUSE filesystems
     virt-manager.enable = true; # Virtual machine manager
