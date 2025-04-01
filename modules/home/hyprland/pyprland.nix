@@ -6,6 +6,7 @@
     [pyprland]
     plugins = [
       "scratchpads",
+      "expose",
     ]
 
     [scratchpads.term]
@@ -22,16 +23,24 @@
     lazy = true
     size = "40% 90%"
 
+    [scratchpads.yazi]
+    animation = "fromBottom"
+    command = "ghostty -e yazi"
+    class = "com.mitchellh.ghostty"
+    position = "2% 6%"
+    size = "96% 92%"
+
     [scratchpads.telegram-desktop]
     animation = "fromBottom"
     command = "telegram-desktop"
     class = "org.telegram.desktop"
-    size = "85% 75%"
+    position = "2% 6%"
+    size = "96% 92%"
 
     [scratchpads.thunar]
     animation = "fromBottom"
     command = "thunar"
     class = "thunar"
-    size = "75% 60%"
+    size = "75% 70%"
   '';
 }
