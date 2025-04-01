@@ -21,6 +21,7 @@
     interfaces.wlp1s0.useDHCP = lib.mkDefault true;
     # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
     networkmanager = {
+      wifi.powersave = false;
       enable = true;
       insertNameservers = [
         "1.1.1.1" # BEST

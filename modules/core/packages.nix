@@ -59,6 +59,7 @@
       #protonvpn-gui # ProtonVPN client
       tor-browser # Tor
       anki # Flashcards
+      obsidian # Knowledge base
 
       # Bluetooth
       bluez-alsa # Bluetooth ALSA support
