@@ -23,21 +23,22 @@
     "nix.serverSettings": {
         "nixd": {
             "nixpkgs": {
-                "expr":"import (builtins.getFlake \"/home/alex/config\").inputs.nixpkgs { }",
+                "expr": "import (builtins.getFlake \"/home/alex/config\").inputs.nixpkgs { }"
             },
             "formatting": {
                 "command": [
                     "nixfmt"
-                ], // or nixfmt or nixpkgs-fmt
+                ]
             },
             "options": {
-               "nixos": {
-                 "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.amd.options"
-               },
-            //    "home_manager": {
-            //      "expr": "(builtins.getFlake \"/PATH/TO/FLAKE\").homeConfigurations.CONFIGNAME.options"
-            //    },
-            },
+                "nixos": {
+                    "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.amd.options"
+                },
+                "home_manager": {
+                    "expr": "(builtins.getFlake \"/home/alex/config\").inputs.home-manager.lib"
+                }
+            }
         }
-    }
+    },
+    "editor.fontSize": 16
 }
