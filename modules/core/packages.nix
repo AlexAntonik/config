@@ -45,7 +45,6 @@
       android-studio #Stable channel
 
       # Development tools
-      vscode # Visual Studio Code editor
       docker-compose # Allows controlling Docker from a single file
       meson # Build system
       gradle # Build system
@@ -119,6 +118,7 @@
       # UNSTABLE PACKAGES!
       (with pkgs-unstable; [
         protonvpn-gui # ProtonVPN client
+        vscode.fhs # Visual Studio Code editor
         yazi # Terminal file manager
       ]);
 }

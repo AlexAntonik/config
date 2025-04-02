@@ -23,7 +23,10 @@
       host = "alex";
       profile = "amd";
       username = "alex";
-      pkgs-unstable = unstable.legacyPackages.${system};
+      pkgs-unstable = import unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in
     {
       nixosConfigurations = {
