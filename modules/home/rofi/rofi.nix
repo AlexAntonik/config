@@ -24,19 +24,19 @@
         in
         {
           "*" = {
-            bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
-            foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
-            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
-            text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
-            border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
-            urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
+            bg = mkLiteral "rgba(50, 50, 50, 0.85)";
+            bg-alt = mkLiteral "rgba(70, 70, 70, 0.85)";
+            foreground = mkLiteral "rgba(204, 204, 204, 1)";
+            selected = mkLiteral "rgb(124, 124, 124)";
+            active = mkLiteral "rgba(187, 187, 187, 1)";
+            text-selected = mkLiteral "rgba(0, 0, 0, 1)";
+            text-color = mkLiteral "rgba(221, 221, 221, 1)";
+            border-color = mkLiteral "rgba(136, 136, 136, 1)";
+            urgent = mkLiteral "rgba(255, 85, 85, 1)";
           };
           "window" = {
             transparency = "real";
-            width = mkLiteral "1000px";
+            width = mkLiteral "500px";
             location = mkLiteral "center";
             anchor = mkLiteral "center";
             fullscreen = false;
@@ -45,32 +45,25 @@
             cursor = "default";
             enabled = true;
             border-radius = mkLiteral "15px";
+            border = mkLiteral "2px";
+            border-color = mkLiteral "@border-color";
             background-color = mkLiteral "@bg";
           };
           "mainbox" = {
             enabled = true;
             spacing = mkLiteral "0px";
-            orientation = mkLiteral "horizontal";
+            orientation = mkLiteral "vertical";  
             children = map mkLiteral [
-              "imagebox"
-              "listbox"
+              "inputbar"     
+              "listbox"      
+              "mode-switcher"  
             ];
             background-color = mkLiteral "transparent";
           };
-          "imagebox" = {
-            padding = mkLiteral "20px";
-            background-color = mkLiteral "transparent";
-            background-image = mkLiteral ''url("~/Pictures/Wallpapers/Rainnight.jpg", height)'';
-            orientation = mkLiteral "vertical";
-            children = map mkLiteral [
-              "inputbar"
-              "dummy"
-              "mode-switcher"
-            ];
-          };
+
           "listbox" = {
-            spacing = mkLiteral "20px";
-            padding = mkLiteral "20px";
+            spacing = mkLiteral "10px";
+            padding = mkLiteral "10px";
             background-color = mkLiteral "transparent";
             orientation = mkLiteral "vertical";
             children = map mkLiteral [
@@ -78,13 +71,11 @@
               "listview"
             ];
           };
-          "dummy" = {
-            background-color = mkLiteral "transparent";
-          };
           "inputbar" = {
             enabled = true;
             spacing = mkLiteral "10px";
-            padding = mkLiteral "10px";
+            padding = mkLiteral "15px";
+            margin = mkLiteral "10px";
             border-radius = mkLiteral "10px";
             background-color = mkLiteral "@bg-alt";
             text-color = mkLiteral "@foreground";
@@ -110,9 +101,11 @@
           };
           "mode-switcher" = {
             enabled = true;
-            spacing = mkLiteral "20px";
+            spacing = mkLiteral "10px";  
+            margin = mkLiteral "10px";   
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "@foreground";
+            orientation = mkLiteral "horizontal";
           };
           "button" = {
             padding = mkLiteral "15px";
@@ -172,7 +165,7 @@
           };
           "element selected.active" = {
             background-color = mkLiteral "@urgent";
-            text-color = mkLiteral "@text-selected";
+            text-color = mkLiteral "#000000"; # Более заметный текст
           };
           "element-icon" = {
             background-color = mkLiteral "transparent";

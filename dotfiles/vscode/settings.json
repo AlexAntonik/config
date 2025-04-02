@@ -1,0 +1,43 @@
+{
+    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace",
+    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace",
+    "terminal.integrated.fontLigatures.featureSettings": "\"liga\" on",
+    "window.menuBarVisibility": "toggle",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "files.autoSave": "afterDelay",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorBlinking": "phase",
+    "editor.minimap.enabled": false,
+    "window.customTitleBarVisibility": "never",
+    "workbench.activityBar.location": "hidden",
+    "keyboard.dispatch": "keyCode",
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<Esc>": true
+    },
+    "editor.lineNumbers": "relative",
+    "nix.serverPath": "nixd",
+    "nix.enableLanguageServer": true,
+    "nix.serverSettings": {
+        "nixd": {
+            "nixpkgs": {
+                "expr":"import (builtins.getFlake \"/home/alex/config\").inputs.nixpkgs { }",
+            },
+            "formatting": {
+                "command": [
+                    "nixfmt"
+                ], // or nixfmt or nixpkgs-fmt
+            },
+            "options": {
+               "nixos": {
+                 "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.amd.options"
+               },
+            //    "home_manager": {
+            //      "expr": "(builtins.getFlake \"/PATH/TO/FLAKE\").homeConfigurations.CONFIGNAME.options"
+            //    },
+            },
+        }
+    }
+}
