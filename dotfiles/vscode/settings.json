@@ -11,7 +11,6 @@
     "editor.cursorBlinking": "phase",
     "editor.minimap.enabled": false,
     "window.customTitleBarVisibility": "never",
-    "workbench.activityBar.location": "hidden",
     "keyboard.dispatch": "keyCode",
     "vim.useCtrlKeys": true,
     "vim.handleKeys": {
@@ -40,5 +39,6 @@
             }
         }
     },
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "workbench.activityBar.location": "hidden"
 }
