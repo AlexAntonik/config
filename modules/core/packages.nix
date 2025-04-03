@@ -77,7 +77,7 @@
       ffmpeg # Terminal video/audio editing
       file-roller # Archive manager
       gawk # GNU awk
-      gh # GitHub CLI
+      #gh # GitHub CLI (enabled in home manager)
       htop # Simple terminal-based system monitor
       imv # Image viewer
       inxi # System information tool

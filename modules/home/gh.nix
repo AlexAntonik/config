@@ -1,6 +1,6 @@
 { ... }:
 {
   programs = {
-    gh.enable = false;
+    gh.enable = true;
   };
 }
