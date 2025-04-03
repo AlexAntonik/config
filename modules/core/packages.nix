@@ -76,9 +76,10 @@
       eza # Beautiful ls replacement
       ffmpeg # Terminal video/audio editing
       file-roller # Archive manager
+      gawk # GNU awk
+      gh # GitHub CLI
       htop # Simple terminal-based system monitor
       imv # Image viewer
-      gawk # GNU awk
       inxi # System information tool
       killall # Command to kill processes
       libnotify # Notification library
