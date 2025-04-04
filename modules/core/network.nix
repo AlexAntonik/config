@@ -20,6 +20,9 @@
     # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
     interfaces.wlp1s0.useDHCP = lib.mkDefault true;
     # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+    #Disabling ipv6
+    # enableIPv6 = false;
+
     networkmanager = {
       wifi.powersave = false;
       enable = true;
@@ -42,11 +45,11 @@
 
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
-    #  firewall.enable = false;
+    # firewall.enable = false;
     firewall = {
       checkReversePath = "loose";
       # if packets are still dropped, they will show up in dmesg
-      logReversePathDrops = true;
+      # logReversePathDrops = true;
       # wireguard trips rpfilter up
       trustedInterfaces = [ "proton0" ];
       extraCommands = ''
