@@ -55,7 +55,7 @@ in
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
-        options = "grp:alt_shift_toggle"; # also need to be changed in hyprland config
+        options = "grp:win_space_toggle"; # also need to be changed in hyprland config
       };
     };
     greetd = {

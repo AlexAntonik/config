@@ -11,10 +11,11 @@
 
     [scratchpads.term]
     animation = "fromTop"
-    command = "kitty --class kitty-dropterm"
-    class = "kitty-dropterm"
-    size = "75% 60%"
-    max_size = "1920px 100%"
+    command = "ghostty --class=com.mitchellh.ghostty-dropterm"
+    class = "com.mitchellh.ghostty-dropterm"
+    lazy = true
+    size = "76% 70%"
+    position= "12% 10%"
 
     [scratchpads.volume]
     animation = "fromTop"
