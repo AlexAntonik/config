@@ -165,7 +165,7 @@
           };
           "element selected.active" = {
             background-color = mkLiteral "@urgent";
-            text-color = mkLiteral "#000000"; # Более заметный текст
+            text-color = mkLiteral "#000000";
           };
           "element-icon" = {
             background-color = mkLiteral "transparent";
