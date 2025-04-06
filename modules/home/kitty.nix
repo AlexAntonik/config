@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.kitty = {
-    enable = true;
+    enable = false;
     package = pkgs.kitty;
     settings = {
       wheel_scroll_min_lines = 1;

@@ -3,18 +3,19 @@
 let
   protonvpnKeepaliveScript = ''
     #!/bin/bash
-    set -e
 
-    # Get interface information
+    if ! wg show proton0 &>/dev/null; then
+      exit 0
+    fi
+
     WG_OUTPUT=$(wg show proton0)
 
-    # Get peer key directly
     PEER_LINE=$(echo "$WG_OUTPUT" | grep "^peer:" | head -n1)
     PEER_KEY=$(echo "$PEER_LINE" | cut -d' ' -f2)
     
     if [ -n "$PEER_KEY" ]; then
       if ! echo "$WG_OUTPUT" | grep -q "persistent keepalive: "; then
-        wg set proton0 peer "$PEER_KEY" persistent-keepalive 25
+        wg set proton0 peer "$PEER_KEY" persistent-keepalive 25 || true
       fi
     fi
     exit 0

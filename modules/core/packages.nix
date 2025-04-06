@@ -59,6 +59,8 @@
       tor-browser # Tor
       anki # Flashcards
       obsidian # Knowledge base
+      vesktop
+      zathura #PDF viewer 
 
       # Bluetooth
       bluez-alsa # Bluetooth ALSA support

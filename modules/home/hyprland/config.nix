@@ -41,7 +41,7 @@ in
       # Input device settings
       input = {
         kb_layout = "${keyboardLayout}";
-        kb_options = "caps:escape,grp:alt_shift_toggle"; # also need to be changed in services xkb
+        kb_options = "caps:escape,grp:win_space_toggle"; # also need to be changed in services xkb
         numlock_by_default = true;
         repeat_delay = 300;
         follow_mouse = 1; # Focus follows mouse
@@ -135,18 +135,19 @@ in
         "$modifier SHIFT,W,exec,web-search" # Custom web search script
         "$modifier ALT,W,exec,wallsetter" # Custom wallpaper setter script
         "$modifier,W,exec,${browser}" # Launch browser
-        "$modifier,E,exec,pypr toggle thunar" # Toggle Thunar file manager (using pypr)
         "$modifier SHIFT,E,exec,emopicker9000" # Emoji picker
         "$modifier,D,exec,discord" # Launch Discord
         "$modifier,O,exec,obs" # Launch OBS Studio
         "$modifier,C,exec,code" # Launch VS Code
         "$modifier,G,exec,gimp" # Launch GIMP
-        "$modifier,T,exec,pypr toggle telegram-desktop" # Toggle Telegram (using pypr)
-        "$modifier,Y,exec,pypr toggle yazi" # Toggle Yazi terminal file manager (using pypr)
         "$modifier,N,exec,obsidian" # Launch Obsidian
-        "$modifier,B,exec,pypr expose" # Expose windows (using pypr)
         "$modifier,M,exec,pavucontrol" # Launch Pavucontrol (audio control)
         "$modifier,P,exec,hyprpicker -a" # Color picker (pick and copy)
+        "$modifier,E,exec,pypr toggle thunar" # Toggle Thunar file manager (using pypr)
+        "$modifier,T,exec,pypr toggle telegram-desktop" # Toggle Telegram (using pypr)
+        "$modifier,R,exec,pypr toggle term" # Toggle Telegram (using pypr)
+        "$modifier,Y,exec,pypr toggle yazi" # Toggle Yazi terminal file manager (using pypr)
+        "$modifier,B,exec,pypr expose" # Expose windows (using pypr)
         # --- Window Management ---
         "$modifier,Q,killactive," # Close active window
         "$modifier SHIFT,P,pin," # Pin window (make sticky)
@@ -186,8 +187,8 @@ in
         "$modifier,F3,workspace,8" # Switch to workspace 8 (alternative)
         "$modifier,F4,workspace,9" # Switch to workspace 9 (alternative)
         "$modifier,F5,workspace,10" # Switch to workspace 10 (alternative)
-        "$modifier SHIFT,SPACE,movetoworkspace,special" # Move window to special workspace
-        "$modifier,SPACE,togglespecialworkspace" # Toggle visibility of special workspace
+        "$modifier SHIFT,S,movetoworkspace,special" # Move window to special workspace
+        "$modifier,S,togglespecialworkspace" # Toggle visibility of special workspace
         "$modifier SHIFT,1,movetoworkspace,1" # Move window to workspace 1
         "$modifier SHIFT,2,movetoworkspace,2" # Move window to workspace 2
         "$modifier SHIFT,3,movetoworkspace,3" # Move window to workspace 3
@@ -234,7 +235,7 @@ in
 
       windowrulev2 = [
         "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"
-        "tag +terminal, class:^(Alacritty|kitty|kitty-dropterm)$"
+        "tag +terminal, class:^(Alacritty|kitty|kitty-dropterm|com.mitchellh.ghostty|[Gg]hostty)$"
         "tag +browser, class:^(Brave-browser(-beta|-dev|-unstable)?)$"
         "tag +browser, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
         "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
