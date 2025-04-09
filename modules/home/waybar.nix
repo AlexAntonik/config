@@ -128,9 +128,10 @@ with lib;
         };
         "custom/startmenu" = {
           tooltip = false;
-          format = "";
+          format = "";
           # exec = "rofi -show drun";
-          on-click = "sleep 0.1 && rofi-launcher";
+          # on-click = "sleep 0.1 && rofi-launcher";
+          on-click = "sleep 0.1 && nwg-drawer";
         };
         "idle_inhibitor" = {
           format = "{icon}";

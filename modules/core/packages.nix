@@ -90,6 +90,7 @@
       ncdu # Disk usage analyzer
       pavucontrol # PulseAudio volume control
       nwg-displays  #configure monitor configs via GUI
+      nwg-drawer #Rofi like menu
       pamixer # Command-line mixer for PulseAudio
       easyeffects # Audio effects for PipeWire
       pciutils # PCI utilities

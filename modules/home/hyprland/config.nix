@@ -26,6 +26,7 @@ in
         "killall -q swww; sleep 0.5 && swww init"
         "killall -q waybar; sleep 0.5 && waybar"
         "killall -q swaync; sleep 0.5 && swaync"
+        "oneshot" # dotfiles set and some configs
         # System tray applets and agents
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
@@ -256,6 +257,8 @@ in
         "tag +settings, class:^(gnome-disks|wihotspot(-gui)?)$"
         "tag +settings, class:^([Rr]ofi)$"
         "tag +settings, class:^(file-roller|org.gnome.FileRoller)$"
+        "tag +settings, class:(.blueman-manager-wrapped)"
+        "tag +settings, class:(nwg-displays)"
         "tag +settings, class:^(nm-applet|nm-connection-editor|blueman-manager)$"
         "tag +settings, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
         "tag +settings, class:^(nwg-look|qt5ct|qt6ct|[Yy]ad)$"
