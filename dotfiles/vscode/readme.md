@@ -12,4 +12,4 @@ ln -s /home/alex/config/dotfiles/vscode/settings.json /home/alex/.config/Code/Us
 
 Gonly with absolute path or error 40  
 
-TODO: include this in install script or something
+probably not needed now bcs incorporated in oneshot script
