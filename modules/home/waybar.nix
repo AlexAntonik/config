@@ -23,14 +23,15 @@ with lib;
         modules-left = [
           "custom/startmenu"
           "pulseaudio"
+          "backlight"
           "cpu"
           "memory"
           "hyprland/language"
-          "idle_inhibitor"
         ];
         modules-right = [
           "custom/notification"
           "custom/exit"
+          "idle_inhibitor"
           "battery"
           "tray"
           "clock"
@@ -64,7 +65,7 @@ with lib;
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          format = if clock24h == true then '' {:L%H:%M}'' else '' {:L%I:%M %p}'';
+          format = if clock24h == true then ''{:L%H:%M}'' else ''{:L%I:%M %p}'';
           tooltip = true;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
           timezone = "Etc/GMT-3";
@@ -76,7 +77,7 @@ with lib;
         };
         "cpu" = {
           interval = 5;
-          format = " {usage:2}%";
+          format = "{usage:2}%";
           tooltip = true;
         };
         "disk" = {
@@ -101,8 +102,8 @@ with lib;
         };
         "pulseaudio" = {
           format = "{icon} {volume}% {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
+          format-bluetooth = "{icon} {volume}%  {format_source}";
+          format-bluetooth-muted = "{icon} {format_source}";
           format-muted = " {format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
@@ -120,6 +121,19 @@ with lib;
             ];
           };
           on-click = "sleep 0.1 && pavucontrol";
+        };
+        "backlight" = {
+          device = "intel_backlight";
+          format = "{icon} {percent}%";
+          format-icons = [
+            "󰃜"  # 0%
+            "󰃝"  # 25%
+            "󰃟"  # 50%
+            "󰃞"  # 100%
+          ];
+          on-scroll-up = "brightnessctl set +2%";
+          on-scroll-down = "brightnessctl set 2%-";
+          min-length = 5;
         };
         "custom/exit" = {
           tooltip = false;
@@ -254,7 +268,7 @@ with lib;
         tooltip label {
           color: #${config.lib.stylix.colors.base0D};
         }
-        #custom-startmenu, #custom-startmenu, #pulseaudio, #cpu, #memory, #language, #idle_inhibitor {
+        #custom-startmenu, #custom-startmenu, #pulseaudio, #backlight, #cpu, #memory, #language, #idle_inhibitor {
           font-weight: bold;
           margin: 0px;
           padding: 0px 14px;
