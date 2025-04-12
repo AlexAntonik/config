@@ -22,18 +22,17 @@ with lib;
         modules-center = [ "hyprland/workspaces" ];
         modules-left = [
           "custom/startmenu"
-          "pulseaudio"
-          "backlight"
           "cpu"
           "memory"
+          "battery"
           "hyprland/language"
+          "custom/exit"
+          "idle_inhibitor"
         ];
         modules-right = [
           "custom/notification"
-          "custom/exit"
-          "idle_inhibitor"
-          "battery"
           "tray"
+          "pulseaudio"
           "clock"
         ];
 
@@ -77,7 +76,7 @@ with lib;
         };
         "cpu" = {
           interval = 5;
-          format = "{usage:2}%";
+          format = " {usage:2}%";
           tooltip = true;
         };
         "disk" = {
@@ -101,11 +100,11 @@ with lib;
           spacing = 12;
         };
         "pulseaudio" = {
-          format = "{icon} {volume}% {format_source}";
-          format-bluetooth = "{icon} {volume}%  {format_source}";
-          format-bluetooth-muted = "{icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = " {volume}%";
+          format = "{icon}{format_source}";
+          format-bluetooth = "{icon}{format_source}";
+          format-bluetooth-muted = "{format_source}";
+          format-muted = "{format_source}";
+          format-source = "";
           format-source-muted = "";
           format-icons = {
             headphone = "";
@@ -121,19 +120,6 @@ with lib;
             ];
           };
           on-click = "sleep 0.1 && pavucontrol";
-        };
-        "backlight" = {
-          device = "intel_backlight";
-          format = "{icon} {percent}%";
-          format-icons = [
-            "󰃜"  # 0%
-            "󰃝"  # 25%
-            "󰃟"  # 50%
-            "󰃞"  # 100%
-          ];
-          on-scroll-up = "brightnessctl set +2%";
-          on-scroll-down = "brightnessctl set 2%-";
-          min-length = 5;
         };
         "custom/exit" = {
           tooltip = false;
@@ -268,27 +254,41 @@ with lib;
         tooltip label {
           color: #${config.lib.stylix.colors.base0D};
         }
-        #custom-startmenu, #custom-startmenu, #pulseaudio, #backlight, #cpu, #memory, #language, #idle_inhibitor {
+        
+        #idle_inhibitor, #custom-exit {
           font-weight: bold;
           margin: 0px;
-          padding: 0px 14px;
+          padding: 0px 4px;
           background: transparent;
           color: #CCCCCC;
         }
-        #network, #battery,
-        #custom-notification, #tray, #custom-exit {
+        #custom-exit {
+          padding: 0px 0px 0px 10px;
+        }
+
+        #custom-startmenu {
+          padding: 0px 16px 0px 4px;
+        }
+        #battery, #custom-startmenu, #pulseaudio, #cpu, #memory, #language, #idle_inhibitor {
+          font-weight: bold;
+          margin: 0px;
+          padding: 0px 10px;
+          background: transparent;
+          color: #CCCCCC;
+        }
+        #network, #custom-notification, #tray{
           font-weight: bold;
           background: transparent;
           color: #CCCCCC;
           margin: 0px;
-          padding: 0px 18px;
+          padding: 0px 16px;
         }
         #clock {
           font-weight: bold;
           color: #CCCCCC;
           background: transparent;
           margin: 0px;
-          padding: 0px 12px;
+          padding: 0px 12px 0px 16px;
         }
       ''
     ];

@@ -37,6 +37,7 @@ in
         # --- Autostart applications ---
         "${browser}" # Will be moved to workspace 1 by windowrule
         "protonvpn-app"
+        "swayosd-server&" 
       ];
 
       # Input device settings
@@ -214,7 +215,9 @@ in
         "ALT,SHIFT,exec,hyprctl switchxkblayout at-translated-set-2-keyboard next" # Switch keyboard layout
         ",PRINT,exec,screenshootin" # Screenshot script
         "$modifier SHIFT,N,exec,swaync-client -rs" # Toggle notification center (swaync)
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" # Toggle mute
+        # ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" # Toggle mute
+        ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle" # Toggle mute
+        ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle" # Toggle microphone mute
         ",XF86TouchpadToggle , exec, toggle_touchpad" # Custom touchpad toggle script
         ",XF86AudioPlay, exec, playerctl play-pause" # Play/Pause media
         ",XF86AudioPause, exec, playerctl play-pause" # Play/Pause media (duplicate for some keyboards)
@@ -225,13 +228,19 @@ in
 
       # For repeateable actions on
       binde = [
-        ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+" # Increase volume
-        ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-" # Decrease volume
-        ",XF86MonBrightnessDown,exec,brightnessctl set 1%-" # Decrease brightness
-        ",XF86MonBrightnessUp,exec,brightnessctl set 1%+" # Increase brightness
+        # ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+" # Increase volume
+        # ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-" # Decrease volume
+        # ",XF86MonBrightnessDown,exec,brightnessctl set 1%-" # Decrease brightness
+        # ",XF86MonBrightnessUp,exec,brightnessctl set 1%+" # Increase brightness
         "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d asus::kbd_backlight s 1%-" # Decrease keyboard brightness (only asus device for else brghtnessctl -l)
         "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d asus::kbd_backlight s 1%+" # Increase keyboard brightness (only asus device)
 
+        ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume +1" # Increase volume
+        ",XF86AudioLowerVolume,exec,swayosd-client --output-volume -1" # Decrease volume
+        "SHIFT,XF86AudioRaiseVolume,exec,swayosd-client --input-volume +1 --max-volume 255" # Increase input volume
+        "SHIFT,XF86AudioLowerVolume,exec,swayosd-client --input-volume -1 --max-volume 255" # Decrease input volume
+        ",XF86MonBrightnessDown,exec,swayosd-client --brightness -2" # Decrease brightness
+        ",XF86MonBrightnessUp,exec,swayosd-client --brightness +2" # Increase brightness
       ];
       # Mouse button bindings
       bindm = [
