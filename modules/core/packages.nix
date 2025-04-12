@@ -124,5 +124,6 @@
         protonvpn-gui # ProtonVPN client
         vscode.fhs # Visual Studio Code editor
         yazi # Terminal file manager
+        swayosd
       ]);
 }
