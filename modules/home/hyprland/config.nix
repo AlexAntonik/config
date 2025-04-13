@@ -10,6 +10,7 @@ let
     terminal
     extraMonitorSettings
     keyboardLayout
+    keyboardLightID
     ;
 in
 {
@@ -33,7 +34,7 @@ in
         # Pypr start
         "pypr &"
         # Set wallpaper (delay allows swww to initialize)
-        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/pexels-harun-tan-2311991-3980364.jpg"
+        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/town.jpg"
         # --- Autostart applications ---
         "${browser}" # Will be moved to workspace 1 by windowrule
         "protonvpn-app"
@@ -231,8 +232,8 @@ in
         # ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-" # Decrease volume
         # ",XF86MonBrightnessDown,exec,brightnessctl set 1%-" # Decrease brightness
         # ",XF86MonBrightnessUp,exec,brightnessctl set 1%+" # Increase brightness
-        "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d asus::kbd_backlight s 1%-" # Decrease keyboard brightness (only asus device for else brghtnessctl -l)
-        "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d asus::kbd_backlight s 1%+" # Increase keyboard brightness (only asus device)
+        "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${keyboardLightID} s 1%-" # Decrease keyboard brightness
+        "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${keyboardLightID} s 1%+" # Increase keyboard brightness 
 
         ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume +1" # Increase volume
         ",XF86AudioLowerVolume,exec,swayosd-client --output-volume -1" # Decrease volume

@@ -18,4 +18,8 @@
   # For Nvidia Prime support
   intelID = "PCI:1:0:0";
   nvidiaID = "PCI:0:2:0";
+
+  # Devices for some features
+  touchpadID = "asue120b:00-04f3:31c0-touchpad"; # From hyprctl devices  
+  keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
 }

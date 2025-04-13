@@ -11,7 +11,7 @@
       };
       background = [
         {
-          path = "/home/${username}/Pictures/Wallpapers/swan.jpg";
+          path = "/home/${username}/Pictures/Wallpapers/town.jpg";
           blur_passes = 3;
           blur_size = 8;
         }

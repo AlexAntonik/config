@@ -1,4 +1,5 @@
 {
+  host,
   pkgs,
   username,
   ...
@@ -12,7 +13,10 @@
       inherit pkgs;
       inherit username;
     })
-    (import ./toggleTouchpad.nix { inherit pkgs; })
+    (import ./toggleTouchpad.nix { 
+      inherit pkgs;
+      inherit host;
+      })
     (import ./rofi-launcher.nix { inherit pkgs; })
     (import ./screenshootin.nix { inherit pkgs; })
     (import ./oneshot.nix { inherit pkgs; })

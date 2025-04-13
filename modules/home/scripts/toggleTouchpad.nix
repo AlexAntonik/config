@@ -1,9 +1,13 @@
 #!/bin/sh
-{ pkgs }:
-
+{ host, pkgs, ... }:
+let
+  inherit (import ../../../hosts/${host}/variables.nix)
+    touchpadID 
+    ;
+in
 pkgs.writeShellScriptBin "toggle_touchpad" ''
 
-  HYPRLAND_DEVICE="asue120b:00-04f3:31c0-touchpad"
+  HYPRLAND_DEVICE="${touchpadID}"
   HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
 
   if [ -z "$XDG_RUNTIME_DIR" ]; then
