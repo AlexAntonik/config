@@ -22,17 +22,17 @@ with lib;
         modules-center = [ "hyprland/workspaces" ];
         modules-left = [
           "custom/startmenu"
+          "custom/exit"
+          "idle_inhibitor"
+          "pulseaudio"
           "cpu"
           "memory"
           "battery"
           "hyprland/language"
-          "custom/exit"
-          "idle_inhibitor"
         ];
         modules-right = [
           "custom/notification"
           "tray"
-          "pulseaudio"
           "clock"
         ];
 
@@ -71,16 +71,18 @@ with lib;
         };
         "memory" = {
           interval = 5;
-          format = " {}%";
+          format = "";
           tooltip = true;
+          on-click = "sleep 0.1 && btop";
         };
         "cpu" = {
           interval = 5;
-          format = " {usage:2}%";
+          format = "";
           tooltip = true;
+          on-click = "sleep 0.1 && btop";
         };
         "disk" = {
-          format = " {free}";
+          format = "";
           tooltip = true;
         };
         "network" = {
@@ -102,8 +104,8 @@ with lib;
         "pulseaudio" = {
           format = "{icon}{format_source}";
           format-bluetooth = "{icon}{format_source}";
-          format-bluetooth-muted = "{format_source}";
-          format-muted = "{format_source}";
+          format-bluetooth-muted = "󰖁 {format_source}";
+          format-muted = "󰖁{format_source}";
           format-source = "";
           format-source-muted = "";
           format-icons = {
@@ -114,9 +116,7 @@ with lib;
             portable = "";
             car = "";
             default = [
-              ""
-              ""
-              ""
+              "󰕾"
             ];
           };
           on-click = "sleep 0.1 && pavucontrol";
@@ -165,9 +165,9 @@ with lib;
             warning = 30;
             critical = 15;
           };
-          format = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
-          format-plugged = "󱘖 {capacity}%";
+          format = "{icon}";
+          format-charging = "󰂄";
+          format-plugged = "󱘖";
           format-icons = [
             "󰁺"
             "󰁻"
@@ -181,7 +181,7 @@ with lib;
             "󰁹"
           ];
           on-click = "";
-          tooltip = false;
+          tooltip = true;
         };
       }
     ];
@@ -255,21 +255,23 @@ with lib;
           color: #${config.lib.stylix.colors.base0D};
         }
         
-        #idle_inhibitor, #custom-exit {
+        #cpu, #pulseaudio, #memory, #battery,
+        #custom-startmenu, #idle_inhibitor, #custom-exit {
           font-weight: bold;
           margin: 0px;
-          padding: 0px 4px;
+          padding: 0px 5px;
           background: transparent;
           color: #CCCCCC;
         }
-        #custom-exit {
-          padding: 0px 0px 0px 10px;
-        }
 
         #custom-startmenu {
-          padding: 0px 16px 0px 4px;
+          padding-left: 14px;
         }
-        #battery, #custom-startmenu, #pulseaudio, #cpu, #memory, #language, #idle_inhibitor {
+
+        #battery {
+          padding-right: 8px;
+        }
+        #language {
           font-weight: bold;
           margin: 0px;
           padding: 0px 10px;
