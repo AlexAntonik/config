@@ -41,6 +41,7 @@ with lib;
           format-ru = "Ru";
           min-length = 3;
           tooltip = false;
+          on-click = "sleep 0.1 && hyprctl switchxkblayout at-translated-set-2-keyboard next";
         };
 
         "hyprland/workspaces" = {
@@ -73,13 +74,13 @@ with lib;
           interval = 5;
           format = "";
           tooltip = true;
-          on-click = "sleep 0.1 && btop";
+          on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
         };
         "cpu" = {
           interval = 5;
           format = "";
           tooltip = true;
-          on-click = "sleep 0.1 && btop";
+          on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
         };
         "disk" = {
           format = "";

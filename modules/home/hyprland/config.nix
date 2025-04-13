@@ -37,7 +37,7 @@ in
         # --- Autostart applications ---
         "${browser}" # Will be moved to workspace 1 by windowrule
         "protonvpn-app"
-        "swayosd-server&" 
+        "swayosd-server &" 
       ];
 
       # Input device settings
@@ -212,7 +212,6 @@ in
         "ALT,Tab,cyclenext," # Cycle focus to next window
         "ALT,Tab,bringactivetotop," # Bring the newly focused window to top
         # --- System & Media Keys ---
-        "ALT,SHIFT,exec,hyprctl switchxkblayout at-translated-set-2-keyboard next" # Switch keyboard layout
         ",PRINT,exec,screenshootin" # Screenshot script
         "$modifier SHIFT,N,exec,swaync-client -rs" # Toggle notification center (swaync)
         # ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" # Toggle mute
