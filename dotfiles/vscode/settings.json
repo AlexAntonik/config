@@ -40,5 +40,8 @@
         }
     },
     "editor.fontSize": 16,
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "[sql]": {
+        "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+    }
 }

@@ -114,5 +114,10 @@
     {
         "key": "ctrl+space d",
         "command": "explorer.newFolder"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
     }
 ]
