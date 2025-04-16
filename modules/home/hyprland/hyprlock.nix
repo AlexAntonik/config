@@ -1,4 +1,4 @@
-{ username, ... }:
+{ ... }:
 {
   programs.hyprlock = {
     enable = true;
@@ -8,14 +8,19 @@
         grace = 10;
         hide_cursor = true;
         no_fade_in = false;
+        fail_timeout = 800;
       };
-      background = [
-        {
-          path = "/home/${username}/Pictures/Wallpapers/town.jpg";
-          blur_passes = 2;
-          blur_size = 4;
-        }
-      ];
+      background = {
+        monitor = "";
+        path = "screenshot";
+        blur_passes = 3;
+        blur_size = 5;
+        noise = 0.0117;
+        contrast = 0.8916;
+        brightness = 0.5172;
+        vibrancy = 0.1696;
+        vibrancy_darkness = 0.0;
+      };
       label = [
         {
           text = "$TIME";
@@ -27,8 +32,8 @@
           valign = "center";
         }
         {
-          text = "cmd[update:1000] echo $(date '+%A')";  # Day of week
-          color = "rgb(B7BCC4)";
+          text = "cmd[update:1000] echo $(date '+%A')";
+          color = "rgb(D8DEE9)";
           font_size = 32;
           font_family = "JetBrains Mono Nerd Font";
           position = "0, 220";
@@ -36,13 +41,22 @@
           valign = "center";
         }
         {
-          text = "cmd[update:1000] echo $(date '+%B %d')";  # Month and day
-          color = "rgb(B7BCC4)";
+          text = "cmd[update:1000] echo $(date '+%B %d')";
+          color = "rgb(D8DEE9)";
           font_size = 24;
           font_family = "JetBrains Mono Nerd Font";
           position = "0, 260";
           halign = "center";
           valign = "center";
+        }
+        {
+          text = "cmd[update:400] echo $(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')";
+          color = "rgb(B7BCC4)";
+          font_size = 24;
+          font_family = "JetBrains Mono Nerd Font";
+          position = "20, 20";
+          halign = "left";
+          valign = "bottom";
         }
       ];
       input-field = [

@@ -95,6 +95,7 @@
       easyeffects # Audio effects for PipeWire
       pciutils # PCI utilities
       playerctl # Media player controller
+      jq # Command-line JSON processor
       ripgrep # Fast search tool
       socat # Multipurpose relay
       unrar # RAR archive extractor
