@@ -11,7 +11,6 @@
     ./gtk.nix
     ./hyprland
     ./yazi
-    ./kitty.nix
     ./zoxide.nix
     ./nvf.nix
     ./rofi
