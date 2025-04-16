@@ -8,6 +8,7 @@
       font-awesome
       symbola
       material-icons
+      cantarell-fonts
     ];
   };
 }
