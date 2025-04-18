@@ -32,7 +32,7 @@
     size = "96% 92%"
 
     [scratchpads.telegram-desktop]
-    animation = "fromBottom"
+    animation = "fromTop"
     command = "telegram-desktop"
     class = "org.telegram.desktop"
     position = "2% 6%"
