@@ -15,9 +15,8 @@
     ydotool
   ])++(with pkgs-unstable;[
     hyprland-qtutils  # needed for banners and ANR messages
-  ]
+  ]);
 
-  );
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
@@ -25,6 +24,7 @@
     enable = true;
     package = pkgs.hyprland;
     systemd = {
+      enable = true;
       enableXdgAutostart = true;
       variables = [ "--all" ];
     };
@@ -34,7 +34,6 @@
       # hidpi = true;
     };
     # enableNvidiaPatches = false;
-    systemd.enable = true;
   };
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
