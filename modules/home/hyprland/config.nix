@@ -224,6 +224,7 @@ in
         ",XF86AudioNext, exec, playerctl next" # Next track
         ",XF86AudioPrev, exec, playerctl previous" # Previous track
         "$modifier SHIFT,C,exit," # Exit Hyprland (alternative, immediate)
+        ",XF86WebCam,exec,toggle_display" # Toggle display and keyboard backlight
       ];
 
       # For repeateable actions on
