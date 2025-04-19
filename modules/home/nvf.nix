@@ -99,8 +99,15 @@
         trouble.enable = true;
         lspSignature.enable = true;
         otter-nvim.enable = false;
-        lsplines.enable = false;
         nvim-docs-view.enable = false;
+      };
+
+      diagnostics = {
+        config = {
+          virtual_lines = true;  # Enable virtual diagnostic lines
+          virtual_text = false;  # Disable virtual text since we're using virtual lines
+          severity_sort = true;
+        };
       };
 
       languages = {

@@ -7,7 +7,6 @@
   programs = {
     firefox.enable = false; # Firefox is not installed by defualt
     dconf.enable = true; # Configuration editor
-    hyprland.enable = true;
     seahorse.enable = true; # Password manager
     fuse.userAllowOther = true; # Allow users to mount FUSE filesystems
     virt-manager.enable = true; # Virtual machine manager
@@ -59,7 +58,7 @@
       tor-browser # Tor
       anki # Flashcards
       obsidian # Knowledge base
-      vesktop
+      # vesktop #discord alternative web thingne
       zathura #PDF viewer 
 
       # Bluetooth
@@ -108,7 +107,7 @@
       # Media
       gimp # Great photo editor
       mpv # Media player
-      picard # Music tagger
+      # picard # Music tagger
 
       # Virtualization
       libvirt # Virtualization library
