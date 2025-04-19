@@ -17,6 +17,10 @@
       inherit pkgs;
       inherit host;
     })
+    (import ./toggleDisplay.nix {
+      inherit pkgs;
+      inherit host;
+    })
     (import ./rofi-launcher.nix { inherit pkgs; })
     (import ./screenshootin.nix { inherit pkgs; })
     (import ./oneshot.nix { inherit pkgs; })
