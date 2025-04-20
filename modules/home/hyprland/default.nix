@@ -1,7 +1,9 @@
 { ... }:
 {
   imports = [
-    ./config.nix
+    ./binds.nix
+    ./windows.nix
+    ./visual.nix
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
