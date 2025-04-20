@@ -16,7 +16,7 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-    }; 
+    };
 
     thunar = {
       enable = true;
@@ -32,7 +32,6 @@
   environment.systemPackages =
     (with pkgs; [
 
-      
       # Programming languages
       cowsay
       go # Go programming language
@@ -41,7 +40,7 @@
       kotlin # Kotlin language
       typescript # Bad language
       zulu # Open JDK fast
-      android-studio #Stable channel
+      android-studio # Stable channel
 
       # Development tools
       docker-compose # Allows controlling Docker from a single file
@@ -59,7 +58,7 @@
       anki # Flashcards
       obsidian # Knowledge base
       # vesktop #discord alternative web thingne
-      zathura #PDF viewer 
+      zathura # PDF viewer
 
       # Bluetooth
       bluez-alsa # Bluetooth ALSA support
@@ -71,7 +70,8 @@
       appimage-run # Needed for AppImage support
       wireguard-tools # WireGuard tools
       brightnessctl # For screen brightness control
-      bottom #another tui system usage interface
+      bottom # another tui system usage interface
+      cliphist # Clipboard manager using rofi menu
       cloc # Count lines of code
       duf # Utility for viewing disk usage in terminal
       eza # Beautiful ls replacement
@@ -88,8 +88,8 @@
       lshw # Hardware information tool
       ncdu # Disk usage analyzer
       pavucontrol # PulseAudio volume control
-      nwg-displays  #configure monitor configs via GUI
-      nwg-drawer #Rofi like menu
+      nwg-displays # configure monitor configs via GUI
+      nwg-drawer # Rofi like menu
       pamixer # Command-line mixer for PulseAudio
       easyeffects # Audio effects for PipeWire
       pciutils # PCI utilities

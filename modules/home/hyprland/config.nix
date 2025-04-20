@@ -22,6 +22,8 @@ in
 
       # Commands executed once on Hyprland startup
       exec-once = [
+        "wl-paste --type text --watch cliphist store" # Stores only text data 
+        "wl-paste --type image --watch cliphist store" # Stores only image data
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "killall -q swww; sleep 0.5 && swww init"
@@ -38,7 +40,7 @@ in
         # --- Autostart applications ---
         "${browser}" # Will be moved to workspace 1 by windowrule
         "protonvpn-app"
-        "swayosd-server &" 
+        "swayosd-server &"
       ];
 
       # Input device settings
@@ -144,6 +146,7 @@ in
         "$modifier,G,exec,gimp" # Launch GIMP
         "$modifier,N,exec,obsidian" # Launch Obsidian
         "$modifier,M,exec,pavucontrol" # Launch Pavucontrol (audio control)
+        "$modifier,V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy" # clipboard mgr
         "$modifier,P,exec,hyprpicker -a" # Color picker (pick and copy)
         "$modifier,E,exec,pypr toggle thunar" # Toggle Thunar file manager (using pypr)
         "$modifier,T,exec,pypr toggle telegram-desktop" # Toggle Telegram (using pypr)
@@ -234,7 +237,7 @@ in
         # ",XF86MonBrightnessDown,exec,brightnessctl set 1%-" # Decrease brightness
         # ",XF86MonBrightnessUp,exec,brightnessctl set 1%+" # Increase brightness
         "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${keyboardLightID} s 1%-" # Decrease keyboard brightness
-        "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${keyboardLightID} s 1%+" # Increase keyboard brightness 
+        "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${keyboardLightID} s 1%+" # Increase keyboard brightness
 
         ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume +1" # Increase volume
         ",XF86AudioLowerVolume,exec,swayosd-client --output-volume -1" # Decrease volume
