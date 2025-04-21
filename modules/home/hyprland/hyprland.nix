@@ -112,6 +112,16 @@ in
         "protonvpn-app"
         "swayosd-server &"
       ];
+
+      # Layer rules for swaync blur effect
+      layerrule = [
+        "blur, swaync-control-center"
+        "blur, swaync-notification-window"
+        "ignorezero, swaync-control-center"
+        "ignorezero, swaync-notification-window"
+        "ignorealpha 0.5, swaync-control-center"
+        "ignorealpha 0.5, swaync-notification-window"
+      ];
     };
 
     # Monitor configuration
