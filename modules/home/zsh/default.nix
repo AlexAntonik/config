@@ -12,7 +12,7 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    # uncomment and tur of starship for p10k config
+    # uncomment and turn off starship for p10k config
     # oh-my-zsh = {
     #   enable = true;
     # };
@@ -30,6 +30,8 @@
     #   }
     # ];
 
+    # for unstable
+    # initContent = ''
     initExtra = ''
       bindkey "\eh" backward-word
       bindkey "\ej" down-line-or-history
@@ -51,7 +53,7 @@
       ll = "eza --icons -lh --group-directories-first -1 --no-user --long";
       la = "eza --icons -lah --group-directories-first -1";
       tree = "eza --icons --tree --group-directories-first";
-      f ="nvim $(fzf --preview=\"bat --color=always {}\")";
+      f = "nvim $(fzf --preview=\"bat --color=always {}\")";
     };
   };
 }
