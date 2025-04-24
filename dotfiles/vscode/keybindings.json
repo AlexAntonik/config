@@ -99,7 +99,7 @@
         "command": "-workbench.action.closeEditorsInGroup"
     },
     {
-        "key": "shift+space f",
+        "key": "ctrl+f",
         "command": "fuzzySearch.activeTextEditor"
     },
     {
@@ -129,5 +129,20 @@
         "key": "f12",
         "command": "-editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "-extension.vim_ctrl+f",
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+space f",
+        "command": "actions.find",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "-actions.find",
+        "when": "editorFocus || editorIsOpen"
     }
 ]
