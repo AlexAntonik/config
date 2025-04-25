@@ -54,6 +54,7 @@
       microsoft-edge # Web browser
       telegram-desktop # Telegram client
       #protonvpn-gui # ProtonVPN client
+      libreoffice
       tor-browser # Tor
       anki # Flashcards
       obsidian # Knowledge base
