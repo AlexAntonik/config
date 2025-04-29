@@ -5,7 +5,7 @@ in
 {
   nix = {
     settings = {
-      max-jobs = 1; 
+      max-jobs = 2; 
       download-buffer-size = 250000000;
       auto-optimise-store = true;
       experimental-features = [
