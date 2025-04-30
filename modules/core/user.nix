@@ -37,6 +37,9 @@ in
   };
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nixpkgs.overlays = [
+    inputs.nurpkgs.overlay
+  ];
   users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;

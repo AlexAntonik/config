@@ -5,7 +5,6 @@
 }:
 {
   programs = {
-    firefox.enable = false; # Firefox is not installed by defualt
     dconf.enable = true; # Configuration editor
     seahorse.enable = true; # Password manager
     fuse.userAllowOther = true; # Allow users to mount FUSE filesystems
