@@ -33,6 +33,9 @@
 
     [scratchpads.telegram-desktop]
     animation = "fromTop"
+    pinned = false
+    unfocus = "hide"
+    hysteresis = 50 
     command = "telegram-desktop"
     class = "org.telegram.desktop"
     position = "2% 6%"

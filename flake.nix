@@ -8,11 +8,13 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
     stylix.url = "github:danth/stylix/release-24.11";
+    nurpkgs.url = "github:nix-community/NUR";
   };
 
   outputs =
     { nixpkgs, unstable, ... }@inputs:
     let
+
       system = "x86_64-linux";
       host = "alex";
       profile = "amd";

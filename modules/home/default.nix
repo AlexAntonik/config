@@ -4,6 +4,7 @@
     ./bat.nix
     ./btop.nix
     ./emoji.nix
+    ./firefox.nix
     ./htop.nix
     ./fastfetch
     ./gh.nix
