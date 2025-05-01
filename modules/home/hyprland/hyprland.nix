@@ -48,7 +48,7 @@ in
 
     settings = {
       # XWayland settings
-      # May affect scaling of some XWayland apps, needed for Steam resolution
+      # May affect scaling of some X11Wayland apps, needed for Steam resolution
       xwayland.force_zero_scaling = true;
       
       # Input device settings
@@ -103,12 +103,11 @@ in
         # System tray applets and agents
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
-        # Pypr start
-        "pypr &"
         # Set wallpaper (delay allows swww to initialize)
         "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/town.jpg"
         # --- Autostart applications ---
-        "${browser}" # Will be moved to workspace 1 by windowrule
+        "pypr &"
+        "${browser}" 
         "protonvpn-app"
         "swayosd-server &"
       ];
