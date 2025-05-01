@@ -23,21 +23,19 @@ let
     }
   '';
 
-  moveFirefoxViewToRight = ''
+  moreTabsCss = ''
     #TabsToolbar #firefox-view-button {
-      position: absolute !important;
-      top: 0 !important;
-      right: 4px !important;
-      z-index: 1000 !important;
-      margin: 0 !important;
-      height: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      border-radius: 0 !important;
-      background: transparent !important;
-    }
-    #TabsToolbar {
-      position: relative !important;
+      display: none !important;
+      # position: absolute !important; # commented style moves the button to the right on close button place
+      # top: 0 !important;
+      # right: 4px !important;
+      # z-index: 1000 !important;
+      # margin: 0 !important;
+      # height: 100% !important;
+      # display: flex !important;
+      # align-items: center !important;
+      # border-radius: 0 !important;
+      # background: transparent !important;
     }
     #tabbrowser-tabs {
       border-inline-start: none !important;
@@ -49,7 +47,7 @@ let
     }
   '';
 
-  userChrome =  disableWebRtcIndicator + hideWindowCloseButton + moveFirefoxViewToRight ;
+  userChrome =  disableWebRtcIndicator + hideWindowCloseButton + moreTabsCss ;
 
   # ~/.mozilla/firefox/PROFILE_NAME/prefs.js | user.js
   settings = {
