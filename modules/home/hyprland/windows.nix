@@ -106,7 +106,7 @@
       "opacity 0.8 0.7, tag:settings*"
       "opacity 0.8 0.7, class:^(gedit|org.gnome.TextEditor|mousepad)$"
       "opacity 0.9 0.8, class:^(seahorse)$"
-      "opacity 0.95 0.75, title:^(Picture-in-Picture)$"
+      "opacity 0.95 0.85, title:^(Picture-in-Picture)$"
 
       # Special rules
       "pin, title:^(Picture-in-Picture)$"

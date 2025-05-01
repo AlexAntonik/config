@@ -3,18 +3,11 @@
 let
 
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    bitwarden
     darkreader
-    ff2mpv
-    # auto-accepts cookies, use only with privacy-badger & ublock-origin
-    istilldontcareaboutcookies
-    languagetool
-    link-cleaner
     privacy-badger
-    simple-tab-groups
     ublock-origin
     unpaywall
-    vimium
+    youtube-recommended-videos
   ];
 
   disableWebRtcIndicator = ''
@@ -23,7 +16,14 @@ let
     }
   '';
 
-  userChrome = disableWebRtcIndicator;
+  hideWindowCloseButton = ''
+    /* Hide the window close (X) button in the titlebar */
+    .titlebar-buttonbox-container .titlebar-close {
+      display: none !important;
+    }
+  '';
+
+  userChrome =  disableWebRtcIndicator + hideWindowCloseButton ;
 
   # ~/.mozilla/firefox/PROFILE_NAME/prefs.js | user.js
   settings = {
@@ -43,7 +43,7 @@ let
 
     "browser.link.open_newwindow" = true;
 
-    "browser.search.region" = "PL";
+    "browser.search.region" = "US";
     "browser.search.widget.inNavBar" = true;
 
     "browser.shell.checkDefaultBrowser" = false;
@@ -106,7 +106,6 @@ in
         extensions = extensions;
         inherit settings userChrome;
       };
-
     };
   };
 }
