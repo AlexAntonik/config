@@ -1,45 +1,15 @@
 {
-  config,
   ...
 }:
 {
   wayland.windowManager.hyprland.settings = {
-    # General window manager settings
-    general = {
-      "$modifier" = "SUPER";
-      layout = "dwindle"; # Tiling layout engine
-      gaps_in = 0; # Gaps between windows
-      gaps_out = 0; # Gaps between windows and screen edges
-      border_size = 1; # Window border size
-      resize_on_border = true; # Allow resizing by dragging border
-      # Border colors using Stylix theme variables
-      "col.active_border" = "rgb(${config.lib.stylix.colors.base01})";
-      "col.inactive_border" = "rgb(${config.lib.stylix.colors.base00})";
-    };
-
-    # Miscellaneous settings
-    misc = {
-      layers_hog_keyboard_focus = true; # Allow layers (like Rofi) to grab focus
-      initial_workspace_tracking = 0; # Track initial workspace for applications
-      mouse_move_enables_dpms = true; # Wake screen on mouse move
-      key_press_enables_dpms = false; # Don't wake screen on key press
-      disable_hyprland_logo = true; # Disable the startup logo
-      disable_splash_rendering = true; # Disable the startup splash
-    };
-
-    # Dwindle layout specific settings
-    dwindle = {
-      pseudotile = true; # Master window takes half the screen
-      preserve_split = true; # Preserve split direction when closing windows
-    };
-
     # Window rules
     windowrulev2 = [
       # Tags for different application types
       "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"
       "tag +terminal, class:^(Alacritty|kitty|kitty-dropterm|com.mitchellh.ghostty|[Gg]hostty)$"
       "tag +browser, class:^(Brave-browser(-beta|-dev|-unstable)?)$"
-      "tag +browser, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
+      "tag +browser, class:^([Ff]irefox(-beta|-dev)?|org.mozilla.firefox|[Ff]irefox-esr)$"
       "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
       "tag +browser, class:^([Tt]horium-browser|[Cc]achy-browser)$"
       "tag +browser, class:^(microsoft-edge)$"
@@ -114,5 +84,21 @@
       "noblur, tag:games*"
       "fullscreen, tag:games*"
     ];
+    # Miscellaneous settings
+    misc = {
+      layers_hog_keyboard_focus = true; # Allow layers (like Rofi) to grab focus
+      initial_workspace_tracking = 0; # Track initial workspace for applications
+      mouse_move_enables_dpms = true; # Wake screen on mouse move
+      key_press_enables_dpms = false; # Don't wake screen on key press
+      disable_hyprland_logo = true; # Disable the startup logo
+      disable_splash_rendering = true; # Disable the startup splash
+    };
+
+    # Dwindle layout specific settings
+    dwindle = {
+      pseudotile = true; # Master window takes half the screen
+      preserve_split = true; # Preserve split direction when closing windows
+    };
+
   };
 }
