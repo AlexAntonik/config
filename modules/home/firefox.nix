@@ -23,7 +23,33 @@ let
     }
   '';
 
-  userChrome =  disableWebRtcIndicator + hideWindowCloseButton ;
+  moveFirefoxViewToRight = ''
+    #TabsToolbar #firefox-view-button {
+      position: absolute !important;
+      top: 0 !important;
+      right: 4px !important;
+      z-index: 1000 !important;
+      margin: 0 !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+    }
+    #TabsToolbar {
+      position: relative !important;
+    }
+    #tabbrowser-tabs {
+      border-inline-start: none !important;
+    }
+    /* Убрать спейсеры до и после вкладок */
+    .titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] {
+      display: none !important;
+      width: 5px !important; /* Корректировка ширины, если потребуется */
+    }
+  '';
+
+  userChrome =  disableWebRtcIndicator + hideWindowCloseButton + moveFirefoxViewToRight ;
 
   # ~/.mozilla/firefox/PROFILE_NAME/prefs.js | user.js
   settings = {
