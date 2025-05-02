@@ -36,7 +36,7 @@
       "tag +settings, class:(xdg-desktop-portal-gtk)"
 
       # Window positions and behaviors
-      "move 72% 7%,title:^(Picture-in-Picture)$"
+      "move 60% 10%,title:^(Picture-in-Picture)$"
       "center, class:^([Ff]erdium)$"
       "center, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
       "center, class:([Tt]hunar), title:negative:(.*[Tt]hunar.*)"
