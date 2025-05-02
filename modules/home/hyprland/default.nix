@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./binds.nix
+    ./keybinds.nix
     ./windows.nix
     ./visual.nix
     ./hypridle.nix

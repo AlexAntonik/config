@@ -6,7 +6,6 @@
     [pyprland]
     plugins = [
       "scratchpads",
-      "expose",
     ]
 
     [scratchpads.term]
@@ -45,6 +44,7 @@
     animation = "fromBottom"
     command = "thunar"
     class = "thunar"
-    size = "75% 70%"
+    position = "12% 18%"
+    size = "76% 70%"
   '';
 }

@@ -38,7 +38,6 @@ in
       "$modifier,T,exec,pypr toggle telegram-desktop" # Toggle Telegram
       "$modifier,R,exec,pypr toggle term" # Toggle terminal
       "$modifier,Y,exec,pypr toggle yazi" # Toggle Yazi
-      "$modifier,B,exec,pypr expose" # Expose windows
 
       # --- Window Management ---
       "$modifier,Q,killactive," # Close active window
