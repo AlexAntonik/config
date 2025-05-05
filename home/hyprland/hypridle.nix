@@ -3,7 +3,7 @@
   ...
 }:
 let
-  inherit (import ../../../hosts/${host}/variables.nix)
+  inherit (import ../../hosts/${host}/variables.nix)
     keyboardLightID
     ;
 in
