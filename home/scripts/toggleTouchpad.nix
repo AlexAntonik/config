@@ -1,7 +1,7 @@
 #!/bin/sh
 { host, pkgs, ... }:
 let
-  inherit (import ../../../hosts/${host}/variables.nix)
+  inherit (import ../../hosts/${host}/variables.nix)
     touchpadID 
     ;
 in
