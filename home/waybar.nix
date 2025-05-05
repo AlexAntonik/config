@@ -17,8 +17,8 @@ with lib;
     package = pkgs.waybar;
     settings = [
       {
-        layer = "top";
-        position = "top";
+        layer = "bottom";
+        position = "bottom";
         modules-center = [ "hyprland/workspaces" ];
         modules-left = [
           "custom/startmenu"
@@ -28,10 +28,10 @@ with lib;
           "cpu"
           "memory"
           "battery"
-          "hyprland/language"
+          "custom/notification"
         ];
         modules-right = [
-          "custom/notification"
+          "hyprland/language"
           "tray"
           "clock"
         ];
