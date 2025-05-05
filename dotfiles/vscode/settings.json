@@ -43,5 +43,6 @@
     "workbench.activityBar.location": "hidden",
     "[sql]": {
         "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
-    }
+    },
+    "window.controlsStyle": "hidden"
 }

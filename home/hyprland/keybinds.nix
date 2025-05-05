@@ -113,6 +113,7 @@ in
 
       # --- System Controls ---
       ",PRINT,exec,screenshootin"
+      "$modifier, PRINT,exec,grim - | swappy -f -"
       "$modifier SHIFT,N,exec,swaync-client -rs"
       ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
       ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"

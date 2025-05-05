@@ -3,7 +3,7 @@
   services.swaync = {
     enable = true;
     settings = {
-      positionX = "left";
+      positionX = "right";
       positionY = "bottom";
       layer = "overlay";
       control-center-margin-top = 10;
