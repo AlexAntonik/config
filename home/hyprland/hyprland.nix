@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (import ../../../hosts/${host}/variables.nix)
+  inherit (import ../../hosts/${host}/variables.nix)
     extraMonitorSettings
     keyboardLayout
     browser
