@@ -58,7 +58,11 @@ let
     "app.update.channel" = "default";
 
     "browser.contentblocking.category" = "standard"; # "strict"
-    "browser.ctrlTab.recentlyUsedOrder" = false;
+    "browser.ctrlTab.recentlyUsedOrder" = true;
+
+    "devtools.accessibility.enabled" = false;
+
+    "browser.bookmarks.addedContextMenuItem" = false;
 
     "browser.download.useDownloadDir" = false;
     "browser.download.viewableInternally.typeWasRegistered.svg" = true;
@@ -67,13 +71,22 @@ let
 
     "browser.link.open_newwindow" = true;
 
+    "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+    "browser.newtabpage.activity-stream.topSitesRows"	=2;    
+    "browser.newtabpage.activity-stream.showSponsored" = false;	
+    "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+
     "browser.search.region" = "US";
     "browser.search.widget.inNavBar" = true;
 
     "browser.shell.checkDefaultBrowser" = false;
-    "browser.startup.homepage" = "https://nixos.org";
+    "browser.startup.homepage" = "about:newtab";
     "browser.tabs.loadInBackground" = true;
     "browser.urlbar.placeholderName" = "DuckDuckGo";
+    
+    # disable search suggestions
+    "browser.search.suggest.enabled" = false;
+
     "browser.urlbar.showSearchSuggestionsFirst" = false;
 
     # disable all the annoying quick actions
@@ -81,6 +94,16 @@ let
     "browser.urlbar.quickactions.showPrefs" = false;
     "browser.urlbar.shortcuts.quickactions" = false;
     "browser.urlbar.suggest.quickactions" = false;
+
+    # disable Firefox Suggest features
+    "browser.urlbar.suggest.searches" = false;
+    "browser.urlbar.suggest.pocket" = false;
+    "browser.urlbar.sponsoredTopSites" = false;
+    "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+    "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+    "browser.urlbar.suggest.sponsored" = false;
+
+    "browser.newtabpage.pinned" = "[{\"url\":\"https://www.youtube.com\",\"label\":\"Youtube\",\"baseDomain\":\"youtube.com\"},{\"url\":\"https://www.chess.com/\",\"label\":\"Chess\"},{\"url\":\"https://translate.google.by/\",\"label\":\"Translate\"},{\"url\":\"https://myfin.by/currency/usd\",\"label\":\"Min Fin\"},{\"url\":\"https://github.com/AlexAntonik\",\"label\":\"GitHub\"}]";
 
     "distribution.searchplugins.defaultLocale" = "en-US";
 
@@ -93,6 +116,8 @@ let
     "general.useragent.locale" = "en-US";
 
     "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+    
+    "extensions.pocket.enabled" = false;
 
     "extensions.extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
     "extensions.update.enabled" = false;
