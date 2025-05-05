@@ -3,25 +3,24 @@
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../wallpapers/swan.jpg;
-    #    base16Scheme = {
-    #      base00 = "282936";
-    #      base01 = "3a3c4e";
-    #      base02 = "4d4f68";
-    #      base03 = "626483";
-    #      base04 = "62d6e8";
-    #      base05 = "e9e9f4";
-    #      base06 = "f1f2f8";
-    #      base07 = "f7f7fb";
-    #      base08 = "ea51b2";
-    #      base09 = "b45bcf";
-    #      base0A = "00f769";
-    #      base0B = "ebff87";
-    #      base0C = "a1efe4";
-    #      base0D = "62d6e8";
-    #      base0E = "b45bcf";
-    #      base0F = "00f769";
-    #    };
+    base16Scheme = {
+      base00 = "1d1d1d";
+      base01 = "484848";
+      base02 = "6c6c6c";
+      base03 = "9b9b9b";
+      base04 = "b7b7b7";
+      base05 = "e2e2e2";
+      base06 = "e9e9e9";
+      base07 = "ebebeb";
+      base08 = "8f8f8f";
+      base09 = "919191";
+      base0A = "919191";
+      base0B = "919191";
+      base0C = "919191";
+      base0D = "8f8f8f";
+      base0E = "8d8d8d";
+      base0F = "8c8c8c";
+    };
     polarity = "dark";
     opacity.terminal = 1.0;
     cursor = {
