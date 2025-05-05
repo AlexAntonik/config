@@ -28,11 +28,11 @@ with lib;
           "cpu"
           "memory"
           "battery"
-          "custom/notification"
         ];
         modules-right = [
           "hyprland/language"
           "tray"
+          "custom/notification"
           "clock"
         ];
 
@@ -144,7 +144,7 @@ with lib;
         };
         "custom/notification" = {
           tooltip = false;
-          format = "{icon} {}";
+          format = "{icon}";
           format-icons = {
             notification = "<span foreground='red'><sup></sup></span>";
             none = "";
@@ -260,7 +260,7 @@ with lib;
         #custom-startmenu, #idle_inhibitor, #custom-exit {
           font-weight: bold;
           margin: 0px;
-          padding: 0px 5px;
+          padding: 0px 6px;
           background: transparent;
           color: #CCCCCC;
         }
@@ -279,12 +279,19 @@ with lib;
           background: transparent;
           color: #CCCCCC;
         }
-        #network, #custom-notification, #tray{
+        #network, #tray{
           font-weight: bold;
           background: transparent;
           color: #CCCCCC;
           margin: 0px;
-          padding: 0px 16px;
+          padding: 0px 6px 0px 16px;
+        }
+        #custom-notification{
+          font-weight: bold;
+          background: transparent;
+          color: #CCCCCC;
+          margin: 0px;
+          padding: 0px 16px 0px 6px;
         }
         #clock {
           font-weight: bold;
