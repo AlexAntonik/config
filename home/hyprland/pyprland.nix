@@ -27,7 +27,7 @@
     animation = "fromBottom"
     command = "ghostty -e yazi"
     class = "com.mitchellh.ghostty"
-    position = "2% 6%"
+    position = "2% 2%"
     size = "96% 92%"
 
     [scratchpads.telegram-desktop]
@@ -37,14 +37,14 @@
     hysteresis = 50 
     command = "telegram-desktop"
     class = "org.telegram.desktop"
-    position = "2% 6%"
+    position = "2% 2%"
     size = "96% 92%"
 
     [scratchpads.thunar]
     animation = "fromBottom"
     command = "thunar"
     class = "thunar"
-    position = "12% 18%"
+    position = "12% 12%"
     size = "76% 70%"
   '';
 }
