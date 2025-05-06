@@ -19,7 +19,8 @@ with lib;
       {
         layer = "bottom";
         position = "bottom";
-        modules-center = [ "hyprland/workspaces" ];
+        modules-center = [
+        ];
         modules-left = [
           "custom/startmenu"
           "custom/exit"
@@ -28,6 +29,7 @@ with lib;
           "cpu"
           "memory"
           "battery"
+          "hyprland/workspaces"
         ];
         modules-right = [
           "hyprland/language"
@@ -61,8 +63,6 @@ with lib;
             # "active" = "";
             # "default" = "";
           };
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
           format = if clock24h == true then ''{:L%H:%M}'' else ''{:L%I:%M %p}'';
@@ -72,13 +72,30 @@ with lib;
         };
         "memory" = {
           interval = 5;
-          format = "";
+          format = "{icon}";
+          format-icons = [
+            "<span color='#f8f8f2'></span>"
+            "<span color='#f8f8f2'></span>"
+            "<span color='#f8f8f2'></span>"
+            "<span color='#f8f8f2'></span>"
+            "<span color='#f8f8f2'></span>"
+            "<span color='#f8f8f2'></span>"
+            "<span color='#ffffa5'></span>"
+            "<span color='#ff9977'></span>"
+            "<span color='#dd532e'></span>"
+          ];
           tooltip = true;
           on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
         };
         "cpu" = {
           interval = 5;
-          format = "";
+          format = "{icon}";
+          format-icons = [
+            "<span color='#f8f8f2'></span>"
+            "<span color='#ffffa5'></span>"
+            "<span color='#ff9977'></span>"
+            "<span color='#dd532e'></span>"
+          ];
           tooltip = true;
           on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
         };
@@ -137,7 +154,7 @@ with lib;
         "idle_inhibitor" = {
           format = "{icon}";
           format-icons = {
-            activated = "";
+            activated = "<span color='#ff9977'></span>";
             deactivated = "";
           };
           tooltip = "true";
@@ -170,16 +187,17 @@ with lib;
           format-charging = "󰂄";
           format-plugged = "󱘖";
           format-icons = [
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
+            "<span color='#dd532e'>󰁺</span>"
+            "<span color='#ff9977'>󰁻</span>"
+            "<span color='#ffffa5'>󰁼</span>"
+            "<span color='#ffffa5'>󰁽</span>"
+            "<span color='#f8f8f2'>󰁾</span>"
+            "<span color='#f8f8f2'>󰁿</span>"
+            "<span color='#f8f8f2'>󰂀</span>"
+            "<span color='#f8f8f2'>󰂀</span>"
+            "<span color='#f8f8f2'>󰂁</span>"
+            "<span color='#f8f8f2'>󰂂</span>"
+            "<span color='#f8f8f2'>󰁹</span>"
           ];
           on-click = "";
           tooltip = true;
@@ -220,7 +238,7 @@ with lib;
           color: #${config.lib.stylix.colors.base00};
           background: transparent;
           margin: 0px;
-          padding: 0px;
+          padding: 0px 10px;
         }
         #workspaces button {
           font-weight: bold;
@@ -239,7 +257,7 @@ with lib;
           background: transparent;
           transition: ${betterTransition};
           opacity: 0.5;
-          min-width: 40px;
+          min-width: 24px;
         }
         #workspaces button:hover {
           font-weight: bold;
@@ -255,7 +273,7 @@ with lib;
         tooltip label {
           color: #${config.lib.stylix.colors.base0D};
         }
-        
+
         #cpu, #pulseaudio, #memory, #battery,
         #custom-startmenu, #idle_inhibitor, #custom-exit {
           font-weight: bold;
