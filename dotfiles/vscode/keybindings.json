@@ -144,5 +144,9 @@
         "key": "ctrl+f",
         "command": "-actions.find",
         "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "workbench.view.extension.github-actions"
     }
 ]
