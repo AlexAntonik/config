@@ -6,6 +6,7 @@ let
   inherit (import ../../hosts/${host}/variables.nix)
     browser
     terminal
+    keyboardLayout
     keyboardLightID
     ;
 in
@@ -18,8 +19,42 @@ in
       workspace_swipe_forever = true; # Allow continuous swiping
     };
 
+    # Input device settings
+    input = {
+      kb_layout = "${keyboardLayout}";
+      numlock_by_default = true;
+      repeat_delay = 300;
+      follow_mouse = 1; # Focus follows mouse
+      sensitivity = 0; # Mouse sensitivity (0 = default)
+      touchpad = {
+        natural_scroll = true;
+        disable_while_typing = true;
+        scroll_factor = 0.8;
+      };
+    };
+
+
+    # Repeatable actions
+    binde = [
+      "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${keyboardLightID} s 1%-"
+      "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${keyboardLightID} s 1%+"
+      ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume +1"
+      ",XF86AudioLowerVolume,exec,swayosd-client --output-volume -1"
+      "SHIFT,XF86AudioRaiseVolume,exec,swayosd-client --input-volume +1 --max-volume 255"
+      "SHIFT,XF86AudioLowerVolume,exec,swayosd-client --input-volume -1 --max-volume 255"
+      ",XF86MonBrightnessDown,exec,swayosd-client --brightness -2"
+      ",XF86MonBrightnessUp,exec,swayosd-client --brightness +2"
+    ];
+
+    # Mouse bindings
+    bindm = [
+      "$modifier, mouse:272, movewindow"
+      "$modifier, mouse:273, resizewindow"
+    ];
+
     # Keybindings
     bind = [
+
       # --- Application Launchers ---
       "$modifier,Return,exec,${terminal}" # Launch terminal
       "$modifier SHIFT,Return,exec,rofi-launcher" # Launch Rofi application launcher
@@ -126,24 +161,13 @@ in
       "$modifier SHIFT,ESCAPE,exit,"
       "$modifier,ESCAPE,exec,wlogout"
       ",XF86WebCam,exec,toggle_display"
-    ];
 
-    # Repeatable actions
-    binde = [
-      "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${keyboardLightID} s 1%-"
-      "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${keyboardLightID} s 1%+"
-      ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume +1"
-      ",XF86AudioLowerVolume,exec,swayosd-client --output-volume -1"
-      "SHIFT,XF86AudioRaiseVolume,exec,swayosd-client --input-volume +1 --max-volume 255"
-      "SHIFT,XF86AudioLowerVolume,exec,swayosd-client --input-volume -1 --max-volume 255"
-      ",XF86MonBrightnessDown,exec,swayosd-client --brightness -2"
-      ",XF86MonBrightnessUp,exec,swayosd-client --brightness +2"
+      # Hack to display curren lang in swayosd !!!kb layout change here!!!
+      "$modifier,SPACE,exec,sleep 0.1 && swayosd-client --custom-message=\"$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')\" --custom-icon=input-keyboard"
     ];
-
-    # Mouse bindings
-    bindm = [
-      "$modifier, mouse:272, movewindow"
-      "$modifier, mouse:273, resizewindow"
-    ];
+    #Changing kb layout
+    input.kb_options = "caps:escape,grp:win_space_toggle";
+    # also need to be changed here in binds up some lines
+    # and in sevices.xserver.xkb in separate file services.nix in core
   };
 }
