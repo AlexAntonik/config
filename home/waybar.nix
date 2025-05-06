@@ -309,7 +309,7 @@ with lib;
           background: transparent;
           color: #CCCCCC;
           margin: 0px;
-          padding: 0px 16px 0px 6px;
+          padding: 0px 16px 0px 8px;
         }
         #clock {
           font-weight: bold;
