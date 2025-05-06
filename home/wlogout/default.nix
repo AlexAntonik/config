@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   programs.wlogout = {
@@ -42,61 +42,114 @@
       }
     ];
     style = ''
+      @define-color bar-bg rgba(0, 0, 0, 0);
+      @define-color main-bg rgba(17, 17, 27, 0.5);
+      @define-color main-fg rgba(205, 214, 244, 0.5);
+      @define-color wb-act-bg rgba(166, 173, 200, 0.5);
+      @define-color wb-act-fg rgba(49, 50, 68, 0.5);
+      @define-color wb-hvr-bg rgba(230, 194, 245, 0.5);
+      @define-color wb-hvr-fg rgba(49, 50, 68, 0.5);
+
       * {
-        font-family: "JetBrainsMono NF", FontAwesome, sans-serif;
-      	background-image: none;
-      	transition: 20ms;
+          background-image: none;
+          font-size: 18px;
       }
+
       window {
-      	background-color: rgba(12, 12, 12, 0.1);
+          background-color: transparent;
       }
+
       button {
-      	color: #${config.lib.stylix.colors.base05};
-        font-size:20px;
-        background-repeat: no-repeat;
-      	background-position: center;
-      	background-size: 25%;
-      	border-style: solid;
-      	background-color: rgba(12, 12, 12, 0.3);
-      	border: 3px solid #${config.lib.stylix.colors.base05};
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          color: #ffffff;
+          background-color: @main-bg;
+          outline-style: none;
+          border: none;
+          border-width: 0px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 10%;
+          border-radius: 0px;
+          box-shadow: none;
+          text-shadow: none;
+          animation: gradient_f 20s ease-in infinite;
       }
-      button:focus,
-      button:active,
+
+      button:focus {
+          background-color: @wb-act-bg;
+          background-size: 20%;
+      }
+
       button:hover {
-        color: #${config.lib.stylix.colors.base0B};
-        background-color: rgba(12, 12, 12, 0.5);
-        border: 3px solid #${config.lib.stylix.colors.base0B};
+          background-color: @wb-hvr-bg;
+          background-size: 25%;
+          animation: gradient_f 20s ease-in infinite;
+          transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
       }
-      #logout {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/logout.png"));
+
+      button:hover#lock {
+          border-radius: 10px 10px 10px 0px;
+          margin: 0px 0px 0px 0px;
       }
-      #suspend {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/suspend.png"));
+
+      button:hover#logout {
+          border-radius: 10px 10px 0px 0px;
+          margin: 0px 0px 0px 0px;
       }
-      #shutdown {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/shutdown.png"));
+
+      button:hover#shutdown {
+          border-radius: 10px 10px 0px 10px;
+          margin: 0px 0px 0px 0px;
       }
-      #reboot {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/reboot.png"));
+
+      button:hover#reboot {
+          border-radius: 10px 0px 10px 10px;
+          margin: 0px 0px 0px 0px;
       }
+
+      button:hover#suspend{
+          border-radius: 0px 0px 10px 10px;
+          margin: 0px 0px 0px 0px;
+      }
+
+      button:hover#hibernate {
+          border-radius: 0px 10px 10px 10px;
+          margin: 0px 0px 0px 0px;
+      }
+
       #lock {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/lock.png"));
+          background-image: image(url("icons/lock.png"));
+          border-radius: 0px 10px 0px 0px;
+          margin: 10px 10px 0px 0px;
       }
+
+      #logout {
+          background-image: image(url("icons/logout.png"));
+          border-radius: 0px 0px 0px 0px;
+          margin: 10px 0px 0px 0px;
+      }
+
+      #suspend {
+          background-image: image(url("icons/suspend.png"));
+          border-radius: 0px 0px 0px 0px;
+          margin: 0px 0px 10px 0px;
+      }
+
       #hibernate {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/hibernate.png"));
+          background-image: image(url("icons/hibernate.png"));
+          border-radius: 0px 0px 10px 0px;
+          margin: 0px 10px 10px 0px;
+      }
+
+      #shutdown {
+          background-image: image(url("icons/shutdown.png"));
+          border-radius: 10px 0px 0px 0px;
+          margin: 10px 0px 0px 10px;
+      }
+
+      #reboot {
+          background-image: image(url("icons/reboot.png"));
+          border-radius: 0px 0px 0px 10px;
+          margin: 0px 0px 10px 10px;
       }
     '';
   };

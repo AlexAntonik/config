@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   config,
   ...
 }:
@@ -8,6 +9,9 @@
     rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
+      plugins = with pkgs-unstable; [
+        rofi-calc # Rofi calculator
+      ];
       extraConfig = {
         modi = "drun,filebrowser,run";
         show-icons = true;
@@ -24,15 +28,16 @@
         in
         {
           "*" = {
-            bg = mkLiteral "rgba(50, 50, 50, 0.85)";
-            bg-alt = mkLiteral "rgba(70, 70, 70, 0.85)";
-            foreground = mkLiteral "rgba(204, 204, 204, 1)";
-            selected = mkLiteral "rgb(124, 124, 124)";
-            active = mkLiteral "rgba(187, 187, 187, 1)";
+            bg = mkLiteral "rgba(50, 50, 50, 0.4)";
+            bg-alt = mkLiteral "rgba(86, 86, 86, 0.4)";
+            foreground = mkLiteral "rgba(204, 204, 204, 0.6)";
+            selected = mkLiteral "rgba(124, 124, 124, 0.8)";
+            active = mkLiteral "rgba(187, 187, 187, 0.8)";
             text-selected = mkLiteral "rgba(0, 0, 0, 1)";
-            text-color = mkLiteral "rgba(221, 221, 221, 1)";
-            border-color = mkLiteral "rgba(136, 136, 136, 1)";
+            text-color = mkLiteral "rgba(255, 255, 255, 0.8)";
+            border-color = mkLiteral "rgba(136, 136, 136, 0.6)";
             urgent = mkLiteral "rgba(255, 85, 85, 1)";
+            transparent = mkLiteral "rgba(0, 0, 0, 0)";
           };
           "window" = {
             transparency = "real";
@@ -52,11 +57,11 @@
           "mainbox" = {
             enabled = true;
             spacing = mkLiteral "0px";
-            orientation = mkLiteral "vertical";  
+            orientation = mkLiteral "vertical";
             children = map mkLiteral [
-              "inputbar"     
-              "listbox"      
-              "mode-switcher"  
+              "inputbar"
+              "listbox"
+              "mode-switcher"
             ];
             background-color = mkLiteral "transparent";
           };
@@ -88,12 +93,12 @@
             enabled = true;
             expand = false;
             str = "";
-            background-color = mkLiteral "inherit";
+            background-color = mkLiteral "@transparent";
             text-color = mkLiteral "inherit";
           };
           "entry" = {
             enabled = true;
-            background-color = mkLiteral "inherit";
+            background-color = mkLiteral "@transparent";
             text-color = mkLiteral "inherit";
             cursor = mkLiteral "text";
             placeholder = "Search";
@@ -101,8 +106,8 @@
           };
           "mode-switcher" = {
             enabled = true;
-            spacing = mkLiteral "10px";  
-            margin = mkLiteral "10px";   
+            spacing = mkLiteral "10px";
+            margin = mkLiteral "10px";
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "@foreground";
             orientation = mkLiteral "horizontal";
