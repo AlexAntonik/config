@@ -2,7 +2,7 @@
 { host, pkgs, ... }:
 let
   inherit (import ../../hosts/${host}/variables.nix)
-    touchpadID 
+    touchpadID
     ;
 in
 pkgs.writeShellScriptBin "toggle_touchpad" ''
@@ -18,13 +18,13 @@ pkgs.writeShellScriptBin "toggle_touchpad" ''
 
   enable_touchpad() {
       printf "true" >"$STATUS_FILE"
-    notify-send -u normal "Enabling Touchpad"
+      swayosd-client --custom-message="Touchpad ON" --custom-icon=input-tablet
   hyprctl keyword $HYPRLAND_VARIABLE "true" -r
   }
 
   disable_touchpad() {
       printf "false" >"$STATUS_FILE"
-  notify-send -u normal "Disabling Touchpad"
+      swayosd-client --custom-message="Touchpad OFF" --custom-icon=input-tablet
   hyprctl keyword $HYPRLAND_VARIABLE "false" -r
   }
 
