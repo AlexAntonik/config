@@ -71,7 +71,6 @@
       wireguard-tools # WireGuard tools
       brightnessctl # For screen brightness control
       bottom # another tui system usage interface
-      bc # Basic calculator
       cliphist # Clipboard manager using rofi menu
       cloc # Count lines of code
       duf # Utility for viewing disk usage in terminal
@@ -103,6 +102,7 @@
       usbutils # USB utilities
       v4l-utils # Video4Linux utilities
       wget # Network downloader
+      wtype # typing thing
       ytmdl # YouTube music downloader
 
       # Media

@@ -14,7 +14,7 @@
     ./yazi
     ./zoxide.nix
     ./nvf.nix
-    ./rofi
+    ./rofi.nix
     ./qt.nix
     ./scripts
     ./stylix.nix
