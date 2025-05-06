@@ -12,18 +12,19 @@
     ./gtk.nix
     ./hyprland
     ./yazi
-    ./zoxide.nix
     ./nvf.nix
     ./rofi.nix
     ./qt.nix
     ./scripts
     ./stylix.nix
     ./swaync.nix
+    ./swayosd.nix
     ./virtmanager.nix
     ./fzf.nix
     ./waybar.nix
     ./wlogout
     ./xdg.nix
+    ./zoxide.nix
     ./zsh
   ];
 }

@@ -8,8 +8,8 @@
 let
   inherit (import ../../hosts/${host}/variables.nix)
     extraMonitorSettings
-    keyboardLayout
     browser
+    terminal
     ;
 in
 {
@@ -51,21 +51,6 @@ in
       # May affect scaling of some X11Wayland apps, needed for Steam resolution
       xwayland.force_zero_scaling = true;
       
-      # Input device settings
-      input = {
-        kb_layout = "${keyboardLayout}";
-        kb_options = "caps:escape,grp:win_space_toggle"; # also need to be changed in services xkb
-        numlock_by_default = true;
-        repeat_delay = 300;
-        follow_mouse = 1; # Focus follows mouse
-        sensitivity = 0; # Mouse sensitivity (0 = default)
-        touchpad = {
-          natural_scroll = true;
-          disable_while_typing = true;
-          scroll_factor = 0.8;
-        };
-      };
-
       # Environment variables set for the Hyprland session
       env = [
         "NIXOS_OZONE_WL, 1" # Enable Wayland backend for Ozone-based apps (Electron)
@@ -109,6 +94,9 @@ in
         "pypr &"
         "${browser}" 
         "protonvpn-app"
+        # "[workspace 2 silent] code" #did not work now becouse of electron app prob fix soon
+        "[workspace 3 silent] ${terminal}"
+        "[workspace special silent] obsidian"
         "swayosd-server &"
       ];
     };
