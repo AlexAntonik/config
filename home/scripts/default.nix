@@ -25,4 +25,7 @@
     (import ./screenshootin.nix { inherit pkgs; })
     (import ./oneshot.nix { inherit pkgs; })
   ];
+  imports = [
+    ./clipmenu.nix
+  ];
 }

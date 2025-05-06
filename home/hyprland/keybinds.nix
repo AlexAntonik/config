@@ -29,10 +29,11 @@ in
       "$modifier,D,exec,discord" # Launch Discord
       "$modifier,O,exec,obs" # Launch OBS Studio
       "$modifier,C,exec,code" # Launch VS Code
+      "$modifier SHIFT,C,exec,rofi -show calc -modi calc -no-show-match -no-sort" # Emoji picker
       "$modifier,G,exec,gimp" # Launch GIMP
       "$modifier,N,exec,obsidian" # Launch Obsidian
       "$modifier,M,exec,pavucontrol" # Launch Pavucontrol
-      "$modifier,V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy" # clipboard mgr
+      "$modifier,V,exec,cliphist list | rofi -modi clipboard:$HOME/.config/cliphist/cliphist-rofi-img -show clipboard -show-icons | cliphist decode | wl-copy && wtype -M ctrl -k v -m ctrl" # clipboard mgr
       "$modifier,P,exec,hyprpicker -a" # Color picker
       "$modifier,E,exec,pypr toggle thunar" # Toggle Thunar file manager
       "$modifier,T,exec,pypr toggle telegram-desktop" # Toggle Telegram
@@ -122,7 +123,8 @@ in
       ",XF86AudioPause, exec, playerctl play-pause"
       ",XF86AudioNext, exec, playerctl next"
       ",XF86AudioPrev, exec, playerctl previous"
-      "$modifier SHIFT,C,exit,"
+      "$modifier SHIFT,ESCAPE,exit,"
+      "$modifier,ESCAPE,exec,wlogout"
       ",XF86WebCam,exec,toggle_display"
     ];
 

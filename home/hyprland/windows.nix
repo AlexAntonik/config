@@ -84,6 +84,18 @@
       "noblur, tag:games*"
       "fullscreen, tag:games*"
     ];
+    # Layer rules for swaync blur effect
+    layerrule = [
+      "blur,logout_dialog"
+      "blur,rofi"
+      "ignorezero,rofi"
+      "blur, swaync-control-center"
+      "blur, swaync-notification-window"
+      "ignorezero, swaync-control-center"
+      "ignorezero, swaync-notification-window"
+      "ignorealpha 0.5, swaync-control-center"
+      "ignorealpha 0.5, swaync-notification-window"
+    ];
     # Miscellaneous settings
     misc = {
       layers_hog_keyboard_focus = true; # Allow layers (like Rofi) to grab focus

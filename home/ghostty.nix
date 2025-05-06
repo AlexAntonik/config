@@ -22,6 +22,7 @@
     mouse-hide-while-typing = true
 
     # keybindings
+    keybind = performable:ctrl+v=paste_from_clipboard
     keybind = alt+s>r=reload_config
     keybind = alt+s>x=close_surface
 
