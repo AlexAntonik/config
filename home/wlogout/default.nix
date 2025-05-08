@@ -42,8 +42,7 @@
       }
     ];
     style = ''
-      @define-color bar-bg rgba(0, 0, 0, 0);
-      @define-color main-bg rgba(17, 17, 27, 0.5);
+      @define-color main-bg rgba(17, 17, 27, 0.65);
       @define-color main-fg rgba(205, 214, 244, 0.5);
       @define-color wb-act-bg rgba(166, 173, 200, 0.5);
       @define-color wb-act-fg rgba(49, 50, 68, 0.5);
