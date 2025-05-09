@@ -97,7 +97,6 @@ in
         # "[workspace 2 silent] code" #did not work now becouse of electron app prob fix soon
         "[workspace 3 silent] ${terminal}"
         "[workspace special silent] obsidian"
-        "swayosd-server &"
       ];
     };
 
