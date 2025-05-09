@@ -52,6 +52,7 @@
       # Desk apps
       microsoft-edge # Web browser
       telegram-desktop # Telegram client
+      vlc
       #protonvpn-gui # ProtonVPN client
       libreoffice
       tor-browser # Tor
@@ -74,6 +75,7 @@
       cliphist # Clipboard manager using rofi menu
       cloc # Count lines of code
       duf # Utility for viewing disk usage in terminal
+      dysk # Get information on your mounted disks tool
       eza # Beautiful ls replacement
       ffmpeg # Terminal video/audio editing
       file-roller # Archive manager

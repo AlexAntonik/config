@@ -6,7 +6,6 @@ let
     darkreader
     privacy-badger
     ublock-origin
-    unpaywall
     youtube-recommended-videos
   ];
 
