@@ -8,5 +8,6 @@
     ./hyprland.nix
     ./hyprlock.nix
     ./pyprland.nix
+    ./wlsunset.nix 
   ];
 }
