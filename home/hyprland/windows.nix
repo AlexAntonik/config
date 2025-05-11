@@ -35,13 +35,6 @@
       "tag +settings, class:^(nwg-look|qt5ct|qt6ct|[Yy]ad)$"
       "tag +settings, class:(xdg-desktop-portal-gtk)"
 
-      # Window positions and behaviors
-      "move 60% 10%,title:^(Picture-in-Picture)$"
-      "center, class:^([Ff]erdium)$"
-      "center, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
-      "center, class:([Tt]hunar), title:negative:(.*[Tt]hunar.*)"
-      "center, title:^(Authentication Required)$"
-
       # Idle inhibit rules
       "idleinhibit fullscreen, class:^(*)$"
       "idleinhibit fullscreen, title:^(*)$"
@@ -61,6 +54,13 @@
       "float, initialTitle:(Open Files)"
       "float, initialTitle:(wants to save)"
 
+      # Window positions and behaviors
+      "move 66% 6%,title:^(Picture-in-Picture)$"
+      "center, class:^([Ff]erdium)$"
+      "center, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
+      "center, class:([Tt]hunar), title:negative:(.*[Tt]hunar.*)"
+      "center, title:^(Authentication Required)$"
+
       # Window sizes
       "size 70% 60%, initialTitle:(Open Files)"
       "size 70% 60%, initialTitle:(Add Folder to Workspace)"
@@ -76,7 +76,7 @@
       "opacity 0.8 0.7, tag:settings*"
       "opacity 0.8 0.7, class:^(gedit|org.gnome.TextEditor|mousepad)$"
       "opacity 0.9 0.8, class:^(seahorse)$"
-      "opacity 0.95 0.85, title:^(Picture-in-Picture)$"
+      "opacity 1.0 1.0, title:^(Picture-in-Picture)$"
 
       # Special rules
       "pin, title:^(Picture-in-Picture)$"

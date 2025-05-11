@@ -32,14 +32,12 @@
     (with pkgs; [
 
       # Programming languages
-      cowsay
       go # Go programming language
       nixd # Nix LSP
       dart # Dart language
       kotlin # Kotlin language
       typescript # Bad language
       zulu # Open JDK fast
-      android-studio # Stable channel
 
       # Development tools
       docker-compose # Allows controlling Docker from a single file
@@ -50,14 +48,7 @@
       pkg-config # Package configuration tool
 
       # Desk apps
-      microsoft-edge # Web browser
-      telegram-desktop # Telegram client
       vlc
-      #protonvpn-gui # ProtonVPN client
-      libreoffice
-      tor-browser # Tor
-      anki # Flashcards
-      obsidian # Knowledge base
       # vesktop #discord alternative web thingne
       zathura # PDF viewer
 
@@ -108,16 +99,13 @@
       ytmdl # YouTube music downloader
 
       # Media
-      gimp # Great photo editor
       mpv # Media player
-      # picard # Music tagger
 
       # Virtualization
       libvirt # Virtualization library
       virt-viewer # Virtual machine viewer
 
       # Miscellaneous
-      prismlauncher # Prism launcher
       greetd.tuigreet # The login manager (sometimes referred to as display manager)
       hyprpicker # Color picker
     ])
@@ -125,8 +113,6 @@
       # UNSTABLE PACKAGES!
       (with pkgs-unstable; [
         protonvpn-gui # ProtonVPN client
-        vscode.fhs # Visual Studio Code editor
         yazi # Terminal file manager
-        # swayosd
       ]);
 }
