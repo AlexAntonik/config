@@ -51,6 +51,7 @@
       "float, class:^([Ss]team)$, title:negative:^([Ss]team)$"
       "float, class:([Tt]hunar), title:negative:(.*[Tt]hunar.*)"
       "float, initialTitle:(Add Folder to Workspace)"
+      "float, initialTitle:(Media viewer)"
       "float, initialTitle:(Open Files)"
       "float, initialTitle:(wants to save)"
 
@@ -58,10 +59,12 @@
       "move 66% 6%,title:^(Picture-in-Picture)$"
       "center, class:^([Ff]erdium)$"
       "center, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
+      "center, initialTitle:(Media viewer)"
       "center, class:([Tt]hunar), title:negative:(.*[Tt]hunar.*)"
       "center, title:^(Authentication Required)$"
 
       # Window sizes
+      "size 86% 86%, initialTitle:(Media viewer)"
       "size 70% 60%, initialTitle:(Open Files)"
       "size 70% 60%, initialTitle:(Add Folder to Workspace)"
       "size 70% 70%, tag:settings*"
