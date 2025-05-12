@@ -27,14 +27,16 @@
     animation = "fromBottom"
     command = "ghostty -e yazi"
     class = "com.mitchellh.ghostty"
+    lazy = true
     position = "2% 2%"
     size = "96% 92%"
 
     [scratchpads.telegram-desktop]
     animation = "fromTop"
     pinned = false
-    unfocus = "hide"
-    hysteresis = 50 
+    lazy = true
+    # unfocus = "hide"
+    # hysteresis = 50 
     command = "telegram-desktop"
     class = "org.telegram.desktop"
     position = "2% 2%"
@@ -44,6 +46,7 @@
     animation = "fromBottom"
     command = "thunar"
     class = "thunar"
+    lazy = true
     position = "12% 12%"
     size = "76% 70%"
   '';
