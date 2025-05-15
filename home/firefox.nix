@@ -46,7 +46,7 @@ let
     }
   '';
 
-  userChrome =  disableWebRtcIndicator + hideWindowCloseButton + moreTabsCss ;
+  userChrome = disableWebRtcIndicator + hideWindowCloseButton + moreTabsCss;
 
   # ~/.mozilla/firefox/PROFILE_NAME/prefs.js | user.js
   settings = {
@@ -71,8 +71,8 @@ let
     "browser.link.open_newwindow" = true;
 
     "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-    "browser.newtabpage.activity-stream.topSitesRows"	=2;    
-    "browser.newtabpage.activity-stream.showSponsored" = false;	
+    "browser.newtabpage.activity-stream.topSitesRows" = 2;
+    "browser.newtabpage.activity-stream.showSponsored" = false;
     "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
     "browser.search.region" = "US";
@@ -82,7 +82,70 @@ let
     "browser.startup.homepage" = "about:newtab";
     "browser.tabs.loadInBackground" = true;
     "browser.urlbar.placeholderName" = "DuckDuckGo";
-    
+
+    # enable vetical tabs and navbar items
+    "sidebar.verticalTabs" = false;
+    # off cause setting definde in state json DELETE IF works well on new install
+    # "browser.uiCustomization.navBarWhenVerticalTabs" = "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"customizableui-special-spring1\",\"urlbar-container\",\"customizableui-special-spring2\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"fxa-toolbar-menu-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"firefox-view-button\",\"myallychou_gmail_com-browser-action\"]";
+    "browser.uiCustomization.state" = builtins.toJSON {
+      placements = {
+        widget-overflow-fixed-list = [ ];
+        unified-extensions-area = [
+          "_f209234a-76f0-4735-9920-eb62507a54cd_-browser-action"
+        ];
+        nav-bar = [
+          "sidebar-button"
+          "back-button"
+          "stop-reload-button"
+          "forward-button"
+          "urlbar-container"
+          "vertical-spacer"
+          "history-panelmenu"
+          "unified-extensions-button"
+          "downloads-button"
+          "fxa-toolbar-menu-button"
+
+          "jid1-mnnxcxisbpnsxq_jetpack-browser-action"
+          "ublock0_raymondhill_net-browser-action"
+          "addon_darkreader_org-browser-action"
+          "myallychou_gmail_com-browser-action"
+          "firefox-view-button"
+        ];
+        toolbar-menubar = [ "menubar-items" ];
+        TabsToolbar = [
+          "tabbrowser-tabs"
+          "new-tab-button"
+        ];
+        vertical-tabs = [ "tabbrowser-tabs" ];
+        PersonalToolbar = [
+          "import-button"
+          "personal-bookmarks"
+        ];
+      };
+      seen = [
+        "save-to-pocket-button"
+        "developer-button"
+
+        # Extensions
+        "jid1-mnnxcxisbpnsxq_jetpack-browser-action"
+        "ublock0_raymondhill_net-browser-action"
+        "myallychou_gmail_com-browser-action"
+        "addon_darkreader_org-browser-action"
+        "_f209234a-76f0-4735-9920-eb62507a54cd_-browser-action"
+      ];
+      dirtyAreaCache = [
+        "nav-bar"
+        "vertical-tabs"
+        "PersonalToolbar"
+        "unified-extensions-area"
+        "toolbar-menubar"
+        "TabsToolbar"
+
+      ];
+      currentVersion = 21;
+      newElementCount = 22;
+    };
+
     # disable search suggestions
     "browser.search.suggest.enabled" = false;
 
@@ -102,7 +165,29 @@ let
     "browser.urlbar.suggest.quicksuggest.sponsored" = false;
     "browser.urlbar.suggest.sponsored" = false;
 
-    "browser.newtabpage.pinned" = "[{\"url\":\"https://www.youtube.com\",\"label\":\"Youtube\",\"baseDomain\":\"youtube.com\"},{\"url\":\"https://www.chess.com/\",\"label\":\"Chess\"},{\"url\":\"https://translate.google.by/\",\"label\":\"Translate\"},{\"url\":\"https://myfin.by/currency/usd\",\"label\":\"Min Fin\"},{\"url\":\"https://github.com/AlexAntonik\",\"label\":\"GitHub\"}]";
+    "browser.newtabpage.pinned" = builtins.toJSON [
+      {
+        url = "https://www.youtube.com";
+        label = "Youtube";
+        baseDomain = "youtube.com";
+      }
+      {
+        url = "https://www.chess.com/";
+        label = "Chess";
+      }
+      {
+        url = "https://translate.google.by/";
+        label = "Translate";
+      }
+      {
+        url = "https://myfin.by/currency/usd";
+        label = "Min Fin";
+      }
+      {
+        url = "https://github.com/AlexAntonik";
+        label = "GitHub";
+      }
+    ];
 
     "distribution.searchplugins.defaultLocale" = "en-US";
 
@@ -115,7 +200,7 @@ let
     "general.useragent.locale" = "en-US";
 
     "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
-    
+
     "extensions.pocket.enabled" = false;
 
     "extensions.extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
