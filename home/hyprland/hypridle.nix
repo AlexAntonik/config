@@ -5,6 +5,8 @@
 let
   inherit (import ../../hosts/${host}/variables.nix)
     keyboardLightID
+    keyboardScreenOFFLightID
+    displayStatusFile
     ;
 in
 {
@@ -20,8 +22,8 @@ in
         listener = [
           {
             timeout = 600;
-            on-timeout = "hyprctl dispatch dpms off && brightnessctl -d ${keyboardLightID} s 0";
-            on-resume = "hyprctl dispatch dpms on && brightnessctl -d ${keyboardLightID} s 100";
+            on-timeout = "printf 'false' > ${displayStatusFile} && hyprctl dispatch dpms off && brightnessctl -d ${keyboardLightID} s 0 && brightnessctl -d ${keyboardScreenOFFLightID} s 100";
+            on-resume = "printf 'true' > ${displayStatusFile} && hyprctl dispatch dpms on && brightnessctl -d ${keyboardLightID} s 100 && brightnessctl -d ${keyboardScreenOFFLightID} s 0";
           }
 
           {
