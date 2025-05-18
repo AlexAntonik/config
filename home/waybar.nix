@@ -22,13 +22,11 @@ with lib;
         modules-center = [
         ];
         modules-left = [
-          "custom/startmenu"
-          "custom/exit"
-          "idle_inhibitor"
+          "group/control"
           "pulseaudio"
-          "cpu"
-          "memory"
-          "battery"
+          "group/cpu"
+          "group/memory"
+          "group/battery"
           "hyprland/workspaces"
         ];
         modules-right = [
@@ -70,7 +68,7 @@ with lib;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
           timezone = "Etc/GMT-3";
         };
-        "memory" = {
+        "memory#icon" = {
           interval = 5;
           format = "{icon}";
           format-icons = [
@@ -85,9 +83,39 @@ with lib;
             "<span color='#dd532e'></span>"
           ];
           tooltip = true;
+          tooltip-format = "RAM: {used:0.1f}GB/{total:0.1f}GB\nSwap: {swapUsed:0.1f}GB/{swapTotal:0.1f}GB";
           on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
         };
-        "cpu" = {
+        "memory#usage" = {
+          interval = 5;
+          format = "<span color='{icon}'>{percentage}%</span>";
+          format-icons = [
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#ffffa5"
+            "#ff9977"
+            "#dd532e"
+          ];
+          tooltip = true;
+          tooltip-format = "RAM: {used:0.1f}GB/{total:0.1f}GB\nSwap: {swapUsed:0.1f}GB/{swapTotal:0.1f}GB";
+          on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
+        };
+        "group/memory" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [
+            "memory#icon"
+            "memory#usage"
+          ];
+        };
+        "cpu#icon" = {
           interval = 5;
           format = "{icon}";
           format-icons = [
@@ -98,6 +126,29 @@ with lib;
           ];
           tooltip = true;
           on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
+        };
+        "cpu#usage" = {
+          interval = 5;
+          format = "<span color='{icon}'>{usage}%</span>";
+          format-icons = [
+            "#f8f8f2"
+            "#ffffa5"
+            "#ff9977"
+            "#dd532e"
+          ];
+          tooltip = true;
+          on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
+        };
+        "group/cpu" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [
+            "cpu#icon"
+            "cpu#usage"
+          ];
         };
         "disk" = {
           format = "";
@@ -154,10 +205,22 @@ with lib;
         "idle_inhibitor" = {
           format = "{icon}";
           format-icons = {
-            activated = "<span color='#ff9977'></span>";
-            deactivated = "";
+            activated = "<span color='#ff9977'>󰈈</span>";
+            deactivated = "󰈉";
           };
           tooltip = "true";
+        };
+        "group/control" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [
+            "custom/startmenu"
+            "custom/exit"
+            "idle_inhibitor"
+          ];
         };
         "custom/notification" = {
           tooltip = false;
@@ -178,7 +241,7 @@ with lib;
           on-click = "sleep 0.1 && task-waybar";
           escape = true;
         };
-        "battery" = {
+        "battery#icon" = {
           states = {
             warning = 30;
             critical = 15;
@@ -199,8 +262,41 @@ with lib;
             "<span color='#f8f8f2'>󰂂</span>"
             "<span color='#f8f8f2'>󰁹</span>"
           ];
-          on-click = "";
+          on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
           tooltip = true;
+        };
+        "battery#left" = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "<span color='{icon}'>{capacity}%</span>";
+          format-icons = [
+            "#dd532e"
+            "#ff9977"
+            "#ffffa5"
+            "#ffffa5"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+            "#f8f8f2"
+          ];
+          on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
+          tooltip = true;
+        };
+        "group/battery" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [
+            "battery#icon"
+            "battery#left"
+          ];
         };
       }
     ];
@@ -212,20 +308,11 @@ with lib;
           border-radius: 0;
           border: none;
           min-height: 0;
-          margin: 1px;
+          margin-top: 1px;
+          margin-bottom: 1px;
           background: transparent;
         }
-        #network-menu {
-          background: #${config.lib.stylix.colors.base02};
-          color: #${config.lib.stylix.colors.base05};
-        }
-
-        #pulseaudio-menu {
-          background: #${config.lib.stylix.colors.base02};
-          color: #${config.lib.stylix.colors.base05};
-        }
-
-        menu, tooltip, popover, .popup {
+        menu {
           background: #${config.lib.stylix.colors.base02};
           color: #${config.lib.stylix.colors.base05};
         }
@@ -274,8 +361,7 @@ with lib;
           color: #${config.lib.stylix.colors.base0D};
         }
 
-        #cpu, #pulseaudio, #memory, #battery,
-        #custom-startmenu, #idle_inhibitor, #custom-exit {
+        #pulseaudio, #custom-startmenu, #idle_inhibitor, #custom-exit {
           font-weight: bold;
           margin: 0px;
           padding: 0px 6px;
@@ -283,13 +369,23 @@ with lib;
           color: #CCCCCC;
         }
 
+        #cpu.icon, #memory.icon, #battery.icon {
+          padding-right: 0;
+          padding-left: 0;
+        }
+        #battery.icon {
+          padding-left: 2px;
+        }
+
+        #cpu.usage, #memory.usage, #battery.left {
+          padding-left: 4px;
+          padding-right: 0;
+        }
+
         #custom-startmenu {
           padding-left: 14px;
         }
 
-        #battery {
-          padding-right: 8px;
-        }
         #language {
           font-weight: bold;
           margin: 0px;
@@ -309,7 +405,7 @@ with lib;
           background: transparent;
           color: #CCCCCC;
           margin: 0px;
-          padding: 0px 16px 0px 8px;
+          padding: 0px 16px 0px 6px;
         }
         #clock {
           font-weight: bold;
