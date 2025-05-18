@@ -27,6 +27,7 @@ with lib;
           "group/cpu"
           "group/memory"
           "group/battery"
+          "group/network"
           "hyprland/workspaces"
         ];
         modules-right = [
@@ -88,7 +89,7 @@ with lib;
         };
         "memory#usage" = {
           interval = 5;
-          format = "<span color='{icon}'>{percentage}%</span>";
+          format = "<span color='{icon}'> {percentage}%</span>";
           format-icons = [
             "#f8f8f2"
             "#f8f8f2"
@@ -129,7 +130,7 @@ with lib;
         };
         "cpu#usage" = {
           interval = 5;
-          format = "<span color='{icon}'>{usage}%</span>";
+          format = "<span color='{icon}'> {usage}%</span>";
           format-icons = [
             "#f8f8f2"
             "#ffffa5"
@@ -154,18 +155,33 @@ with lib;
           format = "";
           tooltip = true;
         };
-        "network" = {
+        "network#icon" = {
+          interval = 2;
+          format = "{icon}";
           format-icons = [
-            "󰤯"
-            "󰤟"
-            "󰤢"
-            "󰤥"
-            "󰤨"
+            "<span color='#f8f8f2'>󰇚</span>"
           ];
-          format-ethernet = " {bandwidthDownOctets}";
-          format-wifi = "{icon} {signalStrength}%";
-          format-disconnected = "󰤮";
-          tooltip = false;
+          format-disconnected = "<span color='#f8f8f2'>󱂰</span>";
+          tooltip = true;
+          tooltip-format = "Download: {bandwidthDownBytes}\nUpload: {bandwidthUpBytes}";
+        };
+        "network#speed" = {
+          interval = 2;
+          format = "<span color='#f8f8f2'> {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}</span>";
+          format-disconnected = "";
+          tooltip = true;
+          tooltip-format = "Download: {bandwidthDownBytes}\nUpload: {bandwidthUpBytes}";
+        };
+        "group/network" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            transition-left-to-right = true;
+          };
+          modules = [
+            "network#icon"
+            "network#speed"
+          ];
         };
         "tray" = {
           spacing = 12;
@@ -270,7 +286,7 @@ with lib;
             warning = 30;
             critical = 15;
           };
-          format = "<span color='{icon}'>{capacity}%</span>";
+          format = "<span color='{icon}'> {capacity}%</span>";
           format-icons = [
             "#dd532e"
             "#ff9977"
@@ -325,7 +341,7 @@ with lib;
           color: #${config.lib.stylix.colors.base00};
           background: transparent;
           margin: 0px;
-          padding: 0px 10px;
+          padding: 0px 22px;
         }
         #workspaces button {
           font-weight: bold;
@@ -361,25 +377,23 @@ with lib;
           color: #${config.lib.stylix.colors.base0D};
         }
 
-        #pulseaudio, #custom-startmenu, #idle_inhibitor, #custom-exit {
-          font-weight: bold;
+        #custom-startmenu, #idle_inhibitor, #custom-exit, #cpu, #memory, #network, #battery {
           margin: 0px;
-          padding: 0px 6px;
-          background: transparent;
-          color: #CCCCCC;
+          padding-left: 8px;
         }
 
-        #cpu.icon, #memory.icon, #battery.icon {
-          padding-right: 0;
-          padding-left: 0;
-        }
-        #battery.icon {
-          padding-left: 2px;
+        #pulseaudio, #cpu.icon, #memory.icon, #network.icon, #battery.icon {
+          padding-right: 0px;
+          padding-left: 0px;
+          margin-left: 6px;
+          margin-right: 0px;
         }
 
-        #cpu.usage, #memory.usage, #battery.left {
-          padding-left: 4px;
-          padding-right: 0;
+        #cpu.usage, #memory.usage, #network.speed, #battery.left {
+          padding-right: 0px;
+          padding-left: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
         }
 
         #custom-startmenu {
@@ -393,7 +407,7 @@ with lib;
           background: transparent;
           color: #CCCCCC;
         }
-        #network, #tray{
+        #tray{
           font-weight: bold;
           background: transparent;
           color: #CCCCCC;
