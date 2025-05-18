@@ -4,6 +4,7 @@ let
   inherit (import ../../hosts/${host}/variables.nix)
     keyboardLightID
     keyboardScreenOFFLightID
+    displayStatusFile
     ;
 in
 pkgs.writeShellScriptBin "toggle_display" ''
@@ -11,7 +12,7 @@ pkgs.writeShellScriptBin "toggle_display" ''
     export XDG_RUNTIME_DIR=/run/user/$(id -u)
   fi
 
-  export STATUS_FILE="$XDG_RUNTIME_DIR/display.status"
+  export STATUS_FILE="${displayStatusFile}"
 
   enable_display() {
     printf "true" >"$STATUS_FILE"
