@@ -162,15 +162,13 @@ with lib;
             "<span color='#f8f8f2'>󰇚</span>"
           ];
           format-disconnected = "<span color='#f8f8f2'>󱂰</span>";
-          tooltip = true;
-          tooltip-format = "Download: {bandwidthDownBytes}\nUpload: {bandwidthUpBytes}";
+          tooltip = false;
         };
         "network#speed" = {
           interval = 2;
           format = "<span color='#f8f8f2'> {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}</span>";
           format-disconnected = "";
-          tooltip = true;
-          tooltip-format = "Download: {bandwidthDownBytes}\nUpload: {bandwidthUpBytes}";
+          tooltip = false;
         };
         "group/network" = {
           orientation = "inherit";
@@ -341,7 +339,7 @@ with lib;
           color: #${config.lib.stylix.colors.base00};
           background: transparent;
           margin: 0px;
-          padding: 0px 22px;
+          padding: 0px 20px;
         }
         #workspaces button {
           font-weight: bold;
