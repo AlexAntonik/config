@@ -30,5 +30,10 @@ in
     LC_TIME = "en_US.UTF-8";
   };
   console.keyMap = "${consoleKeyMap}";
-  system.stateVersion = "24.11"; # Do not change!
+
+
+  # This option defines the first version of NixOS you have installed on
+  # this particular machine, and is used to maintain compatibility with 
+  # application data (e.g. databases) created on older NixOS versions.
+  system.stateVersion = "23.11"; # Do not change!
 }

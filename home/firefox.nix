@@ -236,7 +236,7 @@ in
     profiles = {
       default = {
         id = 0;
-        extensions = extensions;
+        extensions.packages = extensions;
         inherit settings userChrome;
       };
     };
