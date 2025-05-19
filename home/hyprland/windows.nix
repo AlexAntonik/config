@@ -4,7 +4,7 @@
 {
   wayland.windowManager.hyprland.settings = {
     # Window rules
-    windowrulev2 = [
+    windowrule = [
       # Tags for different application types
       "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"
       "tag +terminal, class:^(Alacritty|kitty|kitty-dropterm|com.mitchellh.ghostty|[Gg]hostty)$"
