@@ -39,8 +39,8 @@
     fonts = {
       monospace = {
 
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        # package = pkgs.nerd-fonts.jetbrains-mono;  # Unstable channel update
+        # package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        package = pkgs.nerd-fonts.jetbrains-mono;  # Unstable channel update
         name = "JetBrains Mono";
       };
       sansSerif = {
