@@ -30,9 +30,7 @@
     #   }
     # ];
 
-    # for unstable
-    # initContent = ''
-    initExtra = ''
+    initContent = ''
       bindkey "\eh" backward-word
       bindkey "\ej" down-line-or-history
       bindkey "\ek" up-line-or-history

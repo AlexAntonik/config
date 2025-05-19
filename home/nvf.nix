@@ -13,7 +13,10 @@
       vimAlias = true;
       viAlias = true;
       withNodeJs = true;
-      
+      lineNumberMode = "number";
+      enableLuaLoader = true;
+      preventJunkFiles = true;
+
       options = {
         tabstop = 2;
         shiftwidth = 2;
@@ -75,7 +78,39 @@
           action = "<Right>";
           desc = "Move right in insert mode";
         }
+        {
+          key = "<leader>dj";
+          mode = [ "n" ];
+          action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
+          desc = "Go to next diagnostic";
+        }
+        {
+          key = "<leader>dk";
+          mode = [ "n" ];
+          action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
+          desc = "Go to previous diagnostic";
+        }
+        {
+          key = "<leader>dl";
+          mode = [ "n" ];
+          action = "<cmd>Lspsaga show_line_diagnostics<CR>";
+          desc = "Show diagnostic details";
+        }
+        {
+          key = "<leader>dt";
+          mode = [ "n" ];
+          action = "<cmd>Trouble diagnostics toggle<cr>";
+          desc = "Toggle diagnostics list";
+        }
       ];
+
+      diagnostics = {
+        enable = true;
+        config = {
+          virtual_lines.enable = true;
+          underline = true;
+        };
+      };
 
       theme = {
         enable = true;
@@ -88,6 +123,8 @@
 
       spellcheck = {
         enable = true;
+        languages = ["en"];
+        programmingWordlist.enable = true;
       };
 
       lsp = {
@@ -102,11 +139,12 @@
         nvim-docs-view.enable = false;
       };
 
-      diagnostics = {
-        config = {
-          virtual_lines = true;  # Enable virtual diagnostic lines
-          virtual_text = false;  # Disable virtual text since we're using virtual lines
-          severity_sort = true;
+      clipboard = {
+        enable = true;
+        registers = "unnamedplus";
+        providers = {
+          wl-copy.enable = true;
+          xsel.enable = true;
         };
       };
 
@@ -121,8 +159,20 @@
         zig.enable = true;
         python.enable = true;
         markdown.enable = true;
-        ts.enable = true;
         html.enable = true;
+        lua.enable = true;
+        css.enable = true;
+        typst.enable = true;
+        rust = {
+          enable = true;
+          crates.enable = true;
+        };
+        ts = {
+          enable = true;
+          lsp.enable = true;
+          format.type = "prettierd";
+          extensions.ts-error-translator.enable = true;
+        };
       };
 
       visuals = {
@@ -133,6 +183,7 @@
 
         highlight-undo.enable = true;
         indent-blankline.enable = true;
+        rainbow-delimiters.enable = true;
       };
 
       statusline = {
@@ -189,6 +240,7 @@
         images = {
           image-nvim.enable = false;
         };
+        preview.markdownPreview.enable = true;
       };
 
       ui = {
@@ -201,7 +253,7 @@
           navbuddy.enable = false;
         };
         smartcolumn = {
-          enable = false;
+          enable = true;
         };
         fastaction.enable = true;
       };
@@ -214,5 +266,31 @@
         comment-nvim.enable = true;
       };
     };
+  };
+
+  # Source custom Lua explicitly
+  home.file.".config/nvim/init.lua" = {
+    text = ''
+      vim.notify("Main init.lua loaded", vim.log.levels.INFO)
+      pcall(require, "custom.init")
+    '';
+  };
+
+  home.file.".config/nvim/lua/custom/init.lua" = {
+    text = ''
+      -- Debug notification
+      vim.notify("Custom Lua loaded", vim.log.levels.INFO)
+      -- Diagnostics configuration (fallback)
+      vim.diagnostic.config({
+        virtual_text = {
+          spacing = 4,
+          prefix = "●"
+        },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true
+      })
+    '';
   };
 }

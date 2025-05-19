@@ -375,15 +375,10 @@ with lib;
           color: #${config.lib.stylix.colors.base0D};
         }
 
-        #custom-startmenu, #idle_inhibitor, #custom-exit, #cpu, #memory, #network, #battery {
-          margin: 0px;
-          padding-left: 8px;
-        }
-
-        #pulseaudio, #cpu.icon, #memory.icon, #network.icon, #battery.icon {
+        #custom-startmenu, #idle_inhibitor, #custom-exit, #pulseaudio, #cpu.icon, #memory.icon, #network.icon, #battery.icon {
           padding-right: 0px;
           padding-left: 0px;
-          margin-left: 6px;
+          margin-left: 12px;
           margin-right: 0px;
         }
 
@@ -395,7 +390,7 @@ with lib;
         }
 
         #custom-startmenu {
-          padding-left: 14px;
+          padding-left: 4px;
         }
 
         #language {
