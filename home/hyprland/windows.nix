@@ -107,6 +107,11 @@
       key_press_enables_dpms = false; # Don't wake screen on key press
       disable_hyprland_logo = true; # Disable the startup logo
       disable_splash_rendering = true; # Disable the startup splash
+
+      #  Application not responding (ANR) settings
+      enable_anr_dialog = true;
+      anr_missed_pings = 20;
+
     };
 
     # Dwindle layout specific settings

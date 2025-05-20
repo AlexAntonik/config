@@ -47,10 +47,15 @@ in
     # enableNvidiaPatches = false;
 
     settings = {
+      
+      ecosystem = {
+        no_donation_nag = true;
+        no_update_news = false;
+      };
       # XWayland settings
       # May affect scaling of some X11Wayland apps, needed for Steam resolution
       xwayland.force_zero_scaling = true;
-      
+
       # Environment variables set for the Hyprland session
       env = [
         "NIXOS_OZONE_WL, 1" # Enable Wayland backend for Ozone-based apps (Electron)
@@ -92,7 +97,7 @@ in
         "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/town.jpg"
         # --- Autostart applications ---
         "pypr &"
-        "${browser}" 
+        "${browser}"
         "protonvpn-app"
         # "[workspace 2 silent] code" #did not work now becouse of electron app prob fix soon
         "[workspace 3 silent] ${terminal}"
