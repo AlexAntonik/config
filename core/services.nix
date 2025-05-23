@@ -44,9 +44,9 @@ in
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
         CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MAX_PERF_ON_AC = 80;
         CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
+        CPU_MAX_PERF_ON_BAT = 30;
 
         #Optional helps save long term battery health
         START_CHARGE_THRESH_BAT0 = 50; # 40 and below it starts to charge
@@ -123,20 +123,6 @@ in
       wireplumber.enable = true;
     };
 
-    # Config from nixos pipewire wiki
-    # pipewire.wireplumber.extraConfig."10-bluez" = {
-    #   "monitor.bluez.properties" = {
-    #     "bluez5.enable-sbc-xq" = true;
-    #     "bluez5.enable-msbc" = true;
-    #     "bluez5.enable-hw-volume" = true;
-    #     "bluez5.roles" = [
-    #       "hsp_hs"
-    #       "hsp_ag"
-    #       "hfp_hf"
-    #       "hfp_ag"
-    #     ];
-    #   };
-    # };
     rpcbind.enable = true;
     nfs.server.enable = true;
   };
