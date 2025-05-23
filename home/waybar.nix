@@ -117,7 +117,7 @@ with lib;
           ];
         };
         "cpu#icon" = {
-          interval = 5;
+          interval = 4;
           format = "{icon}";
           format-icons = [
             "<span color='#f8f8f2'></span>"
@@ -129,7 +129,7 @@ with lib;
           on-click = "sleep 0.1 && hyprctl dispatch exec '[float] ghostty -e btop'";
         };
         "cpu#usage" = {
-          interval = 5;
+          interval = 4;
           format = "<span color='{icon}'> {usage}%</span>";
           format-icons = [
             "#f8f8f2"
@@ -156,7 +156,7 @@ with lib;
           tooltip = true;
         };
         "network#icon" = {
-          interval = 2;
+          interval = 3600;
           format = "{icon}";
           format-icons = [
             "<span color='#f8f8f2'>󰇚</span>"
@@ -165,7 +165,7 @@ with lib;
           tooltip = false;
         };
         "network#speed" = {
-          interval = 2;
+          interval = 4;
           format = "<span color='#f8f8f2'> {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}</span>";
           format-disconnected = "";
           tooltip = false;
