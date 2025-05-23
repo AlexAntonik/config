@@ -9,7 +9,7 @@
 
       # Communication & Internet
       telegram-desktop # Instant messaging
-      microsoft-edge # Chromium-based browser
+      ungoogled-chromium
       tor-browser # Privacy-focused browser
       discord # Chat and voice communication
 
