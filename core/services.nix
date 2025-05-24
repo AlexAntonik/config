@@ -34,6 +34,7 @@ in
     # flatpak.enable = true;
     blueman.enable = true;
 
+    # with tlp laptop is hotter, idk why
     # tlp = {
     #   enable = true;
     #   settings = {
