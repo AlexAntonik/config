@@ -56,7 +56,7 @@
       "float, initialTitle:(wants to save)"
 
       # Window positions and behaviors
-      "move 66% 6%,title:^(Picture-in-Picture)$"
+      "move 60% 6%,title:^(Picture-in-Picture)$"
       "center, class:^([Ff]erdium)$"
       "center, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
       "center, initialTitle:(Media viewer)"
