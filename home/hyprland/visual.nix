@@ -16,7 +16,7 @@
     decoration = {
       rounding = 0; # Window corner rounding
       dim_inactive = true;
-      dim_strength = 0.25;
+      dim_strength = 0.20;
       blur = {
         enabled = true;
         size = 3;
