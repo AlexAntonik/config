@@ -149,6 +149,7 @@ in
 
       # --- System Controls ---
       ",PRINT,exec,screenshootin"
+      "$modifier, F11,exec,toggle_xwayland_scale"
       "$modifier, PRINT,exec,grim - | swappy -f -"
       "$modifier SHIFT,N,exec,swaync-client -rs"
       ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"

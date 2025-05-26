@@ -52,9 +52,6 @@ in
         no_donation_nag = true;
         no_update_news = false;
       };
-      # XWayland settings
-      # May affect scaling of some X11Wayland apps, needed for Steam resolution
-      xwayland.force_zero_scaling = true;
 
       # Environment variables set for the Hyprland session
       env = [
