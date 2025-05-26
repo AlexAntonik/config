@@ -25,6 +25,7 @@
     (import ./hm-find.nix { inherit pkgs; })
     (import ./screenshootin.nix { inherit pkgs; })
     (import ./oneshot.nix { inherit pkgs; })
+    (import ./toggleXWaylandScale.nix { inherit pkgs; })
   ];
   imports = [
     ./clipmenu.nix
