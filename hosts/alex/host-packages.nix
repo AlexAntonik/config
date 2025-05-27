@@ -22,6 +22,7 @@
       android-studio # Android IDE
       nodejs # JavaScript runtime
       # Gaming
+      # lutris # Game launchers gog epic games etc
       prismlauncher # Minecraft launcher
     ])
     ++ (with pkgs-unstable; [
