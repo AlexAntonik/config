@@ -9,7 +9,6 @@
 
       # Communication & Internet
       telegram-desktop # Instant messaging
-      tor-browser    # Privacy-focused browser
       discord        # Chat and voice communication
 
       # Media Creation & Editing
@@ -20,9 +19,6 @@
       # Development
       android-studio # Android IDE
       nodejs        # JavaScript runtime
-
-      # Gaming
-      prismlauncher  # Minecraft launcher
     ])
     ++ (with pkgs-unstable; [
       # Development Tools
