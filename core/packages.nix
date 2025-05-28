@@ -95,7 +95,7 @@
     v4l-utils # Video4Linux utilities
     wget # Network downloader
     wtype # typing thing
-    yazi # Terminal file manager
+    lazygit # Terminal-based Git interface
     ytmdl # YouTube music downloader
 
     # Media
