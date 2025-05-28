@@ -1,4 +1,3 @@
-#!/bin/sh
 { host, pkgs, ... }:
 let
   inherit (import ../../hosts/${host}/variables.nix)
