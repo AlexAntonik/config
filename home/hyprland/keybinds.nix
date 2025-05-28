@@ -58,6 +58,7 @@ in
       # --- Application Launchers ---
       "$modifier,Return,exec,${terminal}" # Launch terminal
       "$modifier SHIFT,Return,exec,rofi-launcher" # Launch Rofi application launcher
+      "$modifier ,GRAVE,exec,rofi-launcher" # Launch Rofi application launcher
       "$modifier ALT,W,exec,wallsetter" # Custom wallpaper setter script
       "$modifier,W,exec,${browser}" # Launch browser
       "$modifier SHIFT,E,exec,emopicker9000" # Emoji picker
