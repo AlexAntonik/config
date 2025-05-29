@@ -7,7 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix/release-25.05";
     nurpkgs.url = "github:nix-community/NUR";
   };
 
