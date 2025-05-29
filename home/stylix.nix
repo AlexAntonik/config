@@ -10,6 +10,10 @@
     hyprland.enable = false;
     hyprlock.enable = false;
     yazi.enable = false;
+    qt.enable = false;
+    nvf.enable = false;
+    starship.enable = false;
+    firefox.enable = false;
     #Even i don't have mako installed this fixes stylix shit
     mako.enable = false;
     
