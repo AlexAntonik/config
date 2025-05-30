@@ -339,7 +339,7 @@ with lib;
           color: #${config.lib.stylix.colors.base00};
           background: transparent;
           margin: 0px;
-          padding: 0px 20px;
+          padding: 0px 22px;
         }
         #workspaces button {
           font-weight: bold;
