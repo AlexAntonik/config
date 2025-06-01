@@ -19,7 +19,9 @@
     ./stylix.nix
     ./swaync.nix
     ./swayosd.nix
+    ./lazygit.nix
     ./virtmanager.nix
+    ./eza.nix
     ./fzf.nix
     ./waybar.nix
     ./wlogout
