@@ -9,7 +9,24 @@
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+    syntaxHighlighting = {
+      enable = true;
+      highlighters = [
+        "main"
+        "brackets"
+        "pattern"
+        "regexp"
+        "root"
+        "line"
+      ];
+    };
+    historySubstringSearch.enable = true;
+
+    history = {
+      ignoreDups = true;
+      save = 10000;
+      size = 10000;
+    };
 
     initContent = ''
       bindkey "\eh" backward-word
@@ -28,6 +45,7 @@
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       cat = "bat";
       gst = "git status";
+      lg = "lazygit";
       man = "batman";
       ls = "eza --icons --group-directories-first -1";
       ll = "eza --icons -lh --group-directories-first -1 --no-user --long";
