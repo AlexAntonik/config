@@ -30,8 +30,17 @@ in
     libinput.enable = true;
     fstrim.enable = true;
     gvfs.enable = true;
-    openssh.enable = true;
     # flatpak.enable = true;
+    openssh = {
+      enable = true; # Enable SSH
+      settings = {
+        PermitRootLogin = "no"; # Prevent root from SSH login
+        PasswordAuthentication = true; # Users can SSH using kb and password
+        KbdInteractiveAuthentication = true;
+      };
+      ports = [ 22 ];
+    };
+
     blueman.enable = true;
 
     # with tlp laptop is hotter, idk why
