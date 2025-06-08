@@ -51,7 +51,7 @@
       ll = "eza --icons -lh --group-directories-first -1 --no-user --long";
       la = "eza --icons -lah --group-directories-first -1";
       tree = "eza --icons --tree --group-directories-first";
-      f = "nvim $(fzf --preview=\"bat --color=always {}\")";
+      f = "fzf";
     };
   };
 }
