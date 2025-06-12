@@ -181,11 +181,15 @@ let
       }
       {
         url = "https://myfin.by/currency/usd";
-        label = "Min Fin";
+        label = "MyFin";
       }
       {
         url = "https://github.com/AlexAntonik";
         label = "GitHub";
+      }
+      {
+        url = "https://coinmarketcap.com/";
+        label = "CMC";
       }
     ];
 
