@@ -8,7 +8,6 @@
       obsidian # Personal knowledge base
 
       # Communication & Internet
-      telegram-desktop # Instant messaging
       ungoogled-chromium
       tor-browser # Privacy-focused browser
       discord # Chat and voice communication
@@ -26,6 +25,7 @@
       prismlauncher # Minecraft launcher
     ])
     ++ (with pkgs-unstable; [
+      telegram-desktop # Instant messaging
       # Development Tools
       code-cursor
       vscode.fhs # Visual Studio Code with FHS environment
