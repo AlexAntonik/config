@@ -69,7 +69,7 @@ in
       "$modifier,G,exec,gimp" # Launch GIMP
       "$modifier,N,exec,obsidian" # Launch Obsidian
       "$modifier,M,exec,pavucontrol" # Launch Pavucontrol
-      "$modifier,V,exec,cliphist list | rofi -modi clipboard:$HOME/.config/cliphist/cliphist-rofi-img -show clipboard -show-icons | cliphist decode | wl-copy && wtype -M ctrl -k v -m ctrl" # clipboard mgr
+      "$modifier,V,exec,clipboard-manager" # clipboard mgr
       "$modifier,P,exec,hyprpicker -a" # Color picker
       "$modifier,E,exec,pypr toggle thunar" # Toggle Thunar file manager
       "$modifier,T,exec,pypr toggle telegram-desktop" # Toggle Telegram
