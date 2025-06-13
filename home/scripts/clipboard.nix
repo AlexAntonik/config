@@ -68,8 +68,8 @@
                 [ -z "$selection" ] && exit
 
                 # If selection contains a tab character, it's an image entry with the original line after the tab
-                if [[ "$selection" == *$'\t'* ]]; then
-                    selection=$(echo "$selection" | cut -f2-)
+                if [[ "$selection" =~ ^🖼️ ]]; then
+                    selection=$(echo "$selection" | sed -E 's/^[^\t]+\t+//')
                 # For non-image entries, we need to find the original ID
                 elif [[ ! "$selection" =~ ^\[[[:space:]]*binary[[:space:]]data ]] && [[ ! "$selection" =~ ^[0-9]+[[:space:]] ]]; then
                     # Get the original entry with ID from cliphist
@@ -79,9 +79,9 @@
                     fi
                 fi
 
-                # Copy selection to clipboard and simulate paste
+                # Copy selection to clipboard and simulate paste 
                 cliphist decode <<< "$selection" | ${pkgs.wl-clipboard}/bin/wl-copy
-                sleep 0.02
+                sleep 0.02 # ⏳ 0.02 pstree -p | grep sudo  
                 ${pkgs.wtype}/bin/wtype -M ctrl -k v -m ctrl
       '')
     ];
