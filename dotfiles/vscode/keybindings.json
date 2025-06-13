@@ -57,7 +57,7 @@
         "command": "-workbench.action.toggleAuxiliaryBar"
     },
     {
-        "key": "alt+w",
+        "key": "ctrl+w",
         "command": "workbench.action.closeActiveEditor"
     },
     {
@@ -65,7 +65,7 @@
         "command": "-workbench.action.closeActiveEditor"
     },
     {
-        "key": "alt+w",
+        "key": "ctrl+w",
         "command": "workbench.action.terminal.killEditor",
         "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
     },
@@ -148,5 +148,15 @@
     {
         "key": "ctrl+shift+a",
         "command": "workbench.view.extension.github-actions"
+    },
+    {
+        "key": "alt+w",
+        "command": "extension.vim_ctrl+w",
+        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-extension.vim_ctrl+w",
+        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
     }
 ]

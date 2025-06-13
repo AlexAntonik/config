@@ -8,8 +8,8 @@
       obsidian # Personal knowledge base
 
       # Communication & Internet
-      ungoogled-chromium
       tor-browser # Privacy-focused browser
+      chromium
       discord # Chat and voice communication
 
       # Media Creation & Editing
