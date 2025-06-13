@@ -28,6 +28,6 @@
     (import ./toggleXWaylandScale.nix { inherit pkgs; })
   ];
   imports = [
-    ./clipmenu.nix
+    ./clipboard.nix
   ];
 }

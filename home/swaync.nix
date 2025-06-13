@@ -27,8 +27,8 @@
       script-fail-notify = true;
       widget-config = {
         title = {
-          text = "Notifications";
-          clear-all-button = true;  # включаем кнопку
+          text = "";
+          clear-all-button = true;
         };
         dnd = {
           text = "Do Not Disturb";
@@ -44,16 +44,13 @@
         volume = {
           label = "󰕾";
         };
-        backlight = {
-          label = "󰃟";
-        };
       };
       widgets = [
         "mpris"
         "volume"
-        "backlight"
         "dnd"
         "notifications"
+        "title"
       ];
     };
     style = ''
@@ -64,10 +61,7 @@
       @define-color bg_secondary rgba(72, 72, 72, 0.25);
       @define-color bg_hover rgba(210, 215, 225, 0.15);
       @define-color accent rgba(10, 132, 255, 0.8);
-      @define-color accent_hover #198de5;
-      @define-color border_light rgba(255, 255, 255, 0.08);
-      @define-color border_dark rgba(24, 24, 24, 0.69);
-      @define-color border_medium alpha(@border_light, 0.5);
+      @define-color border_medium rgba(255, 255, 255, 0.04);
       @define-color close_bg rgba(255, 70, 70, 0.8);
       @define-color close_hover rgba(255, 100, 100, 0.9);
 
@@ -97,9 +91,9 @@
 
       /* ── Widgets ────────────────────────────────────────────── */
       .widget-volume,
-      .widget-backlight,
       .widget-mpris,
-      .widget-dnd {
+      .widget-dnd,
+      .widget-title {
         background: @bg_secondary;
         border: 1px solid @border_medium;
         border-radius: 12px;
@@ -109,7 +103,6 @@
 
       /* DND Widget */
       .widget-dnd {
-        font-size: 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -136,10 +129,11 @@
       #clear-all-button {
         background: @bg_secondary;
         border-radius: 8px;
-        padding: 6px 12px;
-        margin-left: 8px;
+        padding: 6px;
         color: @text_secondary;
         transition: all 0.2s ease;
+        width: 100%;
+        margin: 4px 0;
       }
 
       #clear-all-button:hover {
@@ -149,22 +143,14 @@
 
       /* Title */
       .title {
-        font-size: 1.1rem;
         font-weight: bold;
         background: @bg_secondary;
         border-radius: 12px;
-        padding: 8px 12px;
+        padding: 8px;
         margin-bottom: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
       }
 
       /* MPRIS Widget */
-      .widget-mpris {
-        padding: 10px;
-      }
-
       .widget-mpris-player {
         background: @bg_secondary;
         border-radius: 10px;
@@ -173,7 +159,6 @@
 
       .widget-mpris-title {
         font-weight: bold;
-        font-size: 1.1rem;
         color: @text_primary;
       }
 
@@ -196,19 +181,12 @@
         color: @text_primary;
       }
 
-      /* Volume & Backlight Widgets */
-      .widget-volume,
-      .widget-backlight {
-        padding: 10px;
-      }
-
-      .widget-volume > box,
-      .widget-backlight > box {
+      /* Volume Widget */
+      .widget-volume > box {
         margin: 0 8px;
       }
 
-      .widget-volume > box > button,
-      .widget-backlight > box > button {
+      .widget-volume > box > button {
         background: @bg_secondary;
         border-radius: 8px;
         min-width: 24px;
@@ -221,7 +199,6 @@
         background-color: @bg_secondary;
         border-radius: 5px;
         min-height: 4px;
-        margin: 0;
       }
 
       scale trough highlight {
@@ -238,10 +215,6 @@
       }
 
       /* ── Notifications ───────────────────────────────────────── */
-      .notification-row {
-        padding: 4px;
-      }
-
       .notification {
         background: @bg_secondary;
         border: 1px solid @border_medium;
@@ -260,7 +233,6 @@
       }
 
       .summary {
-        font-size: 1rem;
         font-weight: bold;
         color: @text_primary;
       }
@@ -268,12 +240,10 @@
       .time {
         color: @text_secondary;
         margin: 0 6px;
-        font-size: 0.9rem;
       }
 
       .body {
         color: @text_secondary;
-        font-size: 0.95rem;
       }
 
       .close-button {
