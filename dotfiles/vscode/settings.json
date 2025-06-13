@@ -44,5 +44,6 @@
         "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
     },
     "window.controlsStyle": "hidden",
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "explorer.confirmPasteNative": false
 }
