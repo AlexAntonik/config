@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   config,
   ...
 }:
@@ -9,8 +8,8 @@
     rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
-      plugins = with pkgs-unstable; [
-        rofi-calc # Rofi calculator
+      plugins = with pkgs; [
+        unstable.rofi-calc # Rofi calculator
       ];
       extraConfig = {
         modi = "drun,filebrowser,run";
