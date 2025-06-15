@@ -13,6 +13,7 @@
     "window.customTitleBarVisibility": "never",
     "keyboard.dispatch": "keyCode",
     "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
     "vim.handleKeys": {
         "<Esc>": true
     },
