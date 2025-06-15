@@ -18,60 +18,24 @@
       host = "alex";
       profile = "amd";
       username = "alex";
+      commonSpecialArgs = {
+        inherit inputs username host profile;
+      };
+
+      mkSystem = profileName: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = commonSpecialArgs;
+        modules = [ ./profiles/${profileName} ];
+      };
     in
     {
       overlays = import ./overlays.nix {inherit inputs;};
       nixosConfigurations = {
-        amd = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit host;
-            inherit profile;
-          };
-          modules = [ ./profiles/amd ];
-        };
-        nvidia = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit host;
-            inherit profile;
-          };
-          modules = [ ./profiles/nvidia ];
-        };
-        nvidia-laptop = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit host;
-            inherit profile;
-          };
-          modules = [ ./profiles/nvidia-laptop ];
-        };
-        intel = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit host;
-            inherit profile;
-          };
-          modules = [ ./profiles/intel ];
-        };
-        vm = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit host;
-            inherit profile;
-          };
-          modules = [ ./profiles/vm ];
-        };
+        amd = mkSystem "amd";
+        nvidia = mkSystem "nvidia";
+        nvidia-laptop = mkSystem "nvidia-laptop";
+        intel = mkSystem "intel";
+        vm = mkSystem "vm";
       };
     };
 }
