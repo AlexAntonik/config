@@ -1,6 +1,6 @@
-{ pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
-  home.packages = with pkgs-unstable; [ pyprland ];
+  home.packages = with pkgs; [ unstable.pyprland ];
 
   home.file.".config/hypr/pyprland.toml".text = ''
     [pyprland]

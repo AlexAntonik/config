@@ -4,7 +4,6 @@
   username,
   host,
   profile,
-  pkgs-unstable,
   ...
 }:
 let
@@ -22,7 +21,6 @@ in
         username
         host
         profile
-        pkgs-unstable
         ;
     };
     users.${username} = {
@@ -44,9 +42,11 @@ in
   };
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
   nixpkgs.overlays = [
     inputs.nurpkgs.overlays.default
-  ];
+  ] ++ (builtins.attrValues (import ./overlays.nix {inherit inputs;}));
+
   users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;
