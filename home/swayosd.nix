@@ -1,9 +1,9 @@
-{username, pkgs-unstable, ...}:
+{username, pkgs, ...}:
 {
   services.swayosd = {
     enable = true;
     stylePath = /home/${username}/.config/swayosd/style.css;
-    package = pkgs-unstable.swayosd;
+    package = pkgs.swayosd;
   };
   home.file.".config/swayosd/style.css".text = ''
     window#osd {

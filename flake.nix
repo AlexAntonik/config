@@ -12,19 +12,15 @@
   };
 
   outputs =
-    { nixpkgs, unstable, ... }@inputs:
+    { nixpkgs, ... }@inputs:
     let
-
       system = "x86_64-linux";
       host = "alex";
       profile = "amd";
       username = "alex";
-      pkgs-unstable = import unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in
     {
+      overlays = import ./overlays.nix {inherit inputs;};
       nixosConfigurations = {
         amd = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -33,7 +29,6 @@
             inherit username;
             inherit host;
             inherit profile;
-            inherit pkgs-unstable;
           };
           modules = [ ./profiles/amd ];
         };
@@ -44,7 +39,6 @@
             inherit username;
             inherit host;
             inherit profile;
-            inherit pkgs-unstable;
           };
           modules = [ ./profiles/nvidia ];
         };
@@ -55,7 +49,6 @@
             inherit username;
             inherit host;
             inherit profile;
-            inherit pkgs-unstable;
           };
           modules = [ ./profiles/nvidia-laptop ];
         };
@@ -66,7 +59,6 @@
             inherit username;
             inherit host;
             inherit profile;
-            inherit pkgs-unstable;
           };
           modules = [ ./profiles/intel ];
         };
@@ -77,7 +69,6 @@
             inherit username;
             inherit host;
             inherit profile;
-            inherit pkgs-unstable;
           };
           modules = [ ./profiles/vm ];
         };
