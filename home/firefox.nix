@@ -235,7 +235,7 @@ in
   programs.firefox = {
     enable = true;
 
-    package = pkgs.firefox-beta-bin;
+    package = pkgs.firefox-beta;
 
     profiles = {
       default = {
