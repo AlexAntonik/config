@@ -24,7 +24,7 @@
     unstable.code-cursor
     prismlauncher # Minecraft launcher
 
-    unstable.telegram-desktop # Instant messaging
+    telegram-desktop # Instant messaging
     # Development Tools
     unstable.vscode.fhs # Visual Studio Code with FHS environment
   ];
