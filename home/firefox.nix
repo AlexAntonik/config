@@ -4,7 +4,6 @@ let
 
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     darkreader
-    privacy-badger
     ublock-origin
     youtube-recommended-videos
   ];
