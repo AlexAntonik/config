@@ -72,6 +72,7 @@
     gawk # GNU awk
     #gh # GitHub CLI (enabled in home manager)
     htop # Simple terminal-based system monitor
+    tldr # Simplified man 
     imv # Image viewer
     inxi # System information tool
     killall # Command to kill processes
