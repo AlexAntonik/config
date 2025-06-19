@@ -3,14 +3,17 @@
   inputs,
   username,
   host,
-  profile,
   ...
 }:
 let
-  inherit (import ../hosts/${host}/variables.nix) gitUsername;
+  inherit (import ./variables.nix) gitUsername;
 in
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [ 
+    ./../../core
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -20,11 +23,10 @@ in
         inputs
         username
         host
-        profile
         ;
     };
     users.${username} = {
-      imports = [ ./../home ];
+      imports = [ ./../../home ];
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
@@ -40,12 +42,6 @@ in
       };
     };
   };
-
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  nixpkgs.overlays = [
-    inputs.nurpkgs.overlays.default
-  ] ++ (builtins.attrValues (import ./overlays.nix {inherit inputs;}));
 
   users.mutableUsers = true;
   users.users.${username} = {

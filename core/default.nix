@@ -17,7 +17,6 @@
     ./steam.nix
     ./stylix.nix
     ./system.nix
-    ./user.nix
     ./virtualisation.nix
     inputs.stylix.nixosModules.stylix
   ];

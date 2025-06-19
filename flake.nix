@@ -4,6 +4,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
@@ -16,25 +17,21 @@
     let
       system = "x86_64-linux";
       host = "alex";
-      profile = "amd";
       username = "alex";
-      commonSpecialArgs = {
-        inherit inputs username host profile;
-      };
-
-      mkSystem = profileName: nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = commonSpecialArgs;
-        modules = [ ./profiles/${profileName} ];
-      };
     in
     {
       nixosConfigurations = {
-        amd = mkSystem "amd";
-        nvidia = mkSystem "nvidia";
-        nvidia-laptop = mkSystem "nvidia-laptop";
-        intel = mkSystem "intel";
-        vm = mkSystem "vm";
+        ${host} = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit
+              inputs
+              username
+              host
+              ;
+          };
+          modules = [ ./hosts/${host} ];
+        };
       };
     };
 }
