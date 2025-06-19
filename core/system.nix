@@ -1,9 +1,10 @@
-{ host, ... }:
+{ host, inputs, ... }:
 let
   inherit (import ../hosts/${host}/variables.nix) consoleKeyMap;
 in
 {
   nix = {
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
       max-jobs = 2; 
       download-buffer-size = 250000000;
@@ -16,6 +17,11 @@ in
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
+
+  nixpkgs.overlays = [
+    inputs.nurpkgs.overlays.default
+  ] ++ (builtins.attrValues (import ./overlays.nix {inherit inputs;}));
+
   time.timeZone = "Europe/Minsk";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {

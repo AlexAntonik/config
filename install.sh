@@ -17,6 +17,16 @@ else
   exit
 fi
 
+echo "Before continuing installation, you must configure drivers."
+echo "Please open ./hosts/default/drivers.nix and follow the instructions inside the file."
+read -rp "Have you already configured drivers in ./hosts/default/drivers.nix? (y/n): " drivers_ready
+if [[ "$drivers_ready" != "y" && "$drivers_ready" != "Y" ]]; then
+  echo "Please configure drivers before continuing installation."
+  exit
+fi
+
+echo "-----"
+
 echo "Default options are in brackets []"
 echo "Just press enter to select the default"
 sleep 2
@@ -28,23 +38,9 @@ cd || exit
 
 echo "-----"
 
-read -rp "Enter Your New Hostname: [ default ] " hostName
+read -rp "Enter your new hostname: [ default ] " hostName
 if [ -z "$hostName" ]; then
   hostName="default"
-fi
-
-echo "-----"
-
-read -rp "Enter Your Hardware Profile (GPU)
-Options:
-[ amd ]
-nvidia
-nvidia-laptop
-intel
-vm
-Please type out your choice: " profile
-if [ -z "$profile" ]; then
-  profile="amd"
 fi
 
 echo "-----"
@@ -78,24 +74,6 @@ git add .
 git config --global --unset-all user.name
 git config --global --unset-all user.email
 sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./flake.nix
-sed -i "/^\s*profile[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$profile\"/" ./flake.nix
-
-
-read -rp "Enter your keyboard layout: [ us ] " keyboardLayout
-if [ -z "$keyboardLayout" ]; then
-  keyboardLayout="us"
-fi
-
-sed -i "/^\s*keyboardLayout[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$keyboardLayout\"/" ./hosts/$hostName/variables.nix
-
-echo "-----"
-
-read -rp "Enter your console keymap: [ us ] " consoleKeyMap
-if [ -z "$consoleKeyMap" ]; then
-  consoleKeyMap="us"
-fi
-
-sed -i "/^\s*consoleKeyMap[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$consoleKeyMap\"/" ./hosts/$hostName/variables.nix
 
 echo "-----"
 
@@ -113,4 +91,4 @@ NIX_CONFIG="experimental-features = nix-command flakes"
 
 echo "-----"
 
-sudo nixos-rebuild switch --flake ~/config/#${profile}
+sudo nixos-rebuild switch --flake ~/config/#${hostName}
