@@ -1,10 +1,6 @@
 <div align="center">
 
-# NixOS Configuration
-
-**And some dotFiles**
-
-**Inspired by [ZaneyOS](https://gitlab.com/Zaney/zaneyos)** 🙏
+## NixOS Configuration
 
 </div>
 
@@ -22,6 +18,9 @@ Run the installation:
 sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)
 ```
 
+> 🛠️ **After running the script for the first time, you must edit `/home/<your-username>/config/hosts/default/drivers.nix` to up your hardware modules.  
+> Only after that, run the installation script again to finish the setup!**
+
 ## ⚡ Quick Commands
 
 | Command | Description | Original Command |
@@ -35,4 +34,8 @@ sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/mas
 
 <div align="center">
 Made with ❤️ using NixOS
+
+**Inspired by [ZaneyOS](https://gitlab.com/Zaney/zaneyos)**
 </div>
+
+
