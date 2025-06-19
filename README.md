@@ -1,9 +1,3 @@
-<div align="center">
-
-## NixOS Configuration
-
-</div>
-
 ## 📥 Installation
 
 Get the required tools:
