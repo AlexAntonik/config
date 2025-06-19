@@ -29,7 +29,6 @@
       };
     in
     {
-      overlays = import ./overlays.nix {inherit inputs;};
       nixosConfigurations = {
         amd = mkSystem "amd";
         nvidia = mkSystem "nvidia";
