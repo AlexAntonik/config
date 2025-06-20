@@ -13,7 +13,6 @@ fi
 
 if command -v git &>/dev/null; then
   echo "Git is installed, continuing with installation."
-  echo "-----"
 else
   echo "Git is not installed. Please install Git and try again."
   echo "Example: nix-shell -p git"
