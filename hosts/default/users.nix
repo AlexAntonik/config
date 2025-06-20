@@ -10,7 +10,23 @@ let
 in
 {
   imports = [ 
-    ./../../core
+    ./../../core/boot.nix
+    ./../../core/fonts.nix
+    ./../../core/hardware.nix
+    ./../../core/protonvpnfix.nix   # ProtonVPN workaround
+    ./../../core/network.nix
+    ./../../core/nh.nix             # Nix helper
+    ./../../core/packages.nix
+    ./../../core/services.nix
+    ./../../core/starship.nix
+    ./../../core/git.nix
+    ./../../core/steam.nix
+    ./../../core/stylix.nix         # Stylix config
+    ./../../core/system.nix
+    ./../../core/virtualisation.nix
+
+    inputs.stylix.nixosModules.stylix # Stylix module for themes
+
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -26,7 +42,44 @@ in
         ;
     };
     users.${username} = {
-      imports = [ ./../../home ];
+      imports = [
+        # CLI utilities
+        ./../../home/bat.nix
+        ./../../home/btop.nix
+        ./../../home/emoji.nix
+        ./../../home/htop.nix
+        ./../../home/fastfetch
+        ./../../home/eza.nix
+        ./../../home/lazygit.nix
+        ./../../home/fzf.nix
+        ./../../home/yazi
+        ./../../home/zoxide.nix
+        ./../../home/gh.nix
+
+        # Applications
+        ./../../home/firefox.nix
+        ./../../home/virtmanager.nix
+
+        # Theming and appearance
+        ./../../home/gtk.nix
+        ./../../home/qt.nix
+        ./../../home/stylix.nix           # Stylix targets
+
+        # Desktop environment and panels
+        ./../../home/hyprland
+        ./../../home/waybar.nix
+        ./../../home/wlogout
+        ./../../home/rofi.nix
+        ./../../home/swaync.nix
+        ./../../home/swayosd.nix
+        ./../../home/ghostty.nix
+
+        # Scripts and some configs
+        ./../../home/scripts
+        ./../../home/xdg.nix
+        ./../../home/zsh
+        ./../../home/nvf.nix
+      ];
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
