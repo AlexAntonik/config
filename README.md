@@ -1,5 +1,9 @@
 ## 📥 Installation
 
+> **Requirements:**  
+> - You must have installed NixOS using a GPT partition table and booted with UEFI.  
+> - Your EFI/boot partition should be at least **256MB** (ideally **512MB**).
+
 1. **Install required tools:**
 
    ```bash

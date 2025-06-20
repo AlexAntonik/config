@@ -32,7 +32,7 @@
             },
             "options": {
                 "nixos": {
-                    "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.amd.options"
+                    "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.alex.options"
                 },
                 "home_manager": {
                     "expr": "(builtins.getFlake \"/home/alex/config\").inputs.home-manager.lib"
