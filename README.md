@@ -42,6 +42,7 @@
 
 <div align="center">
 Made with ❤️ using NixOS  
+
 Inspired by [ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 </div>
 
