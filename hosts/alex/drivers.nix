@@ -1,17 +1,10 @@
-{
-  inputs,
-  ...
-}:
-{
+{inputs, ...}: {
   imports = [
     # If you can find your hardware in the nixos-hardware
     # https://github.com/NixOS/nixos-hardware/tree/master
     # just this import would be enough for whole this file
 
-
     # inputs.nixos-hardware.nixosModules.dell-xps-13-9380
-
-
 
     # In other case you need import your hardware by modules
     # uncomment that you need, you can find some
