@@ -20,8 +20,9 @@
    > Follow the instructions the script provides.
 
 3. **Edit your hardware drivers:**
-   - Open `/home/<your-username>/config/hosts/default/drivers.nix`
-   - Uncomment and configure the modules for your hardware as described in the file.
+
+    - Open `/home/<your-username>/config/hosts/<your-hostname>/drivers.nix`  
+    - Uncomment and configure the modules for your hardware as described in the file.
 
 4. **Run the installation script again to finish setup:**
 
