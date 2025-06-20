@@ -1,4 +1,4 @@
-## 📥 Installation
+# 📥 Installation
 
 > **Requirements:**  
 >
@@ -17,20 +17,11 @@
    sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)
    ```
 
-   > Follow the instructions the script provides.
-
-3. **Edit your hardware drivers:**
-
-    - Open `/home/<your-username>/config/hosts/<your-hostname>/drivers.nix`  
-    - Uncomment and configure the modules for your hardware as described in the file.
-
-4. **Run the installation script again to finish setup:**
-
-   ```bash
-   sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)
-   ```
-
----
+   > The script will:
+   > - Ask you for a hostname (or use the previous one if already set)
+   > - Clone the repository and prepare your config
+   > - Prompt you to open `/home/<your-username>/config/hosts/<your-hostname>/drivers.nix`
+   > - You **must** uncomment and configure the modules for your hardware as described in the file before continuing
 
 ## ⚡ Quick Commands
 
