@@ -170,6 +170,6 @@ in
     #Changing kb layout
     input.kb_options = "caps:escape,grp:win_space_toggle";
     # also need to be changed here in binds up some lines
-    # and in sevices.xserver.xkb in separate file services.nix in core
+    # and in sevices.xserver.xkb in separate file services.nix
   };
 }
