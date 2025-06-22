@@ -10,20 +10,21 @@ let
 in
 {
   imports = [ 
-    ./../../core/boot.nix
-    ./../../core/fonts.nix
-    ./../../core/hardware.nix
-    ./../../core/protonvpnfix.nix   # ProtonVPN workaround
-    ./../../core/network.nix
-    ./../../core/nh.nix             # Nix helper
-    ./../../core/packages.nix
-    ./../../core/services.nix
-    ./../../core/starship.nix
-    ./../../core/git.nix
-    ./../../core/steam.nix
-    ./../../core/stylix.nix         # Stylix config
-    ./../../core/system.nix
-    ./../../core/virtualisation.nix
+    ./../../system/boot.nix
+    ./../../system/fonts.nix
+    ./../../system/hardware.nix
+    ./../../system/protonvpnfix.nix   # ProtonVPN workaround
+    ./../../system/network.nix
+    ./../../system/nh.nix             # Nix helper
+    ./../../system/packages.nix
+    ./../../system/services.nix
+    ./../../system/starship.nix
+    ./../../system/git.nix
+    ./../../system/steam.nix
+    ./../../system/stylix.nix         # Stylix config
+    ./../../system/time.nix
+    ./../../system/nix.nix
+    ./../../system/virtualisation.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 

@@ -38,10 +38,9 @@ let
     #tabbrowser-tabs {
       border-inline-start: none !important;
     }
-    /* Убрать спейсеры до и после вкладок */
     .titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] {
       display: none !important;
-      width: 5px !important; /* Корректировка ширины, если потребуется */
+      width: 5px !important;
     }
   '';
 
@@ -234,7 +233,7 @@ in
   programs.firefox = {
     enable = true;
 
-    package = pkgs.firefox-beta;
+    package = pkgs.firefox-bin;
 
     profiles = {
       default = {
