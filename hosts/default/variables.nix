@@ -10,7 +10,7 @@
   clock24h = true;
 
   # Program Options
-  browser = "firefox-beta"; # Set Default Browser (google-chrome-stable for google-chrome)
+  browser = "firefox"; # Set Default Browser (google-chrome-stable for google-chrome)
   terminal = "ghostty"; # Set Default System Terminal
   keyboardLayout = "us,ru";
 
