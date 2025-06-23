@@ -189,6 +189,10 @@ let
         url = "https://coinmarketcap.com/";
         label = "CMC";
       }
+      {
+        url = "http://localhost:8384/#";
+        label = "Syncthing";
+      }      
     ];
 
     "distribution.searchplugins.defaultLocale" = "en-US";

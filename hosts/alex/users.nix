@@ -24,6 +24,7 @@ in
     ./../../system/stylix.nix         # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
+    ./../../system/syncthing.nix
     ./../../system/virtualisation.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
