@@ -6,26 +6,36 @@
   home = {
     packages = [
       (pkgs.writeShellScriptBin "clipboard-manager" ''
-                #!/usr/bin/env bash
+        #!/usr/bin/env bash
 
-                tmp_dir="/tmp/cliphist"
-                rm -rf "$tmp_dir"
+        # Clipboard history manager with image preview support
+        # Uses cliphist, rofi, and wl-clipboard for Wayland environments
 
-                if [[ -n "$1" ]]; then
-                    cliphist decode <<< "$1" | ${pkgs.wl-clipboard}/bin/wl-copy
-                    exit
-                fi
+        tmp_dir="/tmp/cliphist"
+        rm -rf "$tmp_dir"
 
-                mkdir -p "$tmp_dir"
-                chmod 755 "$tmp_dir"
+        # If argument provided, decode and copy directly
+        if [[ -n "$1" ]]; then
+            cliphist decode <<< "$1" | ${pkgs.wl-clipboard}/bin/wl-copy
+            exit
+        fi
 
-                read -r -d "" prog << "EOF"
-        /^[0-9]+\s<meta http-equiv=/ { next }
-        # Match images with size and resolution
+        # Setup temporary directory for image files
+        mkdir -p "$tmp_dir"
+        chmod 755 "$tmp_dir"
+
+        # AWK program to process clipboard entries
+        read -r -d "" prog << "EOF"
+        /^[0-9]+\s<meta http-equiv=/ { 
+            next 
+        }
+
+        # Match images with size and resolution metadata
         match($0, /^([0-9]+)\s+\[\[\s*binary data\s+([0-9.]+)\s*(KiB|MiB|B)\s+(png|jpg|jpeg|bmp)\s+([0-9]+)x([0-9]+)/, grp) {
             img_path = tmp_dir "/" grp[1] "." grp[4]
             cmd = "echo " grp[1] " | tr -d '\\t\\n' | cliphist decode > \"" img_path "\" && chmod 644 \"" img_path "\""
             system(cmd)
+            
             if (system("test -f \"" img_path "\"") == 0) {
                 orig = $0
                 # Replace display text but keep original line in orig variable
@@ -36,11 +46,13 @@
             }
             next
         }
+
         # Match images without full metadata
         match($0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
             img_path = tmp_dir "/" grp[1] "." grp[3]
             cmd = "echo " grp[1] " | tr -d '\\t\\n' | cliphist decode > \"" img_path "\" && chmod 644 \"" img_path "\""
             system(cmd)
+            
             if (system("test -f \"" img_path "\"") == 0) {
                 orig = $0
                 # Replace display text but keep original line in orig variable
@@ -50,6 +62,7 @@
             }
             next
         }
+
         # For non-image entries, strip the leading number
         {
             if (match($0, /^[0-9]+\s+(.*)/, arr)) {
@@ -60,29 +73,29 @@
         }
         EOF
 
-                # Get selection from cliphist using rofi
-                export tmp_dir
-                selection=$(cliphist list | ${pkgs.gawk}/bin/gawk -v tmp_dir="$tmp_dir" "$prog" | ${pkgs.rofi-wayland}/bin/rofi -dmenu -i -p "Clipboard" -show-icons)
+        # Get selection from cliphist using rofi
+        export tmp_dir
+        selection=$(cliphist list | ${pkgs.gawk}/bin/gawk -v tmp_dir="$tmp_dir" "$prog" | ${pkgs.rofi-wayland}/bin/rofi -dmenu -i -p "Clipboard" -show-icons)
 
-                # Exit if nothing was selected
-                [ -z "$selection" ] && exit
+        # Exit if nothing was selected
+        [ -z "$selection" ] && exit
 
-                # If selection contains a tab character, it's an image entry with the original line after the tab
-                if [[ "$selection" =~ ^🖼️ ]]; then
-                    selection=$(echo "$selection" | sed -E 's/^[^\t]+\t+//')
-                # For non-image entries, we need to find the original ID
-                elif [[ ! "$selection" =~ ^\[[[:space:]]*binary[[:space:]]data ]] && [[ ! "$selection" =~ ^[0-9]+[[:space:]] ]]; then
-                    # Get the original entry with ID from cliphist
-                    orig_selection=$(cliphist list | grep -F -m1 "$selection")
-                    if [ -n "$orig_selection" ]; then
-                        selection=$orig_selection
-                    fi
-                fi
+        # Process different types of selections
+        if [[ "$selection" =~ ^🖼️ ]]; then
+            # Image entry - extract original line after tabs
+            selection=$(echo "$selection" | sed -E 's/^[^\t]+\t+//')
+        elif [[ ! "$selection" =~ ^\[[[:space:]]*binary[[:space:]]data ]] && [[ ! "$selection" =~ ^[0-9]+[[:space:]] ]]; then
+            # Non-image entry without ID - find original entry with ID from cliphist
+            orig_selection=$(cliphist list | grep -F -m1 "$selection")
+            if [ -n "$orig_selection" ]; then
+                selection=$orig_selection
+            fi
+        fi
 
-                # Copy selection to clipboard and simulate paste 
-                cliphist decode <<< "$selection" | ${pkgs.wl-clipboard}/bin/wl-copy
-                sleep 0.02 # ⏳ 0.02 pstree -p | grep sudo  
-                ${pkgs.wtype}/bin/wtype -M ctrl -k v -m ctrl
+        # Copy selection to clipboard and simulate paste
+        cliphist decode <<< "$selection" | ${pkgs.wl-clipboard}/bin/wl-copy
+        sleep 0.02  # Brief delay for clipboard sync
+        ${pkgs.wtype}/bin/wtype -M ctrl -k v -m ctrl
       '')
     ];
   };
