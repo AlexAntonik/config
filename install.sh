@@ -80,13 +80,13 @@ if [ ! -d "$HOME/config" ]; then
     git add . || echo -e "${RED}Warning: git add failed${NC}"
     git config --global --unset-all user.name 2>/dev/null || true
     git config --global --unset-all user.email 2>/dev/null || true
-    echo -e "${CYAN}Updating flake.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./flake.nix; then
-        echo -e "${RED}Warning: failed to update hostname in flake.nix${NC}"
+    echo -e "${CYAN}Updating local.nix with hostname and username...${NC}"
+    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./local.nix; then
+        echo -e "${RED}Warning: failed to update hostname in local.nix${NC}"
     fi
     echo
-    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./flake.nix; then
-        echo -e "${RED}Warning: failed to update username in flake.nix${NC}"
+    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./local.nix; then
+        echo -e "${RED}Warning: failed to update username in local.nix${NC}"
     fi
     echo
     echo -e "${CYAN}Generating The Hardware Configuration${NC}"
