@@ -13,25 +13,16 @@
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
+    inputs:
     let
-      system = "x86_64-linux";
-      host = "alex";
-      username = "alex";
+      inherit (import ./local.nix) system host username;
+      specialArgs = { inherit inputs username host; };
     in
     {
-      nixosConfigurations = {
-        ${host} = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit
-              inputs
-              username
-              host
-              ;
-          };
-          modules = [ ./hosts/${host} ];
-        };
+      nixosConfigurations.${host} = inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = specialArgs;
+        modules = [ ./hosts/${host} ];
       };
     };
 }
