@@ -22,7 +22,7 @@ with lib;
         modules-center = [
         ];
         modules-left = [
-          "group/control"
+          "idle_inhibitor"
           "pulseaudio"
           "group/cpu"
           "group/memory"
@@ -204,37 +204,14 @@ with lib;
           };
           on-click = "sleep 0.1 && pavucontrol";
         };
-        "custom/exit" = {
-          tooltip = false;
-          format = "";
-          on-click = "sleep 0.1 && wlogout";
-        };
-        "custom/startmenu" = {
-          tooltip = false;
-          format = "";
-          # exec = "rofi -show drun";
-          # on-click = "sleep 0.1 && rofi-launcher";
-          on-click = "sleep 0.1 && nwg-drawer";
-        };
         "idle_inhibitor" = {
           format = "{icon}";
+          on-click-right = "sleep 0.1 && wlogout";
           format-icons = {
-            activated = "<span color='#ff9977'>󰈈</span>";
-            deactivated = "󰈉";
+            activated = "<span color='#ff9977'> 󰈈</span>";
+            deactivated = "";
           };
           tooltip = "true";
-        };
-        "group/control" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            transition-left-to-right = true;
-          };
-          modules = [
-            "custom/startmenu"
-            "custom/exit"
-            "idle_inhibitor"
-          ];
         };
         "custom/notification" = {
           tooltip = false;
@@ -375,11 +352,15 @@ with lib;
           color: #${config.lib.stylix.colors.base0D};
         }
 
-        #custom-startmenu, #idle_inhibitor, #custom-exit, #pulseaudio, #cpu.icon, #memory.icon, #network.icon, #battery.icon {
+        #idle_inhibitor, #pulseaudio, #cpu.icon, #memory.icon, #network.icon, #battery.icon {
           padding-right: 0px;
           padding-left: 0px;
           margin-left: 12px;
           margin-right: 0px;
+        }
+
+        #idle_inhibitor {
+          padding-left: 4px;
         }
 
         #cpu.usage, #memory.usage, #network.speed, #battery.left {
@@ -387,10 +368,6 @@ with lib;
           padding-left: 0px;
           margin-left: 0px;
           margin-right: 0px;
-        }
-
-        #custom-startmenu {
-          padding-left: 4px;
         }
 
         #language {
