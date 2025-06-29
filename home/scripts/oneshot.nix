@@ -27,22 +27,6 @@ pkgs.writeShellScriptBin "oneshot" ''
     ln -s "$real_source" "$target"
   }
 
-  # Function to update drawer.css background color
-  update_drawer_css() {
-    local css_file="$HOME/.config/nwg-drawer/drawer.css"
-    local new_color="rgba(88, 88, 88, 0.95)"
-    
-    if [ -f "$css_file" ]; then
-      # Create backup
-      cp "$css_file" "$css_file.backup"
-      # Replace background-color in window selector
-      sed -i "s/background-color: rgba([0-9]\+,[ ]*[0-9]\+,[ ]*[0-9]\+,[ ]*[0-9.]\+)/background-color: $new_color/" "$css_file"
-      echo "Updated drawer.css background color"
-    else
-      echo "Warning: $css_file not found"
-    fi
-  }
-
   # Ensure target directory exists
   mkdir -p "$HOME/.config/Code/User"
 
@@ -50,6 +34,4 @@ pkgs.writeShellScriptBin "oneshot" ''
   create_symlink "$HOME/config/dotfiles/vscode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
   create_symlink "$HOME/config/dotfiles/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
 
-  # Update drawer.css
-  update_drawer_css
 ''
