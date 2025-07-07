@@ -38,6 +38,12 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
 
+
+  # AMD has better battery life with PPD over TLP:
+  # https://community.frame.work/t/responded-amd-7040-sleep-states/38101/13
+  # services.power-profiles-daemon.enable = true;
+
+  
   # In some cases you may need to
   # add some additional hardware configurations
   # for examples find similar hardware in

@@ -8,6 +8,8 @@ in {
     enable = true;
     settings = settings;
     keymap = keymap;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
     theme = theme;
     plugins = {
       lazygit = pkgs.yaziPlugins.lazygit;
