@@ -3,6 +3,7 @@ format = """
 [─](fg:current_line)[](fg:yellow)[ ](fg:primary bg:yellow)\
 $sudo\
 $username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -86,7 +87,7 @@ Unknown = ''
 Windows = ''
 
 [directory]
-format = '[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[](fg:pink bg:box)[$read_only]($read_only_style bg:box)[ $truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+format = '[](fg:box)[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[](fg:pink bg:box)[$read_only]($read_only_style bg:box)[ $truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
 home_symbol = "~"
 truncation_symbol = '…/'
 truncation_length = 4
@@ -189,7 +190,7 @@ time_format = '%H:%M:%S'
 disabled = false
 
 [username]
-format = '[](fg:yellow bg:box)[ $user](fg:foreground bg:box)[](fg:box)'
+format = '[](fg:yellow bg:box)[ $user](fg:foreground bg:box)'
 show_always = true
 
 [character]
