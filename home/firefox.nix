@@ -205,11 +205,11 @@ let
     "general.autoScroll" = true;
     "general.useragent.locale" = "en-US";
 
-    "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+    "extensions.activeThemeID" = "{9631ec37-35f2-4719-815e-2f84ff28b901}";
 
     "extensions.pocket.enabled" = false;
 
-    "extensions.extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+    "extensions.extensions.activeThemeID" = "{9631ec37-35f2-4719-815e-2f84ff28b901}";
     "extensions.update.enabled" = false;
     "extensions.webcompat.enable_picture_in_picture_overrides" = true;
     "extensions.webcompat.enable_shims" = true;
