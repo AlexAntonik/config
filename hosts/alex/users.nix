@@ -13,7 +13,6 @@ in
     ./../../system/boot.nix
     ./../../system/fonts.nix
     ./../../system/hardware.nix
-    ./../../system/protonvpnfix.nix   # ProtonVPN workaround
     ./../../system/network.nix
     ./../../system/nh.nix             # Nix helper
     ./../../system/packages.nix
@@ -24,8 +23,8 @@ in
     ./../../system/stylix.nix         # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
-    ./../../system/syncthing.nix
     ./../../system/virtualisation.nix
+    ./syncthing.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 

@@ -12,17 +12,17 @@ let
     ;
 in
 {
-  home.packages =
-    with pkgs; [
-      swww
-      grim
-      slurp
-      wl-clipboard
-      swappy
-      hyprpolkitagent
-      ydotool
-      unstable.hyprland-qtutils # needed for banners and ANR messages
-    ];
+  home.packages = with pkgs; [
+    swww
+    grim
+    slurp
+    wl-clipboard
+    swappy
+    hyprpicker # Color picker
+    hyprpolkitagent
+    ydotool
+    unstable.hyprland-qtutils # needed for banners and ANR messages
+  ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
@@ -44,7 +44,7 @@ in
     # enableNvidiaPatches = false;
 
     settings = {
-      
+
       ecosystem = {
         no_donation_nag = true;
         no_update_news = false;
