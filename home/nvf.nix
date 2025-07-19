@@ -100,7 +100,7 @@
       spellcheck = {
         enable = true;
         languages = ["en"];
-        programmingWordlist.enable = true;
+        programmingWordlist.enable = false;
       };
 
       lsp = {
