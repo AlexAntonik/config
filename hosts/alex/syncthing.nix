@@ -18,6 +18,11 @@
       folders = {
         "Notes" = {
           path = "/home/${username}/notes";
+          devices = [ "dell" ];
+        };
+        "Server" = {
+          path = "/home/${username}/projects/srv";
+          devices = [ "dell" ];
         };
       };
     };
