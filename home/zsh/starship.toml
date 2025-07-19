@@ -193,6 +193,10 @@ disabled = false
 format = '[](fg:yellow bg:box)[ $user](fg:foreground bg:box)'
 show_always = true
 
+[hostname]
+format = '[$ssh_symbol$hostname](fg:foreground bg:box)'
+ssh_symbol = '@'
+
 [character]
 format = """
 [╰─$symbol](fg:current_line) """
