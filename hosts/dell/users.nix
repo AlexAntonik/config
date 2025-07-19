@@ -23,9 +23,9 @@ in
     ./../../system/steam.nix
     ./../../system/stylix.nix         # Stylix config
     ./../../system/time.nix
-    ./../../system/syncthing.nix
     ./../../system/nix.nix
     ./../../system/virtualisation.nix
+    ./syncthing.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 

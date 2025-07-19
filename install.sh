@@ -39,7 +39,7 @@ if [ ! -f "$HOME/.nixos-hostname" ]; then
     sleep 2
     echo "-----"
     echo
-    read -e -p "$(echo -e "${QUESTION}Enter your new hostname: [ default ] ${NC}")" hostName
+    read -e -p "$(echo -e "${QUESTION}Enter your new hostname:  ${NC}")" hostName
     if [ -z "$hostName" ]; then
         hostName="default"
     fi

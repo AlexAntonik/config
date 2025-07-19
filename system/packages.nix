@@ -45,12 +45,6 @@
     nixfmt-rfc-style # Nix code formatter
     pkg-config # Package configuration tool
 
-    # Desk apps
-    vlc
-    protonvpn-gui # ProtonVPN client
-    # vesktop #discord alternative web thingne
-    zathura # PDF viewer
-
     # Bluetooth
     bluez-alsa # Bluetooth ALSA support
     bluez # Bluetooth utilities
@@ -89,6 +83,7 @@
     jq # Command-line JSON processor
     ripgrep # Fast search tool
     socat # Multipurpose relay
+    sops # Securely edit files with encryption
     unrar # RAR archive extractor
     unzip # ZIP archive extractor
     usbutils # USB utilities
@@ -96,10 +91,6 @@
     wget # Network downloader
     wtype # typing thing
     # lazygit # Terminal-based Git interface
-    ytmdl # YouTube music downloader
-
-    # Media
-    mpv # Media player
 
     # Virtualization
     libvirt # Virtualization library
@@ -107,6 +98,5 @@
 
     # Miscellaneous
     greetd.tuigreet # The login manager (sometimes referred to as display manager)
-    hyprpicker # Color picker
   ];
 }
