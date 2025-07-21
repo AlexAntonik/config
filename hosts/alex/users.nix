@@ -27,8 +27,6 @@ in
     ./syncthing.nix
     # ./sync.nix
 
-    ./../../home/scripts/chowning.nix
-
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 
     inputs.home-manager.nixosModules.home-manager
