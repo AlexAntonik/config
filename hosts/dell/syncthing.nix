@@ -2,13 +2,14 @@
 {
   services.syncthing = {
     enable = true;
-    key = "/home/${username}/.config/syncthing/keys/key.pem";
-    cert = "/home/${username}/.config/syncthing/keys/cert.pem";
+    key = "/var/lib/syncthing/.config/syncthing/keys/key.pem";
+    cert = "/var/lib/syncthing/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
     extraFlags = [ "--no-default-folder" ];
-    dataDir = "/home/${username}/.local/share/syncthing";
-    configDir = "/home/${username}/.config/syncthing";
-    user = "${username}";
+    dataDir = "/var/lib/syncthing/.local/share/syncthing";
+    configDir = "/var/lib/syncthing/.config/syncthing";
+    user = "root";
+    group = "root";
     settings = {
       devices = {
         "asus" = {
@@ -19,10 +20,19 @@
         "Notes" = {
           path = "/home/${username}/notes";
           devices = [ "asus" ];
+          ignorePermissions = true;
         };
         "Server" = {
-          path = "/home/${username}/projects/srv";
+          path = "/srv/supabase/";
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600";
+              maxAge = "15768000";
+            };
+          };
           devices = [ "asus" ];
+          ignorePermissions = true;
         };
       };
     };
