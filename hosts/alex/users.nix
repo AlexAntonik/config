@@ -25,6 +25,10 @@ in
     ./../../system/time.nix
     ./../../system/virtualisation.nix
     ./syncthing.nix
+    # ./sync.nix
+
+
+    ./../../home/scripts/chowning.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 
