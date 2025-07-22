@@ -13,7 +13,6 @@ in
     ./../../system/boot.nix
     ./../../system/fonts.nix
     ./../../system/hardware.nix
-    ./../../system/protonvpnfix.nix   # ProtonVPN workaround
     ./../../system/network.nix
     ./../../system/nh.nix             # Nix helper
     ./../../system/packages.nix
@@ -27,8 +26,6 @@ in
     ./../../system/virtualisation.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
-
-    inputs.sops-nix.nixosModules.sops # SOPS-Nix module for encrypted secrets
 
     inputs.home-manager.nixosModules.home-manager
   ];
