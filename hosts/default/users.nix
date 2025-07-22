@@ -9,27 +9,27 @@ let
   inherit (import ./variables.nix) gitUsername;
 in
 {
-  imports = [ 
+  imports = [
     ./../../system/boot.nix
-    ./../../system/boot-visuals.nix      # Boot visuals and login manager
+    ./../../system/boot-visuals.nix # Boot visuals and login manager
     ./../../system/fonts.nix
-    ./../../system/desktop-hardware.nix  # Desktop hardware configuration
-    ./../../system/desktop-pkgs.nix      # Desktop system packages
-    ./../../system/desktop-services.nix  # Desktop services & utils for keyboard,hyprland
-    ./../../system/desktop-network.nix   # Desktop network configuration
-    ./../../system/thunar.nix            # Desktop file manager
-    ./../../system/media.nix             # Audio and multimedia configuration and pkgs
-    ./../../system/printing.nix          # Printing configuration
-    ./../../system/bluetooth.nix         # Bluetooth configuration
-    ./../../system/nh.nix                # Nix helper
-    ./../../system/utilities.nix         # TUI utilities and tools
-    ./../../system/ssh.nix               # SSH configuration
-    ./../../system/security.nix          # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix          # General services (Journald, Fstrim, etc.)
+    ./../../system/desktop-hardware.nix # Desktop hardware configuration
+    ./../../system/desktop-pkgs.nix # Desktop system packages
+    ./../../system/desktop-services.nix # Desktop services & utils for keyboard,hyprland
+    ./../../system/desktop-network.nix # Desktop network configuration
+    ./../../system/thunar.nix # Desktop file manager
+    ./../../system/media.nix # Audio and multimedia configuration and pkgs
+    ./../../system/printing.nix # Printing configuration
+    ./../../system/bluetooth.nix # Bluetooth configuration
+    ./../../system/nh.nix # Nix helper
+    ./../../system/utilities.nix # TUI utilities and tools
+    ./../../system/ssh.nix # SSH configuration
+    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/steam.nix
-    ./../../system/stylix.nix            # Stylix config
+    ./../../system/stylix.nix # Stylix config
     ./../../system/time.nix
     ./../../system/nix.nix
     ./../../system/docker.nix
@@ -73,7 +73,7 @@ in
         # Theming and appearance
         ./../../home/gtk.nix
         ./../../home/qt.nix
-        ./../../home/stylix.nix           # Stylix targets
+        ./../../home/stylix.nix # Stylix targets
 
         # Desktop environment and panels
         ./../../home/hyprland
@@ -85,7 +85,7 @@ in
         ./../../home/ghostty.nix
 
         # Scripts and some configs
-        ./../../home/scripts
+        ./../../home/scripts/clipboard.nix # Fancy clipboard manager for Rofi
         ./../../home/xdg.nix
         ./../../home/zsh
         ./../../home/nvf.nix
@@ -94,6 +94,34 @@ in
         username = "${username}";
         homeDirectory = "/home/${username}";
 
+        # Home scripts and utilities
+        packages = [
+          (import ./emopicker9000.nix { inherit pkgs; })
+          (import ./task-waybar.nix { inherit pkgs; })
+          (import ./nvidia-offload.nix { inherit pkgs; })
+          (import ./wallsetter.nix {
+            inherit pkgs;
+            inherit username;
+          })
+          (import ./syncsupprep.nix {
+            inherit pkgs;
+            inherit username;
+          })
+          (import ./toggleTouchpad.nix {
+            inherit pkgs;
+            inherit host;
+          })
+          (import ./toggleDisplay.nix {
+            inherit pkgs;
+            inherit host;
+          })
+          (import ./rofi-launcher.nix { inherit pkgs; })
+          (import ./hm-find.nix { inherit pkgs; })
+          (import ./screenshootin.nix { inherit pkgs; })
+          (import ./oneshot.nix { inherit pkgs; })
+          (import ./toggleXWaylandScale.nix { inherit pkgs; })
+        ];
+
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
         # introduces backwards incompatible changes.
@@ -101,10 +129,15 @@ in
         # You should not change this value, even if you update Home Manager. If you do
         # want to update the value, then make sure to first check the Home Manager
         # release notes.
-        stateVersion = "24.11"; #READ COMMENT
+        stateVersion = "25.05"; # READ COMMENT
       };
     };
   };
+
+  # This option defines the first version of NixOS you have installed on
+  # this particular machine, and is used to maintain compatibility with
+  # application data (e.g. databases) created on older NixOS versions.
+  system.stateVersion = "25.05"; # Do not change!
 
   users.mutableUsers = true;
   users.users.${username} = {
