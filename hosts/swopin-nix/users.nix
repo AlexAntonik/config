@@ -4,22 +4,20 @@
   username,
   host,
   ...
-}:
-let
+}: let
   inherit (import ./variables.nix) gitUsername;
-in
-{
-  imports = [ 
-   # ./../../system/boot.nix
+in {
+  imports = [
+    # ./../../system/boot.nix
     ./../../system/fonts.nix
     ./../../system/hardware.nix
-   # ./../../system/network.nix
-    ./../../system/nh.nix             # Nix helper
+    # ./../../system/network.nix
+    ./../../system/nh.nix # Nix helper
     ./../../system/packages.nix
     ./../../system/services.nix
     ./../../system/starship.nix
     ./../../system/git.nix
-    ./../../system/stylix.nix         # Stylix config
+    ./../../system/stylix.nix # Stylix config
     ./../../system/time.nix
     ./../../system/nix.nix
     ./../../system/virtualisation.nix
@@ -53,10 +51,10 @@ in
         ./../../home/fzf.nix
         ./../../home/yazi
         ./../../home/zoxide.nix
-        ./../../home/gh.nix
+        #        ./../../home/gh.nix
 
         # Theming and appearance
-        ./../../home/stylix.nix           # Stylix targets
+        ./../../home/stylix.nix # Stylix targets
 
         # Desktop environment and panels
         ./../../home/ghostty.nix
@@ -99,5 +97,5 @@ in
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${username}" ];
+  nix.settings.allowed-users = ["${username}"];
 }
