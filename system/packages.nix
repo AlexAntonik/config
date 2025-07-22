@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   programs = {
     dconf.enable = true; # Configuration editor
     seahorse.enable = true; # Password manager
@@ -28,7 +24,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-
     # Programming languages
     go # Go programming language
     nixd # Nix LSP
@@ -64,9 +59,9 @@
     ffmpeg # Terminal video/audio editing
     file-roller # Archive manager
     gawk # GNU awk
-    #gh # GitHub CLI (enabled in home manager)
+    gh # GitHub CLI (enabled in home manager)
     htop # Simple terminal-based system monitor
-    tldr # Simplified man 
+    tldr # Simplified man
     imv # Image viewer
     inxi # System information tool
     killall # Command to kill processes
