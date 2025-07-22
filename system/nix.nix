@@ -14,15 +14,10 @@
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
-  
+
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
     inputs.nurpkgs.overlays.default
   ] ++ (builtins.attrValues (import ./overlays.nix { inherit inputs; }));
-
-  # This option defines the first version of NixOS you have installed on
-  # this particular machine, and is used to maintain compatibility with
-  # application data (e.g. databases) created on older NixOS versions.
-  system.stateVersion = "23.11"; # Do not change!
 }

@@ -86,7 +86,7 @@ in
         ./../../home/ghostty.nix
 
         # Scripts and some configs
-        ./../../home/scripts
+        ./../../home/scripts/clipboard.nix
         ./../../home/xdg.nix
         ./../../home/zsh
         ./../../home/nvf.nix
@@ -94,6 +94,34 @@ in
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
+
+        # Home scripts and utilities
+        packages = [
+          (import ./emopicker9000.nix { inherit pkgs; })
+          (import ./task-waybar.nix { inherit pkgs; })
+          (import ./nvidia-offload.nix { inherit pkgs; })
+          (import ./wallsetter.nix {
+            inherit pkgs;
+            inherit username;
+          })
+          (import ./syncsupprep.nix {
+            inherit pkgs;
+            inherit username;
+          })
+          (import ./toggleTouchpad.nix {
+            inherit pkgs;
+            inherit host;
+          })
+          (import ./toggleDisplay.nix {
+            inherit pkgs;
+            inherit host;
+          })
+          (import ./rofi-launcher.nix { inherit pkgs; })
+          (import ./hm-find.nix { inherit pkgs; })
+          (import ./screenshootin.nix { inherit pkgs; })
+          (import ./oneshot.nix { inherit pkgs; })
+          (import ./toggleXWaylandScale.nix { inherit pkgs; })
+        ];
 
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
@@ -106,6 +134,11 @@ in
       };
     };
   };
+
+  # This option defines the first version of NixOS you have installed on
+  # this particular machine, and is used to maintain compatibility with
+  # application data (e.g. databases) created on older NixOS versions.
+  system.stateVersion = "23.11"; # Do not change!
 
   users.mutableUsers = true;
   users.users.${username} = {

@@ -43,7 +43,6 @@ in {
         # CLI utilities
         ./../../home/bat.nix
         ./../../home/btop.nix
-        ./../../home/emoji.nix
         ./../../home/htop.nix
         ./../../home/fastfetch
         ./../../home/eza.nix
@@ -56,13 +55,21 @@ in {
         ./../../home/stylix.nix # Stylix targets
 
         # Scripts and some configs
-        ./../../home/scripts
         ./../../home/zsh
         ./../../home/nvf.nix
       ];
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
+
+        # Home scripts and utilities
+        packages = [
+          (import ./syncsupprep.nix {
+            inherit pkgs;
+            inherit username;
+          })
+          (import ./hm-find.nix { inherit pkgs; })
+        ];
 
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
@@ -76,7 +83,13 @@ in {
     };
   };
 
+  # This option defines the first version of NixOS you have installed on
+  # this particular machine, and is used to maintain compatibility with
+  # application data (e.g. databases) created on older NixOS versions.
+  system.stateVersion = "23.11"; # Do not change!
+
   users.mutableUsers = true;
+  users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILUSJwUYV0e+h3Rj4+YvrsqHuolIh45KHg9Lttid1+KI alex@alex'' ];
   users.users.${username} = {
     isNormalUser = true;
     description = "${gitUsername}";
