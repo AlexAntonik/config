@@ -11,19 +11,29 @@ in
 {
   imports = [ 
     ./../../system/boot.nix
+    ./../../system/boot-visuals.nix      # Boot visuals and login manager
     ./../../system/fonts.nix
-    ./../../system/hardware.nix
-    ./../../system/network.nix
-    ./../../system/nh.nix             # Nix helper
-    ./../../system/packages.nix
-    ./../../system/services.nix
+    ./../../system/desktop-hardware.nix  # Desktop hardware configuration
+    ./../../system/desktop-services.nix  # Desktop services & utils for keyboard,hyprland
+    ./../../system/desktop-pkgs.nix      # Desktop system packages
+    ./../../system/desktop-network.nix   # Desktop network configuration
+    ./../../system/thunar.nix            # Desktop file manager
+    ./../../system/media.nix             # Audio and multimedia configuration and pkgs
+    ./../../system/printing.nix          # Printing configuration
+    ./../../system/bluetooth.nix         # Bluetooth configuration
+    ./../../system/nh.nix                # Nix helper
+    ./../../system/utilities.nix         # TUI utilities and tools
+    ./../../system/ssh.nix               # SSH configuration
+    ./../../system/security.nix          # Security settings (Polkit, RTkit, PAM)
+    ./../../system/services.nix          # General services (Journald, Fstrim, etc.)
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/steam.nix
-    ./../../system/stylix.nix         # Stylix config
+    ./../../system/stylix.nix            # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
-    ./../../system/virtualisation.nix
+    ./../../system/docker.nix
+    ./../../system/libvirtd.nix
     ./syncthing.nix
     # ./sync.nix
 

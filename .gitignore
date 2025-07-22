@@ -1,2 +1,4 @@
 local.nix
 # git update-index --assume-unchanged local.nix
+
+*.cache
