@@ -11,10 +11,10 @@ in {
     # ./../../system/boot.nix
     ./../../system/fonts.nix
     ./../../system/nh.nix # Nix helper
-    ./../../system/utilities.nix         # TUI utilities and tools
-    ./../../system/ssh.nix               # SSH configuration
-    ./../../system/security.nix          # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix          # General services (Journald, Fstrim, etc.)
+    ./../../system/utilities.nix # TUI utilities and tools
+    ./../../system/ssh.nix # SSH configuration
+    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/stylix.nix # Stylix config
@@ -50,6 +50,7 @@ in {
         ./../../home/fzf.nix
         ./../../home/yazi
         ./../../home/zoxide.nix
+        ./../../home/ghostty.nix
 
         # Theming and appearance
         ./../../home/stylix.nix # Stylix targets
@@ -68,7 +69,7 @@ in {
             inherit pkgs;
             inherit username;
           })
-          (import ./../../home/scripts/hm-find.nix { inherit pkgs; })
+          (import ./../../home/scripts/hm-find.nix {inherit pkgs;})
         ];
 
         # This value determines the Home Manager release that your configuration is
@@ -89,7 +90,7 @@ in {
   system.stateVersion = "23.11"; # Do not change!
 
   users.mutableUsers = true;
-  users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILUSJwUYV0e+h3Rj4+YvrsqHuolIh45KHg9Lttid1+KI alex@alex'' ];
+  users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILUSJwUYV0e+h3Rj4+YvrsqHuolIh45KHg9Lttid1+KI alex@alex''];
   users.users.${username} = {
     isNormalUser = true;
     description = "${gitUsername}";
