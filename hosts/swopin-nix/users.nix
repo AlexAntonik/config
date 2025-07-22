@@ -10,17 +10,17 @@ in {
   imports = [
     # ./../../system/boot.nix
     ./../../system/fonts.nix
-    ./../../system/hardware.nix
-    # ./../../system/network.nix
     ./../../system/nh.nix # Nix helper
-    ./../../system/packages.nix
-    ./../../system/services.nix
+    ./../../system/utilities.nix         # TUI utilities and tools
+    ./../../system/ssh.nix               # SSH configuration
+    ./../../system/security.nix          # Security settings (Polkit, RTkit, PAM)
+    ./../../system/services.nix          # General services (Journald, Fstrim, etc.)
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/time.nix
     ./../../system/nix.nix
-    ./../../system/virtualisation.nix
+    ./../../system/docker.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 
@@ -51,13 +51,9 @@ in {
         ./../../home/fzf.nix
         ./../../home/yazi
         ./../../home/zoxide.nix
-        #        ./../../home/gh.nix
 
         # Theming and appearance
         ./../../home/stylix.nix # Stylix targets
-
-        # Desktop environment and panels
-        ./../../home/ghostty.nix
 
         # Scripts and some configs
         ./../../home/scripts
