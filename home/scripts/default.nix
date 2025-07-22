@@ -13,6 +13,10 @@
       inherit pkgs;
       inherit username;
     })
+    (import ./syncsupprep.nix {
+      inherit pkgs;
+      inherit username;
+    })
     (import ./toggleTouchpad.nix {
       inherit pkgs;
       inherit host;
