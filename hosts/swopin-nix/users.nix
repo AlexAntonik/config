@@ -64,11 +64,11 @@ in {
 
         # Home scripts and utilities
         packages = [
-          (import ./syncsupprep.nix {
+          (import ./../../home/scripts/syncsupprep.nix {
             inherit pkgs;
             inherit username;
           })
-          (import ./hm-find.nix { inherit pkgs; })
+          (import ./../../home/scripts/hm-find.nix { inherit pkgs; })
         ];
 
         # This value determines the Home Manager release that your configuration is
