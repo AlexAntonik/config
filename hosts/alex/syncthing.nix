@@ -2,14 +2,13 @@
 {
   services.syncthing = {
     enable = true;
-    key = "/var/lib/syncthing/.config/syncthing/keys/key.pem";
-    cert = "/var/lib/syncthing/.config/syncthing/keys/cert.pem";
+    key = "/home/${username}/.config/syncthing/keys/key.pem";
+    cert = "/home/${username}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
     extraFlags = [ "--no-default-folder" ];
-    dataDir = "/var/lib/syncthing/.local/share/syncthing";
-    configDir = "/var/lib/syncthing/.config/syncthing";
-    user = "root";
-    group = "root";
+    dataDir = "/home/${username}/.local/share/syncthing";
+    configDir = "/home/${username}/.config/syncthing";
+    user = "${username}";
     settings = {
       devices = {
         "dell" = {
@@ -23,7 +22,7 @@
           ignorePermissions = true;
         };
         "Server" = {
-          path = "/srv/supabase/";
+          path = "/home/${username}/projects/srv";
           devices = [ "dell" ];
           versioning = {
             type = "staggered";
