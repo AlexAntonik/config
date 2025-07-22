@@ -1,5 +1,5 @@
 {
   system = "x86_64-linux";
-  host = "swopin-nix";
-  username = "user";
+  host = "alex";
+  username = "alex";
 }

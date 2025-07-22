@@ -96,30 +96,30 @@ in
 
         # Home scripts and utilities
         packages = [
-          (import ./emopicker9000.nix { inherit pkgs; })
-          (import ./task-waybar.nix { inherit pkgs; })
-          (import ./nvidia-offload.nix { inherit pkgs; })
-          (import ./wallsetter.nix {
+          (import ./../../home/scripts/emopicker9000.nix { inherit pkgs; })
+          (import ./../../home/scripts/task-waybar.nix { inherit pkgs; })
+          (import ./../../home/scripts/nvidia-offload.nix { inherit pkgs; })
+          (import ./../../home/scripts/wallsetter.nix {
             inherit pkgs;
             inherit username;
           })
-          (import ./syncsupprep.nix {
+          (import ./../../home/scripts/syncsupprep.nix {
             inherit pkgs;
             inherit username;
           })
-          (import ./toggleTouchpad.nix {
+          (import ./../../home/scripts/toggleTouchpad.nix {
             inherit pkgs;
             inherit host;
           })
-          (import ./toggleDisplay.nix {
+          (import ./../../home/scripts/toggleDisplay.nix {
             inherit pkgs;
             inherit host;
           })
-          (import ./rofi-launcher.nix { inherit pkgs; })
-          (import ./hm-find.nix { inherit pkgs; })
-          (import ./screenshootin.nix { inherit pkgs; })
-          (import ./oneshot.nix { inherit pkgs; })
-          (import ./toggleXWaylandScale.nix { inherit pkgs; })
+          (import ./../../home/scripts/rofi-launcher.nix { inherit pkgs; })
+          (import ./../../home/scripts/hm-find.nix { inherit pkgs; })
+          (import ./../../home/scripts/screenshootin.nix { inherit pkgs; })
+          (import ./../../home/scripts/oneshot.nix { inherit pkgs; })
+          (import ./../../home/scripts/toggleXWaylandScale.nix { inherit pkgs; })
         ];
 
         # This value determines the Home Manager release that your configuration is
