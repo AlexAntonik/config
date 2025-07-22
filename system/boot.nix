@@ -46,11 +46,5 @@
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    # Uncomment for fancy startup loading animation
-    # plymouth.enable = true;
-    # plymouth.themePackages = [
-    # pkgs.adi1090x-plymouth-themes
-    # ];
-    # plymouth.theme = "rings";
   };
 }
