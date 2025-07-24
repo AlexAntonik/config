@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs,username, ... }:
 {
   programs.vscode = {
     enable = true;
@@ -11,7 +11,7 @@
 
       userSettings = {
         "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace";
-        "editor.fontFamily"= "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace";
+        "editor.fontFamily" = "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace";
         # "editor.fontFamily" = "'FiraCode Nerd Font', 'FiraCode Nerd Font Mono', 'monospace', monospace";
         "terminal.integrated.fontLigatures.featureSettings" = "\"liga\" on";
         "window.menuBarVisibility" = "toggle";
@@ -25,30 +25,40 @@
         "vim.useSystemClipboard" = true;
         "vim.handleKeys"."<Esc>" = true;
         "editor.lineNumbers" = "relative";
-        "nix.serverPath"= "nixd";
-        "nix.enableLanguageServer"= true;
+        "nix.serverPath" = "nixd";
+        "nix.enableLanguageServer" = true;
+        "nix.hiddenLanguageServerErrors" = [
+          "textDocument/definition"
+        ];
         "nix.serverSettings" = {
-            "nixd" = {
-                "nixpkgs"= {
-                    "expr"= "import (builtins.getFlake \"/home/alex/config\").inputs.nixpkgs { }";
-                };
-                "formatting"= {
-                    "command"= [
-                        "nixfmt"
-                    ];
-                };
-                "options"= {
-                    "nixos"= {
-                        "expr"= "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.alex.options";
-                    };
-                    "home_manager"= {
-                        "expr"= "(builtins.getFlake \"/home/alex/config\").inputs.home-manager.lib";
-                    };
-                };
+          "nil" = {
+            # "diagnostics": {
+            #  "ignored": ["unused_binding", "unused_with"],
+            # },
+            "formatting" = {
+              "command" = [ "nixfmt" ];
             };
+          };
+          "nixd" = {
+            "nixpkgs" = {
+              "expr" = "import (builtins.getFlake \"/home/${username}/config\").inputs.nixpkgs { }";
+            };
+            "formatting" = {
+              "command" = [
+                "nixfmt"
+              ];
+            };
+            "options" = {
+              "nixos" = {
+                "expr" = "(builtins.getFlake \"/home/${username}/config\").nixosConfigurations.alex.options";
+              };
+              "home_manager" = {
+                "expr" = "(builtins.getFlake \"/home/${username}/config\").nixosConfigurations.alex.options.home-manager.users.type.getSubOptions []";
+              };
+            };
+          };
         };
         "editor.fontSize" = 16;
-        "[sql]"."editor.defaultFormatter" = "adpyke.vscode-sql-formatter";
         "window.controlsStyle" = "hidden";
         "workbench.activityBar.location" = "hidden";
         "explorer.confirmPasteNative" = false;
@@ -60,6 +70,7 @@
         "git.enableCommitSigning" = true;
         # "git.enableSmartCommit" = true;
 
+        "[sql]"."editor.defaultFormatter" = "adpyke.vscode-sql-formatter";
         "[html]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
         "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
         "[markdown]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -140,6 +151,7 @@
           # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
           dbaeumer.vscode-eslint
           # mtxr.sqltools-driver-sqlite
+          ms-vscode-remote.remote-ssh
           ms-vscode-remote.vscode-remote-extensionpack
           ms-vscode.remote-explorer
           ms-vsliveshare.vsliveshare
