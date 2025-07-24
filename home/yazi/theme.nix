@@ -3,7 +3,7 @@
     dark = "";
     light = "";
   };
-  manager = {
+  mgr = {
     marker_marked = {
       fg = "lightcyan";
       bg = "lightcyan";

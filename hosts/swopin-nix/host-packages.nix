@@ -6,6 +6,8 @@
   };
   environment.systemPackages = with pkgs; [
     # Programming languages
+    supabase-cli
+    postgresql
     # go # Go programming language
     # nixd # Nix LSP
     # dart # Dart language

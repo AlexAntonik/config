@@ -1,5 +1,5 @@
 {
-  manager = {
+  mgr = {
     keymap = [
       {
         on = "<Esc>";
