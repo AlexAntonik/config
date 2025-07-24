@@ -78,6 +78,7 @@
       "opacity 0.8 0.7, tag:terminal*"
       "opacity 0.8 0.7, tag:settings*"
       "opacity 0.8 0.7, class:^(gedit|org.gnome.TextEditor|mousepad)$"
+      "opacity 0.9 0.8, class:^(code|Code|code-oss)$"
       "opacity 0.9 0.8, class:^(seahorse)$"
       "opacity 1.0 1.0, title:^(Picture-in-Picture)$"
 
