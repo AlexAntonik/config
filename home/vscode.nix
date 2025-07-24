@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.unstable.vscode;
     mutableExtensionsDir = false;
 
     profiles.default = { 
@@ -20,7 +20,7 @@
         alefragnani.project-manager
 
         # Interface Improvements
-        eamodio.gitlens
+        # eamodio.gitlens
         usernamehw.errorlens
         pflannery.vscode-versionlens
         yoavbls.pretty-ts-errors
@@ -39,7 +39,7 @@
         # zenclabs.previewjs # Error: EROFS: read-only file system
 
         # Deno
-        denoland.vscode-deno
+        # denoland.vscode-deno
 
         # GraphQL
         graphql.vscode-graphql-syntax
@@ -59,13 +59,13 @@
         ms-playwright.playwright
         firefox-devtools.vscode-firefox-debug
         ms-vscode.test-adapter-converter
-        mtxr.sqltools
-        mtxr.sqltools-driver-pg
+        # mtxr.sqltools
+        # mtxr.sqltools-driver-pg
       ]
       ++ (with pkgs.vscode-marketplace; [
         # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
         dbaeumer.vscode-eslint
-        mtxr.sqltools-driver-sqlite
+        # mtxr.sqltools-driver-sqlite
         ms-vscode-remote.vscode-remote-extensionpack
         ms-vscode.remote-explorer
         ms-vsliveshare.vsliveshare
