@@ -72,6 +72,7 @@ in
         # Applications
         ./../../home/firefox.nix
         ./../../home/virtmanager.nix
+        ./../../home/vscode.nix
 
         # Theming and appearance
         ./../../home/gtk.nix

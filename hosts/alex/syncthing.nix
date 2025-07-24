@@ -1,7 +1,7 @@
 { username, ... }:
 {
   services.syncthing = {
-    enable = true;
+    enable = false;
     key = "/home/${username}/.config/syncthing/keys/key.pem";
     cert = "/home/${username}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
