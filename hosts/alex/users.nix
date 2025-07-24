@@ -26,6 +26,7 @@ in
     ./../../system/ssh.nix               # SSH configuration
     ./../../system/security.nix          # Security settings (Polkit, RTkit, PAM)
     ./../../system/services.nix          # General services (Journald, Fstrim, etc.)
+    ./../../system/bkp.nix               # Backup script
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/steam.nix

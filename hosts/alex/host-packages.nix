@@ -45,9 +45,9 @@
     # Development
     android-studio # Android IDE
     nodejs # JavaScript runtime
-    supabase-cli
     unstable.code-cursor
     unstable.vscode.fhs # Visual Studio Code with FHS environment
+    supabase-cli
     postgresql
 
     # Gaming
