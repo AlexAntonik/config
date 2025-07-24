@@ -12,7 +12,7 @@
     settings = {
       devices = {
         "asus" = {
-          id = "V3B6HRT-4PYLWXR-LUGEXW7-4VDVC3T-F7TQTSR-CSWVVGW-GSKRHQN-R3ZNUAM";
+          id = "KXS3ZTW-OEPU4MR-35LYCZT-OFVQTNW-YCVFMBQ-L62CFV5-4OYT5J7-UWUVSAZ";
         };
       };
       folders = {

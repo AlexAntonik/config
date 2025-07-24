@@ -16,7 +16,7 @@
     firefox.enable = false; # for some reason causes cpu freq cap
     #Even i don't have mako installed this fixes stylix shit
     mako.enable = false;
-    
+    vscode.enable = false; 
     ghostty.enable = false;
   };
 }
