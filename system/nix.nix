@@ -19,5 +19,6 @@
 
   nixpkgs.overlays = [
     inputs.nurpkgs.overlays.default
+    inputs.nix-vscode-extensions.overlays.default
   ] ++ (builtins.attrValues (import ./overlays.nix { inherit inputs; }));
 }
