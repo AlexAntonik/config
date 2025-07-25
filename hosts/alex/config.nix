@@ -36,11 +36,10 @@ in
     ./../../system/time.nix
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
-    ./../../system/zsh.nix
-    ./../../system/zoxide.nix
-    ./../../system/nvf.nix
+    ./../../system/zsh.nix #Shell system wide
+    ./../../system/zoxide.nix #cd alternative super nice
+    ./../../system/nvf.nix # vim
     ./syncthing.nix
-    # ./sync.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 
@@ -70,7 +69,6 @@ in
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
         ./../../home/yazi
-        # ./../../home/zoxide.nix
         ./../../home/gh.nix
 
         # Applications
@@ -95,8 +93,6 @@ in
         # Scripts and some configs
         ./../../home/scripts/clipboard.nix
         ./../../home/xdg.nix
-        # ./../../home/zsh
-        # ./../../home/nvf.nix
       ];
       home = {
         username = "${username}";

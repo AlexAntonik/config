@@ -64,7 +64,6 @@ in
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
         ./../../home/yazi
-        ./../../home/zoxide.nix
         ./../../home/gh.nix
 
         # Applications
@@ -88,8 +87,6 @@ in
         # Scripts and some configs
         ./../../home/scripts/clipboard.nix
         ./../../home/xdg.nix
-        ./../../home/zsh
-        ./../../home/nvf.nix
       ];
       home = {
         username = "${username}";
@@ -141,6 +138,7 @@ in
   system.stateVersion = "23.11"; # Do not change!
 
   users.mutableUsers = true;
+  users.defaultUserShell = pkgs.zsh;
   users.users.${username} = {
     isNormalUser = true;
     description = "${gitUsername}";
@@ -154,7 +152,6 @@ in
       "scanner"
       "wheel"
     ];
-    shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
   nix.settings.allowed-users = [ "${username}" ];
