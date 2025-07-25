@@ -6,7 +6,6 @@
     # Window decoration settings
     # General window manager settings
     general = {
-      "$modifier" = "SUPER";
       layout = "dwindle"; # Tiling layout engine
       gaps_in = 0; # Gaps between windows
       gaps_out = 0; # Gaps between windows and screen edges
