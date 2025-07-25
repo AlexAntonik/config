@@ -156,6 +156,7 @@
           # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
           dbaeumer.vscode-eslint
           # mtxr.sqltools-driver-sqlite
+          tamasfe.even-better-toml 
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.vscode-remote-extensionpack
           ms-vscode.remote-explorer

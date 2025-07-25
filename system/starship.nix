@@ -8,7 +8,7 @@
     starship = {
       enable = true;
       settings = {
-        format = "[╭](fg:current_line)[─](fg:current_line)[](fg:red)[ ](fg:primary bg:red)$sudo$username$directory$git_branch$git_status$git_metrics$nix_shell$fill$nodejs$bun$deno$golang$kotlin$c$java$python$docker_context$rust$php$dart$haskell$aws$cmd_duration$time$line_break$character";
+        format = "[╭](fg:current_line)[─](fg:current_line)[](fg:yellow)[ ](fg:primary bg:yellow)$sudo$username$hostname$directory$git_branch$git_status$git_metrics$nix_shell$fill$nodejs$bun$deno$golang$kotlin$c$java$python$docker_context$rust$php$dart$haskell$aws$cmd_duration$time$line_break$character";
         palette = "dracula";
         add_newline = true;
 
@@ -30,47 +30,8 @@
           };
         };
 
-        os = {
-          format = "[─](fg:current_line)[](fg:red)[$symbol ](fg:primary bg:red)[](fg:red)";
-          disabled = false;
-          symbols = {
-            Alpine = "";
-            Amazon = "";
-            Android = "";
-            Arch = "";
-            CentOS = "";
-            Debian = "";
-            EndeavourOS = "";
-            Fedora = "";
-            FreeBSD = "";
-            Garuda = "";
-            Gentoo = "";
-            Linux = "";
-            Macos = "";
-            Manjaro = "";
-            Mariner = "";
-            Mint = "";
-            NetBSD = "";
-            NixOS = "";
-            OpenBSD = "";
-            OpenCloudOS = "";
-            openEuler = "";
-            openSUSE = "";
-            OracleLinux = "⊂⊃";
-            Pop = "";
-            Raspbian = "";
-            Redhat = "";
-            RedHatEnterprise = "";
-            Solus = "";
-            SUSE = "";
-            Ubuntu = "";
-            Unknown = "";
-            Windows = "";
-          };
-        };
-
         directory = {
-          format = "[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[](fg:pink bg:box)[$read_only]($read_only_style bg:box)[ $truncation_symbol$path](fg:foreground bg:box)[](fg:box)";
+          format = "[](fg:box)[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[](fg:pink bg:box)[$read_only]($read_only_style bg:box)[ $truncation_symbol$path](fg:foreground bg:box)[](fg:box)";
           home_symbol = "~";
           truncation_symbol = "…/";
           truncation_length = 4;
@@ -79,7 +40,7 @@
         };
 
         sudo = {
-          format = "[$symbol](fg:primary bg:red)";
+          format = "[$symbol](fg:primary bg:yellow)";
           symbol = "󱄻 ";
           disabled = false;
         };
@@ -196,14 +157,21 @@
         };
 
         time = {
-          format = "[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[](fg:purple bg:box)[ $time](fg:foreground bg:box)[](fg:box)";
+          format = "[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[](fg:purple bg:box)[ $time](fg:foreground bg:box)[](fg:box) ";
           time_format = "%H:%M:%S";
           disabled = false;
         };
 
         username = {
-          format = "[](fg:red bg:box)[ $user](fg:red bg:box)[](fg:box)";
+          style_user = "white";
+          style_root = "red bold";
+          format = "[](fg:yellow bg:box)[ $user](fg:$style bg:box)";
           show_always = true;
+        };
+
+        hostname = {
+          format = "[$ssh_symbol$hostname](fg:foreground bg:box)";
+          ssh_symbol = "@";
         };
 
         character = {
