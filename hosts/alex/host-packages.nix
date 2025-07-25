@@ -12,7 +12,6 @@
     kotlin # Kotlin language
     typescript # EXTREMLY BAD language
     zulu # Open JDK fast
-    ghostty
 
     # Development tools
     meson # Build system
