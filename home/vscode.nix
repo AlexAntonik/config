@@ -68,8 +68,8 @@
 
         "git.autofetch" = true;
         "git.confirmSync" = false;
-        "git.enableCommitSigning" = true;
-        # "git.enableSmartCommit" = true;
+        # "git.enableCommitSigning" = true;
+        "git.enableSmartCommit" = true;
 
         "[sql]"."editor.defaultFormatter" = "adpyke.vscode-sql-formatter";
         "[html]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
