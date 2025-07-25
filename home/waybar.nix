@@ -17,6 +17,7 @@ with lib;
     package = pkgs.waybar;
     settings = [
       {
+        start_hidden = true;
         layer = "bottom";
         position = "bottom";
         modules-center = [
@@ -302,6 +303,11 @@ with lib;
           margin-top: 1px;
           margin-bottom: 1px;
           background: transparent;
+        }
+        window#waybar {
+          background: rgba(0, 0, 0, 0.4); /* Черный с прозрачностью 30% */
+          border-radius: 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.44); /* Затемненная полоска сверху */
         }
         menu {
           background: #${config.lib.stylix.colors.base02};
