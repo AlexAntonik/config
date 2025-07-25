@@ -83,12 +83,12 @@ in
         "killall -q swww; sleep 0.5 && swww init"
         "killall -q waybar; sleep 0.5 && waybar"
         "killall -q swaync; sleep 0.5 && swaync"
-        "oneshot" # dotfiles set and some configs
+        # "oneshot" # dotfiles set and some configs
         # System tray applets and agents
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         # Set wallpaper (delay allows swww to initialize)
-        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/town.jpg"
+        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/mountains.jpg"
         # --- Autostart applications ---
         "pypr &"
         "${browser}"

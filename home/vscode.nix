@@ -18,6 +18,7 @@
         "files.autoSave" = "afterDelay";
         "editor.cursorSmoothCaretAnimation" = "on";
         "editor.cursorBlinking" = "phase";
+        "workbench.colorTheme" = "One Dark Pro Night Flat";
         "editor.minimap.enabled" = false;
         "window.customTitleBarVisibility" = "never";
         "keyboard.dispatch" = "keyCode";
@@ -132,7 +133,7 @@
 
           # Nix
           jnoortheen.nix-ide
-          arrterian.nix-env-selector
+          # arrterian.nix-env-selector #like dev shells not needed rn
 
           # Bash
           mads-hartmann.bash-ide-vscode
@@ -154,8 +155,9 @@
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.vscode-remote-extensionpack
           ms-vscode.remote-explorer
+          adpyke.vscode-sql-formatter
           ms-vsliveshare.vsliveshare
-          codeforge.remix-forge
+          # codeforge.remix-forge
           amodio.toggle-excluded-files
         ]);
     };

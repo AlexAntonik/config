@@ -6,7 +6,9 @@
   };
   home.file."./.config/ghostty/config".text = ''
 
-    #theme = Aura
+    # theme = Flatland
+    # theme = farmhouse-dark
+    # theme = Horizon
     theme = Dracula+
     #theme = Aardvark Blue
     #theme = GruvboxDarkHard
