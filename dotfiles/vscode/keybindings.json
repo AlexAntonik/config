@@ -100,7 +100,16 @@
     },
     {
         "key": "ctrl+f",
-        "command": "fuzzySearch.activeTextEditor"
+        "command": "workbench.action.gotoSymbol",
+        "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "workbench.action.quickTextSearch"
+    },
+    {
+        "key": "ctrl+alt+f",
+        "command": "search.action.openEditor"
     },
     {
         "key": "ctrl+e",
