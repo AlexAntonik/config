@@ -1,10 +1,9 @@
-{ pkgs,username, ... }:
+{ pkgs, username, ... }:
 {
   programs.vscode = {
     enable = true;
     package = pkgs.unstable.vscode;
     mutableExtensionsDir = false;
-
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
@@ -26,6 +25,7 @@
         "vim.useSystemClipboard" = true;
         "vim.handleKeys"."<Esc>" = true;
         "editor.lineNumbers" = "relative";
+        "workbench.editor.showTabs" = "single";
         "nix.serverPath" = "nixd";
         "nix.enableLanguageServer" = true;
         "nix.hiddenLanguageServerErrors" = [
@@ -54,13 +54,17 @@
                 "expr" = "(builtins.getFlake \"/home/${username}/config\").nixosConfigurations.alex.options";
               };
               "home_manager" = {
-                "expr" = "(builtins.getFlake \"/home/${username}/config\").nixosConfigurations.alex.options.home-manager.users.type.getSubOptions []";
+                "expr" =
+                  "(builtins.getFlake \"/home/${username}/config\").nixosConfigurations.alex.options.home-manager.users.type.getSubOptions []";
               };
             };
           };
         };
         "editor.fontSize" = 16;
         "window.controlsStyle" = "hidden";
+        "workbench.editor.enablePreview" = false;
+        "workbench.editor.limit.enabled" = true;
+        "workbench.editor.limit.value" = 5;
         "workbench.activityBar.location" = "hidden";
         "explorer.confirmPasteNative" = false;
 
@@ -101,7 +105,7 @@
           # Essentials
           mikestead.dotenv
           editorconfig.editorconfig
-          jacobdufault.fuzzy-search
+          # jacobdufault.fuzzy-search
           vscodevim.vim
           alefragnani.project-manager
 
