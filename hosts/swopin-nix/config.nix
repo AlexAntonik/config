@@ -24,6 +24,9 @@ in
     ./../../system/time.nix
     ./../../system/nix.nix
     ./../../system/docker.nix
+    ./../../system/zsh.nix #Shell system wide
+    ./../../system/zoxide.nix #cd alternative super nice
+    ./../../system/nvf.nix # vim
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
 
@@ -52,15 +55,10 @@ in
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
         ./../../home/yazi
-        ./../../home/zoxide.nix
-        ./../../home/ghostty.nix
+        # ./../../home/ghostty.nix
 
         # Theming and appearance
         ./../../home/stylix.nix # Stylix targets
-
-        # Scripts and some configs
-        ./../../home/zsh
-        ./../../home/nvf.nix
       ];
       home = {
         username = "${username}";
