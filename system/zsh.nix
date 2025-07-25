@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     zsh-history-substring-search
+    ghostty # needed even on srv to proper ssh
   ];
   systemd.tmpfiles.rules = [
     "f /home/${username}/.zshrc 0644 ${username} users - -"
@@ -27,7 +28,7 @@
         "brackets"
         "pattern"
         "regexp"
-        # "root"
+        # "root" #on root inveting colors with this
         "line"
       ];
     };

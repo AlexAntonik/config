@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./users.nix
+    ./config.nix
     ./drivers.nix
     ./hardware.nix
     ./host-packages.nix
