@@ -9,33 +9,36 @@ let
   inherit (import ./variables.nix) gitUsername;
 in
 {
-  imports = [ 
+  imports = [
     ./../../system/boot.nix
-    ./../../system/boot-visuals.nix      # Boot visuals and login manager
+    ./../../system/boot-visuals.nix # Boot visuals and login manager
     ./../../system/fonts.nix
-    ./../../system/desktop-hardware.nix  # Desktop hardware configuration
-    ./../../system/desktop-services.nix  # Desktop services & utils for keyboard,hyprland
-    ./../../system/desktop-pkgs.nix      # Desktop system packages
-    ./../../system/desktop-network.nix   # Desktop network configuration
-    ./../../system/thunar.nix            # Desktop file manager
-    ./../../system/media.nix             # Audio and multimedia configuration and pkgs
-    ./../../system/printing.nix          # Printing configuration
-    ./../../system/bluetooth.nix         # Bluetooth configuration
-    ./../../system/nh.nix                # Nix helper
-    ./../../system/utilities.nix         # TUI utilities and tools
-    ./../../system/ssh.nix               # SSH configuration
-    ./../../system/security.nix          # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix          # General services (Journald, Fstrim, etc.)
-    ./../../system/bkp.nix               # Backup script
-    ./../../system/lang-indicator.nix    # Indicates wrong lang
+    ./../../system/desktop-hardware.nix # Desktop hardware configuration
+    ./../../system/desktop-services.nix # Desktop services & utils for keyboard,hyprland
+    ./../../system/desktop-pkgs.nix # Desktop system packages
+    ./../../system/desktop-network.nix # Desktop network configuration
+    ./../../system/thunar.nix # Desktop file manager
+    ./../../system/media.nix # Audio and multimedia configuration and pkgs
+    ./../../system/printing.nix # Printing configuration
+    ./../../system/bluetooth.nix # Bluetooth configuration
+    ./../../system/nh.nix # Nix helper
+    ./../../system/utilities.nix # TUI utilities and tools
+    ./../../system/ssh.nix # SSH configuration
+    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
+    ./../../system/bkp.nix # Backup script
+    ./../../system/lang-indicator.nix # Indicates wrong lang
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/steam.nix
-    ./../../system/stylix.nix            # Stylix config
+    ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
+    ./../../system/zsh.nix
+    ./../../system/zoxide.nix
+    ./../../system/nvf.nix
     ./syncthing.nix
     # ./sync.nix
 
@@ -67,7 +70,7 @@ in
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
         ./../../home/yazi
-        ./../../home/zoxide.nix
+        # ./../../home/zoxide.nix
         ./../../home/gh.nix
 
         # Applications
@@ -78,7 +81,7 @@ in
         # Theming and appearance
         ./../../home/gtk.nix
         ./../../home/qt.nix
-        ./../../home/stylix.nix           # Stylix targets
+        ./../../home/stylix.nix # Stylix targets
 
         # Desktop environment and panels
         ./../../home/hyprland
@@ -92,8 +95,8 @@ in
         # Scripts and some configs
         ./../../home/scripts/clipboard.nix
         ./../../home/xdg.nix
-        ./../../home/zsh
-        ./../../home/nvf.nix
+        # ./../../home/zsh
+        # ./../../home/nvf.nix
       ];
       home = {
         username = "${username}";
@@ -134,7 +137,7 @@ in
         # You should not change this value, even if you update Home Manager. If you do
         # want to update the value, then make sure to first check the Home Manager
         # release notes.
-        stateVersion = "24.11"; #READ COMMENT
+        stateVersion = "24.11"; # READ COMMENT
       };
     };
   };
@@ -143,7 +146,7 @@ in
   # this particular machine, and is used to maintain compatibility with
   # application data (e.g. databases) created on older NixOS versions.
   system.stateVersion = "23.11"; # Do not change!
-
+  users.defaultUserShell = pkgs.zsh;
   users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;
@@ -158,7 +161,6 @@ in
       "scanner"
       "wheel"
     ];
-    shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
   nix.settings.allowed-users = [ "${username}" ];
