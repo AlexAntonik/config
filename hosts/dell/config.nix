@@ -13,10 +13,10 @@ in
     ./../../system/boot.nix
     ./../../system/boot-visuals.nix      # Boot visuals and login manager
     ./../../system/fonts.nix
-    ./../../system/desktop-hardware.nix  # Desktop hardware configuration
-    ./../../system/desktop-pkgs.nix      # Desktop system packages
-    ./../../system/desktop-services.nix  # Desktop services & utils for keyboard,hyprland
-    ./../../system/desktop-network.nix   # Desktop network configuration
+    ./../../system/desktop/hardware.nix  # Desktop hardware configuration
+    ./../../system/desktop/pkgs.nix      # Desktop system packages
+    ./../../system/desktop/services.nix  # Desktop services & utils for keyboard,hyprland
+    ./../../system/desktop/network.nix   # Desktop network configuration
     ./../../system/thunar.nix            # Desktop file manager
     ./../../system/media.nix             # Audio and multimedia configuration and pkgs
     ./../../system/printing.nix          # Printing configuration
