@@ -1,5 +1,15 @@
 { username, ... }:
 {
+  sops.secrets.asus_cert = {
+    sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
+    owner = "alex";
+    path = "/home/${username}/.config/syncthing/keys/cert.pem";
+  };
+  sops.secrets.asus_key = {
+    sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
+    owner = "alex";
+    path = "/home/${username}/.config/syncthing/keys/key.pem";
+  };
   services.syncthing = {
     enable = true;
     key = "/home/${username}/.config/syncthing/keys/key.pem";
@@ -14,6 +24,9 @@
         "dell" = {
           id = "DEEMPVX-NTNLLUM-IXRXV3N-47N6AB7-CETLFHL-5PXB25D-KT5HNL5-ZMQ4SQT";
         };
+        "swop" = {
+          id = "PAZXHAF-J3ZFUS5-R576QL2-EOUCZJ3-RBY3YSV-QG5XGTU-JWQGARY-FOM4JQF";
+        };
       };
       folders = {
         "Notes" = {
@@ -23,7 +36,10 @@
         };
         "Server" = {
           path = "/home/${username}/projects/srv";
-          devices = [ "dell" ];
+          devices = [
+            "dell"
+            "swop"
+          ];
           versioning = {
             type = "staggered";
             params = {
