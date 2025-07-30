@@ -29,15 +29,20 @@
         };
       };
       folders = {
-        "Server" = {
-          path = "/home/${username}/projects/srv";
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600";
-              maxAge = "15768000";
-            };
-          };
+        # "Server" = {
+        #   path = "/home/${username}/projects/srv";
+        #   versioning = {
+        #     type = "staggered";
+        #     params = {
+        #       cleanInterval = "3600";
+        #       maxAge = "15768000";
+        #     };
+        #   };
+        #   devices = [ "asus" ];
+        #   ignorePermissions = true;
+        # };
+        "ServerTransfer" = {
+          path = "/home/${username}/projects/srv/transfer";
           devices = [ "asus" ];
           ignorePermissions = true;
         };
