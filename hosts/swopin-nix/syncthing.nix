@@ -1,11 +1,11 @@
 { username, ... }:
 {
-  sops.secrets.dell_cert = {
+  sops.secrets.swop_cert = {
     sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
     owner = "${username}";
     path = "/home/${username}/.config/syncthing/keys/cert.pem";
   };
-  sops.secrets.dell_key = {
+  sops.secrets.swop_key = {
     sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
     owner = "${username}";
     path = "/home/${username}/.config/syncthing/keys/key.pem";
