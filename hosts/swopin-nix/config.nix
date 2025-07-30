@@ -24,8 +24,9 @@ in
     ./../../system/time.nix
     ./../../system/nix.nix
     ./../../system/docker.nix
-    ./../../system/zsh.nix #Shell system wide
-    ./../../system/zoxide.nix #cd alternative super nice
+    ./../../system/secrets/sops.nix
+    ./../../system/zsh.nix # Shell system wide
+    ./../../system/zoxide.nix # cd alternative super nice
     ./../../system/nvf.nix # vim
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
