@@ -24,16 +24,11 @@
         "asus" = {
           id = "KXS3ZTW-OEPU4MR-35LYCZT-OFVQTNW-YCVFMBQ-L62CFV5-4OYT5J7-UWUVSAZ";
         };
-        "swop" = {
-          id = "PAZXHAF-J3ZFUS5-R576QL2-EOUCZJ3-RBY3YSV-QG5XGTU-JWQGARY-FOM4JQF";
+        "dell" = {
+          id = "DEEMPVX-NTNLLUM-IXRXV3N-47N6AB7-CETLFHL-5PXB25D-KT5HNL5-ZMQ4SQT";
         };
       };
       folders = {
-        "Notes" = {
-          path = "/home/${username}/notes";
-          devices = [ "asus" ];
-          ignorePermissions = true;
-        };
         "Server" = {
           path = "/home/${username}/projects/srv";
           versioning = {

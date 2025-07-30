@@ -30,6 +30,7 @@ in
     ./../../system/lang-indicator.nix # Indicates wrong lang
     ./../../system/starship.nix
     ./../../system/git.nix
+    ./../../system/secrets/sops.nix
     ./../../system/steam.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
