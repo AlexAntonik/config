@@ -79,6 +79,7 @@ let
     "browser.shell.checkDefaultBrowser" = false;
     "browser.startup.homepage" = "about:newtab";
     "browser.tabs.loadInBackground" = true;
+    "browser.tabs.allowTabDetach" = false;
     "browser.urlbar.placeholderName" = "DuckDuckGo";
 
     # enable vetical tabs and navbar items

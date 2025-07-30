@@ -1,8 +1,17 @@
 { pkgs, host, ... }:
 let
-  inherit (import ../hosts/${host}/variables.nix) keyboardLayout;
+  inherit (import ../../hosts/${host}/variables.nix) keyboardLayout;
 in
 {
+  # Appimage Support
+  boot.binfmt.registrations.appimage = {
+    wrapInterpreterInShell = false;
+    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+    recognitionType = "magic";
+    offset = 0;
+    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+    magicOrExtension = ''\x7fELF....AI\x02'';
+  };
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
@@ -12,7 +21,7 @@ in
     libinput.enable = true;
     gvfs.enable = true;
     xserver = {
-      enable = false;  # Для Wayland/Hyprland
+      enable = false; # Для Wayland/Hyprland
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
