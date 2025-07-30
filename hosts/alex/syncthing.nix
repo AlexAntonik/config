@@ -49,6 +49,11 @@
           };
           ignorePermissions = true;
         };
+        "ServerTransfer" = {
+          path = "/home/${username}/projects/srv/transfer";
+          devices = [ "asus" ];
+          ignorePermissions = true;
+        };
       };
     };
   };
