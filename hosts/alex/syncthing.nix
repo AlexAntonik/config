@@ -38,7 +38,6 @@
           path = "/home/${username}/projects/srv";
           devices = [
             "dell"
-            "swop"
           ];
           versioning = {
             type = "staggered";
@@ -47,6 +46,18 @@
               maxAge = "15768000";
             };
           };
+          ignorePermissions = true;
+        };
+        "Prod" = {
+          path = "/home/${username}/projects/prod";
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600";
+              maxAge = "15768000";
+            };
+          };
+          devices = [ "swop" ];
           ignorePermissions = true;
         };
         "ServerTransfer" = {
