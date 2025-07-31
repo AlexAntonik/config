@@ -25,6 +25,7 @@ in
     ./../../system/nix.nix
     ./../../system/docker.nix
     ./../../system/secrets/sops.nix
+    ./../../system/bkp.nix # Backup supabase script
     ./../../system/zsh.nix # Shell system wide
     ./../../system/zoxide.nix # cd alternative super nice
     ./../../system/nvf.nix # vim
