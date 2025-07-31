@@ -13,4 +13,5 @@
     fsType = "ext4";
   };
   zramSwap.enable = true;
+  zramSwap.memoryPercent = 100;
 }
