@@ -51,7 +51,7 @@
         };
         "ServerTransfer" = {
           path = "/home/${username}/projects/srv/transfer";
-          devices = [ "asus" ];
+          devices = [ "swop" ];
           ignorePermissions = true;
         };
       };
