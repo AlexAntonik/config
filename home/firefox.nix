@@ -84,9 +84,14 @@ let
     "browser.urlbar.placeholderName" = "DuckDuckGo";
 
     # enable vetical tabs and navbar items
-    "sidebar.verticalTabs" = false;
+    "sidebar.verticalTabs" = true;
+    "sidebar.visibility" = "hide-sidebar";
+    "sidebar.main.tools" = "aichat,history";
+    "sidebar.revamp" = true;
     # off cause setting definde in state json DELETE IF works well on new install
-    # "browser.uiCustomization.navBarWhenVerticalTabs" = "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"customizableui-special-spring1\",\"urlbar-container\",\"customizableui-special-spring2\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"fxa-toolbar-menu-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"firefox-view-button\",\"myallychou_gmail_com-browser-action\"]";
+    "browser.uiCustomization.navBarWhenVerticalTabs" =
+      "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"customizableui-special-spring1\",\"urlbar-container\",\"customizableui-special-spring2\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"fxa-toolbar-menu-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"myallychou_gmail_com-browser-action\",\"firefox-view-button\"]";
+    "browser.uiCustomization.horizontalTabstrip" = "[\"tabbrowser-tabs\",\"new-tab-button\"]";
     "browser.uiCustomization.state" = builtins.toJSON {
       placements = {
         widget-overflow-fixed-list = [ ];
@@ -194,7 +199,7 @@ let
       {
         url = "http://localhost:8384/#";
         label = "Syncthing";
-      }      
+      }
     ];
 
     "distribution.searchplugins.defaultLocale" = "en-US";
