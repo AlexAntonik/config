@@ -1,29 +1,4 @@
 { username, pkgs, ... }:
-let
-  aliases = {
-    # Просмотр бэкапов
-    backup-list = "borg list /home/${username}/projects/srv/backup/borg-repo";
-    backup-info = "borg info /home/${username}/projects/srv/backup/borg-repo";
-    backup-show = "borg list /home/${username}/projects/srv/backup/borg-repo::";
-
-    # Восстановление
-    backup-restore-last = "mkdir -p /home/${username}/restored && borg extract /home/${username}/projects/srv/backup/borg-repo::\$(borg list /home/${username}/projects/srv/backup/borg-repo --short | tail -1) /home/${username}/restored/";
-    backup-restore = "mkdir -p /home/${username}/restored && borg extract /home/${username}/projects/srv/backup/borg-repo:: --destination /home/${username}/restored";
-
-    # Монтирование для просмотра
-    backup-mount = "mkdir -p /home/${username}/borg_mount && borg mount /home/${username}/projects/srv/backup/borg-repo /home/${username}/borg_mount";
-    backup-unmount = "fusermount -u /home/${username}/borg_mount";
-
-    # Статистика
-    backup-stats = "borg info /home/${username}/projects/srv/backup/borg-repo --json | jq '.archives | length'";
-    backup-size = "borg info /home/${username}/projects/srv/backup/borg-repo";
-
-    # Ручной запуск бэкапа
-    backup-run = "sudo systemctl start borgbackup-job-daily-backup.service";
-    backup-status = "systemctl status borgbackup-job-daily-backup.service";
-    backup-logs = "journalctl -u borgbackup-job-daily-backup.service";
-  };
-in
 {
   services.borgbackup.jobs = {
     "daily-backup" = {
@@ -33,7 +8,7 @@ in
 
       repo = "/home/${username}/projects/srv/backup/borg-repo";
 
-      startAt = "02:00";
+      startAt = "04:00";
 
       compression = "zstd,3";
       encryption.mode = "none";
@@ -80,7 +55,6 @@ in
     script = ''
       REPO_PATH="/home/${username}/projects/srv/backup/borg-repo"
 
-      # Проверяем, инициализирован ли уже репозиторий
       if ! ${pkgs.borgbackup}/bin/borg info "$REPO_PATH" &>/dev/null; then
         echo "Initializing Borg repository at $REPO_PATH"
         ${pkgs.borgbackup}/bin/borg init --encryption=none "$REPO_PATH"
@@ -91,7 +65,6 @@ in
     '';
   };
   systemd.services = {
-    # journalctl -u borgbackup-job-daily-backup
     "borgbackup-job-daily-backup" = {
       serviceConfig = {
         StandardOutput = "journal";
@@ -99,8 +72,4 @@ in
       };
     };
   };
-
- 
-#   programs.zsh.shellAliases = aliases;
-  environment.shellAliases = aliases;
 }
