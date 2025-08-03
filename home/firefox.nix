@@ -90,7 +90,7 @@ let
     "sidebar.revamp" = true;
     # off cause setting definde in state json DELETE IF works well on new install
     "browser.uiCustomization.navBarWhenVerticalTabs" =
-      "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"customizableui-special-spring1\",\"urlbar-container\",\"customizableui-special-spring2\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"fxa-toolbar-menu-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"myallychou_gmail_com-browser-action\",\"firefox-view-button\"]";
+      "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"customizableui-special-spring1\",\"urlbar-container\",\"customizableui-special-spring2\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"myallychou_gmail_com-browser-action\",\"new-tab-button\",\"fxa-toolbar-menu-button\"]";
     "browser.uiCustomization.horizontalTabstrip" = "[\"tabbrowser-tabs\",\"new-tab-button\"]";
     "browser.uiCustomization.state" = builtins.toJSON {
       placements = {
@@ -108,13 +108,13 @@ let
           "history-panelmenu"
           "unified-extensions-button"
           "downloads-button"
-          "fxa-toolbar-menu-button"
 
           "jid1-mnnxcxisbpnsxq_jetpack-browser-action"
           "ublock0_raymondhill_net-browser-action"
           "addon_darkreader_org-browser-action"
           "myallychou_gmail_com-browser-action"
-          "firefox-view-button"
+          "new-tab-button"
+          "fxa-toolbar-menu-button"
         ];
         toolbar-menubar = [ "menubar-items" ];
         TabsToolbar = [
