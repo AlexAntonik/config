@@ -26,7 +26,8 @@ in
     ./../../system/ssh.nix # SSH configuration
     ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
     ./../../system/services.nix # General services (Journald, Fstrim, etc.)
-    ./../../system/bkp.nix # Backup supabase script
+    # ./../../system/srv/bkp.nix # Backup supabase script
+    # ./../../system/srv/supabase-restart.nix # Supabase restart script
     ./../../system/lang-indicator.nix # Indicates wrong lang
     ./../../system/starship.nix
     ./../../system/git.nix
