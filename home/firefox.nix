@@ -6,6 +6,7 @@ let
     darkreader
     ublock-origin
     youtube-recommended-videos
+    adaptive-tab-bar-colour
   ];
 
   disableWebRtcIndicator = ''
@@ -78,7 +79,7 @@ let
 
     "browser.shell.checkDefaultBrowser" = false;
     "browser.startup.homepage" = "about:newtab";
-    "browser.tabs.loadInBackground" = true;
+    "browser.tabs.loadInBackground" = false;
     "browser.tabs.allowTabDetach" = false;
     "browser.urlbar.placeholderName" = "DuckDuckGo";
 
