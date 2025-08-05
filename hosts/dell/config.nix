@@ -97,10 +97,6 @@ in
           (import ./../../home/scripts/emopicker9000.nix { inherit pkgs; })
           (import ./../../home/scripts/task-waybar.nix { inherit pkgs; })
           (import ./../../home/scripts/nvidia-offload.nix { inherit pkgs; })
-          (import ./../../home/scripts/wallsetter.nix {
-            inherit pkgs;
-            inherit username;
-          })
           (import ./../../home/scripts/syncsupprep.nix {
             inherit pkgs;
             inherit username;

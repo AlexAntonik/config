@@ -6,14 +6,12 @@
 }:
 let
   inherit (import ../../hosts/${host}/variables.nix)
-    extraMonitorSettings
     browser
     terminal
     ;
 in
 {
   home.packages = with pkgs; [
-    swww
     grim
     slurp
     wl-clipboard
@@ -27,7 +25,6 @@ in
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
@@ -80,15 +77,12 @@ in
         "wl-paste --type image --watch cliphist store" # Stores only image data
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "killall -q swww; sleep 0.5 && swww init"
         "killall -q waybar; sleep 0.5 && waybar"
         "killall -q swaync; sleep 0.5 && swaync"
         # "oneshot" # dotfiles set and some configs
         # System tray applets and agents
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
-        # Set wallpaper (delay allows swww to initialize)
-        "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/mountains.jpg"
         # --- Autostart applications ---
         "pypr &"
         "${browser}"
@@ -102,14 +96,8 @@ in
     # Monitor configuration
     extraConfig = ''
       monitor=,preferred,auto,auto
-      ${extraMonitorSettings}
+      monitor=HDMI-A-1,preferred,auto,auto,transform, 3
     '';
-  };
-
-  # Place Files Inside Home Directory
-  home.file."Pictures/Wallpapers" = {
-    source = ../wallpapers;
-    recursive = true;
   };
 
   home.file.".config/swappy/config".text = ''

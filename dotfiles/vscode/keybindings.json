@@ -100,12 +100,8 @@
     },
     {
         "key": "ctrl+f",
-        "command": "workbench.action.gotoSymbol",
+        "command": "workbench.action.quickTextSearch",
         "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
-    },
-    {
-        "key": "ctrl+shift+f",
-        "command": "workbench.action.quickTextSearch"
     },
     {
         "key": "ctrl+alt+f",
