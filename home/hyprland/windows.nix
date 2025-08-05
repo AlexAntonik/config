@@ -117,6 +117,10 @@
 
     };
 
+    workspace = [
+      "6,monitor:HDMI-A-1, default:true"
+    ];
+
     # Dwindle layout specific settings
     dwindle = {
       pseudotile = true; # Master window takes half the screen

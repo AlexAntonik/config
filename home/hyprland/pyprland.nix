@@ -25,8 +25,8 @@
 
     [scratchpads.yazi]
     animation = "fromBottom"
-    command = "ghostty -e yazi"
-    class = "com.mitchellh.ghostty"
+    command = "ghostty --class=com.mitchellh.ghostty-yazi -e yazi"
+    class = "com.mitchellh.ghostty-yazi"
     lazy = true
     position = "2% 2%"
     size = "96% 92%"
