@@ -157,6 +157,8 @@
           dbaeumer.vscode-eslint
           bierner.color-info 
           golang.go
+          github.copilot
+          github.copilot-chat
           # mtxr.sqltools-driver-sqlite
           tamasfe.even-better-toml 
           ms-vscode-remote.remote-ssh
