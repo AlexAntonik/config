@@ -156,6 +156,7 @@
           # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
           dbaeumer.vscode-eslint
           bierner.color-info 
+          golang.go
           # mtxr.sqltools-driver-sqlite
           tamasfe.even-better-toml 
           ms-vscode-remote.remote-ssh
