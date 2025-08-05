@@ -3,9 +3,6 @@
   gitUsername = "AlexAntonik";
   gitEmail = "antonikavv@gmail.com";
 
-  # Hyprland Settings
-  extraMonitorSettings = "";
-
   # Waybar Settings
   clock24h = true;
 
