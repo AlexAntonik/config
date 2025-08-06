@@ -1,6 +1,6 @@
 {host, ...}:
 let
-  inherit (import ../hosts/${host}/variables.nix) timeZone defaultLocale extraLocaleSettings;
+  inherit (import ../hosts/${host}/env.nix) timeZone defaultLocale extraLocaleSettings;
 in
 {
   time.timeZone = "${timeZone}";
