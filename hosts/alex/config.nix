@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (import ./variables.nix) gitUsername;
+  inherit (import ./env.nix) gitUsername;
 in
 {
   imports = [
@@ -38,8 +38,8 @@ in
     ./../../system/time.nix
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
-    ./../../system/zsh.nix #Shell system wide
-    ./../../system/zoxide.nix #cd alternative super nice
+    ./../../system/zsh.nix # Shell system wide
+    ./../../system/zoxide.nix # cd alternative super nice
     ./../../system/nvf.nix # vim
     ./syncthing.nix
 

@@ -1,6 +1,6 @@
 { host, pkgs, ... }:
 let
-  inherit (import ../hosts/${host}/variables.nix)
+  inherit (import ../hosts/${host}/env.nix)
     languageLightID;
 
   keyboard-layout-indicator = pkgs.writeShellScriptBin "keyboard-layout-indicator" ''

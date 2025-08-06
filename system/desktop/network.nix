@@ -32,7 +32,7 @@
         "9.9.9.9" # Just for fun
         "10.2.0.1" # ProtonVPN Wireguard DNS
       ];
-      dns = "none"; # Prevent NetworkManager from managing DNS
+      # dns = "none"; # Prevent NetworkManager from managing DNS
     };
 
     # Make system-wide DNS settings

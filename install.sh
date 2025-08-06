@@ -32,24 +32,18 @@ else
 fi
 
 echo
+echo -e "${CYAN}============================================================${NC}"
+echo -e "${CYAN}Please enter a hostname for this machine.${NC}"
+echo -e "${CYAN}It will be used to generate config files for NixOS.${NC}"
+echo -e "${CYAN}If unsure, press Enter to use the default username: ${YELLOW}default${NC}"
+echo -e "${CYAN}============================================================${NC}"
+echo
 
-if [ ! -f "$HOME/.nixos-hostname" ]; then
-    echo -e "${CYAN}Default options are in brackets []${NC}"
-    echo -e "${CYAN}Just press enter to select the default${NC}"
-    sleep 2
-    echo "-----"
-    echo
-    read -e -p "$(echo -e "${QUESTION}Enter your new hostname:  ${NC}")" hostName
-    if [ -z "$hostName" ]; then
-        hostName="default"
-    fi
-    echo "$hostName" >"$HOME/.nixos-hostname"
-    echo
-else
-    hostName=$(cat "$HOME/.nixos-hostname")
-fi
+read -e -p "$(echo -e "${QUESTION}Hostname: ${NC}")" hostName
+hostName="${hostName:-default}"
 
-echo -e "${CYAN}Using hostname: $hostName${NC}"
+echo
+echo -e "${CYAN}Using hostname: ${GREEN}$hostName${NC}"
 echo
 sleep 1
 
@@ -80,12 +74,13 @@ if [ ! -d "$HOME/config" ]; then
     git add . || echo -e "${RED}Warning: git add failed${NC}"
     git config --global --unset-all user.name 2>/dev/null || true
     git config --global --unset-all user.email 2>/dev/null || true
+
     echo -e "${CYAN}Updating local.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./local.nix; then
+    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./hosts/"$hostName"/local.nix; then
         echo -e "${RED}Warning: failed to update hostname in local.nix${NC}"
     fi
     echo
-    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./local.nix; then
+    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./hosts/"$hostName"/local.nix; then
         echo -e "${RED}Warning: failed to update username in local.nix${NC}"
     fi
     echo
