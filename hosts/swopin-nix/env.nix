@@ -1,4 +1,8 @@
 {
+  # Flake locals
+  system = "x86_64-linux";
+  username = "user";
+
   # Git Configuration ( For Pulling Software Repos )
   gitUsername = "AlexAntonik";
   gitEmail = "antonikavv@gmail.com";
@@ -18,7 +22,6 @@
   touchpadID = "asue120b:00-04f3:31c0-touchpad"; # From hyprctl devices  
   keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
   keyboardScreenOFFLightID = "asus::camera"; # From brightnessctl -l shines when screen and keyboard are off
-  languageLightID = "platform::micmute"; # Same used to indicate not en lang
 
   # Time and Locale Settings
   timeZone = "Europe/Minsk";

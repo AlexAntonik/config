@@ -23,17 +23,18 @@
     nurpkgs.url = "github:nix-community/NUR";
   };
 
-  outputs =
-    inputs:
-    let
-      inherit (import ./local.nix) system host username;
-      specialArgs = { inherit inputs username host; };
-    in
-    {
-      nixosConfigurations.${host} = inputs.nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = specialArgs;
-        modules = [ ./hosts/${host} ];
-      };
-    };
+  outputs = inputs: {
+    nixosConfigurations = builtins.listToAttrs (
+      map (host: let inherit (import ./hosts/${host}/env.nix) system username; in {
+        name = host;
+        value = inputs.nixpkgs.lib.nixosSystem { 
+          inherit system;
+          specialArgs = {
+            inherit inputs host username;
+          };
+          modules = [ ./hosts/${host} ];
+        };
+      }) (builtins.attrNames (builtins.readDir ./hosts))
+    );
+  };
 }
