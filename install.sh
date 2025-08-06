@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# Allow hostname to be passed as argument
+hostName="${1:-}"
+
 cd "$HOME" || exit 1
 
 # Color definitions
@@ -32,19 +35,24 @@ else
 fi
 
 echo
-echo -e "${CYAN}============================================================${NC}"
-echo -e "${CYAN}Please enter a hostname for this machine.${NC}"
-echo -e "${CYAN}It will be used to generate config files for NixOS.${NC}"
-echo -e "${CYAN}If unsure, press Enter to use the default username: ${YELLOW}default${NC}"
-echo -e "${CYAN}============================================================${NC}"
-echo
+if [ -z "$hostName" ]; then
+  echo -e "${CYAN}============================================================${NC}"
+  echo -e "${CYAN}Please enter a hostname for this machine.${NC}"
+  echo -e "${CYAN}It will be used to generate config files for NixOS.${NC}"
+  echo -e "${CYAN}If unsure, press Enter to use the default username: ${YELLOW}default${NC}"
+  echo -e "${CYAN}============================================================${NC}"
+  echo
 
-read -e -p "$(echo -e "${QUESTION}Hostname: ${NC}")" hostName
-hostName="${hostName:-default}"
+  read -e -p "$(echo -e "${QUESTION}Hostname: ${NC}")" hostName
+  hostName="${hostName:-default}"
 
-echo
-echo -e "${CYAN}Using hostname: ${GREEN}$hostName${NC}"
-echo
+  echo
+  echo -e "${CYAN}Using hostname: ${GREEN}$hostName${NC}"
+  echo
+else
+  echo -e "${CYAN}Using hostname from command-line argument: ${GREEN}$hostName${NC}"
+fi
+
 sleep 1
 
 if [ ! -d "$HOME/config" ]; then
@@ -75,13 +83,13 @@ if [ ! -d "$HOME/config" ]; then
     git config --global --unset-all user.name 2>/dev/null || true
     git config --global --unset-all user.email 2>/dev/null || true
 
-    echo -e "${CYAN}Updating local.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./hosts/"$hostName"/local.nix; then
-        echo -e "${RED}Warning: failed to update hostname in local.nix${NC}"
+    echo -e "${CYAN}Updating env.nix with hostname and username...${NC}"
+    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./hosts/"$hostName"/env.nix; then
+        echo -e "${RED}Warning: failed to update hostname in env.nix${NC}"
     fi
     echo
-    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./hosts/"$hostName"/local.nix; then
-        echo -e "${RED}Warning: failed to update username in local.nix${NC}"
+    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./hosts/"$hostName"/env.nix; then
+        echo -e "${RED}Warning: failed to update username in env.nix${NC}"
     fi
     echo
     echo -e "${CYAN}Generating The Hardware Configuration${NC}"
@@ -98,6 +106,39 @@ else
     echo -e "${CYAN}Config directory already exists, entering...${NC}"
     echo
     cd "$HOME/config" || exit 1
+
+    if [ ! -d "hosts/$hostName" ]; then
+    echo -e "${CYAN}Creating host directory for: $hostName${NC}"
+    if ! mkdir -p "hosts/$hostName"; then
+        echo -e "${RED}Failed to create host directory${NC}"
+        exit 1
+    fi
+    if ! cp hosts/default/*.nix hosts/"$hostName"/; then
+        echo -e "${RED}Failed to copy configuration files from default${NC}"
+        exit 1
+    fi
+
+    installusername="$USER"
+    echo -e "${CYAN}Using username: $installusername${NC}"
+    echo
+
+    echo -e "${CYAN}Updating env.nix with hostname and username...${NC}"
+    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\".*\"/\"$hostName\"/" ./hosts/"$hostName"/env.nix; then
+        echo -e "${RED}Warning: failed to update hostname in env.nix${NC}"
+    fi
+    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\".*\"/\"$installusername\"/" ./hosts/"$hostName"/env.nix; then
+        echo -e "${RED}Warning: failed to update username in env.nix${NC}"
+    fi
+
+    echo
+    echo -e "${CYAN}Generating The Hardware Configuration${NC}"
+    if ! sudo nixos-generate-config --show-hardware-config > "./hosts/$hostName/hardware.nix"; then
+        echo -e "${RED}Failed to generate hardware configuration${NC}"
+        exit 1
+    fi
+    echo
+fi
+
 fi
 
 echo -e "${YELLOW}============================================================${NC}"
