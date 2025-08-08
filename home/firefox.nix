@@ -54,6 +54,8 @@ let
 
     # disable updates (pretty pointless with nix)
     "app.update.channel" = "default";
+    # disable overscroll at the top of opened website or bottom
+    "apz.overscroll.enabled" = false;
 
     "browser.contentblocking.category" = "standard"; # "strict"
     "browser.ctrlTab.recentlyUsedOrder" = true;
