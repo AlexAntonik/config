@@ -157,8 +157,6 @@
           dbaeumer.vscode-eslint
           bierner.color-info 
           golang.go
-          github.copilot
-          github.copilot-chat
           # mtxr.sqltools-driver-sqlite
           tamasfe.even-better-toml 
           ms-vscode-remote.remote-ssh
@@ -168,6 +166,12 @@
           ms-vsliveshare.vsliveshare
           # codeforge.remix-forge
           amodio.toggle-excluded-files
+          # github.copilot
+          # github.copilot-chat
+        ])
+        ++(with pkgs.unstable;[
+          vscode-extensions.github.copilot
+          vscode-extensions.github.copilot-chat
         ]);
     };
   };
