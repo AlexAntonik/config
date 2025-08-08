@@ -11,7 +11,7 @@
     dart # Dart language
     kotlin # Kotlin language
     typescript # EXTREMLY BAD language
-    zulu # Open JDK fast
+    # zulu # Open JDK fast
 
     # Development tools
     meson # Build system
@@ -19,8 +19,14 @@
     ninja # Build system
     nixfmt-rfc-style # Nix code formatter
     pkg-config # Package configuration tool
+    android-studio # Android IDE
+    nodejs # JavaScript runtime
+    unstable.code-cursor
+    # unstable.vscode.fhs # Visual Studio Code with FHS environment
+    supabase-cli
+    postgresql
 
-    # Productivity & Knowledge Management
+    # Desktop suite
     anki # Spaced repetition flashcards
     libreoffice # Office suite
     obsidian # Personal knowledge base
@@ -42,16 +48,8 @@
     mpv # Media player
     ytmdl # YouTube music downloader
 
-    # Development
-    android-studio # Android IDE
-    nodejs # JavaScript runtime
-    unstable.code-cursor
-    # unstable.vscode.fhs # Visual Studio Code with FHS environment
-    supabase-cli
-    postgresql
-
     # Gaming
-    prismlauncher # Minecraft launcher
+    # prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
   ];
 }
