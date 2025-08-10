@@ -25,12 +25,13 @@
 
   outputs = inputs: {
     nixosConfigurations = builtins.listToAttrs (
-      map (host: let inherit (import ./hosts/${host}/env.nix) system username; in {
+      map (host: {
         name = host;
-        value = inputs.nixpkgs.lib.nixosSystem { 
-          inherit system;
+        value = inputs.nixpkgs.lib.nixosSystem {
+          system = (import ./hosts/${host}/env.nix).system;
           specialArgs = {
-            inherit inputs host username;
+            inherit inputs host;
+            username = (import ./hosts/${host}/env.nix).username;
           };
           modules = [ ./hosts/${host} ];
         };
