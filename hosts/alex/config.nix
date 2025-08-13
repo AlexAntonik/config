@@ -41,6 +41,7 @@ in
     ./../../system/zsh.nix # Shell system wide
     ./../../system/zoxide.nix # cd alternative super nice
     ./../../system/nvf.nix # vim
+    ./../../system/tailscale.nix # Tailscale service
     ./syncthing.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
