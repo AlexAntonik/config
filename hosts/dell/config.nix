@@ -34,6 +34,9 @@ in
     ./../../system/nix.nix
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
+    ./../../system/zsh.nix #Shell system wide
+    ./../../system/zoxide.nix #cd alternative super nice
+    ./../../system/nvf.nix # vim
     ./syncthing.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
