@@ -4,36 +4,36 @@
   username,
   host,
   ...
-}:
-let
+}: let
   inherit (import ./env.nix) gitUsername;
-in
-{
-  imports = [ 
+in {
+  imports = [
     ./../../system/boot.nix
-    ./../../system/boot-visuals.nix      # Boot visuals and login manager
+    ./../../system/boot-visuals.nix # Boot visuals and login manager
     ./../../system/fonts.nix
-    ./../../system/desktop/hardware.nix  # Desktop hardware configuration
-    ./../../system/desktop/pkgs.nix      # Desktop system packages
-    ./../../system/desktop/services.nix  # Desktop services & utils for keyboard,hyprland
-    ./../../system/desktop/network.nix   # Desktop network configuration
-    ./../../system/thunar.nix            # Desktop file manager
-    ./../../system/media.nix             # Audio and multimedia configuration and pkgs
-    ./../../system/printing.nix          # Printing configuration
-    ./../../system/bluetooth.nix         # Bluetooth configuration
-    ./../../system/nh.nix                # Nix helper
-    ./../../system/utilities.nix         # TUI utilities and tools
-    ./../../system/ssh.nix               # SSH configuration
-    ./../../system/security.nix          # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix          # General services (Journald, Fstrim, etc.)
+    ./../../system/desktop/hardware.nix # Desktop hardware configuration
+    ./../../system/desktop/pkgs.nix # Desktop system packages
+    ./../../system/desktop/services.nix # Desktop services & utils for keyboard,hyprland
+    ./../../system/desktop/network.nix # Desktop network configuration
+    ./../../system/thunar.nix # Desktop file manager
+    ./../../system/media.nix # Audio and multimedia configuration and pkgs
+    ./../../system/printing.nix # Printing configuration
+    ./../../system/bluetooth.nix # Bluetooth configuration
+    ./../../system/nh.nix # Nix helper
+    ./../../system/utilities.nix # TUI utilities and tools
+    ./../../system/ssh.nix # SSH configuration
+    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
     ./../../system/starship.nix
     ./../../system/git.nix
+    ./../../system/secrets/sops.nix
     ./../../system/steam.nix
-    ./../../system/stylix.nix            # Stylix config
+    ./../../system/stylix.nix # Stylix config
     ./../../system/time.nix
     ./../../system/nix.nix
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
+    ./cloudflared.nix
     ./syncthing.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes
@@ -73,7 +73,7 @@ in
         # Theming and appearance
         ./../../home/gtk.nix
         ./../../home/qt.nix
-        ./../../home/stylix.nix           # Stylix targets
+        ./../../home/stylix.nix # Stylix targets
 
         # Desktop environment and panels
         ./../../home/hyprland
@@ -94,9 +94,9 @@ in
 
         # Home scripts and utilities
         packages = [
-          (import ./../../home/scripts/emopicker9000.nix { inherit pkgs; })
-          (import ./../../home/scripts/task-waybar.nix { inherit pkgs; })
-          (import ./../../home/scripts/nvidia-offload.nix { inherit pkgs; })
+          (import ./../../home/scripts/emopicker9000.nix {inherit pkgs;})
+          (import ./../../home/scripts/task-waybar.nix {inherit pkgs;})
+          (import ./../../home/scripts/nvidia-offload.nix {inherit pkgs;})
           (import ./../../home/scripts/syncsupprep.nix {
             inherit pkgs;
             inherit username;
@@ -109,11 +109,11 @@ in
             inherit pkgs;
             inherit host;
           })
-          (import ./../../home/scripts/rofi-launcher.nix { inherit pkgs; })
-          (import ./../../home/scripts/hm-find.nix { inherit pkgs; })
-          (import ./../../home/scripts/screenshootin.nix { inherit pkgs; })
-          (import ./../../home/scripts/oneshot.nix { inherit pkgs; })
-          (import ./../../home/scripts/toggleXWaylandScale.nix { inherit pkgs; })
+          (import ./../../home/scripts/rofi-launcher.nix {inherit pkgs;})
+          (import ./../../home/scripts/hm-find.nix {inherit pkgs;})
+          (import ./../../home/scripts/screenshootin.nix {inherit pkgs;})
+          (import ./../../home/scripts/oneshot.nix {inherit pkgs;})
+          (import ./../../home/scripts/toggleXWaylandScale.nix {inherit pkgs;})
         ];
 
         # This value determines the Home Manager release that your configuration is
@@ -150,5 +150,6 @@ in
     ];
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${username}" ];
+  nix.settings.allowed-users = ["${username}"];
 }
+
