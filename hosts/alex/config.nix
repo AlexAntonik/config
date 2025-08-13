@@ -140,6 +140,7 @@ in
   # this particular machine, and is used to maintain compatibility with
   # application data (e.g. databases) created on older NixOS versions.
   system.stateVersion = "23.11"; # Do not change!
+  
   users.defaultUserShell = pkgs.zsh;
   users.mutableUsers = true;
   users.users.${username} = {
