@@ -1,12 +1,10 @@
-{ username, ... }:
-let 
+{username, ...}: let
   credsFile = "/home/${username}/.cloudflared/creds.json";
-in
-{
-  sops.secrets.dell_private = {
+in {
+  sops.secrets.dell = {
     sopsFile = "/home/${username}/config/system/secrets/cloudflared.yaml";
     owner = "alex";
-    path = credsFile; 
+    path = credsFile;
   };
   services.cloudflared = {
     enable = true;
