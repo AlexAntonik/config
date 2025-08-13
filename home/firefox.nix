@@ -202,6 +202,10 @@ let
         url = "http://localhost:8384/#";
         label = "Syncthing";
       }
+      {
+        url = "https://login.tailscale.com/admin/machines";
+        label = "Tailscale";
+      }
     ];
 
     "distribution.searchplugins.defaultLocale" = "en-US";
