@@ -33,6 +33,9 @@ in {
     ./../../system/nix.nix
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
+    ./../../system/zsh.nix #Shell system wide
+    ./../../system/zoxide.nix #cd alternative super nice
+    ./../../system/nvf.nix # vim
     ./cloudflared.nix
     ./syncthing.nix
 
@@ -152,4 +155,3 @@ in {
   };
   nix.settings.allowed-users = ["${username}"];
 }
-
