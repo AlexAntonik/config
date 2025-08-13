@@ -25,6 +25,7 @@ in {
     ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
     ./../../system/services.nix # General services (Journald, Fstrim, etc.)
     ./../../system/starship.nix
+    ./../../system/tailscale.nix # Tailscale service
     ./../../system/git.nix
     ./../../system/secrets/sops.nix
     ./../../system/steam.nix
