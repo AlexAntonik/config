@@ -36,7 +36,7 @@ in {
     ./../../system/zsh.nix #Shell system wide
     ./../../system/zoxide.nix #cd alternative super nice
     ./../../system/nvf.nix # vim
-    ./cloudflared.nix
+    # ./cloudflared.nix
     ./syncthing.nix
 
     inputs.stylix.nixosModules.stylix # Stylix module for themes

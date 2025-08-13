@@ -158,7 +158,7 @@
 
         time = {
           format = "[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[](fg:purple bg:box)[ $time](fg:foreground bg:box)[](fg:box) ";
-          time_format = "%H:%M:%S";
+          time_format = "%H:%M";
           disabled = false;
         };
 
