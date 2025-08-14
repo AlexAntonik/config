@@ -19,7 +19,7 @@ in
     ./../../system/desktop/network.nix # Desktop network configuration
     ./../../system/thunar.nix # Desktop file manager
     ./../../system/media.nix # Audio and multimedia configuration and pkgs
-    ./../../system/printing.nix # Printing configuration
+    # ./../../system/printing.nix # Printing configuration
     ./../../system/bluetooth.nix # Bluetooth configuration
     ./../../system/nh.nix # Nix helper
     ./../../system/utilities.nix # TUI utilities and tools
