@@ -36,8 +36,6 @@
       "tag +settings, class:(xdg-desktop-portal-gtk)"
 
       # Idle inhibit rules
-      "idleinhibit fullscreen, class:^(*)$"
-      "idleinhibit fullscreen, title:^(*)$"
       "idleinhibit fullscreen, fullscreen:1"
 
       # Floating windows
