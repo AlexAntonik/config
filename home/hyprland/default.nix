@@ -9,6 +9,7 @@
     ./hyprland.nix
     ./hyprlock.nix
     ./pyprland.nix
+    ./eww-clock.nix
     ./wlsunset.nix 
   ];
 }

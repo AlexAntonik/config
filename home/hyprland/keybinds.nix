@@ -59,7 +59,6 @@ in
       "SUPER,Return,exec,${terminal}" # Launch terminal
       "SUPER SHIFT,Return,exec,rofi-launcher" # Launch Rofi application launcher
       "SUPER ,GRAVE,exec,rofi-launcher" # Launch Rofi application launcher
-      "SUPER ALT,W,exec,wallsetter" # Custom wallpaper setter script
       "SUPER,W,exec,${browser}" # Launch browser
       "SUPER SHIFT,E,exec,emopicker9000" # Emoji picker
       "SUPER,D,exec,discord" # Launch Discord
