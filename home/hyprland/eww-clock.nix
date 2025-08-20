@@ -52,7 +52,7 @@ let
       text-shadow:
         0 0 35px rgba(255, 255, 255, 0.3),
         3px 3px 15px rgba(0, 0, 0, 0.6);
-      letter-spacing: 1px;3
+      letter-spacing: 1px;
     }
     EOF
   '';
