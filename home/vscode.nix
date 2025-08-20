@@ -3,7 +3,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.unstable.vscode;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
@@ -168,11 +168,11 @@
           amodio.toggle-excluded-files
           # github.copilot
           # github.copilot-chat
-        ])
-        ++(with pkgs.unstable;[
-          vscode-extensions.github.copilot
-          vscode-extensions.github.copilot-chat
-        ]);
+        ]); #remome ';' to add copilot
+        # ++(with pkgs.unstable;[
+          # vscode-extensions.github.copilot
+          # vscode-extensions.github.copilot-chat
+        # ]);
     };
   };
 }
