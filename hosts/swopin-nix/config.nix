@@ -53,7 +53,6 @@ in
         ./../../home/bat.nix
         ./../../home/btop.nix
         ./../../home/htop.nix
-        ./../../home/fastfetch
         ./../../home/eza.nix
         ./../../home/lazygit.nix
         ./../../home/fzf.nix

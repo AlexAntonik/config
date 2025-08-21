@@ -63,7 +63,6 @@ in {
         ./../../home/btop.nix
         ./../../home/emoji.nix
         ./../../home/htop.nix
-        ./../../home/fastfetch
         ./../../home/eza.nix
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
