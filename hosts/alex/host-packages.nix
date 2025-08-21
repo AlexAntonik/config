@@ -49,7 +49,17 @@
     ytmdl # YouTube music downloader
 
     # Gaming
+    # vintagestory
     # prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
   ];
+
+
+# only for vintage story mb remove in future
+#          |
+#         \|/
+#          \/
+  # nixpkgs.config.permittedInsecurePackages = [
+    # "dotnet-runtime-7.0.20"
+  # ];
 }
