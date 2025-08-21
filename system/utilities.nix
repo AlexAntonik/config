@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     wireguard-tools # WireGuard tools
+    fastfetch # Modern neofetch    
     bottom # another tui system usage interface
     cloc # Count lines of code
     duf # Utility for viewing disk usage in terminal

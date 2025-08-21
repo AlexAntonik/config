@@ -35,9 +35,6 @@
       "tag +settings, class:^(nwg-look|qt5ct|qt6ct|[Yy]ad)$"
       "tag +settings, class:(xdg-desktop-portal-gtk)"
 
-      # Idle inhibit rules
-      "idleinhibit fullscreen, fullscreen:1"
-
       # Floating windows
       "float, tag:settings*"
       "float, class:^([Ff]erdium)$"
