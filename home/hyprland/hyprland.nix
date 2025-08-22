@@ -79,7 +79,6 @@ in
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "killall -q waybar; sleep 0.5 && waybar"
         "killall -q swaync; sleep 0.5 && swaync"
-        # "oneshot" # dotfiles set and some configs
         # System tray applets and agents
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
