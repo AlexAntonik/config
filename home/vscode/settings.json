@@ -96,5 +96,8 @@
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 5,
   "workbench.editor.showTabs": "single",
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.workspaceFolder": "/home/alex/.leetcode",
+  "leetcode.defaultLanguage": "golang",
   "workbench.activityBar.location": "hidden"
 }
