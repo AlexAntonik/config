@@ -71,6 +71,7 @@ in
         # Applications
         ./../../home/firefox.nix
         ./../../home/virtmanager.nix
+        ./../../home/vscode/vscode.nix
 
         # Theming and appearance
         ./../../home/gtk.nix
@@ -114,7 +115,6 @@ in
           (import ./../../home/scripts/rofi-launcher.nix { inherit pkgs; })
           (import ./../../home/scripts/hm-find.nix { inherit pkgs; })
           (import ./../../home/scripts/screenshootin.nix { inherit pkgs; })
-          (import ./../../home/scripts/oneshot.nix { inherit pkgs; })
           (import ./../../home/scripts/toggleXWaylandScale.nix { inherit pkgs; })
         ];
 
