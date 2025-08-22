@@ -81,7 +81,7 @@ in {
         # Desktop environment and panels
         ./../../home/hyprland
         ./../../home/waybar.nix
-        ./../../home/wlogout
+        ./../../home/wlogout/wlogout.nix
         ./../../home/rofi.nix
         ./../../home/swaync.nix
         ./../../home/swayosd.nix
