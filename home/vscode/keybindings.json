@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaults
 [
     {
         "key": "ctrl+t",
@@ -163,5 +162,13 @@
         "key": "ctrl+w",
         "command": "-extension.vim_ctrl+w",
         "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    },
+    {
+        "key":"ctrl+shift+m",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key":"ctrl+shift+m",
+        "command":"-workbench.actions.view.problems"
     }
 ]

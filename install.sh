@@ -93,7 +93,7 @@ if [ ! -d "$HOME/config" ]; then
     fi
     echo
     echo -e "${CYAN}Generating The Hardware Configuration${NC}"
-    if ! sudo nixos-generate-config --show-hardware-config > "./hosts/$hostName/hardware.nix"; then
+    if ! sudo nixos-generate-config --show-hardware-config | sudo tee "./hosts/$hostName/hardware.nix" > /dev/null; then
         echo -e "${RED}Failed to generate hardware configuration${NC}"
         echo
         exit 1
@@ -132,7 +132,7 @@ else
 
     echo
     echo -e "${CYAN}Generating The Hardware Configuration${NC}"
-    if ! sudo nixos-generate-config --show-hardware-config > "./hosts/$hostName/hardware.nix"; then
+    if ! sudo nixos-generate-config --show-hardware-config | sudo tee "./hosts/$hostName/hardware.nix" > /dev/null; then
         echo -e "${RED}Failed to generate hardware configuration${NC}"
         exit 1
     fi

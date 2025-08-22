@@ -1,0 +1,100 @@
+{
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "bashIde.shellcheckPath": "shellcheck",
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace",
+  "editor.fontSize": 16,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "explorer.confirmPasteNative": false,
+  "extensions.autoCheckUpdates": false,
+  "files.autoSave": "afterDelay",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "keyboard.dispatch": "keyCode",
+  "nix.enableLanguageServer": true,
+  "nix.hiddenLanguageServerErrors": [
+    "textDocument/definition"
+  ],
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nil": {
+      "formatting": {
+        "command": [
+          "nixfmt"
+        ]
+      }
+    },
+    "nixd": {
+      "formatting": {
+        "command": [
+          "nixfmt"
+        ]
+      },
+      "nixpkgs": {
+        "expr": "import (builtins.getFlake \"/home/alex/config\").inputs.nixpkgs { }"
+      },
+      "options": {
+        "home_manager": {
+          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.alex.options.home-manager.users.type.getSubOptions []"
+        },
+        "nixos": {
+          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.alex.options"
+        }
+      }
+    }
+  },
+  "shfmt.executablePath": "shfmt",
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace",
+  "terminal.integrated.fontLigatures.featureSettings": "\"liga\" on",
+  "update.mode": "none",
+  "vim.handleKeys": {
+    "<Esc>": true
+  },
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": true,
+  "window.controlsStyle": "hidden",
+  "window.customTitleBarVisibility": "never",
+  "window.menuBarVisibility": "toggle",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 5,
+  "workbench.editor.showTabs": "single",
+  "workbench.activityBar.location": "hidden"
+}
