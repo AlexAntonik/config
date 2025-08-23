@@ -14,11 +14,20 @@
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
+  
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      inputs.nurpkgs.overlays.default
+      inputs.nix-vscode-extensions.overlays.default
 
-  nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.overlays = [
-    inputs.nurpkgs.overlays.default
-    inputs.nix-vscode-extensions.overlays.default
-  ] ++ (builtins.attrValues (import ./overlays.nix { inherit inputs; }));
+      # Inline overlay for unstable packages
+      (final: prev: {
+        unstable = import inputs.unstable {
+          system = final.system;
+          config.allowUnfree = true;
+        };
+      })
+    ];
+  };
 }
