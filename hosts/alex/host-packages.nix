@@ -52,6 +52,7 @@
     # vintagestory
     # prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
+    # hydralauncher #Games from different sources
   ];
 
 
