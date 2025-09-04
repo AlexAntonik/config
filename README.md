@@ -1,4 +1,4 @@
-# 📥 Installation
+# Installation
 
 > **Requirements:**  
 >
@@ -23,7 +23,7 @@
    > - Prompt you to open `/home/<your-username>/config/hosts/<your-hostname>/hardware.nix`
    > - You **must** uncomment and configure the modules for your hardware as described in the file before continuing
 
-## ⚡ Quick Commands
+## Quick Commands
 
 | Command | Description |
 |---------|-------------|
