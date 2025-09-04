@@ -20,7 +20,7 @@
    > The script will:
    > - Ask you for a hostname (or use the previous one if already set)
    > - Clone the repository and prepare your config
-   > - Prompt you to open `/home/<your-username>/config/hosts/<your-hostname>/drivers.nix`
+   > - Prompt you to open `/home/<your-username>/config/hosts/<your-hostname>/hardware.nix`
    > - You **must** uncomment and configure the modules for your hardware as described in the file before continuing
 
 ## ⚡ Quick Commands
@@ -36,5 +36,5 @@
 <div align="center">
 Made with ❤️ using NixOS  
 
-Inspired by [ZaneyOS](https://gitlab.com/Zaney/zaneyos)
+Inspired by [EmergentMind](https://github.com/EmergentMind/nix-config) [Mic92](https://github.com/Mic92/dotfiles) [ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 </div>
