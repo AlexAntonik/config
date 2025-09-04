@@ -93,7 +93,7 @@ if [ ! -d "$HOME/config" ]; then
     fi
     echo
     echo -e "${CYAN}Generating The Hardware Configuration${NC}"
-    if ! sudo nixos-generate-config --show-hardware-config | sudo tee "./hosts/$hostName/hardware.nix" > /dev/null; then
+    if ! sudo nixos-generate-config --show-hardware-config | sudo tee "./hosts/$hostName/hw.nix" > /dev/null; then
         echo -e "${RED}Failed to generate hardware configuration${NC}"
         echo
         exit 1
@@ -142,15 +142,15 @@ fi
 fi
 
 echo -e "${YELLOW}============================================================${NC}"
-echo -e "${YELLOW}Before continuing installation, you must configure drivers.${NC}"
-echo -e "${YELLOW}Please open $HOME/config/hosts/$hostName/drivers.nix${NC}"
+echo -e "${YELLOW}Before continuing installation, you must configure hardware.${NC}"
+echo -e "${YELLOW}Please open $HOME/config/hosts/$hostName/hardware.nix${NC}"
 echo -e "${YELLOW}and follow the instructions inside the file.${NC}."
 echo -e "${YELLOW}============================================================${NC}"
 echo
 sleep 1
 
 while true; do
-    read -e -p "$(echo -e "${QUESTION}Have you already configured drivers in $HOME/config/hosts/$hostName/drivers.nix? (y/n): ${NC}")" drivers_ready
+    read -e -p "$(echo -e "${QUESTION}Have you already configured hardware in $HOME/config/hosts/$hostName/hardware.nix? (y/n): ${NC}")" drivers_ready
     case $drivers_ready in
         [Yy]* ) 
             echo
@@ -161,9 +161,9 @@ while true; do
             ;;
         [Nn]* ) 
             echo
-            echo -e "${YELLOW}Please configure drivers before continuing installation.${NC}"
+            echo -e "${YELLOW}Please configure hardware before continuing installation.${NC}"
             echo
-            echo -e "${CYAN}Opening the drivers.nix file location: $HOME/config/hosts/$hostName/drivers.nix${NC}"
+            echo -e "${CYAN}Opening the hardware.nix file location: $HOME/config/hosts/$hostName/hardware.nix${NC}"
             # Spinner for 2 seconds
             spin='-\|/'
             echo -n " "
@@ -174,7 +174,7 @@ while true; do
             done
             printf "\b"
             echo
-            vim "$HOME/config/hosts/$hostName/drivers.nix" || nano "$HOME/config/hosts/$hostName/drivers.nix"
+            vim "$HOME/config/hosts/$hostName/hardware.nix" || nano "$HOME/config/hosts/$hostName/hardware.nix"
             echo -e "${RED}============================================================${NC}"
             echo -e "${RED}!!! Make sure you saved the file after editing !!!${NC}"
             echo -e "${RED}============================================================${NC}"

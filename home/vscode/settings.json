@@ -99,5 +99,7 @@
   "leetcode.hint.configWebviewMarkdown": false,
   "leetcode.workspaceFolder": "/home/alex/.leetcode",
   "leetcode.defaultLanguage": "golang",
+  "leetcode.hint.commentDescription": false,
+  "leetcode.hint.commandShortcut": false,
   "workbench.activityBar.location": "hidden"
 }
