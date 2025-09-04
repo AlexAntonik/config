@@ -49,6 +49,7 @@
     ytmdl # YouTube music downloader
 
     # Gaming
+    starsector
     # vintagestory
     # prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc

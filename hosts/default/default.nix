@@ -2,8 +2,8 @@
 {
   imports = [
     ./config.nix
-    ./drivers.nix
     ./hardware.nix
+    ./hardware-gen.nix
     ./host-packages.nix
   ];
 }
