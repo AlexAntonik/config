@@ -10,6 +10,10 @@ let
 in
 {
   imports = [
+    ./hardware.nix # User defined hardware configuration
+    ./hardware-gen.nix # Nix generated hardware configuration
+    ./host-packages.nix # Packages specific to each host
+
     ./../../system/boot.nix
     ./../../system/boot-visuals.nix # Boot visuals and login manager
     ./../../system/fonts.nix

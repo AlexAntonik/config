@@ -10,6 +10,11 @@ let
 in
 {
   imports = [
+    ./networking.nix
+    ./hardware-configuration.nix
+    ./syncthing.nix
+    ./host-packages.nix # Packages specific to each host
+
     # ./../../system/boot.nix
     ./../../system/fonts.nix
     ./../../system/nh.nix # Nix helper
