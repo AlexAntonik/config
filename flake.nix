@@ -33,7 +33,7 @@
             inherit inputs host;
             username = (import ./hosts/${host}/env.nix).username;
           };
-          modules = [ ./hosts/${host} ];
+          modules = [ ./hosts/${host}/config.nix ];
         };
       }) (builtins.attrNames (builtins.readDir ./hosts))
     );
