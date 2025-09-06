@@ -11,6 +11,17 @@ let
     ;
 in
 {
+  imports = [
+    ./keybinds.nix
+    ./windows.nix
+    ./visual.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
+    ./hyprlock.nix
+    ./pyprland.nix
+    ./eww-clock.nix
+    ./wlsunset.nix 
+  ];
   home.packages = with pkgs; [
     grim
     slurp

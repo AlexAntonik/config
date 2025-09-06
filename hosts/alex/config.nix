@@ -10,6 +10,10 @@ let
 in
 {
   imports = [
+    ./hardware.nix # User defined hardware configuration
+    ./hardware-gen.nix # Nix generated hardware configuration
+    ./host-packages.nix # Packages specific to each host
+
     ./../../system/boot.nix
     ./../../system/boot-visuals.nix # Boot visuals and login manager
     ./../../system/fonts.nix
@@ -70,7 +74,7 @@ in
         ./../../home/eza.nix
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
-        ./../../home/yazi
+        ./../../home/yazi/yazi.nix
         ./../../home/gh.nix
 
         # Applications
@@ -84,7 +88,7 @@ in
         ./../../home/stylix.nix # Stylix targets
 
         # Desktop environment and panels
-        ./../../home/hyprland
+        ./../../home/hyprland/hyprland.nix
         ./../../home/waybar.nix
         ./../../home/wlogout/wlogout.nix
         ./../../home/rofi.nix
