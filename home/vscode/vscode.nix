@@ -59,7 +59,7 @@ in
           # Essentials
           mikestead.dotenv
           editorconfig.editorconfig
-          # jacobdufault.fuzzy-search
+          jacobdufault.fuzzy-search
           vscodevim.vim
           alefragnani.project-manager
 
