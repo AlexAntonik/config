@@ -101,5 +101,6 @@
   "leetcode.defaultLanguage": "golang",
   "leetcode.hint.commentDescription": false,
   "leetcode.hint.commandShortcut": false,
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "editor.wordWrap": "on"
 }
