@@ -98,7 +98,7 @@
         "command": "-workbench.action.closeEditorsInGroup"
     },
     {
-        "key": "ctrl+f",
+        "key": "shift shift",
         "command": "workbench.action.quickTextSearch",
         "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
     },
@@ -195,5 +195,13 @@
         "key": "ctrl+shift+o",
         "command": "-workbench.action.terminal.openDetectedLink",
         "when": "terminalFocus && terminalHasBeenCreated"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "fuzzySearch.activeTextEditor"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "fuzzySearch.activeTextEditorWithCurrentSelection"
     }
 ]
