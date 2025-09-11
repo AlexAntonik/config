@@ -70,7 +70,7 @@ in {
         ./../../home/eza.nix
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
-        ./../../home/yazi
+        ./../../home/yazi/yazi.nix
         ./../../home/gh.nix
 
         # Applications
@@ -83,7 +83,7 @@ in {
         ./../../home/stylix.nix # Stylix targets
 
         # Desktop environment and panels
-        ./../../home/hyprland
+        ./../../home/hyprland/hyprland.nix
         ./../../home/waybar.nix
         ./../../home/wlogout/wlogout.nix
         ./../../home/rofi.nix
