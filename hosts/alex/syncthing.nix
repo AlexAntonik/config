@@ -50,11 +50,12 @@
         };
         "Prod" = {
           path = "/home/${username}/projects/prod";
+          type = "receiveonly";          
           versioning = {
             type = "staggered";
             params = {
               cleanInterval = "3600";
-              maxAge = "15768000";
+              maxAge = "2764800";
             };
           };
           devices = [ "swop" ];
