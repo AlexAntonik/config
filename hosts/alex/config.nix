@@ -70,12 +70,8 @@ in
     users.${username} = {
       imports = [
         # CLI utilities
-        # ./../../home/bat.nix
         ./../../home/btop.nix
         ./../../home/emoji.nix
-        # ./../../home/htop.nix
-        # ./../../home/eza.nix
-        # ./../../home/lazygit.nix
         ./../../home/fzf.nix
         ./../../home/yazi/yazi.nix
         ./../../home/gh.nix
