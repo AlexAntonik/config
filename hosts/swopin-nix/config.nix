@@ -61,7 +61,7 @@ in
         ./../../home/eza.nix
         ./../../home/lazygit.nix
         ./../../home/fzf.nix
-        ./../../home/yazi
+        ./../../home/yazi/yazi.nix
         # ./../../home/ghostty.nix
 
         # Theming and appearance
