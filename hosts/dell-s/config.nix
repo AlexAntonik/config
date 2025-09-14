@@ -52,6 +52,9 @@ in {
   # application data (e.g. databases) created on older NixOS versions.
   system.stateVersion = "23.11"; # Do not change!
 
+  # prevent load when lid closed
+  services.logind.lidSwitch = "ignore";
+
   users.mutableUsers = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.${username} = {
