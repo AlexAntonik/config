@@ -10,6 +10,8 @@ in {
     ./hardware-gen.nix # Nix generated hardware configuration
 
     ./../../system/boot.nix
+    ./../../system/fonts.nix
+    ./../../system/srv/network-wifi.nix
     ./../../system/boot-visuals.nix # Boot visuals and login manager
     ./../../system/nh.nix # Nix helper
     ./../../system/utilities.nix # TUI utilities and tools
@@ -21,6 +23,9 @@ in {
     ./../../system/git.nix
     ./../../system/secrets/sops.nix
     ./../../system/time.nix
+    ./../../system/lazygit.nix # Git tui
+    ./../../system/htop.nix # htop
+    ./../../system/bat.nix # More cute cat
     ./../../system/nix.nix
     ./../../system/docker.nix
     ./../../system/zsh.nix #Shell system wide
