@@ -12,7 +12,6 @@ in
   imports = [
     ./hardware.nix # User defined hardware configuration
     ./hardware-gen.nix # Nix generated hardware configuration
-    ./host-packages.nix # Packages specific to each host
 
     ./../../system/boot.nix
     ./../../system/boot-visuals.nix # Boot visuals and login manager
@@ -39,6 +38,7 @@ in
     ./../../system/steam.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
+    ./../../system/obs.nix # OBS with virtual camera
     ./../../system/time.nix
     ./../../system/lazygit.nix # Git tui
     ./../../system/htop.nix # htop
@@ -55,6 +55,83 @@ in
 
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  programs = {
+    adb.enable = true; # Android Debug Bridge
+    amnezia-vpn.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    # Programming languages
+    go # Go programming language
+    nixd # Nix LSP
+    dart # Dart language
+    kotlin # Kotlin language
+    typescript # EXTREMLY BAD language
+    # zulu # Open JDK fast
+
+    # Development tools
+    meson # Build system
+    gradle # Build system
+    ninja # Build system
+    nixfmt-rfc-style # Nix code formatter
+    pkg-config # Package configuration tool
+    android-studio # Android IDE
+    nodejs # JavaScript runtime
+    unstable.code-cursor
+    # unstable.vscode.fhs # Visual Studio Code with FHS environment
+    supabase-cli
+    postgresql
+
+    # Desktop suite
+    anki # Spaced repetition flashcards
+    libreoffice # Office suite
+    obsidian # Personal knowledge base
+    zathura # PDF viewer
+
+    # Communication & Internet
+    discord # Chat and voice communication
+    protonvpn-gui # ProtonVPN client
+    telegram-desktop # Instant messaging
+    tor-browser # Privacy-focused browser
+    # chromium
+    # vesktop #discord alternative web thingne
+
+    # Media Creation & Editing
+    gimp # Image manipulation program
+    unstable.audacity # Audio editor
+    vlc
+    mpv # Media player
+    ytmdl # YouTube music downloader
+
+    # Scripts
+    (import ./../../system/scripts/clipboard.nix { inherit pkgs; })
+    (import ./../../system/scripts/emopicker9000.nix { inherit pkgs; })
+    (import ./../../system/scripts/task-waybar.nix { inherit pkgs; })
+    (import ./../../system/scripts/nvidia-offload.nix { inherit pkgs; })
+    (import ./../../system/scripts/syncsupprep.nix { inherit pkgs username; })
+    (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs host; })
+    (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs host; })
+    (import ./../../system/scripts/rofi-launcher.nix { inherit pkgs; })
+    (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
+    (import ./../../system/scripts/screenshootin.nix { inherit pkgs; })
+    (import ./../../system/scripts/toggleXWaylandScale.nix { inherit pkgs; })
+
+    # Gaming
+    # starsector
+    # vintagestory
+    # prismlauncher # Minecraft launcher
+    # lutris # Game launchers gog epic games etc
+    # hydralauncher #Games from different sources
+  ];
+
+  # needed only for vintage story mb remove in future
+  #           |
+  #         \ | /
+  #          \ /
+  # nixpkgs.config.permittedInsecurePackages = [
+  # "dotnet-runtime-7.0.20"
+  # ];
 
   home-manager = {
     useUserPackages = true;
@@ -94,37 +171,11 @@ in
         ./../../home/swaync.nix
         ./../../home/swayosd.nix
         ./../../home/ghostty.nix
-
-        # Scripts and some configs
-        ./../../home/scripts/clipboard.nix
         ./../../home/xdg.nix
       ];
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
-
-        # Home scripts and utilities
-        packages = [
-          (import ./../../home/scripts/emopicker9000.nix { inherit pkgs; })
-          (import ./../../home/scripts/task-waybar.nix { inherit pkgs; })
-          (import ./../../home/scripts/nvidia-offload.nix { inherit pkgs; })
-          (import ./../../home/scripts/syncsupprep.nix {
-            inherit pkgs;
-            inherit username;
-          })
-          (import ./../../home/scripts/toggleTouchpad.nix {
-            inherit pkgs;
-            inherit host;
-          })
-          (import ./../../home/scripts/toggleDisplay.nix {
-            inherit pkgs;
-            inherit host;
-          })
-          (import ./../../home/scripts/rofi-launcher.nix { inherit pkgs; })
-          (import ./../../home/scripts/hm-find.nix { inherit pkgs; })
-          (import ./../../home/scripts/screenshootin.nix { inherit pkgs; })
-          (import ./../../home/scripts/toggleXWaylandScale.nix { inherit pkgs; })
-        ];
 
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
@@ -142,7 +193,7 @@ in
   # this particular machine, and is used to maintain compatibility with
   # application data (e.g. databases) created on older NixOS versions.
   system.stateVersion = "23.11"; # Do not change!
-  
+
   users.defaultUserShell = pkgs.zsh;
   users.mutableUsers = true;
   users.users.${username} = {
