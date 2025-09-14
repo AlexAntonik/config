@@ -51,7 +51,6 @@
       fu = "nh os switch --hostname ${host} --update";
       change-host = "sh /home/${username}/config/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-      cat = "bat";
       gst = "git status";
       lg = "lazygit";
       man = "batman";
