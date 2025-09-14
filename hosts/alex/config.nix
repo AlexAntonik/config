@@ -40,6 +40,7 @@ in
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
+    ./../../system/lazygit.nix
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
     ./../../system/zsh.nix # Shell system wide
@@ -72,7 +73,7 @@ in
         ./../../home/emoji.nix
         ./../../home/htop.nix
         ./../../home/eza.nix
-        ./../../home/lazygit.nix
+        # ./../../home/lazygit.nix
         ./../../home/fzf.nix
         ./../../home/yazi/yazi.nix
         ./../../home/gh.nix
