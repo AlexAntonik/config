@@ -12,7 +12,6 @@ in {
     ./../../system/boot.nix
     ./../../system/fonts.nix
     ./../../system/srv/network-wifi.nix
-    ./../../system/boot-visuals.nix # Boot visuals and login manager
     ./../../system/nh.nix # Nix helper
     ./../../system/utilities.nix # TUI utilities and tools
     ./../../system/ssh.nix # SSH configuration
