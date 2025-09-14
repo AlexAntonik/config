@@ -91,7 +91,6 @@
   "window.controlsStyle": "hidden",
   "window.customTitleBarVisibility": "never",
   "window.menuBarVisibility": "toggle",
-  "workbench.colorTheme": "One Dark Pro Night Flat",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 5,

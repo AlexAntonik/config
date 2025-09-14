@@ -3,6 +3,7 @@
   inputs,
   username,
   host,
+  lib,
   ...
 }:
 let
@@ -19,8 +20,7 @@ in
     ./../../system/fonts.nix
     ./../../system/nh.nix # Nix helper
     ./../../system/utilities.nix # TUI utilities and tools
-    # ./../../system/ssh.nix # SSH configuration
-    # ssh config below
+    ./../../system/ssh.nix # SSH configuration
     ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
     ./../../system/services.nix # General services (Journald, Fstrim, etc.)
     ./../../system/starship.nix
@@ -59,7 +59,7 @@ in
         ./../../home/btop.nix
         ./../../home/htop.nix
         ./../../home/eza.nix
-        ./../../home/lazygit.nix
+        # ./../../home/lazygit.nix
         ./../../home/fzf.nix
         ./../../home/yazi/yazi.nix
         # ./../../home/ghostty.nix
@@ -101,13 +101,9 @@ in
   users.defaultUserShell = pkgs.zsh;
 
   services.openssh = {
-    enable = true;
     settings = {
-      PermitRootLogin = "no"; # Prevent root from SSH login
-      PasswordAuthentication = false; # Users can SSH using kb and password
-      KbdInteractiveAuthentication = true;
+      PasswordAuthentication = lib.mkForce false; # Override from ssh.nix
     };
-    ports = [ 22 ];
   };
 
   users.users.${username} = {
