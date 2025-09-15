@@ -17,10 +17,10 @@
       #package = pkgs.bluez5-experimental;
       package = pkgs.bluez;
       settings.Policy.AutoEnable = "true";
-      settings.General = {
-        Enable = "Control,Gateway,Headset,Media,Sink,Socket,Source";
-        MultiProfile = "multiple";
-      };
+      # settings.General = {
+      #   Enable = "Control,Gateway,Headset,Media,Sink,Socket,Source";
+      #   MultiProfile = "multiple";
+      # };
     };
   };
   # Some config from random github repo

@@ -1,5 +1,7 @@
 {
   inputs,
+  lib,
+  config,
   ...
 }:
 {
@@ -16,7 +18,7 @@
     #    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     #
     #    If you use this, you usually don't need to import anything else here.
-    inputs.nixos-hardware.nixosModules.dell-g3-3579
+    # inputs.nixos-hardware.nixosModules.dell-g3-3579
 
     # 2. If your device is not listed, import modules for your CPU/GPU/etc.
     #    Uncomment what you need. You can find examples in the nixos-hardware repo.
@@ -48,7 +50,14 @@
     #    inputs.nixos-hardware.common-pc-laptop-ssd                    # Laptop with SSD
     #    inputs.nixos-hardware.nixosModules.common-pc-ssd              # PC with SSD
   ];
-   services.xserver.videoDrivers = [ "nvidia" ];
+
+  services.tlp.enable = lib.mkDefault (
+    (lib.versionOlder (lib.versions.majorMinor lib.version) "21.05")
+    || !config.services.power-profiles-daemon.enable
+  );
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  #  services.xserver.videoDrivers = [ "nvidia" ];
   # ===========================
   # ADDITIONAL HARDWARE CONFIG
   # ===========================

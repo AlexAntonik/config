@@ -125,11 +125,6 @@
         "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
     },
     {
-        "key": "ctrl+enter",
-        "command": "editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus"
-    },
-    {
         "key": "f12",
         "command": "-editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus"
@@ -197,11 +192,42 @@
         "when": "terminalFocus && terminalHasBeenCreated"
     },
     {
+        "key": "ctrl+enter",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "editor.action.openLink",
+                "editor.action.revealDefinition"
+            ]
+        },
+        "when": "editorTextFocus"
+    },
+    {
         "key": "ctrl+f",
         "command": "fuzzySearch.activeTextEditor"
     },
     {
         "key": "ctrl+f",
         "command": "fuzzySearch.activeTextEditorWithCurrentSelection"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+up",
+        "command": "-editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+down",
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]

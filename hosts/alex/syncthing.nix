@@ -49,7 +49,7 @@
           ignorePermissions = true;
         };
         "Prod" = {
-          path = "/home/${username}/projects/prod";
+          path = "/home/${username}/projects/prod/backup";
           type = "receiveonly";          
           versioning = {
             type = "staggered";
