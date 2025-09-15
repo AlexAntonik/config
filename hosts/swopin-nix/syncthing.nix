@@ -30,14 +30,7 @@
       };
       folders = {
         "Prod" = {
-          path = "/home/${username}/projects/srv";
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600";
-              maxAge = "15768000";
-            };
-          };
+          path = "/home/${username}/projects/srv/backup";
           devices = [ "asus" ];
           ignorePermissions = true;
         };
