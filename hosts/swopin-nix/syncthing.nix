@@ -32,6 +32,7 @@
         "Prod" = {
           path = "/home/${username}/projects/srv/backup";
           devices = [ "asus" ];
+          type = "sendonly";          
           ignorePermissions = true;
         };
         "ServerTransfer" = {
