@@ -10,7 +10,7 @@ in {
     ./hardware-gen.nix # Nix generated hardware configuration
 
     ./../../system/boot.nix
-    ./../../system/fonts.nix
+    # ./../../system/fonts.nix
     ./../../system/srv/network-wifi.nix
     ./../../system/nh.nix # Nix helper
     ./../../system/utilities.nix # TUI utilities and tools

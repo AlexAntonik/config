@@ -38,8 +38,8 @@ in
     ./../../system/steam.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
-    ./../../system/obs.nix # OBS with virtual camera
     ./../../system/time.nix
+    ./../../system/obs.nix # OBS with virtual camera
     ./../../system/lazygit.nix # Git tui
     ./../../system/htop.nix # htop
     ./../../system/bat.nix # More cute cat
