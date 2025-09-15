@@ -3,7 +3,6 @@
   # Styling Options
   stylix = {
     enable = true;
-    # image = ../home/wallpapers/swan.jpg;
     base16Scheme = {
       base00 = "1d1d1d";
       base01 = "484848";
