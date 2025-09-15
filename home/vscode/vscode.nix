@@ -58,6 +58,7 @@ in
 
           # Essentials
           mikestead.dotenv
+          christian-kohler.path-intellisense
           editorconfig.editorconfig
           jacobdufault.fuzzy-search
           vscodevim.vim

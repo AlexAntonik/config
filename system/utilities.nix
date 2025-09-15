@@ -12,6 +12,10 @@
     wireguard-tools # WireGuard tools
     fastfetch # Modern neofetch    
     bottom # another tui system usage interface
+    btop # Better htop
+    fzf # Fuzzy search
+    gh # GitHub cli
+    yazi # TUI file explorer
     cloc # Count lines of code
     duf # Utility for viewing disk usage in terminal
     dysk # Get information on your mounted disks tool
