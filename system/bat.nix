@@ -2,8 +2,9 @@
 {
   programs.bat = {
     enable = true;
-    config = {
-      pager = "less -FR";
+    settings = {
+      pager = "less";
+      paging = "never";
     };
     extraPackages = with pkgs.bat-extras; [
       batman
