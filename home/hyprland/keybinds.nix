@@ -53,6 +53,10 @@ in
     ];
 
     # Keybindings
+    bindr =[
+      # Waybar toggle
+      "SUPER, SUPER_L, exec, double-click pkill -SIGUSR1 waybar"
+    ];
     bind = [
 
       # --- Application Launchers ---
@@ -161,8 +165,6 @@ in
       "SUPER SHIFT,ESCAPE,exit,"
       "SUPER,ESCAPE,exec,wlogout"
       ",XF86WebCam,exec,toggle_display"
-      # Waybar toggle
-      "ALT,SPACE, exec, pkill -SIGUSR1 waybar"
 
       # Workaround to change vertical tabs keybind in firefox
       "ALT,Z,exec,hyprctl activewindow -j | jq -r '.class' | grep -q firefox && wtype -M ctrl -M alt -k z"
