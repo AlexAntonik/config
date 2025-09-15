@@ -113,6 +113,7 @@
     };
 
     workspace = [
+      "special, gapsin:20, gapsout:40"
       "6,monitor:HDMI-A-1, default:true"
     ];
 

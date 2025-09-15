@@ -24,7 +24,6 @@ in
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/stylix.nix # Stylix config
-    ./../../system/obs.nix # OBS with virtual camera
     ./../../system/lazygit.nix # Git tui
     ./../../system/htop.nix # htop
     ./../../system/bat.nix # More cute cat
