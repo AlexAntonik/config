@@ -8,7 +8,7 @@
       splash_offset = 2.0;
 
       preload = [
-        "/home/${username}/config/home/hyprlandG/wallpapers/mountains.jpg"
+        "/home/${username}/config/home/hyprland/wallpapers/mountains.jpg"
         "/home/${username}/config/home/hyprland/wallpapers/vertical.jpg"
       ];
 
