@@ -106,6 +106,7 @@ in
 
     # Scripts
     (import ./../../system/scripts/clipboard.nix { inherit pkgs; })
+    (import ./../../system/scripts/double-click.nix { inherit pkgs; })
     (import ./../../system/scripts/emopicker9000.nix { inherit pkgs; })
     (import ./../../system/scripts/task-waybar.nix { inherit pkgs; })
     (import ./../../system/scripts/nvidia-offload.nix { inherit pkgs; })
