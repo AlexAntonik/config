@@ -91,7 +91,7 @@ in
 
     # Communication & Internet
     discord # Chat and voice communication
-    protonvpn-gui # ProtonVPN client
+    # protonvpn-gui # ProtonVPN client
     telegram-desktop # Instant messaging
     tor-browser # Privacy-focused browser
     # chromium
