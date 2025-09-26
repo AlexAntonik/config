@@ -110,7 +110,7 @@ in
     (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs host; })
     (import ./../../system/scripts/rofi-launcher.nix { inherit pkgs; })
     (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
-    (import ./../../system/scripts/screenshootin.nix { inherit pkgs; })
+    (import ./../../system/scripts/screenshot.nix { inherit pkgs; })
     (import ./../../system/scripts/toggleXWaylandScale.nix { inherit pkgs; })
 
     # Gaming
@@ -168,29 +168,6 @@ in
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
-
-        # Home scripts and utilities
-        packages = [
-          (import ./../../home/scripts/emopicker9000.nix { inherit pkgs; })
-          (import ./../../home/scripts/task-waybar.nix { inherit pkgs; })
-          (import ./../../home/scripts/nvidia-offload.nix { inherit pkgs; })
-          (import ./../../home/scripts/syncsupprep.nix {
-            inherit pkgs;
-            inherit username;
-          })
-          (import ./../../home/scripts/toggleTouchpad.nix {
-            inherit pkgs;
-            inherit host;
-          })
-          (import ./../../home/scripts/toggleDisplay.nix {
-            inherit pkgs;
-            inherit host;
-          })
-          (import ./../../home/scripts/rofi-launcher.nix { inherit pkgs; })
-          (import ./../../home/scripts/hm-find.nix { inherit pkgs; })
-          (import ./../../home/scripts/screenshootin.nix { inherit pkgs; })
-          (import ./../../home/scripts/toggleXWaylandScale.nix { inherit pkgs; })
-        ];
 
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
