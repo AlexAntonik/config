@@ -152,7 +152,7 @@ in
       "ALT,Tab,bringactivetotop,"
 
       # --- System Controls ---
-      ",PRINT,exec,screenshootin"
+      ",PRINT,exec,screenshot"
       "SUPER, F11,exec,toggle_xwayland_scale"
       "SUPER, PRINT,exec,grim - | swappy -f -"
       "SUPER SHIFT,N,exec,swaync-client -rs"

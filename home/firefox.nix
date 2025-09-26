@@ -25,16 +25,9 @@ let
   moreTabsCss = ''
     #TabsToolbar #firefox-view-button {
       display: none !important;
-      # position: absolute !important; # commented style moves the button to the right on close button place
-      # top: 0 !important;
-      # right: 4px !important;
-      # z-index: 1000 !important;
-      # margin: 0 !important;
-      # height: 100% !important;
-      # display: flex !important;
-      # align-items: center !important;
-      # border-radius: 0 !important;
-      # background: transparent !important;
+    }
+    #statuspanel {
+      display: none;
     }
     #tabbrowser-tabs {
       border-inline-start: none !important;
@@ -90,9 +83,8 @@ let
     "sidebar.visibility" = "hide-sidebar";
     "sidebar.main.tools" = "aichat,history";
     "sidebar.revamp" = true;
-    # off cause setting definde in state json DELETE IF works well on new install
     "browser.uiCustomization.navBarWhenVerticalTabs" =
-      "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"customizableui-special-spring1\",\"urlbar-container\",\"customizableui-special-spring2\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"myallychou_gmail_com-browser-action\",\"new-tab-button\",\"fxa-toolbar-menu-button\"]";
+      "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"urlbar-container\",\"vertical-spacer\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"myallychou_gmail_com-browser-action\",\"new-tab-button\",\"fxa-toolbar-menu-button\"]";
     "browser.uiCustomization.horizontalTabstrip" = "[\"tabbrowser-tabs\",\"new-tab-button\"]";
     "browser.uiCustomization.state" = builtins.toJSON {
       placements = {
@@ -105,12 +97,12 @@ let
           "back-button"
           "stop-reload-button"
           "forward-button"
+          "vertical-spacer"
           "urlbar-container"
           "vertical-spacer"
           "history-panelmenu"
           "unified-extensions-button"
           "downloads-button"
-
           "jid1-mnnxcxisbpnsxq_jetpack-browser-action"
           "ublock0_raymondhill_net-browser-action"
           "addon_darkreader_org-browser-action"
@@ -165,7 +157,7 @@ let
     "browser.urlbar.suggest.quickactions" = false;
 
     # disable Firefox Suggest features
-    "browser.urlbar.suggest.searches" = false;
+    "browser.urlbar.suggest.searches" = true;
     "browser.urlbar.suggest.pocket" = false;
     "browser.urlbar.sponsoredTopSites" = false;
     "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;

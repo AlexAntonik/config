@@ -36,7 +36,7 @@
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace",
-  "editor.fontSize": 16,
+  "editor.fontSize": 20,
   "workbench.colorTheme": "One Dark Pro Night Flat",
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",

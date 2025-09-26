@@ -115,7 +115,7 @@ in
     (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs host; })
     (import ./../../system/scripts/rofi-launcher.nix { inherit pkgs; })
     (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
-    (import ./../../system/scripts/screenshootin.nix { inherit pkgs; })
+    (import ./../../system/scripts/screenshot.nix { inherit pkgs; })
     (import ./../../system/scripts/toggleXWaylandScale.nix { inherit pkgs; })
 
     # Gaming
