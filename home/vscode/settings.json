@@ -49,23 +49,17 @@
   "git.enableSmartCommit": true,
   "keyboard.dispatch": "keyCode",
   "nix.enableLanguageServer": true,
-  "nix.hiddenLanguageServerErrors": [
-    "textDocument/definition"
-  ],
+  "nix.hiddenLanguageServerErrors": ["textDocument/definition"],
   "nix.serverPath": "nixd",
   "nix.serverSettings": {
     "nil": {
       "formatting": {
-        "command": [
-          "nixfmt"
-        ]
+        "command": ["nixfmt"]
       }
     },
     "nixd": {
       "formatting": {
-        "command": [
-          "nixfmt"
-        ]
+        "command": ["nixfmt"]
       },
       "nixpkgs": {
         "expr": "import (builtins.getFlake \"/home/alex/config\").inputs.nixpkgs { }"
@@ -102,5 +96,130 @@
   "leetcode.hint.commentDescription": false,
   "leetcode.hint.commandShortcut": false,
   "workbench.activityBar.location": "hidden",
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+  "vim.normalModeKeyBindings": [
+    { "before": ["ф"], "after": ["a"] },
+    { "before": ["и"], "after": ["b"] },
+    { "before": ["с"], "after": ["c"] },
+    { "before": ["в"], "after": ["d"] },
+    { "before": ["у"], "after": ["e"] },
+    { "before": ["а"], "after": ["f"] },
+    { "before": ["п"], "after": ["g"] },
+    { "before": ["р"], "after": ["h"] },
+    { "before": ["ш"], "after": ["i"] },
+    { "before": ["о"], "after": ["j"] },
+    { "before": ["л"], "after": ["k"] },
+    { "before": ["д"], "after": ["l"] },
+    { "before": ["ь"], "after": ["m"] },
+    { "before": ["т"], "after": ["n"] },
+    { "before": ["щ"], "after": ["o"] },
+    { "before": ["з"], "after": ["p"] },
+    { "before": ["й"], "after": ["q"] },
+    { "before": ["к"], "after": ["r"] },
+    { "before": ["ы"], "after": ["s"] },
+    { "before": ["е"], "after": ["t"] },
+    { "before": ["г"], "after": ["u"] },
+    { "before": ["м"], "after": ["v"] },
+    { "before": ["ц"], "after": ["w"] },
+    { "before": ["ч"], "after": ["x"] },
+    { "before": ["н"], "after": ["y"] },
+    { "before": ["я"], "after": ["z"] },
+
+    { "before": ["Ф"], "after": ["A"] },
+    { "before": ["И"], "after": ["B"] },
+    { "before": ["С"], "after": ["C"] },
+    { "before": ["В"], "after": ["D"] },
+    { "before": ["У"], "after": ["E"] },
+    { "before": ["А"], "after": ["F"] },
+    { "before": ["П"], "after": ["G"] },
+    { "before": ["Р"], "after": ["H"] },
+    { "before": ["Ш"], "after": ["I"] },
+    { "before": ["О"], "after": ["J"] },
+    { "before": ["Л"], "after": ["K"] },
+    { "before": ["Д"], "after": ["L"] },
+    { "before": ["Ь"], "after": ["M"] },
+    { "before": ["Т"], "after": ["N"] },
+    { "before": ["Щ"], "after": ["O"] },
+    { "before": ["З"], "after": ["P"] },
+    { "before": ["Й"], "after": ["Q"] },
+    { "before": ["К"], "after": ["R"] },
+    { "before": ["Ы"], "after": ["S"] },
+    { "before": ["Е"], "after": ["T"] },
+    { "before": ["Г"], "after": ["U"] },
+    { "before": ["М"], "after": ["V"] },
+    { "before": ["Ц"], "after": ["W"] },
+    { "before": ["Ч"], "after": ["X"] },
+    { "before": ["Н"], "after": ["Y"] },
+    { "before": ["Я"], "after": ["Z"] },
+
+    { "before": ["№"], "after": ["#"] },
+    { "before": ["ё"], "after": ["`"] },
+    { "before": ["Ё"], "after": ["~"] },
+    { "before": ["ж"], "after": [";"] },
+    { "before": ["э"], "after": ["'"] },
+    { "before": ["Ж"], "after": [":"] },
+    { "before": ["Э"], "after": ["\""] },
+    { "before": ["б"], "after": [","] },
+    { "before": ["ю"], "after": ["."] },
+    { "before": ["Б"], "after": ["<"] },
+    { "before": ["Ю"], "after": [">"] },
+    { "before": ["."], "after": ["/"] },
+    { "before": [","], "after": ["?"] }
+  ],
+
+  "vim.visualModeKeyBindings": [
+    { "before": ["ф"], "after": ["a"] },
+    { "before": ["и"], "after": ["b"] },
+    { "before": ["с"], "after": ["c"] },
+    { "before": ["в"], "after": ["d"] },
+    { "before": ["у"], "after": ["e"] },
+    { "before": ["а"], "after": ["f"] },
+    { "before": ["п"], "after": ["g"] },
+    { "before": ["р"], "after": ["h"] },
+    { "before": ["ш"], "after": ["i"] },
+    { "before": ["о"], "after": ["j"] },
+    { "before": ["л"], "after": ["k"] },
+    { "before": ["д"], "after": ["l"] },
+    { "before": ["ь"], "after": ["m"] },
+    { "before": ["т"], "after": ["n"] },
+    { "before": ["щ"], "after": ["o"] },
+    { "before": ["з"], "after": ["p"] },
+    { "before": ["й"], "after": ["q"] },
+    { "before": ["к"], "after": ["r"] },
+    { "before": ["ы"], "after": ["s"] },
+    { "before": ["е"], "after": ["t"] },
+    { "before": ["г"], "after": ["u"] },
+    { "before": ["м"], "after": ["v"] },
+    { "before": ["ц"], "after": ["w"] },
+    { "before": ["ч"], "after": ["x"] },
+    { "before": ["н"], "after": ["y"] },
+    { "before": ["я"], "after": ["z"] },
+
+    { "before": ["Ф"], "after": ["A"] },
+    { "before": ["И"], "after": ["B"] },
+    { "before": ["С"], "after": ["C"] },
+    { "before": ["В"], "after": ["D"] },
+    { "before": ["У"], "after": ["E"] },
+    { "before": ["А"], "after": ["F"] },
+    { "before": ["П"], "after": ["G"] },
+    { "before": ["Р"], "after": ["H"] },
+    { "before": ["Ш"], "after": ["I"] },
+    { "before": ["О"], "after": ["J"] },
+    { "before": ["Л"], "after": ["K"] },
+    { "before": ["Д"], "after": ["L"] },
+    { "before": ["Ь"], "after": ["M"] },
+    { "before": ["Т"], "after": ["N"] },
+    { "before": ["Щ"], "after": ["O"] },
+    { "before": ["З"], "after": ["P"] },
+    { "before": ["Й"], "after": ["Q"] },
+    { "before": ["К"], "after": ["R"] },
+    { "before": ["Ы"], "after": ["S"] },
+    { "before": ["Е"], "after": ["T"] },
+    { "before": ["Г"], "after": ["U"] },
+    { "before": ["М"], "after": ["V"] },
+    { "before": ["Ц"], "after": ["W"] },
+    { "before": ["Ч"], "after": ["X"] },
+    { "before": ["Н"], "after": ["Y"] },
+    { "before": ["Я"], "after": ["Z"] }
+  ]
 }
