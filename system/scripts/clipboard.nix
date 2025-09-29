@@ -14,7 +14,6 @@ pkgs.writeShellScriptBin "clipboard-manager" ''
       id="''${BASH_REMATCH[1]}"
       thumb_path="$CACHE_DIR/$id.png"
       
-      # Создаём превью если его ещё нет
       if [[ ! -f "$thumb_path" ]]; then
         cliphist decode <<< "$line" | ${pkgs.imagemagick}/bin/convert - -resize 128x128^ -gravity center -extent 128x128 "$thumb_path" 2>/dev/null || true
       fi
