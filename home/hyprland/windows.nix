@@ -100,6 +100,7 @@
     # Miscellaneous settings
     misc = {
       layers_hog_keyboard_focus = true; # Allow layers (like Rofi) to grab focus
+      focus_on_activate = true;
       initial_workspace_tracking = 0; # Track initial workspace for applications
       mouse_move_enables_dpms = true; # Wake screen on mouse move
       key_press_enables_dpms = false; # Don't wake screen on key press
