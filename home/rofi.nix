@@ -12,14 +12,14 @@
         unstable.rofi-calc # Rofi calculator
       ];
       extraConfig = {
-        modi = "drun,filebrowser,run";
+        modi = "drun,run";
         show-icons = true;
         icon-theme = "Papirus";
         font = "JetBrainsMono Nerd Font Mono 12";
         drun-display-format = "{icon} {name}";
-        display-drun = " Apps";
-        display-run = " Run";
-        display-filebrowser = " File";
+        display-drun = " Apps";
+        display-run = " Run";
+        display-filebrowser = " File";
       };
       theme =
         let
@@ -60,7 +60,7 @@
             children = map mkLiteral [
               "inputbar"
               "listbox"
-              "mode-switcher"
+              # "mode-switcher" удалено - больше не будет кнопок переключения
             ];
             background-color = mkLiteral "transparent";
           };
@@ -91,7 +91,7 @@
           "textbox-prompt-colon" = {
             enabled = true;
             expand = false;
-            str = "";
+            str = "";
             background-color = mkLiteral "@transparent";
             text-color = mkLiteral "inherit";
           };
@@ -103,25 +103,7 @@
             placeholder = "Search";
             placeholder-color = mkLiteral "inherit";
           };
-          "mode-switcher" = {
-            enabled = true;
-            spacing = mkLiteral "10px";
-            margin = mkLiteral "10px";
-            background-color = mkLiteral "transparent";
-            text-color = mkLiteral "@foreground";
-            orientation = mkLiteral "horizontal";
-          };
-          "button" = {
-            padding = mkLiteral "15px";
-            border-radius = mkLiteral "10px";
-            background-color = mkLiteral "@bg-alt";
-            text-color = mkLiteral "inherit";
-            cursor = mkLiteral "pointer";
-          };
-          "button selected" = {
-            background-color = mkLiteral "@selected";
-            text-color = mkLiteral "@foreground";
-          };
+          # Секции mode-switcher и button можно удалить или оставить для совместимости
           "listview" = {
             enabled = true;
             columns = 1;

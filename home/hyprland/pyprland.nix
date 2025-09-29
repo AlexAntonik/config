@@ -35,8 +35,8 @@
     animation = "fromTop"
     pinned = false
     lazy = true
-    # unfocus = "hide"
-    # hysteresis = 50 
+    unfocus = "hide"
+    # hysteresis = 10 
     command = "telegram-desktop"
     class = "org.telegram.desktop"
     position = "2% 2%"
