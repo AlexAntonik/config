@@ -107,7 +107,6 @@ in
     # Scripts
     (import ./../../system/scripts/clipboard.nix { inherit pkgs; })
     (import ./../../system/scripts/double-click.nix { inherit pkgs; })
-    (import ./../../system/scripts/emopicker9000.nix { inherit pkgs; })
     (import ./../../system/scripts/task-waybar.nix { inherit pkgs; })
     (import ./../../system/scripts/nvidia-offload.nix { inherit pkgs; })
     (import ./../../system/scripts/syncsupprep.nix { inherit pkgs username; })
@@ -149,7 +148,6 @@ in
       imports = [
         # CLI utilities
         ./../../home/btop.nix
-        ./../../home/emoji.nix
         ./../../home/fzf.nix
         ./../../home/yazi/yazi.nix
         ./../../home/gh.nix
