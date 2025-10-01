@@ -38,6 +38,8 @@
         "overshot, 0.05, 0.9, 0.1, 1.00"
         "smoothOut, 0.5, 0, 0.99, 0.99"
         "smoothIn, 0.5, -0.5, 0.68, 1.0"
+        "specialSlideOut, 0.16, 1, 0.3, 1"
+        "specialSlideIn, 0.7, 0, 0.84, 0"
       ];
       animation = [
         "windows, 1, 4, overshot, slide"
@@ -46,6 +48,7 @@
         "windowsMove, 1, 3, smoothIn, slide"
         "border, 1, 4, default"
         "workspaces, 1, 4, default"
+        "specialWorkspace, 1, 5, specialSlideOut, slidevert"
       ];
     };
   };
