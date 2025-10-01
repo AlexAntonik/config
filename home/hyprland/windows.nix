@@ -114,8 +114,18 @@
     };
 
     workspace = [
-      "special:special, gapsout:20"
       "6,monitor:HDMI-A-1, default:true"
+      "2, on-created-empty:code"
+      "special:term, on-created-empty:ghostty"
+      "special:term, gapsout:70 140 120 140,rounding:false, decorate:false, shadow:false"
+      "special:obsidian, on-created-empty:obsidian"
+      "special:obsidian, gapsout:20,rounding:false, decorate:false, shadow:false"
+      "special:telegram, on-created-empty:telegram-desktop"
+      "special:telegram, gapsout:26,rounding:false, decorate:false, shadow:false"
+      "special:thunar, on-created-empty:thunar"
+      "special:thunar, gapsout:26,rounding:false, decorate:false, shadow:false"
+      "special:yazi, on-created-empty:ghostty --class=com.mitchellh.ghostty-yazi -e yazi"
+      "special:yazi, gapsout:26,rounding:false, decorate:false, shadow:false"
     ];
 
     # Dwindle layout specific settings
