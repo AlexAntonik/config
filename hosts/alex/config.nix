@@ -59,6 +59,7 @@ in
   programs = {
     adb.enable = true; # Android Debug Bridge
     amnezia-vpn.enable = true;
+    localsend.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
