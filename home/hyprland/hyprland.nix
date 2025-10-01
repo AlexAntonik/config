@@ -18,9 +18,9 @@ in
     ./hypridle.nix
     ./hyprpaper.nix
     ./hyprlock.nix
-    ./pyprland.nix
+    # ./pyprland.nix
     ./eww-clock.nix
-    ./wlsunset.nix 
+    ./wlsunset.nix
   ];
   home.packages = with pkgs; [
     grim
@@ -94,11 +94,9 @@ in
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         # --- Autostart applications ---
-        "pypr &"
         "${browser}"
         # "[workspace 2 silent] code" #did not work now becouse of electron app prob fix soon
         "[workspace 3 silent] ${terminal}"
-        "[workspace special silent] obsidian"
       ];
     };
 

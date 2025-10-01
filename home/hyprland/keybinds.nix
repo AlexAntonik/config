@@ -1,5 +1,6 @@
 {
   host,
+  pkgs,
   ...
 }:
 let
@@ -9,6 +10,9 @@ let
     keyboardLayout
     keyboardLightID
     ;
+  toggleoffspecial = pkgs.writeShellScript "toggleoffspecial" ''
+    ${pkgs.hyprland}/bin/hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[] | select(.focused == true) | .specialWorkspace.name' | sed 's/special://' | xargs -I [] ${pkgs.hyprland}/bin/hyprctl dispatch togglespecialworkspace []
+  '';
 in
 {
   wayland.windowManager.hyprland.settings = {
@@ -53,7 +57,7 @@ in
     ];
 
     # Keybindings
-    bindr =[
+    bindr = [
       # Waybar toggle
       "SUPER, SUPER_L, exec, double-click pkill -SIGUSR1 waybar"
     ];
@@ -74,10 +78,11 @@ in
       "SUPER,M,exec,pavucontrol" # Launch Pavucontrol
       "SUPER,V,exec,clipboard-manager" # clipboard mgr
       "SUPER,P,exec,hyprpicker -a" # Color picker
-      "SUPER,E,exec,pypr toggle thunar" # Toggle Thunar file manager
-      "SUPER,T,exec,pypr toggle telegram-desktop" # Toggle Telegram
-      "SUPER,R,exec,pypr toggle term" # Toggle terminal
-      "SUPER,Y,exec,pypr toggle yazi" # Toggle Yazi
+      "SUPER,S,togglespecialworkspace, obsidian"
+      "SUPER,E,togglespecialworkspace, thunar" # Toggle Thunar file manager
+      "SUPER,T,togglespecialworkspace, telegram" # Toggle Telegram
+      "SUPER,Y,togglespecialworkspace, yazi" # Toggle Yazi
+      "SUPER,R,togglespecialworkspace, term" # Toggle terminal
 
       # --- Window Management ---
       "SUPER,Q,killactive," # Close active window
@@ -109,21 +114,35 @@ in
 
       # --- Workspace Management ---
       "SUPER,1,workspace,1"
+      "SUPER,1,exec,${toggleoffspecial}"
       "SUPER,2,workspace,2"
+      "SUPER,2,exec,${toggleoffspecial}"
       "SUPER,3,workspace,3"
+      "SUPER,3,exec,${toggleoffspecial}"
       "SUPER,4,workspace,4"
+      "SUPER,4,exec,${toggleoffspecial}"
       "SUPER,5,workspace,5"
+      "SUPER,5,exec,${toggleoffspecial}"
       "SUPER,6,workspace,6"
+      "SUPER,6,exec,${toggleoffspecial}"
       "SUPER,7,workspace,7"
+      "SUPER,7,exec,${toggleoffspecial}"
       "SUPER,8,workspace,8"
+      "SUPER,8,exec,${toggleoffspecial}"
       "SUPER,9,workspace,9"
+      "SUPER,9,exec,${toggleoffspecial}"
       "SUPER,0,workspace,10"
+      "SUPER,0,exec,${toggleoffspecial}"
       "SUPER,F1,workspace,6"
+      "SUPER,F1,exec,${toggleoffspecial}"
       "SUPER,F2,workspace,7"
+      "SUPER,F2,exec,${toggleoffspecial}"
       "SUPER,F3,workspace,8"
+      "SUPER,F3,exec,${toggleoffspecial}"
       "SUPER,F4,workspace,9"
+      "SUPER,F4,exec,${toggleoffspecial}"
       "SUPER,F5,workspace,10"
-      "SUPER,S,togglespecialworkspace"
+      "SUPER,F5,exec,${toggleoffspecial}"
 
       # --- Move to Workspace ---
       "SUPER SHIFT,S,movetoworkspace,special"

@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Bluetooth
-    bluez-alsa # Bluetooth ALSA support
+    bluez-alsa # Bluetooth ALSA support 
     bluez # Bluetooth utilities
     bluez-tools # Bluetooth tools
     blueman # Bluetooth manager
