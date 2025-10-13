@@ -84,7 +84,7 @@ let
     "sidebar.main.tools" = "aichat,history";
     "sidebar.revamp" = true;
     "browser.uiCustomization.navBarWhenVerticalTabs" =
-      "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"urlbar-container\",\"vertical-spacer\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"myallychou_gmail_com-browser-action\",\"new-tab-button\",\"fxa-toolbar-menu-button\"]";
+      "[\"sidebar-button\",\"back-button\",\"stop-reload-button\",\"forward-button\",\"vertical-spacer\",\"urlbar-container\",\"vertical-spacer\",\"history-panelmenu\",\"unified-extensions-button\",\"downloads-button\",\"jid1-mnnxcxisbpnsxq_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"addon_darkreader_org-browser-action\",\"new-tab-button\",\"fxa-toolbar-menu-button\"]";
     "browser.uiCustomization.horizontalTabstrip" = "[\"tabbrowser-tabs\",\"new-tab-button\"]";
     "browser.uiCustomization.state" = builtins.toJSON {
       placements = {
@@ -106,7 +106,7 @@ let
           "jid1-mnnxcxisbpnsxq_jetpack-browser-action"
           "ublock0_raymondhill_net-browser-action"
           "addon_darkreader_org-browser-action"
-          "myallychou_gmail_com-browser-action"
+          # "myallychou_gmail_com-browser-action"
           "new-tab-button"
           "fxa-toolbar-menu-button"
         ];
