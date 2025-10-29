@@ -221,5 +221,12 @@
     { "before": ["Ч"], "after": ["X"] },
     { "before": ["Н"], "after": ["Y"] },
     { "before": ["Я"], "after": ["Z"] }
-  ]
+  ],
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "go": false
+  }
 }

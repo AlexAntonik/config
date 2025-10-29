@@ -97,7 +97,7 @@ in
     # unstable.audacity # Audio editor
     # vlc
     # mpv # Media player
-    # ytmdl # YouTube music downloader
+    # yt-dlp # YouTube downloader
 
     # Scripts
     (import ./../../system/scripts/clipboard.nix { inherit pkgs; })

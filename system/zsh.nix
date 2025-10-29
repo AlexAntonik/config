@@ -59,25 +59,21 @@
       la = "eza --icons -lah --group-directories-first -1";
       tree = "eza --icons --tree --group-directories-first";
       f = "fzf";
+      ytmd = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
 
-      # Просмотр бэкапов
       backup-list = "borg list /home/${username}/projects/srv/backup/borg-repo";
       backup-info = "borg info /home/${username}/projects/srv/backup/borg-repo";
       backup-show = "borg list /home/${username}/projects/srv/backup/borg-repo::";
 
-      # Восстановление
       backup-restore-last = "mkdir -p /home/${username}/restored && cd /home/${username}/restored && borg extract \"/home/${username}/projects/srv/backup/borg-repo::\$(borg list /home/${username}/projects/srv/backup/borg-repo --short | tail -1)\"";
       backup-restore = "mkdir -p /home/${username}/restored && cd /home/${username}/restored && borg extract \"/home/${username}/projects/srv/backup/borg-repo::\"";
       
-      # Монтирование для просмотра
       backup-mount = "mkdir -p /home/${username}/borg_mount && borg mount /home/${username}/projects/srv/backup/borg-repo /home/${username}/borg_mount";
       backup-unmount = "fusermount -u /home/${username}/borg_mount";
 
-      # Статистика
       backup-stats = "borg info /home/${username}/projects/srv/backup/borg-repo --json | jq '.archives | length'";
       backup-size = "borg info /home/${username}/projects/srv/backup/borg-repo";
 
-      # Ручной запуск бэкапа
       backup-run = "sudo systemctl start borgbackup-job-daily-backup.service";
       backup-status = "systemctl status borgbackup-job-daily-backup.service";
       backup-logs = "journalctl -u borgbackup-job-daily-backup.service";
