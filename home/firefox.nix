@@ -40,6 +40,45 @@ let
 
   userChrome = disableWebRtcIndicator + hideWindowCloseButton + moreTabsCss;
 
+  # Show link URL when hovering over links in web content
+  # This CSS is applied to page content (userContent.css).
+  # Tooltip is semi-transparent, rounded, with smooth fade-in and appears after 1.5s hover.
+  userContent = ''
+      a[href] { position: relative; }
+
+      a[href]::after {
+        content: attr(href);
+        position: absolute;
+        left: 0;
+        top: 100%;
+        margin-top: 8px;
+        background: rgba(0,0,0,0.60) !important;
+        color: #fff;
+        padding: 0.5em 0.65em;
+        display: inline-block;
+        line-height: 1;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 12px;
+        max-width: 60vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 160ms ease, transform 160ms ease;
+        transition-delay: 0ms; 
+        z-index: 2147483647;
+      }
+
+      a[href]:hover::after {
+        transition-delay: 1500ms;
+        opacity: 1;
+        transform: translateY(0);
+      }
+  '';
+
   # ~/.mozilla/firefox/PROFILE_NAME/prefs.js | user.js
   settings = {
     "app.normandy.first_run" = false;
@@ -248,7 +287,7 @@ in
       default = {
         id = 0;
         extensions.packages = extensions;
-        inherit settings userChrome;
+        inherit settings userChrome userContent;
       };
     };
   };
