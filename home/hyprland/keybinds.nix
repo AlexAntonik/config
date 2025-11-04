@@ -188,6 +188,9 @@ in
       # Workaround to change vertical tabs keybind in firefox
       "ALT,Z,exec,hyprctl activewindow -j | jq -r '.class' | grep -q firefox && wtype -M ctrl -M alt -k z"
 
+      # Show temporary clock overlay
+      "SUPER,Z,exec,show-clock"
+
       # Hack to display curren lang in swayosd !!!kb layout change here!!!
       "SUPER,SPACE,exec,sleep 0.1 && swayosd-client --custom-message=\"$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')\" --custom-icon=input-keyboard"
     ];
