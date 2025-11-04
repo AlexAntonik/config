@@ -18,6 +18,20 @@ let
         :valign "end"
         (label :class "time-display" :text {formattime(EWW_TIME, "%H:%M")})
         (label :class "date-display" :text {formattime(EWW_TIME, "%A, %d %B")})))
+
+    (defwindow temp-clock
+      :monitor 0
+      :geometry (geometry :x "0px" :y "0px" :width "500px" :height "160px" :anchor "center center")
+      :stacking "overlay"
+      :exclusive false
+      :focusable false
+      (box
+        :class "wallpaper-clock"
+        :orientation "vertical"
+        :halign "center"
+        :valign "center"
+        (label :class "time-display" :text {formattime(EWW_TIME, "%H:%M")})
+        (label :class "date-display" :text {formattime(EWW_TIME, "%A, %d %B")})))
     EOF
 
         cat > $out/eww.css <<'EOF'
@@ -49,9 +63,7 @@ let
       font-size: 32px;
       font-weight: normal;
       color: rgba(255, 255, 255, 0.8);
-      text-shadow:
-        0 0 35px rgba(255, 255, 255, 0.3),
-        3px 3px 15px rgba(0, 0, 0, 0.6);
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
       letter-spacing: 1px;
     }
     EOF
