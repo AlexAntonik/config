@@ -39,7 +39,7 @@ if [ -z "$hostName" ]; then
   echo -e "${CYAN}============================================================${NC}"
   echo -e "${CYAN}Please enter a hostname for this machine.${NC}"
   echo -e "${CYAN}It will be used to generate config files for NixOS.${NC}"
-  echo -e "${CYAN}If unsure, press Enter to use the default username: ${YELLOW}default${NC}"
+  echo -e "${CYAN}If unsure, press Enter to use the default hostname: ${YELLOW}default${NC}"
   echo -e "${CYAN}============================================================${NC}"
   echo
 
