@@ -137,7 +137,7 @@ in
         ./../../home/btop.nix
         ./../../home/eza.nix
         ./../../home/fzf.nix
-        ./../../home/yazi/yazi.nix
+        ./../../home/yazi.nix
         ./../../home/gh.nix
 
         # Applications

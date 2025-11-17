@@ -123,7 +123,7 @@ in
     # Gaming
     # starsector
     # vintagestory
-    # prismlauncher # Minecraft launcher
+    prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
@@ -152,7 +152,7 @@ in
         # CLI utilities
         ./../../home/btop.nix
         ./../../home/fzf.nix
-        ./../../home/yazi/yazi.nix
+        ./../../home/yazi.nix
         ./../../home/gh.nix
 
         # Applications

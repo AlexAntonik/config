@@ -134,7 +134,6 @@
         clang.enable = true;
         zig.enable = true;
         python.enable = true;
-        markdown.enable = true;
         html.enable = true;
         lua.enable = true;
         css = {
@@ -219,7 +218,6 @@
         images = {
           image-nvim.enable = false;
         };
-        preview.markdownPreview.enable = true;
       };
 
       ui = {

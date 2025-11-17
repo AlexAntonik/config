@@ -15,6 +15,7 @@
     btop # Better htop
     fzf # Fuzzy search
     gh # GitHub cli
+    git-filter-repo # Git history ez rewrite
     yazi # TUI file explorer
     cloc # Count lines of code
     duf # Utility for viewing disk usage in terminal
