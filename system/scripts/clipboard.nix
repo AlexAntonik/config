@@ -36,7 +36,7 @@ EOF
   selection=$(
     cliphist list |
     ${pkgs.gawk}/bin/gawk "$prog" |
-    ${pkgs.rofi-wayland}/bin/rofi -dmenu -i -p "Clipboard" -format 'i s' -show-icons
+    ${pkgs.rofi}/bin/rofi -dmenu -i -p "Clipboard" -format 'i s' -show-icons
   )
 
   [ -z "$selection" ] && exit

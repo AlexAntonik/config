@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     sops-nix = {
@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions = {
@@ -19,7 +19,7 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix/release-25.05";
+    stylix.url = "github:danth/stylix/release-25.11";
     nurpkgs.url = "github:nix-community/NUR";
   };
 
@@ -28,7 +28,6 @@
       map (host: {
         name = host;
         value = inputs.nixpkgs.lib.nixosSystem {
-          system = (import ./hosts/${host}/env.nix).system;
           specialArgs = {
             inherit inputs host;
             username = (import ./hosts/${host}/env.nix).username;

@@ -10,7 +10,7 @@
   programs = {
     rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
+      package = pkgs.rofi;
       plugins = with pkgs; [
         unstable.rofi-calc
       ];
