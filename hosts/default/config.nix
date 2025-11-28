@@ -100,7 +100,6 @@
     # Scripts
     (import ./../../system/scripts/clipboard.nix { inherit pkgs; })
     (import ./../../system/scripts/double-click.nix { inherit pkgs; })
-    (import ./../../system/scripts/task-waybar.nix { inherit pkgs; })
     (import ./../../system/scripts/nvidia-offload.nix { inherit pkgs; })
     (import ./../../system/scripts/syncsupprep.nix { inherit pkgs env; })
     (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs env; })
@@ -152,7 +151,7 @@
         ./../../home/waybar.nix
         ./../../home/wlogout/wlogout.nix
         ./../../home/rofi.nix
-        ./../../home/swaync.nix
+        ./../../home/mako.nix
         ./../../home/swayosd.nix
         ./../../home/ghostty.nix
 
