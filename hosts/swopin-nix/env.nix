@@ -1,6 +1,5 @@
 {
   # Flake locals
-  system = "x86_64-linux";
   username = "user";
 
   # Git Configuration ( For Pulling Software Repos )

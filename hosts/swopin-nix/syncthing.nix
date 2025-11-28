@@ -15,7 +15,6 @@
     key = "/home/${username}/.config/syncthing/keys/key.pem";
     cert = "/home/${username}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
-    extraFlags = [ "--no-default-folder" ];
     dataDir = "/home/${username}/.local/share/syncthing";
     configDir = "/home/${username}/.config/syncthing";
     user = "${username}";
