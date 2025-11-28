@@ -1,13 +1,13 @@
 {
   pkgs,
-  username,
+  env,
   ...
-}: let
-  inherit (import ./env.nix) gitUsername;
-in {
+}:
+{
   imports = [
     ./hardware.nix # User defined hardware configuration
     ./hardware-gen.nix # Nix generated hardware configuration
+    ./env.nix # Host variables
 
     ./../../system/boot.nix
     # ./../../system/fonts.nix
@@ -26,9 +26,10 @@ in {
     ./../../system/htop.nix # htop
     ./../../system/bat.nix # More cute cat
     ./../../system/nix.nix
+    ./../../system/variables.nix # Host variables(env) support
     ./../../system/docker.nix
-    ./../../system/zsh.nix #Shell system wide
-    ./../../system/zoxide.nix #cd alternative super nice
+    ./../../system/zsh.nix # Shell system wide
+    ./../../system/zoxide.nix # cd alternative super nice
     ./../../system/nvf.nix # vim
     # ./cloudflared.nix
     ./syncthing.nix
@@ -40,11 +41,10 @@ in {
     # amnezia-vpn.enable = true;
   };
   environment.systemPackages = [
-          (import ./../../system/scripts/syncsupprep.nix {
-            inherit pkgs;
-            inherit username;
-          })
-          (import ./../../system/scripts/hm-find.nix {inherit pkgs;})
+    (import ./../../system/scripts/syncsupprep.nix {
+      inherit pkgs;
+      inherit env;
+    })
   ];
 
   # This option defines the first version of NixOS you have installed on
@@ -57,12 +57,12 @@ in {
 
   users.mutableUsers = true;
   users.defaultUserShell = pkgs.zsh;
-  users.users.${username} = {
+  users.users.${env.username} = {
     openssh.authorizedKeys.keys = [
       ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILUSJwUYV0e+h3Rj4+YvrsqHuolIh45KHg9Lttid1+KI alex@alex''
     ];
     isNormalUser = true;
-    description = "${gitUsername}";
+    description = "${env.gitUsername}";
     extraGroups = [
       "adbusers"
       "docker"
@@ -75,5 +75,5 @@ in {
     ];
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = ["${username}"];
+  nix.settings.allowed-users = [ "${env.username}" ];
 }

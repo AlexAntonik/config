@@ -1,14 +1,7 @@
 {
-  host,
+  env,
   ...
 }:
-let
-  inherit (import ../../hosts/${host}/env.nix)
-    keyboardLightID
-    keyboardScreenOFFLightID
-    displayStatusFile
-    ;
-in
 {
   services = {
     hypridle = {
@@ -22,8 +15,8 @@ in
         listener = [
           {
             timeout = 600;
-            on-timeout = "printf 'false' > ${displayStatusFile} && hyprctl dispatch dpms off && brightnessctl -d ${keyboardLightID} s 0 && brightnessctl -d ${keyboardScreenOFFLightID} s 100";
-            on-resume = "printf 'true' > ${displayStatusFile} && hyprctl dispatch dpms on && brightnessctl -d ${keyboardLightID} s 100 && brightnessctl -d ${keyboardScreenOFFLightID} s 0";
+            on-timeout = "printf 'false' > ${env.displayStatusFile} && hyprctl dispatch dpms off && brightnessctl -d ${env.keyboardLightID} s 0 && brightnessctl -d ${env.keyboardScreenOFFLightID} s 100";
+            on-resume = "printf 'true' > ${env.displayStatusFile} && hyprctl dispatch dpms on && brightnessctl -d ${env.keyboardLightID} s 100 && brightnessctl -d ${env.keyboardScreenOFFLightID} s 0";
           }
 
           {

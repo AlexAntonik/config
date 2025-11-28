@@ -1,7 +1,6 @@
 {
   pkgs,
-  host,
-  username,
+  env,
   ...
 }:
 {
@@ -10,7 +9,7 @@
     ghostty # needed even on srv to proper ssh
   ];
   systemd.tmpfiles.rules = [
-    "f /home/${username}/.zshrc 0644 ${username} users - -"
+    "f /home/${env.username}/.zshrc 0644 ${env.username} users - -"
   ];
   programs.zsh = {
     enable = true;
@@ -47,9 +46,9 @@
       sv = "sudo nvim";
       v = "nvim";
       c = "clear";
-      fr = "nh os switch --hostname ${host}";
-      fu = "nh os switch --hostname ${host} --update";
-      change-host = "sh /home/${username}/config/install.sh";
+      fr = "nh os switch --hostname ${env.host}";
+      fu = "nh os switch --hostname ${env.host} --update";
+      change-host = "sh /home/${env.username}/config/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       gst = "git status";
       lg = "lazygit";
@@ -61,18 +60,18 @@
       f = "fzf";
       ytmd = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
 
-      backup-list = "borg list /home/${username}/projects/srv/backup/borg-repo";
-      backup-info = "borg info /home/${username}/projects/srv/backup/borg-repo";
-      backup-show = "borg list /home/${username}/projects/srv/backup/borg-repo::";
+      backup-list = "borg list /home/${env.username}/projects/srv/backup/borg-repo";
+      backup-info = "borg info /home/${env.username}/projects/srv/backup/borg-repo";
+      backup-show = "borg list /home/${env.username}/projects/srv/backup/borg-repo::";
 
-      backup-restore-last = "mkdir -p /home/${username}/restored && cd /home/${username}/restored && borg extract \"/home/${username}/projects/srv/backup/borg-repo::\$(borg list /home/${username}/projects/srv/backup/borg-repo --short | tail -1)\"";
-      backup-restore = "mkdir -p /home/${username}/restored && cd /home/${username}/restored && borg extract \"/home/${username}/projects/srv/backup/borg-repo::\"";
+      backup-restore-last = "mkdir -p /home/${env.username}/restored && cd /home/${env.username}/restored && borg extract \"/home/${env.username}/projects/srv/backup/borg-repo::\$(borg list /home/${env.username}/projects/srv/backup/borg-repo --short | tail -1)\"";
+      backup-restore = "mkdir -p /home/${env.username}/restored && cd /home/${env.username}/restored && borg extract \"/home/${env.username}/projects/srv/backup/borg-repo::\"";
       
-      backup-mount = "mkdir -p /home/${username}/borg_mount && borg mount /home/${username}/projects/srv/backup/borg-repo /home/${username}/borg_mount";
-      backup-unmount = "fusermount -u /home/${username}/borg_mount";
+      backup-mount = "mkdir -p /home/${env.username}/borg_mount && borg mount /home/${env.username}/projects/srv/backup/borg-repo /home/${env.username}/borg_mount";
+      backup-unmount = "fusermount -u /home/${env.username}/borg_mount";
 
-      backup-stats = "borg info /home/${username}/projects/srv/backup/borg-repo --json | jq '.archives | length'";
-      backup-size = "borg info /home/${username}/projects/srv/backup/borg-repo";
+      backup-stats = "borg info /home/${env.username}/projects/srv/backup/borg-repo --json | jq '.archives | length'";
+      backup-size = "borg info /home/${env.username}/projects/srv/backup/borg-repo";
 
       backup-run = "sudo systemctl start borgbackup-job-daily-backup.service";
       backup-status = "systemctl status borgbackup-job-daily-backup.service";

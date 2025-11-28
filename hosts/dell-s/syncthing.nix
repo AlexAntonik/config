@@ -1,23 +1,26 @@
-{ username, ... }:
+{ env, ... }:
+let
+  user = env.username;
+in
 {
   sops.secrets.dell_cert = {
-    sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
-    owner = "${username}";
-    path = "/home/${username}/.config/syncthing/keys/cert.pem";
+    sopsFile = "/home/${user}/config/system/secrets/syncthing.yaml";
+    owner = "${user}";
+    path = "/home/${user}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.dell_key = {
-    sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
-    owner = "${username}";
-    path = "/home/${username}/.config/syncthing/keys/key.pem";
+    sopsFile = "/home/${user}/config/system/secrets/syncthing.yaml";
+    owner = "${user}";
+    path = "/home/${user}/.config/syncthing/keys/key.pem";
   };
   services.syncthing = {
     enable = true;
-    key = "/home/${username}/.config/syncthing/keys/key.pem";
-    cert = "/home/${username}/.config/syncthing/keys/cert.pem";
+    key = "/home/${user}/.config/syncthing/keys/key.pem";
+    cert = "/home/${user}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
-    dataDir = "/home/${username}/.local/share/syncthing";
-    configDir = "/home/${username}/.config/syncthing";
-    user = "${username}";
+    dataDir = "/home/${user}/.local/share/syncthing";
+    configDir = "/home/${user}/.config/syncthing";
+    user = "${user}";
     settings = {
       devices = {
         "asus" = {
@@ -29,12 +32,12 @@
       };
       folders = {
         "Notes" = {
-          path = "/home/${username}/notes";
+          path = "/home/${user}/notes";
           devices = [ "asus" ];
           ignorePermissions = true;
         };
         "Server" = {
-          path = "/home/${username}/projects/srv";
+          path = "/home/${user}/projects/srv";
           versioning = {
             type = "staggered";
             params = {

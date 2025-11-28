@@ -1,15 +1,8 @@
 {
   pkgs,
-  username,
-  host,
+  env,
   ...
 }:
-let
-  inherit (import ../../hosts/${host}/env.nix)
-    browser
-    terminal
-    ;
-in
 {
   imports = [
     ./keybinds.nix
@@ -95,9 +88,9 @@ in
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         # --- Autostart applications ---
-        "${browser}"
+        "${env.browser}"
         # "[workspace 2 silent] code" #did not work now becouse of electron app prob fix soon
-        "[workspace 3 silent] ${terminal}"
+        "[workspace 3 silent] ${env.terminal}"
       ];
     };
 
@@ -110,7 +103,7 @@ in
 
   home.file.".config/swappy/config".text = ''
     [Default]
-    save_dir=/home/${username}/Pictures/Screenshots
+    save_dir=/home/${env.username}/Pictures/Screenshots
     save_filename_format=swappy-%Y%m%d-%H%M%S.png
     show_panel=false
     line_size=5

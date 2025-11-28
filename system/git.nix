@@ -1,14 +1,11 @@
-{ host, ... }:
-let
-  inherit (import ../hosts/${host}/env.nix) gitUsername gitEmail;
-in
+{ env, ... }:
 {
   programs.git = {
     enable = true;
     config = {
       user = {
-        name = gitUsername;
-        email = gitEmail;
+        name = env.gitUsername;
+        email = env.gitEmail;
       };
     };
   };

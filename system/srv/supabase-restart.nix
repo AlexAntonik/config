@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ env, pkgs, ... }:
 {
   systemd.services.docker-compose-maintenance = {
     description = "Docker Compose Maintenance Service";
@@ -10,7 +10,7 @@
     script = ''
       echo "Starting Docker Compose maintenance at $(date)"
       
-      COMPOSE_DIR="/home/${username}/projects/srv"
+      COMPOSE_DIR="/home/${env.username}/projects/srv"
       
       if [ -d "$COMPOSE_DIR" ]; then
         echo "Stopping Docker Compose services..."
@@ -23,13 +23,13 @@
       fi
       
       echo "Changing file ownership..."
-      chown -R ${username}:users /home/${username}/projects/srv
-      echo "File ownership changed to ${username}:users for /home/${username}/projects/srv"
+      chown -R ${env.username}:users /home/${env.username}/projects/srv
+      echo "File ownership changed to ${env.username}:users for /home/${env.username}/projects/srv"
       
       # Forced syncthing rescan, 
       # but this pkgs not so popular,
       # even than briefly checked source code, off by now
-      # ${pkgs.stc-cli}/bin/stc --homedir "/home/${username}/.config/syncthing" rescan "Prod"
+      # ${pkgs.stc-cli}/bin/stc --homedir "/home/${env.username}/.config/syncthing" rescan "Prod"
 
       echo "Waiting 4 minutes..."
       sleep 240

@@ -1,4 +1,4 @@
-{ username, ... }:
+{ env, ... }:
 {
   services.hyprpaper = {
     enable = true;
@@ -8,13 +8,13 @@
       splash_offset = 2.0;
 
       preload = [
-        "/home/${username}/config/home/hyprland/wallpapers/mountains.jpg"
-        "/home/${username}/config/home/hyprland/wallpapers/vertical.jpg"
+        "/home/${env.username}/config/home/hyprland/wallpapers/mountains.jpg"
+        "/home/${env.username}/config/home/hyprland/wallpapers/vertical.jpg"
       ];
 
       wallpaper = [
-        "eDP-1,/home/${username}/config/home/hyprland/wallpapers/mountains.jpg"
-        "HDMI-A-1,/home/${username}/config/home/hyprland/wallpapers/vertical.jpg"
+        "eDP-1,/home/${env.username}/config/home/hyprland/wallpapers/mountains.jpg"
+        "HDMI-A-1,/home/${env.username}/config/home/hyprland/wallpapers/vertical.jpg"
       ];
     };
   };

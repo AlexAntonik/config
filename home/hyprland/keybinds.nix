@@ -1,15 +1,9 @@
 {
-  host,
+  env,
   pkgs,
   ...
 }:
 let
-  inherit (import ../../hosts/${host}/env.nix)
-    browser
-    terminal
-    keyboardLayout
-    keyboardLightID
-    ;
   toggleoffspecial = pkgs.writeShellScript "toggleoffspecial" ''
     ${pkgs.hyprland}/bin/hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[] | select(.focused == true) | .specialWorkspace.name' | sed 's/special://' | xargs -I [] ${pkgs.hyprland}/bin/hyprctl dispatch togglespecialworkspace []
   '';
@@ -26,7 +20,7 @@ in
 
     # Input device settings
     input = {
-      kb_layout = "${keyboardLayout}";
+      kb_layout = "${env.keyboardLayout}";
       numlock_by_default = true;
       repeat_delay = 300;
       follow_mouse = 1; # Focus follows mouse
@@ -40,8 +34,8 @@ in
 
     # Repeatable actions
     bindle = [
-      "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${keyboardLightID} s 1%-"
-      "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${keyboardLightID} s 1%+"
+      "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${env.keyboardLightID} s 1%-"
+      "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${env.keyboardLightID} s 1%+"
       ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume +1"
       ",XF86AudioLowerVolume,exec,swayosd-client --output-volume -1"
       ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
@@ -65,10 +59,10 @@ in
     bind = [
 
       # --- Application Launchers ---
-      "SUPER,Return,exec,${terminal}" # Launch terminal
+      "SUPER,Return,exec,${env.terminal}" # Launch terminal
       "SUPER SHIFT,Return,exec,rofi-launcher" # Launch Rofi application launcher
       "SUPER ,GRAVE,exec,rofi-launcher" # Launch Rofi application launcher
-      "SUPER,W,exec,${browser}" # Launch browser
+      "SUPER,W,exec,${env.browser}" # Launch browser
       "SUPER SHIFT,E,exec,rofimoji --use-icons" # Emoji picker
       "SUPER,D,exec,discord" # Launch Discord
       "SUPER,O,exec,obs" # Launch OBS Studio

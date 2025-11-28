@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, env, ... }:
 {
   environment.systemPackages = with pkgs; [
     tuigreet # The login manager (sometimes referred to as display manager)
@@ -8,7 +8,7 @@
       enable = true;
       settings = {
         default_session = {
-          user = username;
+          user = env.username;
           command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
         };
       };

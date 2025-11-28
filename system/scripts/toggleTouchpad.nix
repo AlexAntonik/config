@@ -1,12 +1,7 @@
-{ host, pkgs, ... }:
-let
-  inherit (import ../../hosts/${host}/env.nix)
-    touchpadID
-    ;
-in
+{ env, pkgs, ... }:
 pkgs.writeShellScriptBin "toggle_touchpad" ''
 
-  HYPRLAND_DEVICE="${touchpadID}"
+  HYPRLAND_DEVICE="${env.touchpadID}"
   HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
 
   if [ -z "$XDG_RUNTIME_DIR" ]; then

@@ -1,5 +1,5 @@
-{ pkgs, username }:
+{ pkgs, env }:
 
 pkgs.writeShellScriptBin "syncsupprep" ''
-  sudo chown -R ${username}:users /home/${username}/projects/srv
+  sudo chown -R ${env.username}:users /home/${env.username}/projects/srv
 ''

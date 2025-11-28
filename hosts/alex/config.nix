@@ -1,17 +1,14 @@
 {
   pkgs,
   inputs,
-  username,
-  host,
+  env,
   ...
 }:
-let
-  inherit (import ./env.nix) gitUsername;
-in
 {
   imports = [
     ./hardware.nix # User defined hardware configuration
     ./hardware-gen.nix # Nix generated hardware configuration
+    ./env.nix # Host variables
 
     ./../../system/boot.nix
     ./../../system/boot-visuals.nix # Boot visuals and login manager
@@ -45,6 +42,7 @@ in
     ./../../system/bat.nix # More cute cat
     ./../../system/docker.nix
     ./../../system/libvirtd.nix
+    ./../../system/variables.nix # Host variables(env) support
     ./../../system/zsh.nix # Shell system wide
     ./../../system/zoxide.nix # cd alternative super nice
     ./../../system/nvf.nix # vim
@@ -112,9 +110,9 @@ in
     (import ./../../system/scripts/double-click.nix { inherit pkgs; })
     (import ./../../system/scripts/task-waybar.nix { inherit pkgs; })
     (import ./../../system/scripts/nvidia-offload.nix { inherit pkgs; })
-    (import ./../../system/scripts/syncsupprep.nix { inherit pkgs username; })
-    (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs host; })
-    (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs host; })
+    (import ./../../system/scripts/syncsupprep.nix { inherit pkgs env; })
+    (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs env; })
+    (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs env; })
     (import ./../../system/scripts/rofi-launcher.nix { inherit pkgs; })
     (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
     (import ./../../system/scripts/screenshot.nix { inherit pkgs; })
@@ -141,13 +139,9 @@ in
     useGlobalPkgs = true;
     backupFileExtension = "backup";
     extraSpecialArgs = {
-      inherit
-        inputs
-        username
-        host
-        ;
+      inherit inputs env;
     };
-    users.${username} = {
+    users.${env.username} = {
       imports = [
         # CLI utilities
         ./../../home/btop.nix
@@ -176,8 +170,8 @@ in
         ./../../home/xdg.nix
       ];
       home = {
-        username = "${username}";
-        homeDirectory = "/home/${username}";
+        username = "${env.username}";
+        homeDirectory = "/home/${env.username}";
 
         # This value determines the Home Manager release that your configuration is
         # compatible with. This helps avoid breakage when a new Home Manager release
@@ -198,9 +192,9 @@ in
 
   users.defaultUserShell = pkgs.zsh;
   users.mutableUsers = true;
-  users.users.${username} = {
+  users.users.${env.username} = {
     isNormalUser = true;
-    description = "${gitUsername}";
+    description = "${env.gitUsername}";
     extraGroups = [
       "adbusers"
       "docker"
@@ -213,5 +207,5 @@ in
     ];
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${username}" ];
+  nix.settings.allowed-users = [ "${env.username}" ];
 }
