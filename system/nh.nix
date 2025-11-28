@@ -1,6 +1,6 @@
 {
   pkgs,
-  username,
+  env,
   ...
 }:
 {
@@ -10,7 +10,7 @@
       enable = true;
       extraArgs = "--keep-since 7d --keep 5";
     };
-    flake = "/home/${username}/config";
+    flake = "/home/${env.username}/config";
   };
 
   environment.systemPackages = with pkgs; [

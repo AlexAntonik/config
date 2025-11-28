@@ -1,8 +1,8 @@
-{username, pkgs, ...}:
+{ env, pkgs, ... }:
 {
   services.swayosd = {
     enable = true;
-    stylePath = /home/${username}/.config/swayosd/style.css;
+    stylePath = /home/${env.username}/.config/swayosd/style.css;
     package = pkgs.swayosd;
   };
   home.file.".config/swayosd/style.css".text = ''

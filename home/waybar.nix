@@ -1,13 +1,12 @@
 {
   pkgs,
   lib,
-  host,
   config,
+  env,
   ...
 }:
 let
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import ../hosts/${host}/env.nix) clock24h;
 in
 with lib;
 {
@@ -65,7 +64,7 @@ with lib;
           };
         };
         "clock" = {
-          format = if clock24h == true then ''{:L%H:%M}'' else ''{:L%I:%M %p}'';
+          format = if env.clock24h then ''{:L%H:%M}'' else ''{:L%I:%M %p}'';
           tooltip = true;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
           timezone = "Etc/GMT-3";

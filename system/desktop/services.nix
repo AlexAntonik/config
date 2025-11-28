@@ -1,7 +1,4 @@
-{ pkgs, host, ... }:
-let
-  inherit (import ../../hosts/${host}/env.nix) keyboardLayout;
-in
+{ pkgs, env, ... }:
 {
   # Appimage Support
   boot.binfmt.registrations.appimage = {
@@ -23,7 +20,7 @@ in
     xserver = {
       enable = false; # Для Wayland/Hyprland
       xkb = {
-        layout = "${keyboardLayout}";
+        layout = "${env.keyboardLayout}";
         variant = "";
         options = "grp:win_space_toggle"; # also need to be changed in hyprland config
       };

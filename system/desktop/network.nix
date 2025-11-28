@@ -1,13 +1,13 @@
 {
   pkgs,
-  host,
+  env,
   options,
   lib,
   ...
 }:
 {
   networking = {
-    hostName = "${host}";
+    hostName = "${env.host}";
     # avoid checking if IP is already taken to boot a few seconds faster
     dhcpcd.extraConfig = "noarp";
     # no need to wait interfaces to have an IP to continue booting

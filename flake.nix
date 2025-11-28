@@ -28,10 +28,7 @@
       map (host: {
         name = host;
         value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs host;
-            username = (import ./hosts/${host}/env.nix).username;
-          };
+          specialArgs = { inherit inputs; };
           modules = [ ./hosts/${host}/config.nix ];
         };
       }) (builtins.attrNames (builtins.readDir ./hosts))

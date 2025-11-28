@@ -1,23 +1,26 @@
-{ username, ... }:
+{ env, ... }:
+let
+  user = env.username;
+in
 {
   sops.secrets.asus_cert = {
-    sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
+    sopsFile = "/home/${user}/config/system/secrets/syncthing.yaml";
     owner = "alex";
-    path = "/home/${username}/.config/syncthing/keys/cert.pem";
+    path = "/home/${user}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.asus_key = {
-    sopsFile = "/home/${username}/config/system/secrets/syncthing.yaml";
+    sopsFile = "/home/${user}/config/system/secrets/syncthing.yaml";
     owner = "alex";
-    path = "/home/${username}/.config/syncthing/keys/key.pem";
+    path = "/home/${user}/.config/syncthing/keys/key.pem";
   };
   services.syncthing = {
     enable = true;
-    key = "/home/${username}/.config/syncthing/keys/key.pem";
-    cert = "/home/${username}/.config/syncthing/keys/cert.pem";
+    key = "/home/${user}/.config/syncthing/keys/key.pem";
+    cert = "/home/${user}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
-    dataDir = "/home/${username}/.local/share/syncthing";
-    configDir = "/home/${username}/.config/syncthing";
-    user = "${username}";
+    dataDir = "/home/${user}/.local/share/syncthing";
+    configDir = "/home/${user}/.config/syncthing";
+    user = "${user}";
     settings = {
       devices = {
         "dell" = {
@@ -29,12 +32,12 @@
       };
       folders = {
         "Notes" = {
-          path = "/home/${username}/notes";
+          path = "/home/${user}/notes";
           devices = [ "dell" ];
           ignorePermissions = true;
         };
         "Server" = {
-          path = "/home/${username}/projects/srv";
+          path = "/home/${user}/projects/srv";
           devices = [
             "dell"
           ];
@@ -48,8 +51,8 @@
           ignorePermissions = true;
         };
         "Prod" = {
-          path = "/home/${username}/projects/prod/backup";
-          type = "receiveonly";          
+          path = "/home/${user}/projects/prod/backup";
+          type = "receiveonly";
           versioning = {
             type = "staggered";
             params = {
@@ -61,7 +64,7 @@
           ignorePermissions = true;
         };
         "ServerTransfer" = {
-          path = "/home/${username}/projects/srv/transfer";
+          path = "/home/${user}/projects/srv/transfer";
           devices = [ "swop" ];
           ignorePermissions = true;
         };
