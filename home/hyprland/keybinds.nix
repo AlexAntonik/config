@@ -17,11 +17,12 @@ in
 {
   wayland.windowManager.hyprland.settings = {
     # Gesture settings (for touchpads/touchscreens)
-    gestures = {
-      workspace_swipe = true; # Enable workspace swipe gestures
-      workspace_swipe_invert = true; # Invert swipe direction
-      workspace_swipe_forever = true; # Allow continuous swiping
-    };
+    gesture = [
+      "3, horizontal, workspace"
+      "3, up, close"
+      "2, pinchout, resize"
+      "2, pinchout, mod: SUPER, move"
+    ];
 
     # Input device settings
     input = {

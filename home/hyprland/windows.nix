@@ -85,17 +85,14 @@
     ];
     # Layer rules for swaync blur effect
     layerrule = [
-      "blur,logout_dialog"
-      "blur,rofi"
-      "ignorezero,rofi"
-      "blur, swaync-control-center"
-      "blur, swaync-notification-window"
-      "blur, waybar"
-      "ignorezero, waybar"
-      "ignorezero, swaync-control-center"
-      "ignorezero, swaync-notification-window"
-      "ignorealpha 0.5, swaync-control-center"
-      "ignorealpha 0.5, swaync-notification-window"
+      "blur,^rofi$"
+      "blur,^waybar$"
+      "blur,^swaync.*$"
+      "blur,^logout_dialog$"
+      "ignorezero,^rofi$"
+      "ignorezero,^swaync.*$"
+      "ignorezero,^waybar$"
+      "ignorealpha 0.5,^swaync.*$"
     ];
     # Miscellaneous settings
     misc = {
