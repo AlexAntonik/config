@@ -33,7 +33,6 @@ with lib;
         modules-right = [
           "hyprland/language"
           "tray"
-          "custom/notification"
           "clock"
         ];
 
@@ -213,25 +212,6 @@ with lib;
           };
           tooltip = "true";
         };
-        "custom/notification" = {
-          tooltip = false;
-          format = "{icon}";
-          format-icons = {
-            notification = "<span foreground='red'><sup></sup></span>";
-            none = "";
-            dnd-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-none = "";
-            inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            inhibited-none = "";
-            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-inhibited-none = "";
-          };
-          return-type = "json";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "sleep 0.1 && task-waybar";
-          escape = true;
-        };
         "battery#icon" = {
           states = {
             warning = 30;
@@ -388,13 +368,6 @@ with lib;
           color: #CCCCCC;
           margin: 0px;
           padding: 0px 6px 0px 16px;
-        }
-        #custom-notification{
-          font-weight: bold;
-          background: transparent;
-          color: #CCCCCC;
-          margin: 0px;
-          padding: 0px 16px 0px 6px;
         }
         #clock {
           font-weight: bold;

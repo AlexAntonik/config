@@ -83,16 +83,13 @@
       "noblur, tag:games*"
       "fullscreen, tag:games*"
     ];
-    # Layer rules for swaync blur effect
+
     layerrule = [
       "blur,^rofi$"
       "blur,^waybar$"
-      "blur,^swaync.*$"
       "blur,^logout_dialog$"
       "ignorezero,^rofi$"
-      "ignorezero,^swaync.*$"
       "ignorezero,^waybar$"
-      "ignorealpha 0.5,^swaync.*$"
     ];
     # Miscellaneous settings
     misc = {
