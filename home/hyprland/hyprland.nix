@@ -89,7 +89,7 @@
         # --- Autostart applications ---
         "${env.browser}"
         # "[workspace 2 silent] code" #did not work now becouse of electron app prob fix soon
-        "[workspace 3 silent] ${env.terminal}"
+        "[workspace 3 silent] ${env.terminal} -e tmux new-session -A -s 0"
       ];
     };
 

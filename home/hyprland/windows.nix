@@ -114,6 +114,8 @@
       "special:term, gapsout:70 140 120 140,rounding:false, decorate:false, shadow:false"
       "special:obsidian, on-created-empty:obsidian"
       "special:obsidian, gapsout:20,rounding:false, decorate:false, shadow:false"
+      "special:discord, on-created-empty:discord"
+      "special:discord, gapsout:20,rounding:false, decorate:false, shadow:false"
       "special:telegram, on-created-empty:Telegram"
       "special:telegram, gapsout:26,rounding:false, decorate:false, shadow:false"
       "special:thunar, on-created-empty:thunar"

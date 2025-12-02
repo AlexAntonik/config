@@ -64,7 +64,6 @@ in
       "SUPER ,GRAVE,exec,rofi-launcher" # Launch Rofi application launcher
       "SUPER,W,exec,${env.browser}" # Launch browser
       "SUPER SHIFT,E,exec,rofimoji --use-icons" # Emoji picker
-      "SUPER,D,exec,discord" # Launch Discord
       "SUPER,O,exec,obs" # Launch OBS Studio
       "SUPER,C,exec,code" # Launch VS Code
       "SUPER SHIFT,C,exec,rofi -show calc -modi calc -no-show-match -no-sort" # Calculator
@@ -74,6 +73,7 @@ in
       "SUPER,V,exec,clipboard-manager" # clipboard mgr
       "SUPER,P,exec,hyprpicker -a" # Color picker
       "SUPER,S,togglespecialworkspace, obsidian"
+      "SUPER,D,togglespecialworkspace, discord" # Togglez Discord
       "SUPER,E,togglespecialworkspace, thunar" # Toggle Thunar file manager
       "SUPER,T,togglespecialworkspace, telegram" # Toggle Telegram
       "SUPER,Y,togglespecialworkspace, yazi" # Toggle Yazi
