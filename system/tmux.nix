@@ -4,7 +4,6 @@
     enable = true;
     baseIndex = 1;
     clock24 = true;
-    newSession = true;
     escapeTime = 0;
     extraConfigBeforePlugins = ''
       set  -g focus-events on
@@ -44,17 +43,9 @@
       set -g window-status-format "#[fg=white] #I:#W "
       set -g window-status-current-format "#[fg=#698DDA,bold] #I:#W #[bg=default]"
     '';
-    extraConfig = ''
-      set -g @resurrect-strategy-nvim 'session'
 
-      set -g @continuum-restore 'on'
-      set -g @continuum-save-interval '15' # minutes
-    '';
-    plugins = with pkgs; [
-      tmuxPlugins.resurrect
-      tmuxPlugins.better-mouse-mode
-      tmuxPlugins.continuum
+    plugins = with pkgs.tmuxPlugins; [
+      better-mouse-mode
     ];
   };
-
 }

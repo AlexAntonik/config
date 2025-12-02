@@ -5,7 +5,6 @@
     package = pkgs.ghostty;
   };
   home.file."./.config/ghostty/config".text = ''
-    command = tmux a
 
     theme = Dracula+
     adjust-cell-height = 10%
@@ -22,13 +21,7 @@
     window-padding-y = 0
     window-padding-color = extend
     mouse-hide-while-typing = true
-
-    # keybindings
-    keybind = performable:ctrl+v=paste_from_clipboard
     keybind = alt+s>r=reload_config
-
-    # other
-    #copy-on-select = clipboard
 
     font-size = 13
     font-family = BerkeleyMono Nerd Font
@@ -40,5 +33,9 @@
     unfocused-split-opacity = 0.5
     quick-terminal-position = center
     shell-integration-features = cursor,sudo
+    
+    keybind = ctrl+shift+c=copy_to_clipboard
+    keybind = ctrl+shift+v=paste_from_clipboard
+    keybind = performable:ctrl+v=paste_from_clipboard
   '';
 }
