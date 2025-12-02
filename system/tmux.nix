@@ -8,7 +8,6 @@
     escapeTime = 0;
     extraConfigBeforePlugins = ''
       set  -g focus-events on
-
       set  -g mouse             on
 
       # set  -g default-terminal "tmux-256color"
@@ -35,6 +34,15 @@
       bind -T copy-mode-vi y send -X copy-pipe-and-cancel "wl-copy || xclip -in -selection clipboard"
       bind -n M-/ copy-mode \; command-prompt -p "(search down)" "send -X search-forward '%%%'"
       bind -n M-? copy-mode \; command-prompt -p "(search up)"   "send -X search-backward '%%%'"
+
+      #status bar
+      set -g status-position bottom
+      set -g status-style bg=default,fg=default
+      set -g status-justify centre
+      set -g status-left ""
+      set -g status-right ""
+      set -g window-status-format "#[fg=white] #I:#W "
+      set -g window-status-current-format "#[fg=#698DDA,bold] #I:#W #[bg=default]"
     '';
     extraConfig = ''
       set -g @resurrect-strategy-nvim 'session'
@@ -43,7 +51,6 @@
       set -g @continuum-save-interval '15' # minutes
     '';
     plugins = with pkgs; [
-      tmuxPlugins.nord
       tmuxPlugins.resurrect
       tmuxPlugins.better-mouse-mode
       tmuxPlugins.continuum
