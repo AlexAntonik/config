@@ -15,7 +15,7 @@
         showListFooter = false;
         showRandomTip = false;
         showCommandLog = false;
-        showBottomLine = true;
+        showBottomLine = false;
         nerdFontsVersion = "3";
       };
     };
