@@ -121,7 +121,7 @@
     # Gaming
     # starsector
     # vintagestory
-    prismlauncher # Minecraft launcher
+    # prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
