@@ -60,17 +60,14 @@ in
 
       # --- Application Launchers ---
       "SUPER,Return,exec,${env.terminal}" # Launch terminal
-      "SUPER SHIFT,Return,exec,rofi-launcher" # Launch Rofi application launcher
-      "SUPER ,GRAVE,exec,rofi-launcher" # Launch Rofi application launcher
+      "SUPER SHIFT,Return,exec,vicinae toggle"
+      "SUPER ,GRAVE,exec,vicinae toggle"
       "SUPER,W,exec,${env.browser}" # Launch browser
-      "SUPER SHIFT,E,exec,rofimoji --use-icons" # Emoji picker
       "SUPER,O,exec,obs" # Launch OBS Studio
       "SUPER,C,exec,code" # Launch VS Code
-      "SUPER SHIFT,C,exec,rofi -show calc -modi calc -no-show-match -no-sort" # Calculator
       "SUPER,G,exec,gimp" # Launch GIMP
       "SUPER,N,exec,obsidian" # Launch Obsidian
       "SUPER,M,exec,pavucontrol" # Launch Pavucontrol
-      "SUPER,V,exec,clipboard-manager" # clipboard mgr
       "SUPER,P,exec,hyprpicker -a" # Color picker
       "SUPER,S,togglespecialworkspace, obsidian"
       "SUPER,D,togglespecialworkspace, discord" # Togglez Discord

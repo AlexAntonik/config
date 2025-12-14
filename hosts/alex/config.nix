@@ -107,13 +107,11 @@
     yt-dlp # YouTube downloader
 
     # Scripts
-    (import ./../../system/scripts/clipboard.nix { inherit pkgs; })
     (import ./../../system/scripts/double-click.nix { inherit pkgs; })
     (import ./../../system/scripts/nvidia-offload.nix { inherit pkgs; })
     (import ./../../system/scripts/syncsupprep.nix { inherit pkgs env; })
     (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs env; })
     (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs env; })
-    (import ./../../system/scripts/rofi-launcher.nix { inherit pkgs; })
     (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
     (import ./../../system/scripts/screenshot.nix { inherit pkgs; })
     (import ./../../system/scripts/toggleXWaylandScale.nix { inherit pkgs; })
@@ -163,11 +161,11 @@
         ./../../home/hyprland/hyprland.nix
         ./../../home/waybar.nix
         ./../../home/wlogout/wlogout.nix
-        ./../../home/rofi.nix
         ./../../home/mako.nix
         ./../../home/swayosd.nix
         ./../../home/ghostty.nix
         ./../../home/xdg.nix
+        ./../../home/vicinae.nix
       ];
       home = {
         username = "${env.username}";

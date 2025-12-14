@@ -85,10 +85,10 @@
     ];
 
     layerrule = [
-      "blur,^rofi$"
       "blur,^waybar$"
+      "blur,vicinae"
+      "ignorealpha 0, vicinae"
       "blur,^logout_dialog$"
-      "ignorezero,^rofi$"
       "ignorezero,^waybar$"
     ];
     # Miscellaneous settings
