@@ -49,7 +49,10 @@
       la = "eza --icons -lah --group-directories-first -1";
       tree = "eza --icons --tree --group-directories-first";
       f = "fzf";
-      ytmd = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
+      ytdm = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
+      ytdv = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(title)s.%(ext)s\"";
+      ytdp = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s\"";
+
 
       backup-list = "borg list /home/${env.username}/projects/srv/backup/borg-repo";
       backup-info = "borg info /home/${env.username}/projects/srv/backup/borg-repo";
