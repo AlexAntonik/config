@@ -7,11 +7,12 @@
     settings = {
       faviconService = "twenty"; # twenty | google | none
       font.size = 11;
-      popToRootOnClose = false;
+      popToRootOnClose = true;
+      closeOnFocusLoss = true;
       rootSearch = {
         searchFiles = true;
       };
-      theme.name = "vicinae-dark";
+      theme.name = "catppuccin-macchiato";
       window = {
         csd = true;
         opacity = 0.8;
