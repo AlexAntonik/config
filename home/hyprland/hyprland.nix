@@ -67,13 +67,6 @@
         "SDL_VIDEODRIVER, wayland,x11" # Prefer Wayland for SDL apps (Corrected from just x11)
         "EDITOR,nvim" # Default editor
         "MOZ_ENABLE_WAYLAND, 1" # Force Wayland backend for Firefox
-        #"AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1:/dev/card2" # Example for multi-GPU setups (adjust if needed)
-        # Explicit scaling factors (might override auto-scaling, use with caution)
-        "GDK_SCALE,1"
-        "QT_SCALE_FACTOR,1"
-        "WINIT_X11_SCALE_FACTOR,1"
-        "QT_AUTO_SCREEN_SCALE_FACTOR,0" # Disable auto screen scale factor if setting manually
-        "QT_SCREEN_SCALE_FACTORS,1" # Manual screen scale factor for Qt
       ];
 
       # Commands executed once on Hyprland startup
