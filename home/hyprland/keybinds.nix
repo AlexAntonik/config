@@ -165,7 +165,6 @@ in
       # --- System Controls ---
       ",PRINT,exec,screenshot"
       "SUPER, F11,exec,toggle_xwayland_scale"
-      "SUPER, PRINT,exec,grim - | swappy -f -"
       ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
       ",XF86TouchpadToggle , exec, toggle_touchpad"
       ",XF86AudioPlay, exec, playerctl play-pause"
