@@ -56,8 +56,8 @@
         "NIXOS_OZONE_WL, 1" # Enable Wayland backend for Ozone-based apps (Electron)
         "NIXPKGS_ALLOW_UNFREE, 1" # Allow unfree packages if needed
         "XDG_CURRENT_DESKTOP, Hyprland"
-        "XDG_SESSION_TYPE, wayland"
         "XDG_SESSION_DESKTOP, Hyprland"
+        "XDG_SESSION_TYPE, wayland"
         "GDK_BACKEND, wayland, x11" # Prefer Wayland for GTK apps, fallback to X11
         "CLUTTER_BACKEND, wayland" # Prefer Wayland for Clutter apps
         "QT_QPA_PLATFORM=wayland;xcb" # Prefer Wayland for Qt apps, fallback to XCB (X11)
@@ -70,13 +70,11 @@
 
       # Commands executed once on Hyprland startup
       exec-once = [
-        "wl-paste --type text --watch cliphist store" # Stores only text data
-        "wl-paste --type image --watch cliphist store" # Stores only image data
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # System tray applets and agents
         "killall -q waybar; sleep 0.5 && waybar"
         "killall -q tailscale-systray; sleep 0.5 && tailscale-systray"
-        # System tray applets and agents
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         # --- Autostart applications ---
