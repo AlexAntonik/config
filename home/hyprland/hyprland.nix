@@ -153,7 +153,7 @@ in
     lazy = true
     unfocus = "hide"
     # hysteresis = 10 
-    command = "telegram-desktop"
+    command = "Telegram"
     class = "org.telegram.desktop"
     position = "2% 2%"
     size = "96% 92%"
