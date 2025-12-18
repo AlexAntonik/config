@@ -71,6 +71,7 @@
       exec-once = [
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "USE_LAYER_SHELL=0 vicinae server" # TODO: 0.17 might move these to vicinae settings
         # System tray applets and agents
         "killall -q waybar; sleep 0.5 && waybar"
         "killall -q tailscale-systray; sleep 0.5 && tailscale-systray"
