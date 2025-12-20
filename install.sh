@@ -123,10 +123,10 @@ else
     echo
 
     echo -e "${CYAN}Updating env.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\".*\"/\"$hostName\"/" ./hosts/"$hostName"/env.nix; then
+    if ! sed -i "/^\s*host\s*=\s*\"[^\"]*\";/s/.*/  host = \"$hostName\";/" ./hosts/"$hostName"/env.nix; then
         echo -e "${RED}Warning: failed to update hostname in env.nix${NC}"
     fi
-    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\".*\"/\"$installusername\"/" ./hosts/"$hostName"/env.nix; then
+    if ! sed -i "/^\s*username\s*=\s*\"[^\"]*\";/s/.*/  username = \"$installusername\";/" ./hosts/"$hostName"/env.nix; then
         echo -e "${RED}Warning: failed to update username in env.nix${NC}"
     fi
 
