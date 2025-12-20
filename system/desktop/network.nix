@@ -40,6 +40,5 @@
       # logReversePathDrops = true;
     };
   };
-
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 }
