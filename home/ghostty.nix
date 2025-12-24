@@ -3,6 +3,7 @@
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty;
+    systemd.enable = true;
     settings = {
       theme = "Dracula+";
       background-opacity = 0.75;
@@ -24,6 +25,8 @@
       shell-integration-features = "cursor,sudo";
       window-save-state = "always";
       gtk-single-instance = true;
+      quit-after-last-window-closed = true;
+      quit-after-last-window-closed-delay = "5m";
 
       keybind = [
         "alt+r=reload_config"
