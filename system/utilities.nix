@@ -20,6 +20,7 @@
     cloc # Count lines of code
     duf # Utility for viewing disk usage in terminal
     dysk # Get information on your mounted disks tool
+    dig # DNS tests 
     eza # Beautiful ls replacement
     gawk # GNU awk
     gh # GitHub CLI (enabled in home manager)
@@ -35,6 +36,7 @@
     ripgrep # Fast search tool
     socat # Multipurpose relay
     sops # Securely edit files with encryption
+    speedtest-cli # Terminal speedtest
     unrar # RAR archive extractor
     unzip # ZIP archive extractor
     usbutils # USB utilities
