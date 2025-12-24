@@ -1,6 +1,5 @@
 {
   pkgs,
-  env,
   ...
 }:
 {
@@ -78,9 +77,8 @@
         "nm-applet --indicator"
         "systemctl --user start hyprpolkitagent"
         # --- Autostart applications ---
-        "${env.browser}"
-        # "[workspace 2 silent] code" #did not work now becouse of electron app prob fix soon
-        "[workspace 3 silent] ${env.terminal}"
+        "firefox"
+        "[workspace 3 silent] ghostty"
       ];
     };
 
