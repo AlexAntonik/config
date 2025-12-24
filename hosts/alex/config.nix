@@ -36,7 +36,7 @@
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
-    ./../../system/tmux.nix 
+    # ./../../system/tmux.nix 
     ./../../system/obs.nix # OBS with virtual camera
     ./../../system/lazygit.nix # Git tui
     ./../../system/htop.nix # htop
@@ -119,7 +119,7 @@
     # Gaming
     # starsector
     # vintagestory
-    # prismlauncher # Minecraft launcher
+    prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
