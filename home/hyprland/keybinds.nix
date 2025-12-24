@@ -172,7 +172,6 @@ in
       ",XF86AudioNext, exec, playerctl next"
       ",XF86AudioPrev, exec, playerctl previous"
       "SUPER SHIFT,ESCAPE,exit,"
-      "SUPER,ESCAPE,exec,wlogout"
       ",XF86WebCam,exec,toggle_display"
 
       # Workaround to change vertical tabs keybind in firefox

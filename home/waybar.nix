@@ -205,7 +205,7 @@ with lib;
         };
         "idle_inhibitor" = {
           format = "{icon}";
-          on-click-right = "sleep 0.1 && wlogout";
+          on-click-right = "vicinae toggle";
           format-icons = {
             activated = "<span color='#ff9977'> 󰈈</span>";
             deactivated = "";

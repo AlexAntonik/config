@@ -147,7 +147,6 @@
         # Desktop environment and panels
         ./../../home/hyprland/hyprland.nix
         ./../../home/waybar.nix
-        ./../../home/wlogout/wlogout.nix
         ./../../home/mako.nix
         ./../../home/swayosd.nix
         ./../../home/ghostty.nix
