@@ -3,39 +3,37 @@
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty;
+    settings = {
+      theme = "Dracula+";
+      background-opacity = 0.75;
+      background-blur-radius = 20;
+      cursor-style = "bar";
+      window-padding-balance = true;
+      window-padding-x = 0;
+      window-padding-y = 0;
+      window-padding-color = "extend";
+      window-show-tab-bar = "never";
+      window-decoration = false;
+
+      font-size = 13;
+      adjust-cell-height = 10;
+      font-family = "BerkeleyMono Nerd Font";
+      wait-after-command = false;
+      mouse-hide-while-typing = true;
+      shell-integration = "detect";
+      shell-integration-features = "cursor,sudo";
+      window-save-state = "always";
+      gtk-single-instance = true;
+
+      keybind = [
+        "alt+r=reload_config"
+        "ctrl+shift+c=copy_to_clipboard"
+        "ctrl+shift+v=paste_from_clipboard"
+        "performable:ctrl+v=paste_from_clipboard"
+        "alt+enter=new_tab"
+        "alt+q=close_tab"
+        "alt+s=toggle_tab_overview"
+      ];
+    };
   };
-  home.file."./.config/ghostty/config".text = ''
-
-    theme = Dracula+
-    adjust-cell-height = 10%
-    window-theme = dark
-    window-height = 32
-    window-width = 110
-    background-opacity = 0.75
-    background-blur-radius = 20
-    selection-background = #2d3f76
-    selection-foreground = #c8d3f5
-    cursor-style = bar
-    window-padding-balance = true
-    window-padding-x = 0
-    window-padding-y = 0
-    window-padding-color = extend
-    mouse-hide-while-typing = true
-    keybind = alt+s>r=reload_config
-
-    font-size = 13
-    font-family = BerkeleyMono Nerd Font
-
-    wait-after-command = false
-    shell-integration = detect
-    window-save-state = always
-    gtk-single-instance = true
-    unfocused-split-opacity = 0.5
-    quick-terminal-position = center
-    shell-integration-features = cursor,sudo
-    
-    keybind = ctrl+shift+c=copy_to_clipboard
-    keybind = ctrl+shift+v=paste_from_clipboard
-    keybind = performable:ctrl+v=paste_from_clipboard
-  '';
 }
