@@ -1,8 +1,6 @@
 { ... }:
 
 {
-  #start speedup
-  systemd.services.NetworkManager-wait-online.enable = false;
   #Disable hibernation or sleep cause hibernation brakes bt driver
   systemd = {
     targets = {
