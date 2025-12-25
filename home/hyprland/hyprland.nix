@@ -19,14 +19,13 @@
     slurp
     wl-clipboard
     hyprpicker # Color picker
-    hyprpolkitagent
     ydotool
-    unstable.hyprland-qtutils # needed for banners and ANR messages
   ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
+  services.hyprpolkitagent.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
@@ -75,7 +74,6 @@
         "killall -q waybar; sleep 0.5 && waybar"
         "killall -q tailscale-systray; sleep 0.5 && tailscale-systray"
         "nm-applet --indicator"
-        "systemctl --user start hyprpolkitagent"
         # --- Autostart applications ---
         "firefox"
         "[workspace 3 silent] ghostty"
