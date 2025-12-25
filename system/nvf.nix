@@ -23,71 +23,6 @@
         wrap = false;
       };
 
-      keymaps = [
-        {
-          key = "jk";
-          mode = [ "i" ];
-          action = "<ESC>";
-          desc = "Exit insert mode";
-        }
-        {
-          key = "<leader>nh";
-          mode = [ "n" ];
-          action = ":nohl<CR>";
-          desc = "Clear search highlights";
-        }
-        {
-          key = "<leader>ff";
-          mode = [ "n" ];
-          action = "<cmd>Telescope find_files<cr>";
-          desc = "Search files by name";
-        }
-        {
-          key = "<leader>lg";
-          mode = [ "n" ];
-          action = "<cmd>Telescope live_grep<cr>";
-          desc = "Search files by contents";
-        }
-        {
-          key = "<leader>fe";
-          mode = [ "n" ];
-          action = "<cmd>Neotree toggle<cr>";
-          desc = "File browser toggle";
-        }
-        {
-          key = "<C-h>";
-          mode = [ "i" ];
-          action = "<Left>";
-          desc = "Move left in insert mode";
-        }
-        {
-          key = "<C-j>";
-          mode = [ "i" ];
-          action = "<Down>";
-          desc = "Move down in insert mode";
-        }
-        {
-          key = "<C-k>";
-          mode = [ "i" ];
-          action = "<Up>";
-          desc = "Move up in insert mode";
-        }
-        {
-          key = "<C-l>";
-          mode = [ "i" ];
-          action = "<Right>";
-          desc = "Move right in insert mode";
-        }
-      ];
-
-      diagnostics = {
-        enable = true;
-        config = {
-          virtual_lines.enable = true;
-          underline = true;
-        };
-      };
-
       theme = {
         enable = true;
         name = lib.mkForce "dracula";
@@ -197,11 +132,6 @@
       dashboard.dashboard-nvim.enable = true;
 
       filetree.neo-tree.enable = true;
-
-      notify = {
-        nvim-notify.enable = true;
-        nvim-notify.setupOpts.background_colour = "#410e0eff";
-      };
 
       utility = {
         ccc.enable = false;
