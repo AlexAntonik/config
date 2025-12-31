@@ -85,11 +85,9 @@
     ];
 
     layerrule = [
-      "blur,^waybar$"
       "blur,vicinae"
       "ignorealpha 0, vicinae"
       "blur,^logout_dialog$"
-      "ignorezero,^waybar$"
     ];
     # Miscellaneous settings
     misc = {
