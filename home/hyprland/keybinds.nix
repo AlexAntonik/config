@@ -51,11 +51,6 @@ in
       "SUPER, mouse:273, resizewindow"
     ];
 
-    # Keybindings
-    bindr = [
-      # Waybar toggle
-      "SUPER, SUPER_L, exec, double-click pkill -SIGUSR1 waybar"
-    ];
     bind = [
 
       # --- Application Launchers ---
