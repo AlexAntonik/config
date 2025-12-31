@@ -152,6 +152,9 @@
 
         # Scripts and some configs
         ./../../home/xdg.nix
+
+        ./../../home/noctalia.nix
+        inputs.noctalia.homeModules.default
       ];
       home = {
         username = "${env.username}";
