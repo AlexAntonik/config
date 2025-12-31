@@ -36,13 +36,14 @@ in
     bindle = [
       "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${env.keyboardLightID} s 1%-"
       "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${env.keyboardLightID} s 1%+"
-      ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume +1"
-      ",XF86AudioLowerVolume,exec,swayosd-client --output-volume -1"
-      ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
-      "SHIFT,XF86AudioRaiseVolume,exec,swayosd-client --input-volume +1 --max-volume 255"
-      "SHIFT,XF86AudioLowerVolume,exec,swayosd-client --input-volume -1 --max-volume 255"
-      ",XF86MonBrightnessDown,exec,swayosd-client --brightness -2"
-      ",XF86MonBrightnessUp,exec,swayosd-client --brightness +2"
+      ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
+      ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      "SHIFT,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+"
+      "SHIFT,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
+      "SHIFT,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ",XF86MonBrightnessDown,exec,brightnessctl s 2-"
+      ",XF86MonBrightnessUp,exec,brightnessctl s 2+"
     ];
 
     # Mouse bindings
@@ -160,7 +161,6 @@ in
       # --- System Controls ---
       ",PRINT,exec,screenshot"
       "SUPER, F11,exec,toggle_xwayland_scale"
-      ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
       ",XF86TouchpadToggle , exec, toggle_touchpad"
       ",XF86AudioPlay, exec, playerctl play-pause"
       ",XF86AudioPause, exec, playerctl play-pause"
@@ -174,9 +174,6 @@ in
 
       # Show temporary clock overlay
       "SUPER,Z,exec,show-clock"
-
-      # Hack to display curren lang in swayosd !!!kb layout change here!!!
-      "SUPER,SPACE,exec,sleep 0.1 && swayosd-client --custom-message=\"$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')\" --custom-icon=input-keyboard"
     ];
     #Changing kb layout
     input.kb_options = "caps:escape,grp:win_space_toggle";

@@ -12,13 +12,13 @@ pkgs.writeShellScriptBin "toggle_touchpad" ''
 
   enable_touchpad() {
       printf "true" >"$STATUS_FILE"
-      swayosd-client --custom-message="Touchpad ON" --custom-icon=input-tablet
+      notify-send "Touchpad ON"
   hyprctl keyword $HYPRLAND_VARIABLE "true" -r
   }
 
   disable_touchpad() {
       printf "false" >"$STATUS_FILE"
-      swayosd-client --custom-message="Touchpad OFF" --custom-icon=input-tablet
+      notify-send "Touchpad OFF"
   hyprctl keyword $HYPRLAND_VARIABLE "false" -r
   }
 

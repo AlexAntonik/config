@@ -160,7 +160,6 @@
         # Desktop environment and panels
         ./../../home/hyprland/hyprland.nix
         ./../../home/mako.nix
-        ./../../home/swayosd.nix
         ./../../home/ghostty.nix
         ./../../home/xdg.nix
         ./../../home/vicinae.nix
