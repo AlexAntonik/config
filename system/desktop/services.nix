@@ -18,7 +18,7 @@
     libinput.enable = true;
     gvfs.enable = true;
     xserver = {
-      enable = false; # Для Wayland/Hyprland
+      enable = false; # For Wayland/Hyprland
       xkb = {
         layout = "${env.keyboardLayout}";
         variant = "";

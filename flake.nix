@@ -28,8 +28,8 @@
       map (host: {
         name = host;
         value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
-          modules = [./hosts/${host}/config.nix];
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/${host}/config.nix ];
         };
       }) (builtins.attrNames (builtins.readDir ./hosts))
     );
