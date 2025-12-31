@@ -3,23 +3,24 @@
   # Styling Options
   stylix = {
     enable = true;
+    # image = ./../home/hyprland/wallpapers/mountains.jpg;
     base16Scheme = {
-      base00 = "1d1d1d";
-      base01 = "484848";
-      base02 = "6c6c6c";
-      base03 = "9b9b9b";
-      base04 = "b7b7b7";
-      base05 = "e2e2e2";
-      base06 = "e9e9e9";
-      base07 = "ebebeb";
-      base08 = "8f8f8f";
-      base09 = "919191";
-      base0A = "919191";
-      base0B = "919191";
-      base0C = "919191";
-      base0D = "8f8f8f";
-      base0E = "8d8d8d";
-      base0F = "8c8c8c";
+      base00 = "0d0d0d";
+      base01 = "1a1a1a";
+      base02 = "2d2d2d";
+      base03 = "4a4a4a";
+      base04 = "6a6a6a";
+      base05 = "b8b8b8";
+      base06 = "d4d4d4";
+      base07 = "e8e8e8";
+      base08 = "a8a8a8";
+      base09 = "9a9a9a";
+      base0A = "8c8c8c";
+      base0B = "989898";
+      base0C = "949494";
+      base0D = "a0a0a0";
+      base0E = "9c9c9c";
+      base0F = "888888";
     };
     polarity = "dark";
     opacity.terminal = 1.0;
@@ -39,7 +40,7 @@
       monospace = {
 
         # package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        package = pkgs.nerd-fonts.jetbrains-mono;  # Unstable channel update
+        package = pkgs.nerd-fonts.jetbrains-mono; # Unstable channel update
         name = "JetBrains Mono";
       };
       sansSerif = {
