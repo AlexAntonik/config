@@ -163,6 +163,9 @@
         ./../../home/ghostty.nix
         ./../../home/xdg.nix
         ./../../home/vicinae.nix
+
+        ./../../home/noctalia.nix
+        inputs.noctalia.homeModules.default
       ];
       home = {
         username = "${env.username}";
