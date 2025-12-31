@@ -86,7 +86,7 @@
 
     # Desktop suite
     pom
-    anki # Spaced repetition flashcards
+    anki-bin # Spaced repetition flashcards
     libreoffice # Office suite
     obsidian # Personal knowledge base
     zathura # PDF viewer
