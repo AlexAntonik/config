@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  # Styling Options
   stylix = {
     enable = true;
     # image = ./../home/hyprland/wallpapers/mountains.jpg;
@@ -13,17 +12,16 @@
       base05 = "b8b8b8";
       base06 = "d4d4d4";
       base07 = "e8e8e8";
-      base08 = "a8a8a8";
-      base09 = "9a9a9a";
-      base0A = "8c8c8c";
-      base0B = "989898";
-      base0C = "949494";
-      base0D = "a0a0a0";
-      base0E = "9c9c9c";
-      base0F = "888888";
+      base08 = "aaaaaa";
+      base09 = "a2a2a2";
+      base0A = "9a9a9a";
+      base0B = "929292";
+      base0C = "8a8a8a";
+      base0D = "828282";
+      base0E = "7a7a7a";
+      base0F = "727272";
     };
     polarity = "dark";
-    opacity.terminal = 1.0;
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
@@ -35,12 +33,9 @@
       grub.enable = false;
       console.enable = false;
     };
-
     fonts = {
       monospace = {
-
-        # package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        package = pkgs.nerd-fonts.jetbrains-mono; # Unstable channel update
+        package = pkgs.nerd-fonts.jetbrains-mono;
         name = "JetBrains Mono";
       };
       sansSerif = {
