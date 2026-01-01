@@ -7,7 +7,7 @@
         density = "compact";
         useSeparateOpacity = true;
         outerCorners = false;
-        backgroundOpacity = lib.mkForce 0.65;
+        backgroundOpacity = lib.mkForce 0.7;
         position = "bottom";
         showCapsule = false;
         widgets = {
@@ -40,10 +40,18 @@
             {
               id = "KeyboardLayout";
               displayMode = "forceOpen";
+              showIcon = false;
             }
             {
               id = "Tray";
               colorizeIcons = true;
+              pinned = [
+                "AmneziaVPN"
+                "Telegram Desktop"
+                "systray"
+                "Discord"
+                "steam"
+              ];
             }
             {
               id = "WiFi";
@@ -55,6 +63,14 @@
               id = "Battery";
               alwaysShowPercentage = false;
               warningThreshold = 30;
+              showNoctaliaPerformance = true;
+              showPowerProfiles = true;
+
+            }
+            {
+              id = "NotificationHistory";
+              hideWhenZero = false;
+              showUnreadBadge = true;
             }
             {
               id = "Clock";
@@ -70,19 +86,29 @@
       };
       notifications = {
         location = "bottom_right";
-        backgroundOpacity = lib.mkForce 0.5;
+        backgroundOpacity = lib.mkForce 0.7;
       };
       osd = {
-        location = "bottom_center";
+        location = "bottom";
+        enabledTypes = [
+          0
+          1
+          2
+          3
+          4
+        ];
       };
       general = {
         avatarImage = "";
         radiusRatio = 0.2;
         lockOnSuspend = false;
       };
+      dock = {
+        enabled = false;
+      };
       ui = {
         fontFixedScale = 1.24;
-        panelBackgroundOpacity = lib.mkForce 0.8;
+        panelBackgroundOpacity = lib.mkForce 0.88;
       };
       appLauncher = {
         terminalCommand = "ghostty -e";
