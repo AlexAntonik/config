@@ -12,13 +12,13 @@ pkgs.writeShellScriptBin "toggle_touchpad" ''
 
   enable_touchpad() {
       printf "true" >"$STATUS_FILE"
-      notify-send "Touchpad ON"
+      noctalia-shell ipc call osd showTextWithIcon "Touchpad enabled" "hand-click"
   hyprctl keyword $HYPRLAND_VARIABLE "true" -r
   }
 
   disable_touchpad() {
       printf "false" >"$STATUS_FILE"
-      notify-send "Touchpad OFF"
+      noctalia-shell ipc call osd showTextWithIcon "Touchpad disabled" "hand-finger-off"
   hyprctl keyword $HYPRLAND_VARIABLE "false" -r
   }
 
