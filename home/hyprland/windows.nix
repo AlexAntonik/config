@@ -87,7 +87,6 @@
     layerrule = [
       "blur,vicinae"
       "ignorealpha 0, vicinae"
-      "blur,^logout_dialog$"
     ];
     # Miscellaneous settings
     misc = {
