@@ -169,9 +169,6 @@ in
       "SUPER SHIFT,ESCAPE,exit,"
       ",XF86WebCam,exec,toggle_display"
 
-      # Workaround to change vertical tabs keybind in firefox
-      "ALT,Z,exec,hyprctl activewindow -j | jq -r '.class' | grep -q firefox && wtype -M ctrl -M alt -k z"
-
       # Show temporary clock overlay
       "SUPER,Z,exec,show-clock"
     ];
