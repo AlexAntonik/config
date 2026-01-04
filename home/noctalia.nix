@@ -117,6 +117,11 @@
         monthBeforeDay = false;
         name = "Minsk, Belarus";
       };
+      systemMonitor = {
+        useCustomColors = true;
+        criticalColor = "#630000";
+        warningColor = "#6a3100";
+      };
       wallpaper = {
         enabled = false;
       };
