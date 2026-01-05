@@ -1,4 +1,4 @@
 { ... }:
 {
-  hyprland.enable = true; # system-wide, needed for session in tuigreet
+  programs.hyprland.enable = true; # system-wide, needed for session in tuigreet
 }
