@@ -103,6 +103,9 @@
         radiusRatio = 0.2;
         lockOnSuspend = false;
       };
+      sessionMenu = {
+        largeButtonsStyle = false;
+      };
       dock = {
         enabled = false;
       };
