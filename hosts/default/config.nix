@@ -30,6 +30,7 @@
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/steam.nix
+    ./../../system/firefox.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/obs.nix # OBS with virtual camera
     ./../../system/lazygit.nix # Git tui
@@ -135,7 +136,6 @@
         ./../../home/gh.nix
 
         # Applications
-        ./../../home/firefox.nix
         ./../../home/virtmanager.nix
         ./../../home/vscode/vscode.nix
 
