@@ -22,9 +22,6 @@ in
   '';
 
   environment.etc."firefox/userChrome.css".text = ''
-    #webrtcIndicator {
-      display: none;
-    }
 
     .titlebar-buttonbox-container .titlebar-close {
       display: none !important;
@@ -99,29 +96,6 @@ in
       DisablePocket = true;
       NetworkPrediction = false;
 
-      # Delete data on shutdown
-      SanitizeOnShutdown = {
-        Cache = true;
-        SiteSettings = false;
-      };
-
-      Cookies = {
-        Allow = [
-          "https://github.com"
-          "https://gitlab.com"
-          "https://codeberg.org"
-          "https://sr.ht"
-          "http://127.0.0.1"
-          "https://127.0.0.1"
-          "http://localhost"
-          "https://localhost"
-          "https://192.168.1.1"
-
-          # specific sites
-          "..."
-        ];
-      };
-
       SearchEngines = {
         Remove = [
           "Amazon.com"
@@ -161,24 +135,16 @@ in
       "browser.ctrlTab.recentlyUsedOrder" = true;
       "devtools.accessibility.enabled" = false;
       "browser.link.open_newwindow" = true;
-      "browser.search.region" = "US";
-      "distribution.searchplugins.defaultLocale" = "en-US";
       "browser.search.widget.inNavBar" = true;
       "browser.bookmarks.addedContextMenuItem" = false;
-      "browser.shell.checkDefaultBrowser" = false;
       "browser.startup.homepage" = "about:newtab";
       "browser.tabs.loadInBackground" = false;
       "browser.tabs.allowTabDetach" = false;
       "general.useragent.locale" = "en-US";
+      # Alt-menu disable
+      "ui.key.menuAccessKeyFocuses" = false;
       "general.autoScroll" = true;
       "browser.translations.automaticallyPopup" = false;
-      "browser.download.viewableInternally.typeWasRegistered.svg" = true;
-      "browser.download.viewableInternally.typeWasRegistered.webp" = true;
-      "browser.download.viewableInternally.typeWasRegistered.xml" = true;
-      "extensions.webcompat.enable_picture_in_picture_overrides" = true;
-      "extensions.webcompat.enable_shims" = true;
-      "extensions.webcompat.perform_injections" = true;
-      "extensions.webcompat.perform_ua_overrides" = true;
 
       #### UI ####
       # for css tweaks
@@ -187,7 +153,6 @@ in
       "apz.overscroll.enabled" = false;
 
       "extensions.activeThemeID" = "{9631ec37-35f2-4719-815e-2f84ff28b901}";
-      "extensions.extensions.activeThemeID" = "{9631ec37-35f2-4719-815e-2f84ff28b901}";
 
       # disable all the annoying quick actions
       "browser.urlbar.quickactions.enabled" = false;
@@ -295,14 +260,11 @@ in
       "layout.spellcheckDefault" = 1;
       # Use the systems native filechooser portal
       "widget.use-xdg-desktop-portal.file-picker" = 1;
-      # allow adblockers to act everywhere. WARNING this is a security hole.
-      "extensions.webextensions.restrictedDomains" = "";
       "media.webrtc.camera.allow-pipewire" = true;
       "browser.download.always_ask_before_handling_new_types" = true;
 
       #### DEBLOAT ###
       "browser.discovery.enabled" = false;
-      "app.shield.optoutstudies.enabled" = false;
       "browser.topsites.contile.enabled" = false;
       # disable Firefox Suggest features
       "browser.urlbar.suggest.quicksuggest.sponsored" = false;
@@ -325,21 +287,22 @@ in
       "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
       #### PRIVACY ###
-      "privacy.resistFingerprinting" = "true";
-      # disable sending downloaded files to the internet
-      "browser.safebrowsing.downloads.remote.enabled" = false;
       # disable preloading websites when hovering over links
       "network.http.speculative-parallel-limit" = 0;
+      "network.dns.disablePrefetchFromHTTPS" = true;
       # disable connecting to bookmarks when hovering over them
-      "browser.places.speculativeConnect.enabled" = "false";
+      "browser.places.speculativeConnect.enabled" = false;
       "privacy.globalprivacycontrol.enabled" = true;
-      "privacy.donottrackheader.enabled" = true;
       "privacy.fingerprintingProtection" = true;
+      "privacy.bounceTrackingProtection.enabled" = true;
 
-      "browser.contentblocking.category" = "standart";
+      # State partitoning
+      "privacy.partition.network_state" = true;
+      "privacy.partition.serviceWorkers" = true;
+      "privacy.partition.bloburl" = true;
+
+      "browser.contentblocking.category" = "standard";
       "extensions.pocket.enabled" = false;
-      "browser.search.suggest.enabled" = false;
-      "browser.search.suggest.enabled.private" = false;
       # store media in cache only on private browsing
       "browser.privatebrowsing.forceMediaMemoryCache" = true;
       "network.http.referer.XOriginTrimmingPolicy" = 2;
@@ -348,9 +311,7 @@ in
       "security.csp.reporting.enabled" = false;
 
       #### SECURITY ###
-      #"browser.formfill.enable" = false;
       "pdfjs.enableScripting" = false;
-      #"signon.autofillForms" = false
       # UNCLEAR
       "signon.formlessCapture.enabled" = false;
       # prevent scripts from moving or resizing windows
@@ -358,25 +319,14 @@ in
       # Security: Disable remote debugging feature
       # https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/16222
       "devtools.debugger.remote-enabled" = false;
-      # Security: Restrict directories from which extensions can be loaded (Unclear)
-      # https://archive.is/DYjAM
-      "extensions.enabledScopes" = 5;
 
       #### SSL ###
-      # Security: Require safe SSL negotiation to avoid potentially MITMed sites
-      "security.ssl.require_safe_negotiation" = true;
       # Security: Disable TLS1.3 0-RTT as key encryption may not be forward secret
       # https://github.com/tlswg/tls13-spec/issues/1001
       "security.tls.enable_0rtt_data" = 2;
-      # Security: Enable strict public key pinning, prevents some MITM attacks
-      "security.cert_pinning.enforcement_level" = 2;
       # Security: Enable CRLite to ensure that revoked certificates are detected
       "security.pki.crlite_mode" = 2;
-      # Security: Treat unsafe negotiation as broken
-      # https://wiki.mozilla.org/Security:Renegotiation
-      # https://bugzilla.mozilla.org/1353705
-      "security.ssl.treat_unsafe_negotiation_as_broken" = true;
-      #  Security: Display more information on Insecure Connection warning pages
+      # Security: Display more information on Insecure Connection warning pages
       # Test: https://badssl.com
       "browser.xul.error_pages.expert_bad_cert" = true;
     };
