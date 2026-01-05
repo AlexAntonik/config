@@ -33,6 +33,7 @@
     ./../../system/git.nix
     ./../../system/secrets/sops.nix
     ./../../system/steam.nix
+    ./../../system/firefox.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
@@ -58,6 +59,7 @@
   programs = {
     adb.enable = true; # Android Debug Bridge
     amnezia-vpn.enable = true;
+    hyprland.enable = true; #системвайд Нужно чтобы сессия была в туигрит
     localsend.enable = true;
   };
 
@@ -120,8 +122,8 @@
     # starsector
     # vintagestory
     prismlauncher # Minecraft launcher
-    # lutris # Game launchers gog epic games etc
-    # hydralauncher #Games from different sources
+    lutris # Game launchers gog epic games etc
+    hydralauncher #Games from different sources
   ];
 
   # needed only for vintage story mb remove in future
@@ -148,7 +150,6 @@
         ./../../home/gh.nix
 
         # Applications
-        ./../../home/firefox.nix
         ./../../home/virtmanager.nix
         ./../../home/vscode/vscode.nix
 

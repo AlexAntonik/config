@@ -24,7 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix/release-25.11";
-    nurpkgs.url = "github:nix-community/NUR";
   };
 
   outputs = inputs: {
