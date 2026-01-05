@@ -2,7 +2,7 @@
   env = {
     # Locals
     username = "alex";
-    host = "alex"; # Must be the same as dir name(as in quotes - hosts/"default"/)
+    host = "asus"; # Must be the same as dir name(as in quotes - hosts/"default"/)
 
     # Git Configuration ( For Pulling Software Repos )
     gitUsername = "AlexAntonik";
