@@ -17,6 +17,7 @@
     ./../../system/desktop/services.nix # Desktop services & utils for keyboard,hyprland
     ./../../system/desktop/pkgs.nix # Desktop system packages
     ./../../system/desktop/network.nix # Desktop network configuration
+    ./../../system/desktop/hyprland.nix # system-wide, needed for session in tuigreet
     ./../../system/thunar.nix # Desktop file manager
     ./../../system/media.nix # Audio and multimedia configuration and pkgs
     # ./../../system/printing.nix # Printing configuration
@@ -33,6 +34,7 @@
     ./../../system/git.nix
     ./../../system/secrets/sops.nix
     ./../../system/steam.nix
+    ./../../system/firefox.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
@@ -86,7 +88,7 @@
 
     # Desktop suite
     pom
-    anki # Spaced repetition flashcards
+    anki-bin # Spaced repetition flashcards
     libreoffice # Office suite
     obsidian # Personal knowledge base
     zathura # PDF viewer
@@ -120,8 +122,8 @@
     # starsector
     # vintagestory
     prismlauncher # Minecraft launcher
-    # lutris # Game launchers gog epic games etc
-    # hydralauncher #Games from different sources
+    lutris # Game launchers gog epic games etc
+    hydralauncher #Games from different sources
   ];
 
   # needed only for vintage story mb remove in future
@@ -148,7 +150,6 @@
         ./../../home/gh.nix
 
         # Applications
-        ./../../home/firefox.nix
         ./../../home/virtmanager.nix
         ./../../home/vscode/vscode.nix
 
@@ -159,12 +160,12 @@
 
         # Desktop environment and panels
         ./../../home/hyprland/hyprland.nix
-        ./../../home/waybar.nix
-        ./../../home/mako.nix
-        ./../../home/swayosd.nix
         ./../../home/ghostty.nix
         ./../../home/xdg.nix
         ./../../home/vicinae.nix
+
+        ./../../home/noctalia.nix
+        inputs.noctalia.homeModules.default
       ];
       home = {
         username = "${env.username}";

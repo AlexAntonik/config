@@ -10,10 +10,6 @@
 
     # Hyprland Settings
     extraMonitorSettings = "";
-
-    # Waybar Settings
-    clock24h = true;
-
     keyboardLayout = "us,ru";
 
     # Devices for some features

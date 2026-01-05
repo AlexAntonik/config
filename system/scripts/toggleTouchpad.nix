@@ -12,13 +12,13 @@ pkgs.writeShellScriptBin "toggle_touchpad" ''
 
   enable_touchpad() {
       printf "true" >"$STATUS_FILE"
-      swayosd-client --custom-message="Touchpad ON" --custom-icon=input-tablet
+      noctalia-shell ipc call osd showTextWithIcon "Touchpad enabled" "hand-click"
   hyprctl keyword $HYPRLAND_VARIABLE "true" -r
   }
 
   disable_touchpad() {
       printf "false" >"$STATUS_FILE"
-      swayosd-client --custom-message="Touchpad OFF" --custom-icon=input-tablet
+      noctalia-shell ipc call osd showTextWithIcon "Touchpad disabled" "hand-finger-off"
   hyprctl keyword $HYPRLAND_VARIABLE "false" -r
   }
 

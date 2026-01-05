@@ -17,8 +17,9 @@
   services = {
     libinput.enable = true;
     gvfs.enable = true;
+    upower.enable = true; # D-Bus service for power management
     xserver = {
-      enable = false; # Для Wayland/Hyprland
+      enable = false; # For Wayland/Hyprland
       xkb = {
         layout = "${env.keyboardLayout}";
         variant = "";

@@ -17,6 +17,7 @@
     ./../../system/desktop/pkgs.nix # Desktop system packages
     ./../../system/desktop/services.nix # Desktop services & utils for keyboard,hyprland
     ./../../system/desktop/network.nix # Desktop network configuration
+    ./../../system/desktop/hyprland.nix # system-wide, needed for session in tuigreet
     ./../../system/thunar.nix # Desktop file manager
     ./../../system/media.nix # Audio and multimedia configuration and pkgs
     ./../../system/printing.nix # Printing configuration
@@ -30,6 +31,7 @@
     ./../../system/starship.nix
     ./../../system/git.nix
     ./../../system/steam.nix
+    ./../../system/firefox.nix
     ./../../system/stylix.nix # Stylix config
     ./../../system/obs.nix # OBS with virtual camera
     ./../../system/lazygit.nix # Git tui
@@ -135,7 +137,6 @@
         ./../../home/gh.nix
 
         # Applications
-        ./../../home/firefox.nix
         ./../../home/virtmanager.nix
         ./../../home/vscode/vscode.nix
 
@@ -146,14 +147,14 @@
 
         # Desktop environment and panels
         ./../../home/hyprland/hyprland.nix
-        ./../../home/waybar.nix
-        ./../../home/mako.nix
-        ./../../home/swayosd.nix
         ./../../home/ghostty.nix
         ./../../home/vicinae.nix
 
         # Scripts and some configs
         ./../../home/xdg.nix
+
+        ./../../home/noctalia.nix
+        inputs.noctalia.homeModules.default
       ];
       home = {
         username = "${env.username}";
