@@ -17,6 +17,7 @@
     ./../../system/desktop/services.nix # Desktop services & utils for keyboard,hyprland
     ./../../system/desktop/pkgs.nix # Desktop system packages
     ./../../system/desktop/network.nix # Desktop network configuration
+    ./../../system/desktop/hyprland.nix # system-wide, needed for session in tuigreet
     ./../../system/thunar.nix # Desktop file manager
     ./../../system/media.nix # Audio and multimedia configuration and pkgs
     # ./../../system/printing.nix # Printing configuration
@@ -59,7 +60,6 @@
   programs = {
     adb.enable = true; # Android Debug Bridge
     amnezia-vpn.enable = true;
-    hyprland.enable = true; #системвайд Нужно чтобы сессия была в туигрит
     localsend.enable = true;
   };
 
