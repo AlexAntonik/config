@@ -21,7 +21,6 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      inputs.nurpkgs.overlays.default
       inputs.nix-vscode-extensions.overlays.default
 
       # Inline overlay for unstable packages

@@ -8,9 +8,6 @@
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
 
-    # Waybar Settings
-    clock24h = true;
-
     keyboardLayout = "us,ru";
 
     # Devices for some features

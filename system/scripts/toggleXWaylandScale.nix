@@ -10,13 +10,13 @@ pkgs.writeShellScriptBin "toggle_xwayland_scale" ''
   enable_scaling() {
     printf "true" >"$STATUS_FILE"
     hyprctl keyword xwayland:force_zero_scaling true
-    swayosd-client --custom-message="XWayland Force Scale ON" --custom-icon=view-fullscreen
+    noctalia-shell ipc call osd showTextWithIcon "XWayland Force Scale ON" "zoom"
   }
 
   disable_scaling() {
     printf "false" >"$STATUS_FILE"
     hyprctl keyword xwayland:force_zero_scaling false
-    swayosd-client --custom-message="XWayland Force Scale OFF" --custom-icon=view-fullscreen
+    noctalia-shell ipc call osd showTextWithIcon "XWayland Force Scale OFF" "zoom-cancel"
   }
 
   if ! [ -f "$STATUS_FILE" ]; then

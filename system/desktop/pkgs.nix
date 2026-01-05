@@ -11,7 +11,7 @@
     cliphist # Clipboard manager
     file-roller # Archive manager
     imv # Image viewer
-    libnotify # Notification library
+    libnotify # Notification library (notify-send)
     nwg-displays # configure monitor configs via GUI
     wtype # typing thing
   ];

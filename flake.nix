@@ -19,8 +19,11 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix.url = "github:danth/stylix/release-25.11";
-    nurpkgs.url = "github:nix-community/NUR";
   };
 
   outputs = inputs: {
@@ -28,8 +31,8 @@
       map (host: {
         name = host;
         value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
-          modules = [./hosts/${host}/config.nix];
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/${host}/config.nix ];
         };
       }) (builtins.attrNames (builtins.readDir ./hosts))
     );
