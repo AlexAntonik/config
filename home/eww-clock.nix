@@ -1,35 +1,28 @@
 { pkgs, ... }:
+
 let
   eww-config = pkgs.runCommand "eww-config" { } ''
         mkdir -p $out
-        
+
         cat > $out/eww.yuck <<'EOF'
     (defwindow clock
       :monitor 0
       :geometry (geometry :x "40px" :y "0px" :width "500px" :height "160px" :anchor "bottom right")
       :stacking "bg"
-      :exclusive false
-      :focusable false
-      :reserve (struts :distance "0px" :side "bottom")
-      (box
-        :class "wallpaper-clock"
-        :orientation "vertical"
-        :halign "end"
-        :valign "end"
-        (label :class "time-display" :text {formattime(EWW_TIME, "%H:%M")})
-        (label :class "date-display" :text {formattime(EWW_TIME, "%A, %d %B")})))
+      (clock-widget :halign "end" :valign "end"))
 
     (defwindow temp-clock
       :monitor 0
-      :geometry (geometry :x "0px" :y "0px" :width "500px" :height "160px" :anchor "center center")
+      :geometry (geometry :width "500px" :height "160px" :anchor "center center")
       :stacking "overlay"
-      :exclusive false
-      :focusable false
+      (clock-widget :halign "center" :valign "center"))
+
+    (defwidget clock-widget [halign valign]
       (box
         :class "wallpaper-clock"
         :orientation "vertical"
-        :halign "center"
-        :valign "center"
+        :halign halign
+        :valign valign
         (label :class "time-display" :text {formattime(EWW_TIME, "%H:%M")})
         (label :class "date-display" :text {formattime(EWW_TIME, "%A, %d %B")})))
     EOF
@@ -37,16 +30,10 @@ let
         cat > $out/eww.css <<'EOF'
     * {
       all: unset;
-      font-family: "JetBrains Mono", "DejaVu Sans Mono", "Liberation Mono", monospace;
-      font-weight: normal;
+      font-family: "JetBrains Mono", monospace;
     }
 
     window {
-      background-color: transparent;
-    }
-
-    .wallpaper-clock {
-      background-color: transparent;
       background: transparent;
     }
 
@@ -54,22 +41,25 @@ let
       font-size: 120px;
       font-weight: bold;
       color: #cccccc;
-      text-shadow:
-        4px 4px 6px rgba(0, 0, 0, 0.7);
+      text-shadow: 4px 4px 6px rgba(0,0,0,0.7);
       letter-spacing: -3px;
       margin-bottom: -40px;
     }
+
     .date-display {
       font-size: 32px;
-      font-weight: normal;
-      color: rgba(255, 255, 255, 0.8);
-      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
+      color: rgba(255,255,255,0.8);
+      text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
       letter-spacing: 1px;
     }
     EOF
   '';
 in
 {
+  programs.eww = {
+    enable = true;
+    configDir = eww-config;
+  };
 
   home.packages = [
     (pkgs.writeShellScriptBin "show-clock" ''
@@ -78,15 +68,8 @@ in
       eww close temp-clock
     '')
   ];
-  programs.eww = {
-    enable = true;
-    package = pkgs.eww;
-    configDir = eww-config;
-  };
 
-  wayland.windowManager.hyprland.settings = {
-    exec-once = [
-      "eww daemon"
-    ];
-  };
+  wayland.windowManager.hyprland.settings.exec-once = [
+    "eww daemon"
+  ];
 }
