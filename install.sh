@@ -74,6 +74,10 @@ if [ ! -d "$HOME/config" ]; then
         echo
         exit 1
     fi
+	if [ -f "hosts/$hostName/default.nix" ]; then
+        mv "hosts/$hostName/default.nix" "hosts/$hostName/${hostName}.nix"
+        echo -e "${CYAN}Renamed default.nix → ${hostName}.nix${NC}"
+    fi
     installusername="$USER"
     echo -e "${CYAN}Using username: $installusername${NC}"
     echo
@@ -116,6 +120,11 @@ else
     if ! cp hosts/default/*.nix hosts/"$hostName"/; then
         echo -e "${RED}Failed to copy configuration files from default${NC}"
         exit 1
+    fi
+	# Rename default.nix to <hostname>.nix
+    if [ -f "hosts/$hostName/default.nix" ]; then
+        mv "hosts/$hostName/default.nix" "hosts/$hostName/${hostName}.nix"
+        echo -e "${CYAN}Renamed default.nix → ${hostName}.nix${NC}"
     fi
 
     installusername="$USER"
