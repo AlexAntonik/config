@@ -70,6 +70,14 @@ let
   '';
 in
 {
+
+  home.packages = [
+    (pkgs.writeShellScriptBin "show-clock" ''
+      eww open temp-clock
+      sleep 2
+      eww close temp-clock
+    '')
+  ];
   programs.eww = {
     enable = true;
     package = pkgs.eww;
@@ -78,7 +86,7 @@ in
 
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "eww daemon && sleep 1 && eww open clock"
+      "eww daemon"
     ];
   };
 }

@@ -10,8 +10,6 @@
     ./hypridle.nix
     ./hyprpaper.nix
     ./hyprlock.nix
-    ./eww/clock.nix
-    ./eww/show-clock.nix
     ./wlsunset.nix
   ];
   home.packages = with pkgs; [
