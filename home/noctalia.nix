@@ -7,7 +7,7 @@
         density = "compact";
         useSeparateOpacity = true;
         outerCorners = false;
-        backgroundOpacity = lib.mkForce 0.7;
+        backgroundOpacity = lib.mkForce 0.54;
         position = "bottom";
         showCapsule = false;
         widgets = {
@@ -22,6 +22,11 @@
               id = "SystemMonitor";
             }
             {
+              id = "Workspace";
+              hideUnoccupied = false;
+              labelMode = "index";
+            }
+            {
               id = "MediaMini";
               maxWidth = 240;
               showVisualizer = true;
@@ -29,13 +34,7 @@
 
             }
           ];
-          center = [
-            {
-              id = "Workspace";
-              hideUnoccupied = false;
-              labelMode = "none";
-            }
-          ];
+          center = [ ]; # needed to clear center widgets
           right = [
             {
               id = "KeyboardLayout";
@@ -74,19 +73,18 @@
             }
             {
               id = "Clock";
-              formatHorizontal = "HH:mm ddd, MMM dd";
-              formatVertical = "HH mm - dd MM";
+              customFont = "Montserrat SemiBold";
+              formatHorizontal = "HH:mm";
               useMonospacedFont = true;
               usePrimaryColor = true;
               useCustomFont = true;
-              customFont = "Liberation Sans";
             }
           ];
         };
       };
       notifications = {
         location = "bottom_right";
-        backgroundOpacity = lib.mkForce 0.7;
+        backgroundOpacity = lib.mkForce 0.5;
       };
       osd = {
         location = "bottom";
@@ -98,26 +96,74 @@
           4
         ];
       };
+      desktopWidgets = {
+        enabled = true;
+        gridSnap = true;
+        monitorWidgets = [
+          {
+            name = "eDP-1";
+            widgets = [
+              {
+                clockStyle = "binary";
+                customFont = "";
+                format = "HH:mm\\nd MMMM yyyy";
+                id = "Clock";
+                roundedCorners = true;
+                scale = 3.2;
+                showBackground = false;
+                useCustomFont = false;
+                usePrimaryColor = true;
+                x = 1040;
+                y = 440;
+              }
+            ];
+          }
+        ];
+
+      };
       general = {
         avatarImage = "";
         radiusRatio = 0.2;
         lockOnSuspend = false;
       };
       sessionMenu = {
-        largeButtonsStyle = false;
+        largeButtonsStyle = true;
+        largeButtonsLayout = "grid";
       };
       dock = {
         enabled = false;
       };
       ui = {
         fontFixedScale = 1.24;
-        panelBackgroundOpacity = lib.mkForce 0.88;
+        panelBackgroundOpacity = lib.mkForce 0.76;
       };
+      calendar = {
+        cards = [
+          {
+            enabled = true;
+            id = "calendar-header-card";
+          }
+          {
+            enabled = true;
+            id = "calendar-month-card";
+          }
+          {
+            enabled = true;
+            id = "timer-card";
+          }
+          {
+            enabled = false;
+            id = "weather-card";
+          }
+        ];
+      };
+
       appLauncher = {
         terminalCommand = "ghostty -e";
       };
       location = {
         monthBeforeDay = false;
+        analogClockInCalendar = true;
         name = "Minsk, Belarus";
       };
       systemMonitor = {
