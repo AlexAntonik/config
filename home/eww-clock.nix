@@ -5,12 +5,6 @@ let
         mkdir -p $out
 
         cat > $out/eww.yuck <<'EOF'
-    (defwindow clock
-      :monitor 0
-      :geometry (geometry :x "40px" :y "0px" :width "500px" :height "160px" :anchor "bottom right")
-      :stacking "bg"
-      (clock-widget :halign "end" :valign "end"))
-
     (defwindow temp-clock
       :monitor 0
       :geometry (geometry :width "500px" :height "160px" :anchor "center center")
@@ -23,8 +17,12 @@ let
         :orientation "vertical"
         :halign halign
         :valign valign
-        (label :class "time-display" :text {formattime(EWW_TIME, "%H:%M")})
-        (label :class "date-display" :text {formattime(EWW_TIME, "%A, %d %B")})))
+        (label
+          :class "time-display"
+          :text {formattime(EWW_TIME, "%H:%M")})
+        (label
+          :class "date-display"
+          :text {formattime(EWW_TIME, "%A, %d %B")})))
     EOF
 
         cat > $out/eww.css <<'EOF'
