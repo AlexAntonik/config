@@ -156,6 +156,7 @@
         # Theming and appearance
         ./../../home/gtk.nix
         ./../../home/qt.nix
+        ./../../home/eww-clock.nix
         ./../../home/stylix.nix # Stylix targets
 
         # Desktop environment and panels
