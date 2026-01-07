@@ -32,7 +32,7 @@
         name = host;
         value = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/${host}/config.nix ];
+          modules = [ ./hosts/${host}/${host}.nix ];
         };
       }) (builtins.attrNames (builtins.readDir ./hosts))
     );
