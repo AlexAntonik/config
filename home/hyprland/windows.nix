@@ -86,6 +86,8 @@
 
     layerrule = [
       "blur,vicinae"
+      "blur,^(noctalia-background-.*)$"
+      "ignorealpha 0.5, ^(noctalia-background-.*)$"
       "ignorealpha 0, vicinae"
     ];
     # Miscellaneous settings

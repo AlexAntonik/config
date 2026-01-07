@@ -13,7 +13,6 @@
       rootSearch = {
         searchFiles = true;
       };
-      theme.name = "catppuccin-macchiato";
       window = {
         csd = true;
         opacity = 0.8;
