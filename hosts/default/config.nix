@@ -131,7 +131,6 @@
       imports = [
         # CLI utilities
         ./../../home/btop.nix
-        ./../../home/eza.nix
         ./../../home/fzf.nix
         ./../../home/yazi.nix
         ./../../home/gh.nix
