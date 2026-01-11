@@ -1,13 +1,32 @@
-{ lib, ... }:
+{ ... }:
 {
   programs.noctalia-shell = {
     enable = true;
+    plugins = {
+        sources = [
+          {
+            enabled = true;
+            name = "Official Noctalia Plugins";
+            url = "https://github.com/noctalia-dev/noctalia-plugins";
+          }
+        ];
+        states = {
+          timer = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          screen-recorder = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+        };
+        version = 1;
+      };
     settings = {
       bar = {
         density = "compact";
         useSeparateOpacity = true;
         outerCorners = false;
-        backgroundOpacity = lib.mkForce 0.54;
         position = "bottom";
         showCapsule = false;
         widgets = {
@@ -30,8 +49,8 @@
               id = "MediaMini";
               maxWidth = 240;
               showVisualizer = true;
+              showAlbumArt = false;
               visualizerType = "wave";
-
             }
           ];
           center = [ ]; # needed to clear center widgets
@@ -84,7 +103,6 @@
       };
       notifications = {
         location = "bottom_right";
-        backgroundOpacity = lib.mkForce 0.5;
       };
       osd = {
         location = "bottom";
@@ -135,7 +153,6 @@
       };
       ui = {
         fontFixedScale = 1.24;
-        panelBackgroundOpacity = lib.mkForce 0.76;
       };
       calendar = {
         cards = [
@@ -161,6 +178,55 @@
       appLauncher = {
         terminalCommand = "ghostty -e";
       };
+      controlCenter = {
+        shortcuts = {
+            left = [
+                {
+                    id = "Network";
+                }
+                {
+                    id = "Bluetooth";
+                }
+                {
+                    defaultSettings = {
+                        compactMode = false;
+                        defaultDuration = 0;
+                    };
+                    id = "plugin:timer";
+                }
+                {
+                    defaultSettings = {
+                        audioCodec = "opus";
+                        audioSource = "default_output";
+                        colorRange = "limited";
+                        copyToClipboard = false;
+                        directory = "";
+                        filenamePattern = "recording_yyyyMMdd_HHmmss";
+                        frameRate = "60";
+                        quality = "very_high";
+                        showCursor = true;
+                        videoCodec = "h264";
+                        videoSource = "portal";
+                    };
+                    id = "plugin:screen-recorder";
+                }
+            ];
+            right = [
+                {
+                    id = "Notifications";
+                }
+                {
+                    id = "PowerProfile";
+                }
+                {
+                    id = "KeepAwake";
+                }
+                {
+                    id = "NightLight";
+                }
+            ];
+        };
+      };
       location = {
         monthBeforeDay = false;
         analogClockInCalendar = true;
@@ -168,8 +234,7 @@
       };
       systemMonitor = {
         useCustomColors = true;
-        criticalColor = "#630000";
-        warningColor = "#6a3100";
+        warningColor = "#d08a5e";
       };
       wallpaper = {
         enabled = false;
