@@ -13,11 +13,6 @@
       rootSearch = {
         searchFiles = true;
       };
-      window = {
-        csd = true;
-        opacity = 0.8;
-        rounding = 10;
-      };
     };
   };
 }
