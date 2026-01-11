@@ -38,7 +38,7 @@
     ./../../system/stylix.nix # Stylix config
     ./../../system/nix.nix
     ./../../system/time.nix
-    # ./../../system/tmux.nix 
+    # ./../../system/tmux.nix
     ./../../system/obs.nix # OBS with virtual camera
     ./../../system/lazygit.nix # Git tui
     ./../../system/htop.nix # htop
