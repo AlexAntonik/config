@@ -24,14 +24,7 @@
       "8.8.8.8"
       "9.9.9.9"
     ];
-
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
-
-    # firewall.enable = false;
-    firewall = {
-      checkReversePath = "loose";
-      # logReversePathDrops = true;
-    };
   };
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 }
