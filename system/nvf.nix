@@ -1,6 +1,5 @@
 {
   inputs,
-  lib,
   ...
 }:
 {
@@ -15,27 +14,22 @@
       withNodeJs = true;
       lineNumberMode = "relNumber";
       enableLuaLoader = true;
-      preventJunkFiles = true;
+
+      theme = {
+        enable = true;
+        name = "catppuccin";
+        style = "mocha";
+        transparent = true;
+      };
 
       options = {
         tabstop = 2;
         shiftwidth = 2;
-        wrap = false;
       };
-
-      theme = {
-        enable = true;
-        name = lib.mkForce "dracula";
-        style = "dark";
-        transparent = lib.mkForce true;
-      };
-
-      telescope.enable = true;
 
       spellcheck = {
         enable = true;
-        languages = ["en"];
-        programmingWordlist.enable = false;
+        languages = [ "en" ];
       };
 
       lsp = {
@@ -67,55 +61,37 @@
         go.enable = true;
         nix.enable = true;
         clang.enable = true;
-        zig.enable = true;
         python.enable = true;
+        sql.enable = true;
+        yaml.enable = true;
         html.enable = true;
+        java.enable = true;
+        kotlin.enable = true;
+        json.enable = true;
+        bash.enable = true;
         lua.enable = true;
-        css = {
-          enable = true;
-          format.type = ["prettierd"];
-        };
+        css.enable = true;
         typst.enable = true;
-        rust = {
-          enable = true;
-          extensions.crates-nvim.enable = true;
-        };
-        ts = {
-          enable = true;
-          lsp.enable = true;
-          format.type = ["prettierd"];
-          extensions.ts-error-translator.enable = true;
-        };
+        ts.enable = true;
       };
 
       visuals = {
-        nvim-web-devicons.enable = true;
+        highlight-undo.enable = true;
         nvim-cursorline.enable = true;
+        nvim-web-devicons.enable = true;
         cinnamon-nvim.enable = true;
         fidget-nvim.enable = true;
-
-        highlight-undo.enable = true;
         indent-blankline.enable = true;
         rainbow-delimiters.enable = true;
       };
 
-      statusline = {
-        lualine = {
-          enable = true;
-          theme = lib.mkForce "dracula"; 
-        };
-      };
-
+      telescope.enable = true;
+      statusline.lualine.enable = true;
       autopairs.nvim-autopairs.enable = true;
-
       autocomplete.nvim-cmp.enable = true;
-      snippets.luasnip.enable = true;
-
-      tabline = {
-        nvimBufferline.enable = true;
-      };
-
-      treesitter.context.enable = true;
+      tabline.nvimBufferline.enable = true;
+      comments.comment-nvim.enable = true;
+      projects.project-nvim.enable = true;
 
       binds = {
         whichKey.enable = true;
@@ -127,50 +103,17 @@
         gitsigns.enable = true;
         gitsigns.codeActions.enable = false; # throws an annoying debug message
       };
-
-      projects.project-nvim.enable = true;
-      dashboard.dashboard-nvim.enable = true;
-
-      filetree.neo-tree.enable = true;
-
-      utility = {
-        ccc.enable = false;
-        vim-wakatime.enable = false;
-        icon-picker.enable = true;
-        surround.enable = true;
-        diffview-nvim.enable = true;
-        motion = {
-          hop.enable = true;
-          leap.enable = true;
-          precognition.enable = false;
-        };
-
-        images = {
-          image-nvim.enable = false;
-        };
-      };
-
       ui = {
         borders.enable = true;
         noice.enable = true;
+        smartcolumn.enable = true;
         colorizer.enable = true;
         illuminate.enable = true;
+        fastaction.enable = true;
         breadcrumbs = {
           enable = false;
           navbuddy.enable = false;
         };
-        smartcolumn = {
-          enable = true;
-        };
-        fastaction.enable = true;
-      };
-
-      session = {
-        nvim-session-manager.enable = false;
-      };
-
-      comments = {
-        comment-nvim.enable = true;
       };
     };
   };
