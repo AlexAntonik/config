@@ -6,12 +6,21 @@
 {
   environment.systemPackages = with pkgs; [
     ghostty # needed even on srv to proper ssh
+    zsh-history-substring-search
   ];
   systemd.tmpfiles.rules = [
     "f /home/${env.username}/.zshrc 0644 ${env.username} users - -"
   ];
   programs.zsh = {
     enable = true;
+    interactiveShellInit = ''
+      source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+      bindkey '^[OA' history-substring-search-up
+      bindkey '^[[A' history-substring-search-up
+      bindkey '^[OB' history-substring-search-down
+      bindkey '^[[B' history-substring-search-down
+    '';
+
     autosuggestions = {
       enable = true;
       strategy = [
@@ -52,14 +61,13 @@
       ytdv = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(title)s.%(ext)s\"";
       ytdp = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s\"";
 
-
       backup-list = "borg list /home/${env.username}/projects/srv/backup/borg-repo";
       backup-info = "borg info /home/${env.username}/projects/srv/backup/borg-repo";
       backup-show = "borg list /home/${env.username}/projects/srv/backup/borg-repo::";
 
       backup-restore-last = "mkdir -p /home/${env.username}/restored && cd /home/${env.username}/restored && borg extract \"/home/${env.username}/projects/srv/backup/borg-repo::\$(borg list /home/${env.username}/projects/srv/backup/borg-repo --short | tail -1)\"";
       backup-restore = "mkdir -p /home/${env.username}/restored && cd /home/${env.username}/restored && borg extract \"/home/${env.username}/projects/srv/backup/borg-repo::\"";
-      
+
       backup-mount = "mkdir -p /home/${env.username}/borg_mount && borg mount /home/${env.username}/projects/srv/backup/borg-repo /home/${env.username}/borg_mount";
       backup-unmount = "fusermount -u /home/${env.username}/borg_mount";
 
