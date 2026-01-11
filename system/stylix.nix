@@ -4,22 +4,29 @@
     enable = true;
     # image = ./../home/hyprland/wallpapers/mountains.jpg;
     base16Scheme = {
-      base00 = "0d0d0d";
-      base01 = "1a1a1a";
-      base02 = "2d2d2d";
-      base03 = "4a4a4a";
-      base04 = "6a6a6a";
-      base05 = "b8b8b8";
-      base06 = "d4d4d4";
-      base07 = "e8e8e8";
-      base08 = "aaaaaa";
-      base09 = "a2a2a2";
-      base0A = "9a9a9a";
-      base0B = "929292";
-      base0C = "8a8a8a";
-      base0D = "828282";
-      base0E = "7a7a7a";
-      base0F = "727272";
+      base00 = "#0d0d0d";
+      base01 = "#1a1a1a";
+      base02 = "#2d2d2d";
+      base03 = "#4a4a4a";
+      base04 = "#6a6a6a";
+      base05 = "#b8b8b8";
+      base06 = "#d4d4d4";
+      base07 = "#e8e8e8";
+      # Accent colors
+      base08 = "#c26a6a";
+      base09 = "#d08a5e";
+      base0A = "#c8b070";
+      base0B = "#7fa37a";
+      base0C = "#6fa3a3";
+      base0D = "#6b8fb8";
+      base0E = "#9a7fb0";
+      base0F = "#8a6f5a";
+    };
+    opacity = {
+      terminal = 0.8;
+      popups = 0.6;
+      applications = 0.8;
+      desktop = 0.76;
     };
     polarity = "dark";
     cursor = {
@@ -32,6 +39,7 @@
       plymouth.enable = false;
       grub.enable = false;
       console.enable = false;
+      nvf.enable = false;
     };
     fonts = {
       monospace = {
