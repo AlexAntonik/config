@@ -8,7 +8,6 @@
     ./windows.nix
     ./visual.nix
     ./hypridle.nix
-    ./hyprpaper.nix
     ./hyprlock.nix
     ./wlsunset.nix
   ];

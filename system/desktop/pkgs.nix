@@ -13,6 +13,7 @@
     imv # Image viewer
     libnotify # Notification library (notify-send)
     nwg-displays # configure monitor configs via GUI
+    gpu-screen-recorder # needed for noctalia screen recorder plugin
     wtype # typing thing
   ];
 }
