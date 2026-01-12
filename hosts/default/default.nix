@@ -101,7 +101,6 @@
 
     # Scripts
     (import ./../../system/scripts/double-click.nix { inherit pkgs; })
-    (import ./../../system/scripts/nvidia-offload.nix { inherit pkgs; })
     (import ./../../system/scripts/syncsupprep.nix { inherit pkgs env; })
     (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs env; })
     (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs env; })
