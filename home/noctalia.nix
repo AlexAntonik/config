@@ -3,25 +3,25 @@
   programs.noctalia-shell = {
     enable = true;
     plugins = {
-        sources = [
-          {
-            enabled = true;
-            name = "Official Noctalia Plugins";
-            url = "https://github.com/noctalia-dev/noctalia-plugins";
-          }
-        ];
-        states = {
-          timer = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-          screen-recorder = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        timer = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-        version = 1;
+        screen-recorder = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
       };
+      version = 1;
+    };
     settings = {
       bar = {
         density = "compact";
@@ -47,8 +47,9 @@
             }
             {
               id = "MediaMini";
-              maxWidth = 240;
-              showVisualizer = true;
+              maxWidth = 360;
+              compactMode = true;
+              showVisualizer = false;
               showAlbumArt = false;
               visualizerType = "wave";
             }
@@ -122,17 +123,17 @@
             name = "eDP-1";
             widgets = [
               {
-                clockStyle = "binary";
-                customFont = "";
-                format = "HH:mm\\nd MMMM yyyy";
-                id = "Clock";
-                roundedCorners = true;
-                scale = 3.2;
+                hideMode = "hidden";
+                id = "MediaPlayer";
+                roundedCorners = false;
+                scale = 3.8;
+                showAlbumArt = false;
                 showBackground = false;
-                useCustomFont = false;
-                usePrimaryColor = true;
-                x = 1040;
-                y = 440;
+                showButtons = false;
+                showVisualizer = true;
+                visualizerType = "wave";
+                x = -44;
+                y = -165;
               }
             ];
           }
@@ -180,51 +181,55 @@
       };
       controlCenter = {
         shortcuts = {
-            left = [
-                {
-                    id = "Network";
-                }
-                {
-                    id = "Bluetooth";
-                }
-                {
-                    defaultSettings = {
-                        compactMode = false;
-                        defaultDuration = 0;
-                    };
-                    id = "plugin:timer";
-                }
-                {
-                    defaultSettings = {
-                        audioCodec = "opus";
-                        audioSource = "default_output";
-                        colorRange = "limited";
-                        copyToClipboard = false;
-                        directory = "";
-                        filenamePattern = "recording_yyyyMMdd_HHmmss";
-                        frameRate = "60";
-                        quality = "very_high";
-                        showCursor = true;
-                        videoCodec = "h264";
-                        videoSource = "portal";
-                    };
-                    id = "plugin:screen-recorder";
-                }
-            ];
-            right = [
-                {
-                    id = "Notifications";
-                }
-                {
-                    id = "PowerProfile";
-                }
-                {
-                    id = "KeepAwake";
-                }
-                {
-                    id = "NightLight";
-                }
-            ];
+          left = [
+            {
+              id = "Network";
+            }
+            {
+              id = "Bluetooth";
+            }
+            {
+              defaultSettings = {
+                compactMode = false;
+                defaultDuration = 0;
+              };
+              id = "plugin:timer";
+            }
+            {
+              defaultSettings = {
+                audioCodec = "opus";
+                audioSource = "default_output";
+                colorRange = "limited";
+                copyToClipboard = false;
+                directory = "";
+                filenamePattern = "recording_yyyyMMdd_HHmmss";
+                frameRate = "60";
+                quality = "very_high";
+                showCursor = true;
+                videoCodec = "h264";
+                videoSource = "portal";
+              };
+              id = "plugin:screen-recorder";
+            }
+            {
+              id = "WallpaperSelector";
+            }
+
+          ];
+          right = [
+            {
+              id = "Notifications";
+            }
+            {
+              id = "PowerProfile";
+            }
+            {
+              id = "KeepAwake";
+            }
+            {
+              id = "NightLight";
+            }
+          ];
         };
       };
       location = {
@@ -237,7 +242,9 @@
         warningColor = "#d08a5e";
       };
       wallpaper = {
-        enabled = false;
+        enabled = true;
+        hideWallpaperFilenames = true;
+        useWallhaven = true;
       };
     };
   };
