@@ -15,7 +15,7 @@
         listener = [
           {
             timeout = 600;
-            on-timeout = "hyprlock";
+            on-timeout = "hyprlock --grace 300";
           }
           {
             timeout = 900;
