@@ -69,7 +69,6 @@
         "vicinae server"
         # System tray applets and agents
         "killall -q noctalia-shell; sleep 0.2 && noctalia-shell"
-        "killall -q tailscale-systray; sleep 0.5 && tailscale-systray"
         "nm-applet --indicator"
         # --- Autostart applications ---
         "firefox"

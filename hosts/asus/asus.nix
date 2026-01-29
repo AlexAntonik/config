@@ -84,7 +84,6 @@
     # unstable.vscode.fhs # Visual Studio Code with FHS environment
     supabase-cli
     postgresql
-    tailscale-systray
 
     # Desktop suite
     pom

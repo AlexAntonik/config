@@ -19,6 +19,10 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        tailscale = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
       };
       version = 1;
     };
@@ -73,6 +77,9 @@
               ];
             }
             {
+              id = "plugin:tailscale";
+            }
+            {
               id = "WiFi";
             }
             {
@@ -84,7 +91,6 @@
               warningThreshold = 30;
               showNoctaliaPerformance = true;
               showPowerProfiles = true;
-
             }
             {
               id = "NotificationHistory";
@@ -132,7 +138,7 @@
                 showButtons = false;
                 showVisualizer = true;
                 visualizerType = "wave";
-                x = -44;
+                x = -42;
                 y = -165;
               }
             ];
@@ -164,10 +170,6 @@
           {
             enabled = true;
             id = "calendar-month-card";
-          }
-          {
-            enabled = true;
-            id = "timer-card";
           }
           {
             enabled = false;
