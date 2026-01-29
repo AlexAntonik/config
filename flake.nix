@@ -2,6 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -26,15 +28,5 @@
     stylix.url = "github:danth/stylix/release-25.11";
   };
 
-  outputs = inputs: {
-    nixosConfigurations = builtins.listToAttrs (
-      map (host: {
-        name = host;
-        value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/${host}/${host}.nix ];
-        };
-      }) (builtins.attrNames (builtins.readDir ./hosts))
-    );
-  };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree [./hosts ./modules]);
 }
