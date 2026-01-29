@@ -80,7 +80,7 @@
     pkg-config # Package configuration tool
     android-studio # Android IDE
     nodejs # JavaScript runtime
-    unstable.code-cursor
+    opencode
     # unstable.vscode.fhs # Visual Studio Code with FHS environment
     supabase-cli
     postgresql
@@ -88,7 +88,7 @@
     # Desktop suite
     pom
     anki-bin # Spaced repetition flashcards
-    libreoffice # Office suite
+    # libreoffice-qt-fresh # Office suite
     obsidian # Personal knowledge base
     zathura # PDF viewer
 
@@ -119,9 +119,9 @@
     # Gaming
     # starsector
     # vintagestory
-    prismlauncher # Minecraft launcher
-    lutris # Game launchers gog epic games etc
-    hydralauncher #Games from different sources
+    # prismlauncher # Minecraft launcher
+    # lutris # Game launchers gog epic games etc
+    # hydralauncher #Games from different sources
   ];
 
   # needed only for vintage story mb remove in future
