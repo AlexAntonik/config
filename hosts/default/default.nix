@@ -80,7 +80,7 @@
 
     # Desktop suite
     # anki # Spaced repetition flashcards
-    # libreoffice # Office suite
+    # libreoffice-qt-still # Office suite
     # obsidian # Personal knowledge base
     # zathura # PDF viewer
 
