@@ -137,8 +137,8 @@
                 showBackground = false;
                 showButtons = false;
                 showVisualizer = true;
-                visualizerType = "wave";
-                x = -42;
+                visualizerType = "mirrored";
+                x = -44;
                 y = -165;
               }
             ];
@@ -246,7 +246,6 @@
       wallpaper = {
         enabled = true;
         hideWallpaperFilenames = true;
-        useWallhaven = true;
       };
     };
   };
