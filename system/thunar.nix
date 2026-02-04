@@ -1,10 +1,13 @@
-{ pkgs, ... }:
 {
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
-  }; # File manager
+  flake.nixosModules.thunar =
+    { pkgs, ... }:
+    {
+      programs.thunar = {
+        enable = true;
+        plugins = with pkgs.xfce; [
+          thunar-archive-plugin
+          thunar-volman
+        ];
+      }; # File manager
+    };
 }

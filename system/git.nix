@@ -1,12 +1,15 @@
-{ env, ... }:
 {
-  programs.git = {
-    enable = true;
-    config = {
-      user = {
-        name = env.gitUsername;
-        email = env.gitEmail;
+  flake.nixosModules.git =
+    { env, ... }:
+    {
+      programs.git = {
+        enable = true;
+        config = {
+          user = {
+            name = env.gitUsername;
+            email = env.gitEmail;
+          };
+        };
       };
     };
-  };
 }

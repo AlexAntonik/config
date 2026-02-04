@@ -1,15 +1,18 @@
-{ pkgs, ... }:
 {
-  programs.bat = {
-    enable = true;
-    settings = {
-      pager = "less";
-      paging = "never";
+  flake.nixosModules.bat =
+    { pkgs, ... }:
+    {
+      programs.bat = {
+        enable = true;
+        settings = {
+          pager = "less";
+          paging = "never";
+        };
+        extraPackages = with pkgs.bat-extras; [
+          batman
+          batpipe
+          batgrep
+        ];
+      };
     };
-    extraPackages = with pkgs.bat-extras; [
-      batman
-      batpipe
-      batgrep
-    ];
-  };
 }
