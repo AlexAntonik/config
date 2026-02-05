@@ -114,6 +114,7 @@
     (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs env; })
     (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
     (import ./../../system/scripts/screenshot.nix { inherit pkgs; })
+    (import ./../../system/scripts/noctalia-config.nix { inherit pkgs; })
     (import ./../../system/scripts/toggleXWaylandScale.nix { inherit pkgs; })
 
     # Gaming
