@@ -67,7 +67,6 @@
         "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # System tray applets and agents
-        "killall -q noctalia-shell; sleep 0.2 && noctalia-shell"
         "vicinae server"
         "nm-applet --indicator"
         # --- Autostart applications ---

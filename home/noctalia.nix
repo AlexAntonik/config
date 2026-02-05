@@ -2,6 +2,7 @@
 {
   programs.noctalia-shell = {
     enable = true;
+    systemd.enable = true;
     plugins = {
       sources = [
         {
@@ -89,6 +90,7 @@
               id = "Battery";
               alwaysShowPercentage = false;
               warningThreshold = 30;
+              displayMode = "icon-hover";
               showNoctaliaPerformance = true;
               showPowerProfiles = true;
             }
@@ -156,8 +158,20 @@
         largeButtonsLayout = "grid";
       };
       dock = {
-        enabled = false;
+        enabled = true;
+        position = "top";
+        displayMode = "auto_hide";
+        floatingRatio = 1;
+        size = 1.2;
+        onlySameOutput = true;
+        pinnedApps = [ ];
+        colorizeIcons = false;
+        pinnedStatic = false;
+        inactiveIndicators = false;
+        deadOpacity = 0.6;
+        animationSpeed = 1;
       };
+
       ui = {
         fontFixedScale = 1.24;
       };
