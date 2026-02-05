@@ -21,9 +21,5 @@
     timeZone = "Europe/Minsk";
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = "en_US.UTF-8";
-
-    # Some technical stuff normally not needed to be changed
-    # This file is used to store the display status (on/off)
-    displayStatusFile = "$XDG_RUNTIME_DIR/display.status";
   };
 }
