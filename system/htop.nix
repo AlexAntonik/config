@@ -23,13 +23,11 @@
     highlight_megabytes = true;
     highlight_threads = true;
     meters = [
-      # Левые метры
       "Bar AllCPUs2"
       "Bar Memory"
       "Bar Swap"
       "Text Zram"
 
-      # Правые метры
       "Text Tasks"
       "Text LoadAverage"
       "Text Uptime"
