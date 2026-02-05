@@ -1,10 +1,13 @@
 { env, pkgs, ... }:
+let
+  statusFile = "$XDG_RUNTIME_DIR/display.status"; #must be same with hipridle
+in
 pkgs.writeShellScriptBin "toggle_display" ''
   if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/run/user/$(id -u)
   fi
 
-  export STATUS_FILE="${env.displayStatusFile}"
+  export STATUS_FILE="${statusFile}"
 
   enable_display() {
     printf "true" >"$STATUS_FILE"
