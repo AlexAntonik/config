@@ -2,6 +2,7 @@
 
 #### Requirements
 
+- NixOS
 - EFI partition ≥ 512MB
 
 #### Installation
