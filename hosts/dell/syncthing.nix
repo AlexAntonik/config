@@ -4,12 +4,12 @@ let
 in
 {
   sops.secrets.dell_cert = {
-    sopsFile = "/home/${user}/config/system/secrets/syncthing.yaml";
+    sopsFile = "/home/${user}/config/modules/secrets/syncthing.yaml";
     owner = "${user}";
     path = "/home/${user}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.dell_key = {
-    sopsFile = "/home/${user}/config/system/secrets/syncthing.yaml";
+    sopsFile = "/home/${user}/config/modules/secrets/syncthing.yaml";
     owner = "${user}";
     path = "/home/${user}/.config/syncthing/keys/key.pem";
   };

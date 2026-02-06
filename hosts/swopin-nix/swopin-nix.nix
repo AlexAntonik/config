@@ -11,29 +11,29 @@
     ./syncthing.nix
     ./env.nix # Host variables
 
-    # ./../../system/boot.nix
-    # ./../../system/fonts.nix
-    ./../../system/nh.nix # Nix helper
-    ./../../system/utilities.nix # TUI utilities and tools
-    ./../../system/ssh.nix # SSH configuration
-    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
-    ./../../system/starship.nix
-    ./../../system/git.nix
-    ./../../system/stylix.nix # Stylix config
-    ./../../system/lazygit.nix # Git tui
-    ./../../system/htop.nix # htop
-    ./../../system/bat.nix # More cute cat
-    ./../../system/time.nix
-    ./../../system/nix.nix
-    ./../../system/docker.nix
-    ./../../system/secrets/sops.nix
-    ./../../system/variables.nix # Host variables(env) support
-    ./../../system/srv/bkp.nix # Backup supabase script
-    ./../../system/srv/supabase-restart.nix # Supabase restart script
-    ./../../system/zsh.nix # Shell system wide
-    ./../../system/zoxide.nix # cd alternative super nice
-    ./../../system/nvf.nix # vim
+    # ./../../modules/boot.nix
+    # ./../../modules/fonts.nix
+    ./../../modules/nh.nix # Nix helper
+    ./../../modules/utilities.nix # TUI utilities and tools
+    ./../../modules/ssh.nix # SSH configuration
+    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
+    ./../../modules/starship.nix
+    ./../../modules/git.nix
+    ./../../modules/stylix.nix # Stylix config
+    ./../../modules/lazygit.nix # Git tui
+    ./../../modules/htop.nix # htop
+    ./../../modules/bat.nix # More cute cat
+    ./../../modules/time.nix
+    ./../../modules/nix.nix
+    ./../../modules/docker.nix
+    ./../../modules/secrets/sops.nix
+    ./../../modules/variables.nix # Host variables(env) support
+    ./../../modules/srv/bkp.nix # Backup supabase script
+    ./../../modules/srv/supabase-restart.nix # Supabase restart script
+    ./../../modules/zsh.nix # Shell system wide
+    ./../../modules/zoxide.nix # cd alternative super nice
+    ./../../modules/nvf.nix # vim
   ];
 
   programs = {
@@ -42,7 +42,7 @@
   environment.systemPackages = with pkgs; [
     supabase-cli
     postgresql
-    (import ./../../system/scripts/syncsupprep.nix { inherit pkgs env; })
+    (import ./../../modules/scripts/syncsupprep.nix { inherit pkgs env; })
   ];
 
   # This option defines the first version of NixOS you have installed on

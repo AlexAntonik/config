@@ -16,7 +16,6 @@
     ./../../modules/desktop/services.nix # Desktop services & utils for keyboard,hyprland
     ./../../modules/desktop/pkgs.nix # Desktop system packages
     ./../../modules/desktop/network.nix # Desktop network configuration
-    ./../../modules/desktop/hyprland.nix # system-wide, needed for session in tuigreet
     ./../../modules/thunar.nix # Desktop file manager
     ./../../modules/media.nix # Audio and multimedia configuration and pkgs
     ./../../modules/bluetooth.nix # Bluetooth configuration
@@ -31,7 +30,7 @@
     ./../../modules/lang-indicator.nix # Indicates wrong lang
     ./../../modules/starship.nix
     ./../../modules/git.nix
-    #    ./../../modules/secrets/sops.nix
+    ./../../modules/secrets/sops.nix
     ./../../modules/steam.nix
     ./../../modules/firefox.nix
     ./../../modules/stylix.nix # Stylix config
@@ -64,7 +63,7 @@
     ./../../modules/xdg.nix
     ./../../modules/vicinae.nix
 
-    #   ./syncthing.nix
+    ./syncthing.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];

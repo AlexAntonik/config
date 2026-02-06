@@ -1,13 +1,15 @@
 { lib, config, ... }:
 {
   options = {
-    env= lib.mkOption {
-      type = lib.types.attrs;
+    env = lib.mkOption {
+      type = lib.types.anything;
       default = { };
-      description = "Host enviroment variables accessible in all modules"; 
+      description = "Host enviroment variables accessible in all modules";
     };
     home = lib.mkOption {
-      description = "home-manager.users.<username> alias"; 
+      type = lib.types.deferredModule;
+      default = { };
+      description = "home-manager.users.<username> alias";
     };
   };
   config = {

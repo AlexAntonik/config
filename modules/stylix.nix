@@ -4,7 +4,6 @@
 
   stylix = {
     enable = true;
-    # image = ./../home/hyprland/wallpapers/mountains.jpg;
     base16Scheme = {
       base00 = "#0d0d0d";
       base01 = "#1a1a1a";

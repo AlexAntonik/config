@@ -7,7 +7,7 @@
     ${pkgs.hyprland}/bin/hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[] | select(.focused == true) | .specialWorkspace.name' | sed 's/special://' | xargs -I [] ${pkgs.hyprland}/bin/hyprctl dispatch togglespecialworkspace []
   '';
 in {
-  home.wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = {
     # Gesture settings (for touchpads/touchscreens)
     gesture = [
       "3, horizontal, workspace"
