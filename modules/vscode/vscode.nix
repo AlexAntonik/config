@@ -36,19 +36,19 @@ let
   '';
 in
 {
-  
 
-    home.home.packages = with pkgs; [
+  home = {
+    home.packages = with pkgs; [
       installScript
       shellcheck # Shell script analysis tool
       shfmt # Shell script formatter
     ];
-    home.wayland.windowManager.hyprland.settings = {
+    wayland.windowManager.hyprland.settings = {
       exec-once = [
         "setvslinks"
       ];
     };
-    home.programs.vscode = {
+    programs.vscode = {
       enable = true;
       package = pkgs.unstable.vscode;
       mutableExtensionsDir = true;
@@ -133,4 +133,5 @@ in
         # ]);
       };
     };
+  };
 }
