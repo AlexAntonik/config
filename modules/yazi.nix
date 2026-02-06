@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.yazi = {
+  home.programs.yazi = {
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;

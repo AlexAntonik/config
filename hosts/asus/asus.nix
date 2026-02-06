@@ -3,56 +3,68 @@
   inputs,
   env,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware.nix # User defined hardware configuration
     ./hardware-gen.nix # Nix generated hardware configuration
     ./env.nix # Host variables
 
-    ./../../system/boot.nix
-    ./../../system/boot-visuals.nix # Boot visuals and login manager
-    ./../../system/fonts.nix
-    ./../../system/desktop/hardware.nix # Desktop hardware configuration
-    ./../../system/desktop/services.nix # Desktop services & utils for keyboard,hyprland
-    ./../../system/desktop/pkgs.nix # Desktop system packages
-    ./../../system/desktop/network.nix # Desktop network configuration
-    ./../../system/desktop/hyprland.nix # system-wide, needed for session in tuigreet
-    ./../../system/thunar.nix # Desktop file manager
-    ./../../system/media.nix # Audio and multimedia configuration and pkgs
-    # ./../../system/printing.nix # Printing configuration
-    ./../../system/bluetooth.nix # Bluetooth configuration
-    ./../../system/nh.nix # Nix helper
-    ./../../system/utilities.nix # TUI utilities and tools
-    ./../../system/ssh.nix # SSH configuration
-    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
-    # ./../../system/srv/bkp.nix # Backup supabase script
-    # ./../../system/srv/supabase-restart.nix # Supabase restart script
-    ./../../system/lang-indicator.nix # Indicates wrong lang
-    ./../../system/starship.nix
-    ./../../system/git.nix
-    ./../../system/secrets/sops.nix
-    ./../../system/steam.nix
-    ./../../system/firefox.nix
-    ./../../system/stylix.nix # Stylix config
-    ./../../system/nix.nix
-    ./../../system/time.nix
-    # ./../../system/tmux.nix
-    ./../../system/obs.nix # OBS with virtual camera
-    ./../../system/lazygit.nix # Git tui
-    ./../../system/htop.nix # htop
-    ./../../system/bat.nix # More cute cat
-    ./../../system/docker.nix
-    ./../../system/libvirtd.nix
-    ./../../system/variables.nix # Host variables(env) support
-    ./../../system/zsh.nix # Shell system wide
-    ./../../system/zoxide.nix # cd alternative super nice
-    ./../../system/nvf.nix # vim
-    ./../../system/tailscale.nix # Tailscale service
-    ./syncthing.nix
+    ./../../modules/boot.nix
+    ./../../modules/boot-visuals.nix # Boot visuals and login manager
+    ./../../modules/fonts.nix
+    ./../../modules/desktop/hardware.nix # Desktop hardware configuration
+    ./../../modules/desktop/services.nix # Desktop services & utils for keyboard,hyprland
+    ./../../modules/desktop/pkgs.nix # Desktop system packages
+    ./../../modules/desktop/network.nix # Desktop network configuration
+    ./../../modules/desktop/hyprland.nix # system-wide, needed for session in tuigreet
+    ./../../modules/thunar.nix # Desktop file manager
+    ./../../modules/media.nix # Audio and multimedia configuration and pkgs
+    ./../../modules/bluetooth.nix # Bluetooth configuration
+    ./../../modules/nh.nix # Nix helper
+    ./../../modules/utilities.nix # TUI utilities and tools
+    ./../../modules/ssh.nix # SSH configuration
+    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
+    # ./../../modules/printing.nix # Printing configuration
+    # ./../../modules/srv/bkp.nix # Backup supabase script
+    # ./../../modules/srv/supabase-restart.nix # Supabase restart script
+    ./../../modules/lang-indicator.nix # Indicates wrong lang
+    ./../../modules/starship.nix
+    ./../../modules/git.nix
+    #    ./../../modules/secrets/sops.nix
+    ./../../modules/steam.nix
+    ./../../modules/firefox.nix
+    ./../../modules/stylix.nix # Stylix config
+    ./../../modules/nix.nix
+    ./../../modules/time.nix
+    # ./../../modules/tmux.nix
+    ./../../modules/obs.nix # OBS with virtual camera
+    ./../../modules/lazygit.nix # Git tui
+    ./../../modules/htop.nix # htop
+    ./../../modules/noctalia/noctalia.nix
+    ./../../modules/bat.nix # More cute cat
+    ./../../modules/docker.nix
+    ./../../modules/libvirtd.nix
+    ./../../modules/variables.nix # Host variables(env) support
+    ./../../modules/zsh.nix # Shell system wide
+    ./../../modules/zoxide.nix # cd alternative super nice
+    ./../../modules/nvf.nix # vim
+    ./../../modules/tailscale.nix # Tailscale service
+    ./../../modules/btop.nix
+    ./../../modules/fzf.nix
+    ./../../modules/yazi.nix
+    ./../../modules/gh.nix
+    ./../../modules/virtmanager.nix
+    ./../../modules/vscode/vscode.nix
+    ./../../modules/gtk.nix
+    ./../../modules/qt.nix
+    ./../../modules/eww-clock.nix
+    ./../../modules/hyprland/hyprland.nix
+    ./../../modules/ghostty.nix
+    ./../../modules/xdg.nix
+    ./../../modules/vicinae.nix
 
-    inputs.stylix.nixosModules.stylix # Stylix module for themes
+    #   ./syncthing.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -108,14 +120,14 @@
     yt-dlp # YouTube downloader
 
     # Scripts
-    (import ./../../system/scripts/double-click.nix { inherit pkgs; })
-    (import ./../../system/scripts/syncsupprep.nix { inherit pkgs env; })
-    (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs env; })
-    (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs env; })
-    (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
-    (import ./../../system/scripts/screenshot.nix { inherit pkgs; })
-    (import ./../../system/scripts/noctalia-config.nix { inherit pkgs; })
-    (import ./../../system/scripts/toggleXWaylandScale.nix { inherit pkgs; })
+    (import ./../../modules/scripts/double-click.nix {inherit pkgs;})
+    (import ./../../modules/scripts/syncsupprep.nix {inherit pkgs env;})
+    (import ./../../modules/scripts/toggleTouchpad.nix {inherit pkgs env;})
+    (import ./../../modules/scripts/toggleDisplay.nix {inherit pkgs env;})
+    (import ./../../modules/scripts/hm-find.nix {inherit pkgs;})
+    (import ./../../modules/scripts/screenshot.nix {inherit pkgs;})
+    (import ./../../modules/scripts/noctalia-config.nix {inherit pkgs;})
+    (import ./../../modules/scripts/toggleXWaylandScale.nix {inherit pkgs;})
 
     # Gaming
     # starsector
@@ -141,32 +153,6 @@
       inherit inputs env;
     };
     users.${env.username} = {
-      imports = [
-        # CLI utilities
-        ./../../home/btop.nix
-        ./../../home/fzf.nix
-        ./../../home/yazi.nix
-        ./../../home/gh.nix
-
-        # Applications
-        ./../../home/virtmanager.nix
-        ./../../home/vscode/vscode.nix
-
-        # Theming and appearance
-        ./../../home/gtk.nix
-        ./../../home/qt.nix
-        ./../../home/eww-clock.nix
-        ./../../home/stylix.nix # Stylix targets
-
-        # Desktop environment and panels
-        ./../../home/hyprland/hyprland.nix
-        ./../../home/ghostty.nix
-        ./../../home/xdg.nix
-        ./../../home/vicinae.nix
-
-        ./../../home/noctalia.nix
-        inputs.noctalia.homeModules.default
-      ];
       home = {
         username = "${env.username}";
         homeDirectory = "/home/${env.username}";
@@ -205,5 +191,5 @@
     ];
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${env.username}" ];
+  nix.settings.allowed-users = ["${env.username}"];
 }

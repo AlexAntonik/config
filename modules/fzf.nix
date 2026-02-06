@@ -5,7 +5,7 @@ let
   muted = "#" + config.lib.stylix.colors.base03;
 in
 {
-  programs.fzf = {
+  home.programs.fzf = {
     enable = true;
     enableZshIntegration = true;
     colors = lib.mkForce {

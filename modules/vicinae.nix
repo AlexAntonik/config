@@ -1,6 +1,6 @@
 { ... }:
 {
-  programs.vicinae = {
+  home.programs.vicinae = {
     enable = true;
     useLayerShell = true; 
     systemd.enable = true;
