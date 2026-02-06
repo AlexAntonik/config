@@ -57,6 +57,8 @@
       la = "eza --icons -lah --group-directories-first -1";
       tree = "eza --icons --tree --group-directories-first";
       f = "fzf";
+
+      noctalia-export = "noctalia-shell ipc call state all | jq '.settings' > /home/${env.username}/config/modules/noctalia/settings.json";
       ytdm = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
       ytdv = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(title)s.%(ext)s\"";
       ytdp = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s\"";
