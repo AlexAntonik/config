@@ -2,30 +2,18 @@
 
 #### Requirements
 
-- NixOS with GPT partition table
-- UEFI boot
 - EFI partition ≥ 512MB
 
 #### Installation
 
-Install dependencies:
+Install git,curl:
 ```bash
 nix-shell -p git curl
 ```
 
-Run installer:
+Run install script:
 ```bash
 sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)
-```
-
-The script will guide you through setup and prompt you to configure hardware modules in `~/config/hosts/<hostname>/hardware.nix`
-
-#### Aliases
-
-```bash
-fr   # Rebuild system
-fu   # Update flake
-ncg  # Clean old generations
 ```
 
 <div align="center">
