@@ -1,6 +1,8 @@
-{ ... }:
+{ inputs, ... }:
 {
-  programs.noctalia-shell = {
+  home.imports = [ inputs.noctalia.homeModules.default ];
+
+  home.programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;
     plugins = {

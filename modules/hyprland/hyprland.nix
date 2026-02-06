@@ -1,9 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-{
-  imports = [
+{pkgs, ...}: {
+  home.imports = [
     ./keybinds.nix
     ./windows.nix
     ./visual.nix
@@ -11,7 +7,7 @@
     ./hyprlock.nix
     ./wlsunset.nix
   ];
-  home.packages = with pkgs; [
+  home.home.packages = with pkgs; [
     grim
     slurp
     wl-clipboard
@@ -19,17 +15,17 @@
     ydotool
   ];
 
-  systemd.user.targets.hyprland-session.Unit.Wants = [
+  home.systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
-  services.hyprpolkitagent.enable = true;
-  wayland.windowManager.hyprland = {
+  home.services.hyprpolkitagent.enable = true;
+  home.wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
     systemd = {
       enable = true;
       enableXdgAutostart = true;
-      variables = [ "--all" ];
+      variables = ["--all"];
     };
 
     xwayland = {
@@ -39,7 +35,6 @@
     # enableNvidiaPatches = false;
 
     settings = {
-
       ecosystem = {
         no_donation_nag = true;
         no_update_news = false;

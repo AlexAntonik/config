@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  xdg = {
+  home.xdg = {
     enable = true;
     mime.enable = true;
     mimeApps = {
