@@ -1,6 +1,6 @@
 { ... }:
 {
-  programs = {
+  home.programs = {
     gh.enable = true;
   };
 }

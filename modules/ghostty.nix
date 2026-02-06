@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.ghostty = {
+  home.programs.ghostty = {
     enable = true;
     package = pkgs.ghostty;
     systemd.enable = true;

@@ -9,28 +9,28 @@
     ./hardware-gen.nix # Nix generated hardware configuration
     ./env.nix # Host variables
 
-    ./../../system/boot.nix
-    # ./../../system/fonts.nix
-    ./../../system/srv/network-wifi.nix
-    ./../../system/nh.nix # Nix helper
-    ./../../system/utilities.nix # TUI utilities and tools
-    ./../../system/ssh.nix # SSH configuration
-    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
-    ./../../system/starship.nix
-    ./../../system/tailscale.nix # Tailscale service
-    ./../../system/git.nix
-    ./../../system/secrets/sops.nix
-    ./../../system/time.nix
-    ./../../system/lazygit.nix # Git tui
-    ./../../system/htop.nix # htop
-    ./../../system/bat.nix # More cute cat
-    ./../../system/nix.nix
-    ./../../system/variables.nix # Host variables(env) support
-    ./../../system/docker.nix
-    ./../../system/zsh.nix # Shell system wide
-    ./../../system/zoxide.nix # cd alternative super nice
-    ./../../system/nvf.nix # vim
+    ./../../modules/boot.nix
+    # ./../../modules/fonts.nix
+    ./../../modules/srv/network-wifi.nix
+    ./../../modules/nh.nix # Nix helper
+    ./../../modules/utilities.nix # TUI utilities and tools
+    ./../../modules/ssh.nix # SSH configuration
+    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
+    ./../../modules/starship.nix
+    ./../../modules/tailscale.nix # Tailscale service
+    ./../../modules/git.nix
+    ./../../modules/secrets/sops.nix
+    ./../../modules/time.nix
+    ./../../modules/lazygit.nix # Git tui
+    ./../../modules/htop.nix # htop
+    ./../../modules/bat.nix # More cute cat
+    ./../../modules/nix.nix
+    ./../../modules/variables.nix # Host variables(env) support
+    ./../../modules/docker.nix
+    ./../../modules/zsh.nix # Shell system wide
+    ./../../modules/zoxide.nix # cd alternative super nice
+    ./../../modules/nvf.nix # vim
     # ./cloudflared.nix
     ./syncthing.nix
 
@@ -41,7 +41,7 @@
     # amnezia-vpn.enable = true;
   };
   environment.systemPackages = [
-    (import ./../../system/scripts/syncsupprep.nix {
+    (import ./../../modules/scripts/syncsupprep.nix {
       inherit pkgs;
       inherit env;
     })

@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+  imports = [ inputs.stylix.nixosModules.stylix ];
+
   stylix = {
     enable = true;
-    # image = ./../home/hyprland/wallpapers/mountains.jpg;
     base16Scheme = {
       base00 = "#0d0d0d";
       base01 = "#1a1a1a";
@@ -61,5 +62,19 @@
         popups = 12;
       };
     };
+  };
+
+  home.stylix.targets = {
+    # hyprland.enable = false;
+    bat.enable = false;
+    btop.enable = false;
+    hyprlock.enable = false;
+    yazi.enable = false;
+    qt.enable = false;
+    vscode.enable = false;
+    nvf.enable = false;
+    starship.enable = false;
+    firefox.enable = false;
+    ghostty.enable = false;
   };
 }

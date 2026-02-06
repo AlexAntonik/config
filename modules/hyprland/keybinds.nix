@@ -2,13 +2,11 @@
   env,
   pkgs,
   ...
-}:
-let
+}: let
   toggleoffspecial = pkgs.writeShellScript "toggleoffspecial" ''
     ${pkgs.hyprland}/bin/hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[] | select(.focused == true) | .specialWorkspace.name' | sed 's/special://' | xargs -I [] ${pkgs.hyprland}/bin/hyprctl dispatch togglespecialworkspace []
   '';
-in
-{
+in {
   wayland.windowManager.hyprland.settings = {
     # Gesture settings (for touchpads/touchscreens)
     gesture = [
@@ -53,7 +51,6 @@ in
     ];
 
     bind = [
-
       # --- Application Launchers ---
       "SUPER,Return,exec,ghostty +new-window" # Launch terminal
       "SUPER SHIFT,Return,exec,vicinae toggle"

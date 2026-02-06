@@ -10,43 +10,54 @@
     ./hardware-gen.nix # Nix generated hardware configuration
     ./env.nix # Host variables
 
-    ./../../system/boot.nix
-    ./../../system/boot-visuals.nix # Boot visuals and login manager
-    ./../../system/fonts.nix
-    ./../../system/desktop/hardware.nix # Desktop hardware configuration
-    ./../../system/desktop/pkgs.nix # Desktop system packages
-    ./../../system/desktop/services.nix # Desktop services & utils for keyboard,hyprland
-    ./../../system/desktop/network.nix # Desktop network configuration
-    ./../../system/desktop/hyprland.nix # system-wide, needed for session in tuigreet
-    ./../../system/thunar.nix # Desktop file manager
-    ./../../system/media.nix # Audio and multimedia configuration and pkgs
-    ./../../system/printing.nix # Printing configuration
-    ./../../system/bluetooth.nix # Bluetooth configuration
-    ./../../system/nh.nix # Nix helper
-    ./../../system/utilities.nix # TUI utilities and tools
-    ./../../system/ssh.nix # SSH configuration
-    ./../../system/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../system/services.nix # General services (Journald, Fstrim, etc.)
-    # ./../../system/lang-indicator.nix    # Indicates wrong lang
-    ./../../system/starship.nix
-    ./../../system/git.nix
-    ./../../system/steam.nix
-    ./../../system/firefox.nix
-    ./../../system/stylix.nix # Stylix config
-    ./../../system/obs.nix # OBS with virtual camera
-    ./../../system/lazygit.nix # Git tui
-    ./../../system/htop.nix # htop
-    ./../../system/bat.nix # More cute cat
-    ./../../system/time.nix
-    ./../../system/nix.nix
-    ./../../system/docker.nix
-    ./../../system/libvirtd.nix
-    ./../../system/variables.nix # Host variables(env) support
-    ./../../system/zsh.nix # Shell system wide
-    ./../../system/zoxide.nix # cd alternative super nice
-    ./../../system/nvf.nix # vim
-
-    inputs.stylix.nixosModules.stylix # Stylix module for themes
+    ./../../modules/boot.nix
+    ./../../modules/boot-visuals.nix # Boot visuals and login manager
+    ./../../modules/fonts.nix
+    ./../../modules/desktop/hardware.nix # Desktop hardware configuration
+    ./../../modules/desktop/pkgs.nix # Desktop system packages
+    ./../../modules/desktop/services.nix # Desktop services & utils for keyboard,hyprland
+    ./../../modules/desktop/network.nix # Desktop network configuration
+    ./../../modules/thunar.nix # Desktop file manager
+    ./../../modules/media.nix # Audio and multimedia configuration and pkgs
+    ./../../modules/printing.nix # Printing configuration
+    ./../../modules/bluetooth.nix # Bluetooth configuration
+    ./../../modules/nh.nix # Nix helper
+    ./../../modules/utilities.nix # TUI utilities and tools
+    ./../../modules/ssh.nix # SSH configuration
+    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
+    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
+    # ./../../modules/lang-indicator.nix    # Indicates wrong lang
+    ./../../modules/starship.nix
+    ./../../modules/git.nix
+    ./../../modules/steam.nix
+    ./../../modules/firefox.nix
+    ./../../modules/stylix.nix # Stylix config
+    ./../../modules/obs.nix # OBS with virtual camera
+    ./../../modules/lazygit.nix # Git tui
+    ./../../modules/htop.nix # htop
+    ./../../modules/bat.nix # More cute cat
+    ./../../modules/time.nix
+    ./../../modules/nix.nix
+    ./../../modules/docker.nix
+    ./../../modules/libvirtd.nix
+    ./../../modules/variables.nix # Host variables(env) support
+    ./../../modules/zsh.nix # Shell system wide
+    ./../../modules/zoxide.nix # cd alternative super nice
+    ./../../modules/nvf.nix # vim
+    ./../../modules/btop.nix
+    ./../../modules/fzf.nix
+    ./../../modules/yazi.nix
+    ./../../modules/gh.nix
+    ./../../modules/virtmanager.nix
+    ./../../modules/vscode/vscode.nix
+    ./../../modules/gtk.nix
+    ./../../modules/qt.nix
+    ./../../modules/stylix.nix # Stylix targets
+    ./../../modules/hyprland/hyprland.nix
+    ./../../modules/ghostty.nix
+    ./../../modules/vicinae.nix
+    ./../../modules/xdg.nix
+    ./../../modules/noctalia/noctalia.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -100,14 +111,14 @@
     # yt-dlp # YouTube downloader
 
     # Scripts
-    (import ./../../system/scripts/double-click.nix { inherit pkgs; })
-    (import ./../../system/scripts/syncsupprep.nix { inherit pkgs env; })
-    (import ./../../system/scripts/toggleTouchpad.nix { inherit pkgs env; })
-    (import ./../../system/scripts/toggleDisplay.nix { inherit pkgs env; })
-    (import ./../../system/scripts/hm-find.nix { inherit pkgs; })
-    (import ./../../system/scripts/noctalia-config.nix { inherit pkgs; })
-    (import ./../../system/scripts/screenshot.nix { inherit pkgs; })
-    (import ./../../system/scripts/toggleXWaylandScale.nix { inherit pkgs; })
+    (import ./../../modules/scripts/double-click.nix { inherit pkgs; })
+    (import ./../../modules/scripts/syncsupprep.nix { inherit pkgs env; })
+    (import ./../../modules/scripts/toggleTouchpad.nix { inherit pkgs env; })
+    (import ./../../modules/scripts/toggleDisplay.nix { inherit pkgs env; })
+    (import ./../../modules/scripts/hm-find.nix { inherit pkgs; })
+    (import ./../../modules/scripts/noctalia-config.nix { inherit pkgs; })
+    (import ./../../modules/scripts/screenshot.nix { inherit pkgs; })
+    (import ./../../modules/scripts/toggleXWaylandScale.nix { inherit pkgs; })
 
     # Gaming
     # starsector
@@ -128,33 +139,6 @@
         ;
     };
     users.${env.username} = {
-      imports = [
-        # CLI utilities
-        ./../../home/btop.nix
-        ./../../home/fzf.nix
-        ./../../home/yazi.nix
-        ./../../home/gh.nix
-
-        # Applications
-        ./../../home/virtmanager.nix
-        ./../../home/vscode/vscode.nix
-
-        # Theming and appearance
-        ./../../home/gtk.nix
-        ./../../home/qt.nix
-        ./../../home/stylix.nix # Stylix targets
-
-        # Desktop environment and panels
-        ./../../home/hyprland/hyprland.nix
-        ./../../home/ghostty.nix
-        ./../../home/vicinae.nix
-
-        # Scripts and some configs
-        ./../../home/xdg.nix
-
-        ./../../home/noctalia.nix
-        inputs.noctalia.homeModules.default
-      ];
       home = {
         username = "${env.username}";
         homeDirectory = "/home/${env.username}";
