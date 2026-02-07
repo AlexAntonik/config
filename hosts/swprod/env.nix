@@ -2,7 +2,7 @@
   env = {
     # Flake locals
     username = "user";
-    host = "swopin-nix"; # Must be the same as dir name(as in quotes - hosts/"default"/)
+    host = "swprod"; # Must be the same as dir name(as in quotes - hosts/"default"/)
 
     # Git Configuration ( For Pulling Software Repos )
     gitUsername = "AlexAntonik";
