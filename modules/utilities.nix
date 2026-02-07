@@ -14,8 +14,6 @@
     bottom # another tui system usage interface
     btop # Better htop
     fzf # Fuzzy search
-    gh # GitHub cli
-    git-filter-repo # Git history ez rewrite
     yazi # TUI file explorer
     cloc # Count lines of code
     duf # Utility for viewing disk usage in terminal
@@ -23,7 +21,6 @@
     dig # DNS tests 
     eza # Beautiful ls replacement
     gawk # GNU awk
-    gh # GitHub CLI (enabled in home manager)
     htop # Simple terminal-based system monitor
     tldr # Simplified man
     inxi # System information tool

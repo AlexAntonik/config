@@ -52,7 +52,6 @@
     ./../../modules/btop.nix
     ./../../modules/fzf.nix
     ./../../modules/yazi.nix
-    ./../../modules/gh.nix
     ./../../modules/virtmanager.nix
     ./../../modules/vscode/vscode.nix
     ./../../modules/gtk.nix
