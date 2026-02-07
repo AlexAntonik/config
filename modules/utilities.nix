@@ -34,8 +34,6 @@
     socat # Multipurpose relay
     sops # Securely edit files with encryption
     speedtest-cli # Terminal speedtest
-    unrar # RAR archive extractor
-    unzip # ZIP archive extractor
     usbutils # USB utilities
     wget # Network downloader
   ];

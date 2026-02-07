@@ -80,6 +80,9 @@
     # zulu # Open JDK fast
 
     # Development tools
+
+    unrar # RAR archive extractor
+    unzip # ZIP archive extractor
     meson # Build system
     gradle # Build system
     ninja # Build system
