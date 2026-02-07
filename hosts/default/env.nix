@@ -22,5 +22,14 @@
     timeZone = "Europe/Minsk";
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = "en_US.UTF-8";
+
+    # This value determines the Home Manager/NixOs release that your configuration is
+    # compatible with. This helps avoid breakage when a new Home Manager/NixOs release
+    # introduces backwards incompatible changes.
+    #
+    # You should not change this , even if you update Home Manager/NixOs. If you do
+    # want to update the value, then make sure to first check the Home Manager
+    # release notes.
+    stateVersion = "25.11";
   };
 }

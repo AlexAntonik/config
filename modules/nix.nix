@@ -1,8 +1,10 @@
 {
   inputs,
+  env,
   ...
 }:
 {
+  system.stateVersion = "${env.stateVersion}";
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {

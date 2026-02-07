@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  options,
+  ...
+}:
 {
   options = {
     env = lib.mkOption {
@@ -12,12 +17,17 @@
       description = "home-manager.users.<username> alias";
     };
   };
-  config = {
-    _module.args = {
-      home = config.home;
-      env = config.env;
-    };
+  
+  config = lib.mkMerge [
+    {
+      _module.args = {
+        home = config.home;
+        env = config.env;
+      };
+    }
 
-    home-manager.users."${config.env.username}" = config.home;
-  };
+    (lib.optionalAttrs (options ? home-manager) {
+      home-manager.users."${config.env.username}" = config.home;
+    })
+  ];
 }

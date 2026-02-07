@@ -26,7 +26,7 @@
     ./../../modules/htop.nix # htop
     ./../../modules/bat.nix # More cute cat
     ./../../modules/nix.nix
-    ./../../modules/variables.nix # Host variables(env) support
+    ./../../modules/options.nix # Host options glue
     ./../../modules/docker.nix
     ./../../modules/zsh.nix # Shell system wide
     ./../../modules/zoxide.nix # cd alternative super nice
@@ -46,11 +46,6 @@
       inherit env;
     })
   ];
-
-  # This option defines the first version of NixOS you have installed on
-  # this particular machine, and is used to maintain compatibility with
-  # application data (e.g. databases) created on older NixOS versions.
-  system.stateVersion = "23.11"; # Do not change!
 
   # prevent load when lid closed
   services.logind.lidSwitch = "ignore";

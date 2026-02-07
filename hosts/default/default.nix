@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   env,
   ...
 }:
@@ -35,12 +34,13 @@
     ./../../modules/obs.nix # OBS with virtual camera
     ./../../modules/lazygit.nix # Git tui
     ./../../modules/htop.nix # htop
+    ./../../modules/home-manager.nix
     ./../../modules/bat.nix # More cute cat
     ./../../modules/time.nix
     ./../../modules/nix.nix
     ./../../modules/docker.nix
     ./../../modules/libvirtd.nix
-    ./../../modules/variables.nix # Host variables(env) support
+    ./../../modules/options.nix # Host options glue
     ./../../modules/zsh.nix # Shell system wide
     ./../../modules/zoxide.nix # cd alternative super nice
     ./../../modules/nvf.nix # vim
@@ -57,8 +57,6 @@
     ./../../modules/vicinae.nix
     ./../../modules/xdg.nix
     ./../../modules/noctalia/noctalia.nix
-
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   programs = {
@@ -125,38 +123,6 @@
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
-
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-    backupFileExtension = "backup";
-    extraSpecialArgs = {
-      inherit
-        inputs
-        env
-        ;
-    };
-    users.${env.username} = {
-      home = {
-        username = "${env.username}";
-        homeDirectory = "/home/${env.username}";
-
-        # This value determines the Home Manager release that your configuration is
-        # compatible with. This helps avoid breakage when a new Home Manager release
-        # introduces backwards incompatible changes.
-        #
-        # You should not change this value, even if you update Home Manager. If you do
-        # want to update the value, then make sure to first check the Home Manager
-        # release notes.
-        stateVersion = "25.05"; # READ COMMENT
-      };
-    };
-  };
-
-  # This option defines the first version of NixOS you have installed on
-  # this particular machine, and is used to maintain compatibility with
-  # application data (e.g. databases) created on older NixOS versions.
-  system.stateVersion = "25.05"; # Do not change!
 
   users.mutableUsers = true;
   users.defaultUserShell = pkgs.zsh;
