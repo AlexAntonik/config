@@ -28,7 +28,7 @@
     ./../../modules/nix.nix
     ./../../modules/docker.nix
     ./../../modules/secrets/sops.nix
-    ./../../modules/variables.nix # Host variables(env) support
+    ./../../modules/options.nix # Host options glue
     ./../../modules/srv/bkp.nix # Backup supabase script
     ./../../modules/srv/supabase-restart.nix # Supabase restart script
     ./../../modules/zsh.nix # Shell system wide
@@ -44,11 +44,6 @@
     postgresql
     (import ./../../modules/scripts/syncsupprep.nix { inherit pkgs env; })
   ];
-
-  # This option defines the first version of NixOS you have installed on
-  # this particular machine, and is used to maintain compatibility with
-  # application data (e.g. databases) created on older NixOS versions.
-  system.stateVersion = "23.11"; # Do not change!
 
   users.mutableUsers = true;
   users.defaultUserShell = pkgs.zsh;
