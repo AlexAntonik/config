@@ -1,4 +1,4 @@
-### **NixOS Configuration**
+### **NixOS dotfiles**
 
 #### Requirements
 
