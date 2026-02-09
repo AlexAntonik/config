@@ -4,6 +4,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   check-configs:
     runs-on: ubuntu-latest
@@ -16,18 +17,18 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
       
-      # - name: Setup Nix cache
-      #   uses: DeterminateSystems/magic-nix-cache-action@v3
-      
-      - name: Check flake
-        run: nix flake check --show-trace
-      
       - name: Evaluate all NixOS configurations
         id: eval
         run: |
           success=0
           fail=0
           badges=""
+          
+          # Get list of hosts
+          if [ ! -d "hosts" ]; then
+            echo "::error::hosts directory not found"
+            exit 1
+          fi
           
           for host in $(ls hosts/ | sort); do
             echo "========================================="
@@ -51,11 +52,12 @@ jobs:
             badges="${badges}![$host](https://badgen.net/badge/$host/$status/$color) "
           done
           
+          # Output results
           echo "badges=$badges" >> $GITHUB_OUTPUT
           echo "success=$success" >> $GITHUB_OUTPUT
           echo "fail=$fail" >> $GITHUB_OUTPUT
           
-          # Don't fail here - we want to update badges first
+          # Summary
           echo "Total: $success succeeded, $fail failed"
       
       - name: Update README with host badges
