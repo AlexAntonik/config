@@ -49,8 +49,6 @@
   ];
 
   users.mutableUsers = true;
-  users.defaultUserShell = pkgs.zsh;
-
   services.openssh = {
     settings = {
       PasswordAuthentication = lib.mkForce false; # Override from ssh.nix

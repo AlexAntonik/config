@@ -12,6 +12,7 @@
   systemd.tmpfiles.rules = [
     "f /home/${username}/.zshrc 0644 ${username} users - -"
   ];
+  users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
     enable = true;
     interactiveShellInit = ''
@@ -52,6 +53,7 @@
       change-host = "sh /home/${username}/config/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       lg = "lazygit";
+      gst = "git status";
       man = "batman";
       ls = "eza --icons --group-directories-first -1";
       ll = "eza --icons -lh --group-directories-first -1 --no-user --long";

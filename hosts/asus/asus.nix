@@ -144,7 +144,6 @@
   # "dotnet-runtime-7.0.20"
   # ];
 
-  users.defaultUserShell = pkgs.zsh;
   users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;

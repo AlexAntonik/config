@@ -128,7 +128,6 @@
   ];
 
   users.mutableUsers = true;
-  users.defaultUserShell = pkgs.zsh;
   users.users.${username} = {
     isNormalUser = true;
     description = "${gitUsername}";
