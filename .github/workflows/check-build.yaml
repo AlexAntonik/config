@@ -1,0 +1,125 @@
+name: Check Configurations 
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  check-configs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v9
+
+      - name: Setup Nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@v3
+
+      - name: Check flake
+        run: nix flake check --all-systems --show-trace
+
+      - name: Build and track all NixOS configurations
+        id: build
+        run: |
+          mkdir -p .github/badges
+          success_count=0
+          fail_count=0
+          
+          for host in $(ls hosts/); do
+            echo "Building configuration for $host..."
+            if nix build .#nixosConfigurations.$host.config.system.build.toplevel \
+              --show-trace \
+              --no-link; then
+              status="passing"
+              color="brightgreen"
+              ((success_count++))
+            else
+              status="failing"
+              color="red"
+              ((fail_count++))
+            fi
+            
+            # Generate badge JSON
+            cat > .github/badges/$host.json << EOF
+          {
+            "schemaVersion": 1,
+            "label": "$host",
+            "message": "$status",
+            "color": "$color"
+          }
+          EOF
+          done
+          
+          echo "success=$success_count" >> $GITHUB_OUTPUT
+          echo "fail=$fail_count" >> $GITHUB_OUTPUT
+
+      - name: Create summary badge
+        run: |
+          total=$(ls hosts/ | wc -l)
+          success=${{ steps.build.outputs.success }}
+          
+          if [ "$success" -eq "$total" ]; then
+            color="brightgreen"
+            message="$success/$total passing"
+          elif [ "$success" -eq "0" ]; then
+            color="red"
+            message="$success/$total passing"
+          else
+            color="orange"
+            message="$success/$total passing"
+          fi
+          
+          cat > .github/badges/summary.json << EOF
+          {
+            "schemaVersion": 1,
+            "label": "builds",
+            "message": "$message",
+            "color": "$color"
+          }
+          EOF
+
+      - name: Update README with hosts table
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        run: |
+          # Generate hosts table
+          cat > hosts_table.md << 'HEADER'
+          ## Hosts
+          
+          ![Build Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/main/.github/badges/summary.json)
+          
+          | Host | Status |
+          |------|--------|
+          HEADER
+          
+          for host in $(ls hosts/ | sort); do
+            echo "| \`$host\` | ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/main/.github/badges/$host.json) |" >> hosts_table.md
+          done
+          
+          # Check if markers exist in README
+          if grep -q "<!-- HOSTS_START -->" README.md && grep -q "<!-- HOSTS_END -->" README.md; then
+            # Update between markers
+            awk '
+              /<!-- HOSTS_START -->/ {print; system("cat hosts_table.md"); f=1; next}
+              /<!-- HOSTS_END -->/ {f=0}
+              !f
+            ' README.md > README.md.tmp
+            mv README.md.tmp README.md
+          else
+            echo "Warning: Markers <!-- HOSTS_START --> and <!-- HOSTS_END --> not found in README.md"
+            echo "Please add them to enable automatic updates"
+          fi
+
+      - name: Commit changes (main branch only)
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .github/badges/ README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update build badges and hosts table [skip ci]"
+          git push

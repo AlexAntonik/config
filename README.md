@@ -1,5 +1,8 @@
 ### **NixOS dotfiles**
 
+<!-- HOSTS_START -->
+<!-- HOSTS_END -->
+
 #### Requirements
 
 - NixOS
