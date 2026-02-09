@@ -3,12 +3,7 @@
 <!-- HOSTS_START -->
 ## Hosts
 
-| Host | Status |
-|------|--------|
-| `asus` | ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/asus.json) |
-| `default` | ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/default.json) |
-| `dell` | ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/dell.json) |
-| `swprod` | ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/swprod.json) |
+![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/asus.json) ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/default.json) ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/dell.json) ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/swprod.json) 
 <!-- HOSTS_END -->
 
 #### Requirements
