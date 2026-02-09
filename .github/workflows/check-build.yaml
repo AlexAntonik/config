@@ -26,26 +26,32 @@ jobs:
 
       - name: Build and track all NixOS configurations
         id: build
+        continue-on-error: true
         run: |
           mkdir -p .github/badges
           success_count=0
           fail_count=0
           
           for host in $(ls hosts/); do
+            echo "========================================="
             echo "Building configuration for $host..."
+            echo "========================================="
+            
             if nix build .#nixosConfigurations.$host.config.system.build.toplevel \
               --show-trace \
+              --print-build-logs \
               --no-link; then
               status="passing"
               color="brightgreen"
               ((success_count++))
+              echo "✓ $host build succeeded"
             else
               status="failing"
               color="red"
               ((fail_count++))
+              echo "✗ $host build failed"
             fi
             
-            # Generate badge JSON
             cat > .github/badges/$host.json << EOF
           {
             "schemaVersion": 1,
@@ -58,6 +64,12 @@ jobs:
           
           echo "success=$success_count" >> $GITHUB_OUTPUT
           echo "fail=$fail_count" >> $GITHUB_OUTPUT
+
+      - name: Check build results
+        run: |
+          if [ "${{ steps.build.outputs.fail }}" -gt 0 ]; then
+            echo "::warning::${{ steps.build.outputs.fail }} host(s) failed to build"
+          fi
 
       - name: Create summary badge
         run: |
