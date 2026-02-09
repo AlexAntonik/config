@@ -1,4 +1,9 @@
-{ inputs, env, ... }:
+{
+  inputs,
+  username,
+  stateVersion,
+  ...
+}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
@@ -6,14 +11,14 @@
     useGlobalPkgs = true;
     backupFileExtension = "backup";
     extraSpecialArgs = {
-      inherit inputs env;
+      inherit inputs;
     };
-    users.${env.username} = {
+    users.${username} = {
       home = {
-        username = "${env.username}";
-        homeDirectory = "/home/${env.username}";
+        username = "${username}";
+        homeDirectory = "/home/${username}";
 
-        stateVersion = "${env.stateVersion}";
+        stateVersion = "${stateVersion}";
       };
     };
   };

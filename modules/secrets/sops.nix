@@ -1,6 +1,6 @@
 {
   inputs,
-  env,
+  username,
   ...
 }: {
   imports = [
@@ -16,7 +16,7 @@
   # This will automatically import SSH keys as age keys
   sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   # This is using an age key that is expected to already be in the filesystem
-  sops.age.keyFile = "/home/${env.username}/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
   # This will generate a new key if the key specified above does not exist
   sops.age.generateKey = true;
   # This is the actual specification of the secrets.

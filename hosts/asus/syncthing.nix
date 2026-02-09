@@ -1,26 +1,23 @@
-{ env, ... }:
-let
-  user = env.username;
-in
+{ username, ... }:
 {
   sops.secrets.asus_cert = {
-    sopsFile = "/home/${user}/config/modules/secrets/syncthing.yaml";
+    sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
     owner = "alex";
-    path = "/home/${user}/.config/syncthing/keys/cert.pem";
+    path = "/home/${username}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.asus_key = {
-    sopsFile = "/home/${user}/config/modules/secrets/syncthing.yaml";
+    sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
     owner = "alex";
-    path = "/home/${user}/.config/syncthing/keys/key.pem";
+    path = "/home/${username}/.config/syncthing/keys/key.pem";
   };
   services.syncthing = {
     enable = true;
-    key = "/home/${user}/.config/syncthing/keys/key.pem";
-    cert = "/home/${user}/.config/syncthing/keys/cert.pem";
+    key = "/home/${username}/.config/syncthing/keys/key.pem";
+    cert = "/home/${username}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
-    dataDir = "/home/${user}/.local/share/syncthing";
-    configDir = "/home/${user}/.config/syncthing";
-    user = "${user}";
+    dataDir = "/home/${username}/.local/share/syncthing";
+    configDir = "/home/${username}/.config/syncthing";
+    user = "${username}";
     settings = {
       devices = {
         "dell" = {
@@ -32,12 +29,12 @@ in
       };
       folders = {
         "Notes" = {
-          path = "/home/${user}/notes";
+          path = "/home/${username}/notes";
           devices = [ "dell" ];
           ignorePermissions = true;
         };
         "Server" = {
-          path = "/home/${user}/projects/srv";
+          path = "/home/${username}/projects/srv";
           devices = [
             "dell"
           ];
@@ -51,7 +48,7 @@ in
           ignorePermissions = true;
         };
         "Prod" = {
-          path = "/home/${user}/projects/prod/backup";
+          path = "/home/${username}/projects/prod/backup";
           type = "receiveonly";
           versioning = {
             type = "staggered";
@@ -64,7 +61,7 @@ in
           ignorePermissions = true;
         };
         "ServerTransfer" = {
-          path = "/home/${user}/projects/srv/transfer";
+          path = "/home/${username}/projects/srv/transfer";
           devices = [ "swop" ];
           ignorePermissions = true;
         };

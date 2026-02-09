@@ -1,5 +1,10 @@
-{ pkgs, env }:
-
-pkgs.writeShellScriptBin "syncsupprep" ''
-  sudo chown -R ${env.username}:users /home/${env.username}/projects/srv
-''
+{ pkgs, username, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    (writeShellScriptBin
+    "syncsupprep"
+    ''
+      sudo chown -R ${username}:users /home/${username}/projects/srv
+    '')
+  ];
+}

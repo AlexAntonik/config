@@ -1,26 +1,23 @@
-{ env, ... }:
-let
-  user = env.username;
-in
+{ username, ... }:
 {
   sops.secrets.swop_cert = {
-    sopsFile = "/home/${user}/config/modules/secrets/syncthing.yaml";
-    owner = "${user}";
-    path = "/home/${user}/.config/syncthing/keys/cert.pem";
+    sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
+    owner = "${username}";
+    path = "/home/${username}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.swop_key = {
-    sopsFile = "/home/${user}/config/modules/secrets/syncthing.yaml";
-    owner = "${user}";
-    path = "/home/${user}/.config/syncthing/keys/key.pem";
+    sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
+    owner = "${username}";
+    path = "/home/${username}/.config/syncthing/keys/key.pem";
   };
   services.syncthing = {
     enable = true;
-    key = "/home/${user}/.config/syncthing/keys/key.pem";
-    cert = "/home/${user}/.config/syncthing/keys/cert.pem";
+    key = "/home/${username}/.config/syncthing/keys/key.pem";
+    cert = "/home/${username}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
-    dataDir = "/home/${user}/.local/share/syncthing";
-    configDir = "/home/${user}/.config/syncthing";
-    user = "${user}";
+    dataDir = "/home/${username}/.local/share/syncthing";
+    configDir = "/home/${username}/.config/syncthing";
+    user = "${username}";
     settings = {
       devices = {
         "asus" = {
@@ -32,13 +29,13 @@ in
       };
       folders = {
         "Prod" = {
-          path = "/home/${user}/projects/srv/backup";
+          path = "/home/${username}/projects/srv/backup";
           devices = [ "asus" ];
           type = "sendonly";
           ignorePermissions = true;
         };
         "ServerTransfer" = {
-          path = "/home/${user}/projects/srv/transfer";
+          path = "/home/${username}/projects/srv/transfer";
           devices = [ "asus" ];
           ignorePermissions = true;
         };

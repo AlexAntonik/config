@@ -1,4 +1,4 @@
-{ config,pkgs, env, ... }:
+{ config,pkgs, username,  ... }:
 {
   environment.systemPackages = with pkgs; [
     tuigreet # The login manager (sometimes referred to as display manager)
@@ -8,7 +8,7 @@
       enable = true;
       settings = {
         default_session = {
-          user = env.username;
+          user = username;
           command = "${pkgs.tuigreet}/bin/tuigreet --time --sessions ${config.services.displayManager.sessionData.desktops}/share/xsessions:${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session"; # start Hyprland with a TUI login manager (needed hyprland enabled systemwide!) 
         };
       };

@@ -1,4 +1,9 @@
-{ env, pkgs, ... }:
+{
+  gitEmail,
+  gitUsername,
+  pkgs,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [
     gh # GitHub cli
@@ -9,8 +14,8 @@
     enable = true;
     config = {
       user = {
-        name = env.gitUsername;
-        email = env.gitEmail;
+        name = gitUsername;
+        email = gitEmail;
       };
     };
   };

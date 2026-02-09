@@ -1,6 +1,6 @@
 {
   pkgs,
-  env,
+  host,
   options,
   lib,
   ...
@@ -8,7 +8,7 @@
 {
   services.resolved.enable = true;
   networking = {
-    hostName = "${env.host}";
+    hostName = "${host}";
     useDHCP = lib.mkDefault true;
 
     networkmanager = {

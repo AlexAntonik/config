@@ -1,4 +1,4 @@
-{ pkgs, env, ... }:
+{ pkgs, keyboardLayout, ... }:
 {
   # Appimage Support
   boot.binfmt.registrations.appimage = {
@@ -21,7 +21,7 @@
     xserver = {
       enable = false; # For Wayland/Hyprland
       xkb = {
-        layout = "${env.keyboardLayout}";
+        layout = "${keyboardLayout}";
         variant = "";
         options = "grp:win_space_toggle"; # also need to be changed in hyprland config
       };

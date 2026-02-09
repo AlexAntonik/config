@@ -1,6 +1,7 @@
 {
   pkgs,
-  env,
+  username,
+  gitUsername,
   ...
 }:
 {
@@ -57,6 +58,15 @@
     ./../../modules/vicinae.nix
     ./../../modules/xdg.nix
     ./../../modules/noctalia/noctalia.nix
+
+    # Scripts
+    ./../../modules/scripts/double-click.nix 
+    ./../../modules/scripts/syncsupprep.nix
+    ./../../modules/scripts/toggleTouchpad.nix
+    ./../../modules/scripts/toggleDisplay.nix
+    ./../../modules/scripts/hm-find.nix
+    ./../../modules/scripts/screenshot.nix
+    ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 
   programs = {
@@ -109,15 +119,6 @@
     # mpv # Media player
     # yt-dlp # YouTube downloader
 
-    # Scripts
-    (import ./../../modules/scripts/double-click.nix { inherit pkgs; })
-    (import ./../../modules/scripts/syncsupprep.nix { inherit pkgs env; })
-    (import ./../../modules/scripts/toggleTouchpad.nix { inherit pkgs env; })
-    (import ./../../modules/scripts/toggleDisplay.nix { inherit pkgs env; })
-    (import ./../../modules/scripts/hm-find.nix { inherit pkgs; })
-    (import ./../../modules/scripts/screenshot.nix { inherit pkgs; })
-    (import ./../../modules/scripts/toggleXWaylandScale.nix { inherit pkgs; })
-
     # Gaming
     # starsector
     # vintagestory
@@ -128,9 +129,9 @@
 
   users.mutableUsers = true;
   users.defaultUserShell = pkgs.zsh;
-  users.users.${env.username} = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "${env.gitUsername}";
+    description = "${gitUsername}";
     extraGroups = [
       "adbusers"
       "docker"
@@ -143,5 +144,5 @@
     ];
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${env.username}" ];
+  nix.settings.allowed-users = [ "${username}" ];
 }

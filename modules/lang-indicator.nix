@@ -1,4 +1,4 @@
-{ env, pkgs, ... }:
+{ languageLightID, pkgs, ... }:
 let
   keyboard-layout-indicator = pkgs.writeShellScriptBin "keyboard-layout-indicator" ''
     set -e
@@ -19,10 +19,10 @@ let
       current_layout=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main == true) | .active_keymap')
       case "$current_layout" in
         *"Russian"*|*"ru"*|*"RU"*|*"русский"*|*"Русский"*)
-          brightnessctl -d ${env.languageLightID} s 100
+          brightnessctl -d ${languageLightID} s 100
           ;;
         *)
-          brightnessctl -d ${env.languageLightID} s 0
+          brightnessctl -d ${languageLightID} s 0
           ;;
       esac
     }

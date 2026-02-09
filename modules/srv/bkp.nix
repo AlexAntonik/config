@@ -1,12 +1,12 @@
-{ env, pkgs, ... }:
+{ username, pkgs, ... }:
 {
   services.borgbackup.jobs = {
     "daily-backup" = {
       paths = [
-        "/home/${env.username}/projects/srv/volumes"
+        "/home/${username}/projects/srv/volumes"
       ];
 
-      repo = "/home/${env.username}/projects/srv/backup/borg-repo";
+      repo = "/home/${username}/projects/srv/backup/borg-repo";
 
       startAt = "04:00";
 
@@ -31,14 +31,14 @@
 
       postHook = ''
         echo "Backup completed at $(date)"
-        chown -R ${env.username}:users /home/${env.username}/projects/srv/backup/borg-repo
+        chown -R ${username}:users /home/${username}/projects/srv/backup/borg-repo
       '';
     };
   };
 
   systemd.tmpfiles.rules = [
-    "d /home/${env.username}/projects/srv/backup 0755 ${env.username} users -"
-    "d /home/${env.username}/projects/srv/backup/borg-repo 0755 ${env.username} users -"
+    "d /home/${username}/projects/srv/backup 0755 ${username} users -"
+    "d /home/${username}/projects/srv/backup/borg-repo 0755 ${username} users -"
   ];
   systemd.services.borgbackup-init = {
     description = "Initialize Borg Repository";
@@ -47,13 +47,13 @@
 
     serviceConfig = {
       Type = "oneshot";
-      User = env.username;
+      User = username;
       Group = "users";
       RemainAfterExit = true;
     };
 
     script = ''
-      REPO_PATH="/home/${env.username}/projects/srv/backup/borg-repo"
+      REPO_PATH="/home/${username}/projects/srv/backup/borg-repo"
 
       if ! ${pkgs.borgbackup}/bin/borg info "$REPO_PATH" &>/dev/null; then
         echo "Initializing Borg repository at $REPO_PATH"

@@ -1,10 +1,10 @@
-{ env, ... }:
+{ username, ... }:
 let
-  credsFile = "/home/${env.username}/.cloudflared/creds.json";
+  credsFile = "/home/${username}/.cloudflared/creds.json";
 in
 {
   sops.secrets.dell = {
-    sopsFile = "/home/${env.username}/config/modules/secrets/cloudflared.yaml";
+    sopsFile = "/home/${username}/config/modules/secrets/cloudflared.yaml";
     owner = "alex";
     path = credsFile;
   };

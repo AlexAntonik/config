@@ -1,5 +1,6 @@
 {
-  env,
+  keyboardLightID,
+  keyboardScreenOFFLightID,
   ...
 }:
 let
@@ -22,8 +23,8 @@ in
           }
           {
             timeout = 900;
-            on-timeout = "printf 'false' > ${statusFile} && hyprctl dispatch dpms off && brightnessctl -d ${env.keyboardLightID} s 0 && brightnessctl -d ${env.keyboardScreenOFFLightID} s 100";
-            on-resume = "printf 'true' > ${statusFile} && hyprctl dispatch dpms on && brightnessctl -d ${env.keyboardLightID} s 100 && brightnessctl -d ${env.keyboardScreenOFFLightID} s 0";
+            on-timeout = "printf 'false' > ${statusFile} && hyprctl dispatch dpms off && brightnessctl -d ${keyboardLightID} s 0 && brightnessctl -d ${keyboardScreenOFFLightID} s 100";
+            on-resume = "printf 'true' > ${statusFile} && hyprctl dispatch dpms on && brightnessctl -d ${keyboardLightID} s 100 && brightnessctl -d ${keyboardScreenOFFLightID} s 0";
           }
         ];
       };

@@ -1,6 +1,7 @@
 {
   pkgs,
-  env,
+  username,
+  gitUsername,
   ...
 }:
 {
@@ -33,7 +34,9 @@
     ./../../modules/nvf.nix # vim
     # ./cloudflared.nix
     ./syncthing.nix
-
+    
+    # Scripts
+    ./../../modules/scripts/syncsupprep.nix
   ];
 
   programs = {
@@ -41,10 +44,6 @@
     # amnezia-vpn.enable = true;
   };
   environment.systemPackages = [
-    (import ./../../modules/scripts/syncsupprep.nix {
-      inherit pkgs;
-      inherit env;
-    })
   ];
 
   # prevent load when lid closed
@@ -52,12 +51,12 @@
 
   users.mutableUsers = true;
   users.defaultUserShell = pkgs.zsh;
-  users.users.${env.username} = {
+  users.users.${username} = {
     openssh.authorizedKeys.keys = [
       ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILUSJwUYV0e+h3Rj4+YvrsqHuolIh45KHg9Lttid1+KI alex@alex''
     ];
     isNormalUser = true;
-    description = "${env.gitUsername}";
+    description = "${gitUsername}";
     extraGroups = [
       "adbusers"
       "docker"
@@ -70,5 +69,5 @@
     ];
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${env.username}" ];
+  nix.settings.allowed-users = [ "${username}" ];
 }

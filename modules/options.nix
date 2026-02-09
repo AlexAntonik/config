@@ -2,6 +2,7 @@
   lib,
   config,
   options,
+  env,
   ...
 }:
 {
@@ -17,17 +18,17 @@
       description = "home-manager.users.<username> alias";
     };
   };
-  
+
   config = lib.mkMerge [
     {
-      _module.args = {
-        home = config.home;
-        env = config.env;
-      };
+      _module.args = config.env;
     }
 
     (lib.optionalAttrs (options ? home-manager) {
-      home-manager.users."${config.env.username}" = config.home;
+      home-manager = {
+        users."${config.env.username}" = config.home;
+        extraSpecialArgs = config.env;
+      };
     })
   ];
 }
