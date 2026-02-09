@@ -16,7 +16,7 @@
     #    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
     #
     #    If you use this, you usually don't need to import anything else here.
-    inputs.nixos-hardware.nixosModules.your-hardware-module
+    # inputs.nixos-hardware.nixosModules.your-hardware-module
 
     # 2. If your device is not listed, import modules for your CPU/GPU/etc.
     #    Uncomment what you need. You can find examples in the nixos-hardware repo.

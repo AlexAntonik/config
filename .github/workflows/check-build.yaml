@@ -86,7 +86,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add README.md
           if ! git diff --quiet --staged; then
-            git commit -m "Update host badges [skip ci]"
+            git commit -m "Update host badges ${{ github.event.head_commit.url }}"
             git push
           fi
       
