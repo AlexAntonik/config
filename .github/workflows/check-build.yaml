@@ -1,11 +1,9 @@
 name: Check Configurations 
-
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-
 jobs:
   check-configs:
     runs-on: ubuntu-latest
@@ -14,19 +12,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
-
-      - name: Setup Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@v3
-
+      
+      # - name: Setup Nix cache
+      #   uses: DeterminateSystems/magic-nix-cache-action@v3
+      
       - name: Check flake
         run: nix flake check --show-trace
-
+      
       - name: Evaluate all NixOS configurations
         id: eval
-        continue-on-error: true
         run: |
           success=0
           fail=0
@@ -37,6 +34,7 @@ jobs:
             echo "Evaluating configuration for $host..."
             echo "========================================="
             
+            # Evaluate without stopping on error
             if nix eval .#nixosConfigurations.$host.config.system.build.toplevel.drvPath \
               --show-trace 2>&1; then
               color="green"
@@ -56,14 +54,16 @@ jobs:
           echo "badges=$badges" >> $GITHUB_OUTPUT
           echo "success=$success" >> $GITHUB_OUTPUT
           echo "fail=$fail" >> $GITHUB_OUTPUT
-
+          
+          # Don't fail here - we want to update badges first
+          echo "Total: $success succeeded, $fail failed"
+      
       - name: Update README with host badges
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         run: |
           cat > hosts_badges.md << 'EOF'
-            ## Hosts
-
-            ${{ steps.eval.outputs.badges }}
+          ## Hosts
+          ${{ steps.eval.outputs.badges }}
           EOF
           
           if grep -q "<!-- HOSTS_START -->" README.md && grep -q "<!-- HOSTS_END -->" README.md; then
@@ -76,21 +76,26 @@ jobs:
           else
             echo "::warning::Markers not found in README.md"
           fi
-
+      
       - name: Commit changes
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
           if ! git diff --quiet --staged; then
-            git commit -m "Update host badges ${{ github.event.head_commit.url }}"
+            git commit -m "Update host badges [skip ci]"
             git push
           fi
-
+      
       - name: Check evaluation results
+        if: always()
         run: |
           fail_count="${{ steps.eval.outputs.fail }}"
+          success_count="${{ steps.eval.outputs.success }}"
+          
+          echo "::notice::Evaluation summary: $success_count passed, $fail_count failed"
+          
           if [ "$fail_count" -gt 0 ]; then
             echo "::error::$fail_count host(s) failed to evaluate"
             exit 1
