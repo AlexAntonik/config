@@ -28,52 +28,43 @@ jobs:
         id: eval
         continue-on-error: true
         run: |
-          mkdir -p .github/badges
           success=0
           fail=0
+          badges=""
           
-          for host in $(ls hosts/); do
+          for host in $(ls hosts/ | sort); do
             echo "========================================="
             echo "Evaluating configuration for $host..."
             echo "========================================="
             
             if nix eval .#nixosConfigurations.$host.config.system.build.toplevel.drvPath \
               --show-trace 2>&1; then
+              color="green"
               status="passing"
-              color="brightgreen"
               success=$((success + 1))
               echo "✓ $host evaluation succeeded"
             else
-              status="failing"
               color="red"
+              status="failing"
               fail=$((fail + 1))
               echo "✗ $host evaluation failed"
             fi
             
-            cat > ".github/badges/$host.json" << EOF
-          {
-            "schemaVersion": 1,
-            "label": "$host",
-            "message": "$status",
-            "color": "$color"
-          }
-          EOF
+            badges="${badges}![$host](https://badgen.net/badge/$host/$status/$color) "
           done
           
+          echo "badges=$badges" >> $GITHUB_OUTPUT
           echo "success=$success" >> $GITHUB_OUTPUT
           echo "fail=$fail" >> $GITHUB_OUTPUT
 
       - name: Update README with host badges
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
-          echo "## Hosts" > hosts_badges.md
-          echo "" >> hosts_badges.md
-          
-          for host in $(ls hosts/ | sort); do
-            echo -n "![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/main/.github/badges/$host.json) " >> hosts_badges.md
-          done
-          
-          echo "" >> hosts_badges.md
+          cat > hosts_badges.md << 'EOF'
+            ## Hosts
+
+            ${{ steps.eval.outputs.badges }}
+          EOF
           
           if grep -q "<!-- HOSTS_START -->" README.md && grep -q "<!-- HOSTS_END -->" README.md; then
             awk '
@@ -91,9 +82,11 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add .github/badges/ README.md
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update host badges [skip ci]"
-          git push
+          git add README.md
+          if ! git diff --quiet --staged; then
+            git commit -m "Update host badges"
+            git push
+          fi
 
       - name: Check evaluation results
         run: |
