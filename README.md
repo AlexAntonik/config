@@ -1,9 +1,9 @@
 ### **NixOS dotfiles**
 
 <!-- HOSTS_START -->
-## Hosts
+  ## Hosts
 
-![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/asus.json) ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/default.json) ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/dell.json) ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/swprod.json) 
+  ![asus](https://badgen.net/badge/asus/passing/green) ![default](https://badgen.net/badge/default/passing/green) ![dell](https://badgen.net/badge/dell/passing/green) ![swprod](https://badgen.net/badge/swprod/passing/green) 
 <!-- HOSTS_END -->
 
 #### Requirements
