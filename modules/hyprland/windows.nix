@@ -90,7 +90,6 @@
       "ignorealpha 0.5, ^(noctalia-background-.*)$"
       "ignorealpha 0, vicinae"
     ];
-    # Miscellaneous settings
     misc = {
       layers_hog_keyboard_focus = true; # Allow layers (like Rofi) to grab focus
       focus_on_activate = true;
@@ -103,7 +102,6 @@
       #  Application not responding (ANR) settings
       enable_anr_dialog = true;
       anr_missed_pings = 20;
-
     };
 
     workspace = [
