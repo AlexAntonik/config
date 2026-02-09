@@ -1,5 +1,5 @@
 {
-  "settingsVersion": 47,
+  "settingsVersion": 49,
   "bar": {
     "barType": "simple",
     "position": "bottom",
@@ -8,6 +8,7 @@
     "showOutline": false,
     "showCapsule": false,
     "capsuleOpacity": 0.76,
+    "capsuleColorKey": "none",
     "backgroundOpacity": 0.76,
     "useSeparateOpacity": true,
     "floating": false,
@@ -34,6 +35,7 @@
         {
           "compactMode": true,
           "diskPath": "/",
+          "iconColor": "none",
           "id": "SystemMonitor",
           "showCpuFreq": false,
           "showCpuTemp": true,
@@ -47,8 +49,8 @@
           "showMemoryUsage": true,
           "showNetworkStats": false,
           "showSwapUsage": false,
-          "useMonospaceFont": true,
-          "usePrimaryColor": false
+          "textColor": "none",
+          "useMonospaceFont": true
         },
         {
           "characterCount": 2,
@@ -85,6 +87,7 @@
           "showArtistFirst": true,
           "showProgressRing": true,
           "showVisualizer": false,
+          "textColor": "none",
           "useFixedWidth": false,
           "visualizerType": "wave"
         }
@@ -93,11 +96,14 @@
       "right": [
         {
           "displayMode": "forceOpen",
+          "iconColor": "none",
           "id": "KeyboardLayout",
-          "showIcon": false
+          "showIcon": false,
+          "textColor": "none"
         },
         {
           "blacklist": [],
+          "chevronColor": "none",
           "colorizeIcons": true,
           "drawerEnabled": true,
           "hidePassive": false,
@@ -125,11 +131,15 @@
         },
         {
           "displayMode": "onhover",
-          "id": "Network"
+          "iconColor": "none",
+          "id": "Network",
+          "textColor": "none"
         },
         {
           "displayMode": "onhover",
-          "id": "Bluetooth"
+          "iconColor": "none",
+          "id": "Bluetooth",
+          "textColor": "none"
         },
         {
           "deviceNativePath": "__default__",
@@ -143,6 +153,7 @@
         {
           "hideWhenZero": false,
           "hideWhenZeroUnread": false,
+          "iconColor": "none",
           "id": "NotificationHistory",
           "showUnreadBadge": true,
           "unreadBadgeColor": "primary"
@@ -173,6 +184,7 @@
     "animationSpeed": 1,
     "animationDisabled": false,
     "compactLockScreen": false,
+    "lockScreenAnimations": false,
     "lockOnSuspend": false,
     "showSessionButtonsOnLockScreen": true,
     "showHibernateOnLockScreen": false,
@@ -291,7 +303,8 @@
     "enableSettingsSearch": true,
     "enableWindowsSearch": true,
     "ignoreMouseInput": false,
-    "screenshotAnnotationTool": ""
+    "screenshotAnnotationTool": "",
+    "overviewLayer": false
   },
   "controlCenter": {
     "position": "close_to_bar_button",
@@ -388,6 +401,8 @@
     "diskCriticalThreshold": 90,
     "diskAvailWarningThreshold": 20,
     "diskAvailCriticalThreshold": 10,
+    "batteryWarningThreshold": 20,
+    "batteryCriticalThreshold": 5,
     "cpuPollingInterval": 1000,
     "gpuPollingInterval": 3000,
     "enableDgpuMonitoring": false,
@@ -485,8 +500,7 @@
     },
     "enableMediaToast": false,
     "enableKeyboardLayoutToast": true,
-    "batteryWarningThreshold": 20,
-    "batteryCriticalThreshold": 5
+    "enableBatteryToast": true
   },
   "osd": {
     "enabled": true,
@@ -550,6 +564,9 @@
     "performanceModeDisabled": "",
     "startup": "",
     "session": ""
+  },
+  "plugins": {
+    "autoUpdate": true
   },
   "desktopWidgets": {
     "enabled": true,
