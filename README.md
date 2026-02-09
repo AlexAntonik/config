@@ -3,7 +3,7 @@
 <!-- HOSTS_START -->
 ## Hosts
 
-![Build Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/summary.json)
+![Eval Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/summary.json)
 
 | Host | Status |
 |------|--------|
