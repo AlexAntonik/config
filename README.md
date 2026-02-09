@@ -3,8 +3,6 @@
 <!-- HOSTS_START -->
 ## Hosts
 
-![Eval Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/summary.json)
-
 | Host | Status |
 |------|--------|
 | `asus` | ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/AlexAntonik/config/main/.github/badges/asus.json) |
