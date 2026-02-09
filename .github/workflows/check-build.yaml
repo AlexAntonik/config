@@ -29,8 +29,8 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p .github/badges
-          success_count=0
-          fail_count=0
+          success=0
+          fail=0
           
           for host in $(ls hosts/); do
             echo "========================================="
@@ -41,12 +41,12 @@ jobs:
               --show-trace 2>&1; then
               status="passing"
               color="brightgreen"
-              ((success_count++))
+              success=$((success + 1))
               echo "✓ $host evaluation succeeded"
             else
               status="failing"
               color="red"
-              ((fail_count++))
+              fail=$((fail + 1))
               echo "✗ $host evaluation failed"
             fi
             
@@ -60,41 +60,14 @@ jobs:
           EOF
           done
           
-          echo "success=$success_count" >> $GITHUB_OUTPUT
-          echo "fail=$fail_count" >> $GITHUB_OUTPUT
-
-      - name: Create summary badge
-        run: |
-          total=$(ls hosts/ | wc -l)
-          success=${{ steps.eval.outputs.success }}
-          
-          if [ "$success" -eq "$total" ]; then
-            color="brightgreen"
-            message="$success/$total passing"
-          elif [ "$success" -eq "0" ]; then
-            color="red"
-            message="$success/$total passing"
-          else
-            color="orange"
-            message="$success/$total passing"
-          fi
-          
-          cat > .github/badges/summary.json << EOF
-          {
-            "schemaVersion": 1,
-            "label": "eval",
-            "message": "$message",
-            "color": "$color"
-          }
-          EOF
+          echo "success=$success" >> $GITHUB_OUTPUT
+          echo "fail=$fail" >> $GITHUB_OUTPUT
 
       - name: Update README with hosts table
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
           cat > hosts_table.md << 'HEADER'
           ## Hosts
-          
-          ![Eval Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/main/.github/badges/summary.json)
           
           | Host | Status |
           |------|--------|
@@ -112,7 +85,7 @@ jobs:
             ' README.md > README.md.tmp
             mv README.md.tmp README.md
           else
-            echo "::warning::Markers <!-- HOSTS_START --> and <!-- HOSTS_END --> not found in README.md"
+            echo "::warning::Markers not found in README.md"
           fi
 
       - name: Commit changes
@@ -121,12 +94,13 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .github/badges/ README.md
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update eval badges and hosts table [skip ci]"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update host badges [skip ci]"
           git push
 
       - name: Check evaluation results
         run: |
-          if [ "${{ steps.eval.outputs.fail }}" -gt 0 ]; then
-            echo "::error::${{ steps.eval.outputs.fail }} host(s) failed to evaluate"
+          fail_count="${{ steps.eval.outputs.fail }}"
+          if [ "$fail_count" -gt 0 ]; then
+            echo "::error::$fail_count host(s) failed to evaluate"
             exit 1
           fi
