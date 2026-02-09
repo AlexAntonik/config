@@ -25,12 +25,9 @@ jobs:
         run: nix flake check --all-systems --show-trace
 
       - name: Build and track all NixOS configurations
-        id: build
         continue-on-error: true
         run: |
           mkdir -p .github/badges
-          success_count=0
-          fail_count=0
           
           for host in $(ls hosts/); do
             echo "========================================="
@@ -43,12 +40,10 @@ jobs:
               --no-link; then
               status="passing"
               color="brightgreen"
-              ((success_count++))
               echo "✓ $host build succeeded"
             else
               status="failing"
               color="red"
-              ((fail_count++))
               echo "✗ $host build failed"
             fi
             
@@ -61,40 +56,6 @@ jobs:
           }
           EOF
           done
-          
-          echo "success=$success_count" >> $GITHUB_OUTPUT
-          echo "fail=$fail_count" >> $GITHUB_OUTPUT
-
-      - name: Check build results
-        run: |
-          if [ "${{ steps.build.outputs.fail }}" -gt 0 ]; then
-            echo "::warning::${{ steps.build.outputs.fail }} host(s) failed to build"
-          fi
-
-      - name: Create summary badge
-        run: |
-          total=$(ls hosts/ | wc -l)
-          success=${{ steps.build.outputs.success }}
-          
-          if [ "$success" -eq "$total" ]; then
-            color="brightgreen"
-            message="$success/$total passing"
-          elif [ "$success" -eq "0" ]; then
-            color="red"
-            message="$success/$total passing"
-          else
-            color="orange"
-            message="$success/$total passing"
-          fi
-          
-          cat > .github/badges/summary.json << EOF
-          {
-            "schemaVersion": 1,
-            "label": "builds",
-            "message": "$message",
-            "color": "$color"
-          }
-          EOF
 
       - name: Update README with hosts table
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
@@ -102,8 +63,6 @@ jobs:
           # Generate hosts table
           cat > hosts_table.md << 'HEADER'
           ## Hosts
-          
-          ![Build Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/main/.github/badges/summary.json)
           
           | Host | Status |
           |------|--------|
@@ -124,14 +83,13 @@ jobs:
             mv README.md.tmp README.md
           else
             echo "Warning: Markers <!-- HOSTS_START --> and <!-- HOSTS_END --> not found in README.md"
-            echo "Please add them to enable automatic updates"
           fi
 
-      - name: Commit changes (main branch only)
+      - name: Commit changes
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .github/badges/ README.md
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update build badges and hosts table [skip ci]"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update build badges [skip ci]"
           git push
