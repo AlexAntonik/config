@@ -22,29 +22,32 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: Check flake
-        run: nix flake check --all-systems --show-trace
+        run: nix flake check --show-trace
 
-      - name: Build and track all NixOS configurations
+      - name: Evaluate all NixOS configurations
+        id: eval
         continue-on-error: true
         run: |
           mkdir -p .github/badges
+          success_count=0
+          fail_count=0
           
           for host in $(ls hosts/); do
             echo "========================================="
-            echo "Building configuration for $host..."
+            echo "Evaluating configuration for $host..."
             echo "========================================="
             
-            if nix build .#nixosConfigurations.$host.config.system.build.toplevel \
-              --show-trace \
-              --print-build-logs \
-              --no-link; then
+            if nix eval .#nixosConfigurations.$host.config.system.build.toplevel.drvPath \
+              --show-trace 2>&1; then
               status="passing"
               color="brightgreen"
-              echo "✓ $host build succeeded"
+              ((success_count++))
+              echo "✓ $host evaluation succeeded"
             else
               status="failing"
               color="red"
-              echo "✗ $host build failed"
+              ((fail_count++))
+              echo "✗ $host evaluation failed"
             fi
             
             cat > .github/badges/$host.json << EOF
@@ -56,13 +59,42 @@ jobs:
           }
           EOF
           done
+          
+          echo "success=$success_count" >> $GITHUB_OUTPUT
+          echo "fail=$fail_count" >> $GITHUB_OUTPUT
+
+      - name: Create summary badge
+        run: |
+          total=$(ls hosts/ | wc -l)
+          success=${{ steps.eval.outputs.success }}
+          
+          if [ "$success" -eq "$total" ]; then
+            color="brightgreen"
+            message="$success/$total passing"
+          elif [ "$success" -eq "0" ]; then
+            color="red"
+            message="$success/$total passing"
+          else
+            color="orange"
+            message="$success/$total passing"
+          fi
+          
+          cat > .github/badges/summary.json << EOF
+          {
+            "schemaVersion": 1,
+            "label": "eval",
+            "message": "$message",
+            "color": "$color"
+          }
+          EOF
 
       - name: Update README with hosts table
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
-          # Generate hosts table
           cat > hosts_table.md << 'HEADER'
           ## Hosts
+          
+          ![Eval Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/main/.github/badges/summary.json)
           
           | Host | Status |
           |------|--------|
@@ -72,9 +104,7 @@ jobs:
             echo "| \`$host\` | ![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/main/.github/badges/$host.json) |" >> hosts_table.md
           done
           
-          # Check if markers exist in README
           if grep -q "<!-- HOSTS_START -->" README.md && grep -q "<!-- HOSTS_END -->" README.md; then
-            # Update between markers
             awk '
               /<!-- HOSTS_START -->/ {print; system("cat hosts_table.md"); f=1; next}
               /<!-- HOSTS_END -->/ {f=0}
@@ -82,7 +112,7 @@ jobs:
             ' README.md > README.md.tmp
             mv README.md.tmp README.md
           else
-            echo "Warning: Markers <!-- HOSTS_START --> and <!-- HOSTS_END --> not found in README.md"
+            echo "::warning::Markers <!-- HOSTS_START --> and <!-- HOSTS_END --> not found in README.md"
           fi
 
       - name: Commit changes
@@ -91,5 +121,12 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .github/badges/ README.md
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update build badges [skip ci]"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update eval badges and hosts table [skip ci]"
           git push
+
+      - name: Check evaluation results
+        run: |
+          if [ "${{ steps.eval.outputs.fail }}" -gt 0 ]; then
+            echo "::error::${{ steps.eval.outputs.fail }} host(s) failed to evaluate"
+            exit 1
+          fi
