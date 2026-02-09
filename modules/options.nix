@@ -2,7 +2,6 @@
   lib,
   config,
   options,
-  env,
   ...
 }:
 {
@@ -23,7 +22,6 @@
     {
       _module.args = config.env;
     }
-
     (lib.optionalAttrs (options ? home-manager) {
       home-manager = {
         users."${config.env.username}" = config.home;

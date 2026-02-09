@@ -17,7 +17,6 @@
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
-
         stateVersion = "${stateVersion}";
       };
     };
