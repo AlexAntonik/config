@@ -8,7 +8,6 @@
       ./visual.nix
       ./hypridle.nix
       ./hyprlock.nix
-      ./wlsunset.nix
     ];
     home.packages = with pkgs; [
       grim
