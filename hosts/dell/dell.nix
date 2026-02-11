@@ -45,8 +45,8 @@
   environment.systemPackages = [
   ];
 
-  # prevent load when lid closed
-  services.logind.lidSwitch = "ignore";
+  # ignore closed lid
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
 
   users.mutableUsers = true;
   users.users.${username} = {
