@@ -1,7 +1,4 @@
 {
-  ...
-}:
-{
   wayland.windowManager.hyprland.settings = {
     # Window decoration settings
     # General window manager settings

@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   home.programs.btop = {
     enable = true;

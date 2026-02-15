@@ -1,4 +1,3 @@
-{ ... }:
 {
   services = {
     fstrim.enable = true;

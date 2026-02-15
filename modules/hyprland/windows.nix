@@ -1,7 +1,4 @@
 {
-  ...
-}:
-{
   wayland.windowManager.hyprland.settings = {
     # Window rules
     windowrule = [

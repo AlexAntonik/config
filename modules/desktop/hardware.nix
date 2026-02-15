@@ -1,4 +1,3 @@
-{ ... }:
 {
   hardware = {
     logitech.wireless.enable = false;

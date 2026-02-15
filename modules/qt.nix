@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   home.qt = {
     enable = true;

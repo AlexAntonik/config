@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   #Disable hibernation or sleep cause hibernation brakes bt driver
   systemd = {

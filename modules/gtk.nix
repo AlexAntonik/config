@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   home.gtk = {
     iconTheme = {

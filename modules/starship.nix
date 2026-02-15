@@ -1,10 +1,5 @@
 {
-  ...
-}:
-
-{
   programs = {
-    # System wide(Root user) strarship configuration
     starship = {
       enable = true;
       presets = [ "plain-text-symbols" ];

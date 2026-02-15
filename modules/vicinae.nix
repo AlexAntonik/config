@@ -1,4 +1,3 @@
-{ ... }:
 {
   home.programs.vicinae = {
     enable = true;
