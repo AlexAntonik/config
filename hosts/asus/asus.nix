@@ -6,64 +6,76 @@
 }:
 {
   imports = [
-    ./hardware.nix # User defined hardware configuration
-    ./hardware-gen.nix # Nix generated hardware configuration
-    ./env.nix # Host variables
+    # Host specific config
+    ./hardware.nix
+    ./hardware-gen.nix
+    ./env.nix
     ./syncthing.nix
 
+    # System boot & visuals
     ./../../modules/boot.nix
-    ./../../modules/boot-visuals.nix # Boot visuals and login manager
-    ./../../modules/fonts.nix
-    ./../../modules/desktop/hardware.nix # Desktop hardware configuration
-    ./../../modules/desktop/services.nix # Desktop services & utils for keyboard,hyprland
-    ./../../modules/desktop/pkgs.nix # Desktop system packages
-    ./../../modules/desktop/network.nix # Desktop network configuration
-    ./../../modules/thunar.nix # Desktop file manager
-    ./../../modules/media.nix # Audio and multimedia configuration and pkgs
-    ./../../modules/bluetooth.nix # Bluetooth configuration
-    ./../../modules/nh.nix # Nix helper
-    ./../../modules/utilities.nix # TUI utilities and tools
-    ./../../modules/ssh.nix # SSH configuration
-    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
-    # ./../../modules/printing.nix # Printing configuration
-    # ./../../modules/srv/bkp.nix # Backup supabase script
-    # ./../../modules/srv/supabase-restart.nix # Supabase restart script
-    ./../../modules/lang-indicator.nix # Indicates wrong lang
-    ./../../modules/starship.nix
-    ./../../modules/git.nix
-    ./../../modules/secrets/sops.nix
-    ./../../modules/steam.nix
-    ./../../modules/firefox.nix
-    ./../../modules/stylix.nix # Stylix config
-    ./../../modules/nix.nix
-    ./../../modules/time.nix
-    # ./../../modules/tmux.nix
-    ./../../modules/obs.nix # OBS with virtual camera
-    ./../../modules/lazygit.nix # Git tui
-    ./../../modules/htop.nix # htop
-    ./../../modules/home-manager.nix
+    ./../../modules/boot-visuals.nix
     ./../../modules/noctalia/noctalia.nix
-    ./../../modules/bat.nix # More cute cat
-    ./../../modules/docker.nix
-    ./../../modules/libvirtd.nix
-    ./../../modules/options.nix # Host options glue
-    ./../../modules/zsh.nix # Shell system wide
-    ./../../modules/zoxide.nix # cd alternative super nice
-    ./../../modules/nvf.nix # vim
-    ./../../modules/tailscale.nix # Tailscale service
-    ./../../modules/btop.nix
-    ./../../modules/fzf.nix
-    ./../../modules/yazi.nix
-    ./../../modules/virtmanager.nix
-    ./../../modules/vscode/vscode.nix
-    ./../../modules/gtk.nix
-    ./../../modules/qt.nix
+    ./../../modules/stylix.nix
     ./../../modules/eww-clock.nix
     ./../../modules/hyprland/hyprland.nix
+    ./../../modules/fonts.nix
+
+    # Desktop hardware & services
+    ./../../modules/desktop/hardware.nix
+    ./../../modules/desktop/services.nix
+    ./../../modules/desktop/pkgs.nix
+    ./../../modules/desktop/network.nix
+    ./../../modules/thunar.nix
+    ./../../modules/vicinae.nix
+    ./../../modules/media.nix
+    ./../../modules/bluetooth.nix
+
+    # System services
+    ./../../modules/services.nix
+    ./../../modules/ssh.nix
+    ./../../modules/security.nix
+    ./../../modules/home-manager.nix
+
+    # Tools & utilities
+    ./../../modules/utilities.nix
+    ./../../modules/btop.nix
+    ./../../modules/starship.nix
+    ./../../modules/fzf.nix
+    ./../../modules/yazi.nix
+    ./../../modules/htop.nix
+    ./../../modules/bat.nix
+    ./../../modules/zoxide.nix
+    ./../../modules/libvirtd.nix
+
+    # Development
+    ./../../modules/git.nix
+    ./../../modules/lazygit.nix
+    ./../../modules/vscode/vscode.nix
+    ./../../modules/docker.nix
+    ./../../modules/nvf.nix
+
+    # Nix related
+    ./../../modules/nix.nix
+    ./../../modules/nh.nix
+    ./../../modules/options.nix
+
+    # Applications
+    ./../../modules/steam.nix
+    ./../../modules/firefox.nix
+    ./../../modules/obs.nix
+
+    # Config & misc
+    ./../../modules/time.nix
+    ./../../modules/secrets/sops.nix
+    ./../../modules/zsh.nix
+    ./../../modules/lang-indicator.nix
+    ./../../modules/tailscale.nix
+    ./../../modules/virtmanager.nix
+    ./../../modules/gtk.nix
+    ./../../modules/qt.nix
     ./../../modules/ghostty.nix
     ./../../modules/xdg.nix
-    ./../../modules/vicinae.nix
 
     # Scripts
     ./../../modules/scripts/double-click.nix

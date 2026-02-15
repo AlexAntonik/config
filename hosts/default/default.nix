@@ -5,62 +5,80 @@
   ...
 }:
 {
-  imports = [
-    ./hardware.nix # User defined hardware configuration
-    ./hardware-gen.nix # Nix generated hardware configuration
-    ./env.nix # Host variables
+    imports = [
+    # Host specific config
+    ./hardware.nix
+    ./hardware-gen.nix
+    ./env.nix
+    ./syncthing.nix
 
+    # System boot & visuals
     ./../../modules/boot.nix
-    ./../../modules/boot-visuals.nix # Boot visuals and login manager
+    ./../../modules/boot-visuals.nix
+    ./../../modules/noctalia/noctalia.nix
+    ./../../modules/stylix.nix
+    ./../../modules/eww-clock.nix
+    ./../../modules/hyprland/hyprland.nix
     ./../../modules/fonts.nix
-    ./../../modules/desktop/hardware.nix # Desktop hardware configuration
-    ./../../modules/desktop/pkgs.nix # Desktop system packages
-    ./../../modules/desktop/services.nix # Desktop services & utils for keyboard,hyprland
-    ./../../modules/desktop/network.nix # Desktop network configuration
-    ./../../modules/thunar.nix # Desktop file manager
-    ./../../modules/media.nix # Audio and multimedia configuration and pkgs
-    ./../../modules/printing.nix # Printing configuration
-    ./../../modules/bluetooth.nix # Bluetooth configuration
-    ./../../modules/nh.nix # Nix helper
-    ./../../modules/utilities.nix # TUI utilities and tools
-    ./../../modules/ssh.nix # SSH configuration
-    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
-    # ./../../modules/lang-indicator.nix    # Indicates wrong lang
-    ./../../modules/starship.nix
-    ./../../modules/git.nix
-    ./../../modules/steam.nix
-    ./../../modules/firefox.nix
-    ./../../modules/stylix.nix # Stylix config
-    ./../../modules/obs.nix # OBS with virtual camera
-    ./../../modules/lazygit.nix # Git tui
-    ./../../modules/htop.nix # htop
+
+    # Desktop hardware & services
+    ./../../modules/desktop/hardware.nix
+    ./../../modules/desktop/services.nix
+    ./../../modules/desktop/pkgs.nix
+    ./../../modules/desktop/network.nix
+    ./../../modules/thunar.nix
+    ./../../modules/vicinae.nix
+    ./../../modules/media.nix
+    ./../../modules/bluetooth.nix
+
+    # System services
+    ./../../modules/services.nix
+    ./../../modules/ssh.nix
+    ./../../modules/security.nix
     ./../../modules/home-manager.nix
-    ./../../modules/bat.nix # More cute cat
-    ./../../modules/time.nix
-    ./../../modules/nix.nix
-    ./../../modules/docker.nix
-    ./../../modules/libvirtd.nix
-    ./../../modules/options.nix # Host options glue
-    ./../../modules/zsh.nix # Shell system wide
-    ./../../modules/zoxide.nix # cd alternative super nice
-    ./../../modules/nvf.nix # vim
+
+    # Tools & utilities
+    ./../../modules/utilities.nix
     ./../../modules/btop.nix
+    ./../../modules/starship.nix
     ./../../modules/fzf.nix
     ./../../modules/yazi.nix
-    ./../../modules/virtmanager.nix
+    ./../../modules/htop.nix
+    ./../../modules/bat.nix
+    ./../../modules/zoxide.nix
+    ./../../modules/libvirtd.nix
+
+    # Development
+    ./../../modules/git.nix
+    ./../../modules/lazygit.nix
     ./../../modules/vscode/vscode.nix
+    ./../../modules/docker.nix
+    ./../../modules/nvf.nix
+
+    # Nix related
+    ./../../modules/nix.nix
+    ./../../modules/nh.nix
+    ./../../modules/options.nix
+
+    # Applications
+    ./../../modules/steam.nix
+    ./../../modules/firefox.nix
+    ./../../modules/obs.nix
+
+    # Config & misc
+    ./../../modules/time.nix
+    ./../../modules/secrets/sops.nix
+    ./../../modules/zsh.nix
+    ./../../modules/lang-indicator.nix
+    ./../../modules/tailscale.nix
+    ./../../modules/virtmanager.nix
     ./../../modules/gtk.nix
     ./../../modules/qt.nix
-    ./../../modules/stylix.nix # Stylix targets
-    ./../../modules/hyprland/hyprland.nix
     ./../../modules/ghostty.nix
-    ./../../modules/vicinae.nix
     ./../../modules/xdg.nix
-    ./../../modules/noctalia/noctalia.nix
 
     # Scripts
-    ./../../modules/scripts/double-click.nix 
+    ./../../modules/scripts/double-click.nix
     ./../../modules/scripts/syncsupprep.nix
     ./../../modules/scripts/toggleTouchpad.nix
     ./../../modules/scripts/toggleDisplay.nix

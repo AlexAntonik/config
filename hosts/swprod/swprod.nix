@@ -7,34 +7,43 @@
 }:
 {
   imports = [
-    ./networking.nix
+    # Host specific config
     ./hardware-configuration.nix
+    ./networking.nix
+    ./env.nix
     ./syncthing.nix
-    ./env.nix # Host variables
 
-    # ./../../modules/boot.nix
-    # ./../../modules/fonts.nix
-    ./../../modules/nh.nix # Nix helper
-    ./../../modules/utilities.nix # TUI utilities and tools
-    ./../../modules/ssh.nix # SSH configuration
-    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
-    ./../../modules/starship.nix
-    ./../../modules/git.nix
-    ./../../modules/stylix.nix # Stylix config
-    ./../../modules/lazygit.nix # Git tui
-    ./../../modules/htop.nix # htop
-    ./../../modules/bat.nix # More cute cat
-    ./../../modules/time.nix
-    ./../../modules/nix.nix
+    # System services
+    ./../../modules/services.nix
+    ./../../modules/ssh.nix
+    ./../../modules/security.nix
+
+    # Tools & utilities
+    ./../../modules/utilities.nix
+    ./../../modules/lazygit.nix
+    ./../../modules/htop.nix
+    ./../../modules/bat.nix
     ./../../modules/docker.nix
+
+    # Development & shell
+    ./../../modules/git.nix
+    ./../../modules/nvf.nix
+    ./../../modules/zsh.nix
+    ./../../modules/zoxide.nix
+    ./../../modules/starship.nix
+
+    # Nix related
+    ./../../modules/nix.nix
+    ./../../modules/nh.nix
+    ./../../modules/options.nix
+
+    # Services & ops
+    ./../../modules/srv/bkp.nix
+    ./../../modules/srv/supabase-restart.nix
+
+    # Config & misc
+    ./../../modules/time.nix
     ./../../modules/secrets/sops.nix
-    ./../../modules/options.nix # Host options glue
-    ./../../modules/srv/bkp.nix # Backup supabase script
-    ./../../modules/srv/supabase-restart.nix # Supabase restart script
-    ./../../modules/zsh.nix # Shell system wide
-    ./../../modules/zoxide.nix # cd alternative super nice
-    ./../../modules/nvf.nix # vim
 
     # Scripts
     ./../../modules/scripts/syncsupprep.nix

@@ -5,35 +5,45 @@
 }:
 {
   imports = [
-    ./hardware.nix # User defined hardware configuration
-    ./hardware-gen.nix # Nix generated hardware configuration
-    ./env.nix # Host variables
-
-    ./../../modules/boot.nix
-    # ./../../modules/fonts.nix
-    ./../../modules/srv/network-wifi.nix
-    ./../../modules/nh.nix # Nix helper
-    ./../../modules/utilities.nix # TUI utilities and tools
-    ./../../modules/ssh.nix # SSH configuration
-    ./../../modules/security.nix # Security settings (Polkit, RTkit, PAM)
-    ./../../modules/services.nix # General services (Journald, Fstrim, etc.)
-    ./../../modules/starship.nix
-    ./../../modules/tailscale.nix # Tailscale service
-    ./../../modules/git.nix
-    ./../../modules/secrets/sops.nix
-    ./../../modules/time.nix
-    ./../../modules/lazygit.nix # Git tui
-    ./../../modules/htop.nix # htop
-    ./../../modules/bat.nix # More cute cat
-    ./../../modules/nix.nix
-    ./../../modules/options.nix # Host options glue
-    ./../../modules/docker.nix
-    ./../../modules/zsh.nix # Shell system wide
-    ./../../modules/zoxide.nix # cd alternative super nice
-    ./../../modules/nvf.nix # vim
-    # ./cloudflared.nix
+    # Host specific config
+    ./hardware.nix
+    ./hardware-gen.nix
+    ./env.nix
     ./syncthing.nix
-    
+
+    # System boot
+    ./../../modules/boot.nix
+
+    # System services
+    ./../../modules/services.nix
+    ./../../modules/ssh.nix
+    ./../../modules/security.nix
+    ./../../modules/srv/network-wifi.nix
+
+    # Tools & utilities
+    ./../../modules/utilities.nix
+    ./../../modules/lazygit.nix
+    ./../../modules/htop.nix
+    ./../../modules/bat.nix
+    ./../../modules/docker.nix
+
+    # Development & shell
+    ./../../modules/git.nix
+    ./../../modules/nvf.nix
+    ./../../modules/zsh.nix
+    ./../../modules/zoxide.nix
+    ./../../modules/starship.nix
+
+    # Nix related
+    ./../../modules/nh.nix
+    ./../../modules/nix.nix
+    ./../../modules/options.nix
+
+    # Config & misc
+    ./../../modules/time.nix
+    ./../../modules/secrets/sops.nix
+    ./../../modules/tailscale.nix
+
     # Scripts
     ./../../modules/scripts/syncsupprep.nix
   ];
