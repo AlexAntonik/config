@@ -10,7 +10,6 @@
     ./hardware.nix
     ./hardware-gen.nix
     ./env.nix
-    ./syncthing.nix
 
     # System boot & visuals
     ./../../modules/boot.nix
