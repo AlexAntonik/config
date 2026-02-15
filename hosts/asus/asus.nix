@@ -130,19 +130,16 @@
 
     # Gaming
     # starsector
-    # vintagestory
+    vintagestory
     # prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
-
-  # needed only for vintage story mb remove in future
-  #           |
-  #         \ | /
-  #          \ /
-  # nixpkgs.config.permittedInsecurePackages = [
-  # "dotnet-runtime-7.0.20"
-  # ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      vintagestory = final.callPackage ./vs.nix { };
+    })
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
