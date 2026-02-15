@@ -7,7 +7,7 @@
 {
   options = {
     env = lib.mkOption {
-      type = lib.types.anything;
+      type = lib.types.attrs;
       default = { };
       description = "Host enviroment variables accessible in all modules";
     };

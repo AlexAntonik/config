@@ -1,7 +1,7 @@
 { config,pkgs, username,  ... }:
 {
   environment.systemPackages = with pkgs; [
-    tuigreet # The login manager (sometimes referred to as display manager)
+    tuigreet  # TUI login manager
   ];
   services = {
     greetd = {

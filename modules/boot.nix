@@ -1,5 +1,7 @@
 {
-  #Disable hibernation or sleep cause hibernation brakes bt driver
+  # Boot and kernel configuration
+  # Note: sleep/suspend/hibernate are disabled as they can break Bluetooth
+  
   systemd = {
     targets = {
       sleep = {

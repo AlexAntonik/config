@@ -7,9 +7,9 @@
       paging = "never";
     };
     extraPackages = with pkgs.bat-extras; [
-      batman
-      batpipe
-      batgrep
+      batman      # man pager using bat
+      batpipe     # Pipe to git/less with bat
+      batgrep     # grep alternative with bat
     ];
   };
 }

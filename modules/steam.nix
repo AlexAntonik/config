@@ -11,11 +11,11 @@
       enable = true;
       capSysNice = true;
       args = [
-        "-W 2880"
-        "-H 1620"
-        "-r 120"
-        "-f"
-        "--rt"
+        "-W 2880"  # Width
+        "-H 1620"  # Height
+        "-r 120"   # Refresh rate
+        "-f"       # Fullscreen
+        "--rt"     # Realtime priority
       ];
     };
   };
