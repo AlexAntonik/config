@@ -5,18 +5,9 @@
       # Tags for different application types
       "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"
       "tag +terminal, class:^(Alacritty|kitty|kitty-dropterm|com.mitchellh.ghostty|[Gg]hostty)$"
-      "tag +browser, class:^(Brave-browser(-beta|-dev|-unstable)?)$"
-      "tag +browser, class:^([Ff]irefox(-beta|-dev)?|org.mozilla.firefox|[Ff]irefox-esr)$"
-      "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
-      "tag +browser, class:^([Tt]horium-browser|[Cc]achy-browser)$"
-      "tag +browser, class:^(microsoft-edge)$"
-      "tag +projects, class:^(codium|codium-url-handler|VSCodium)$"
-      "tag +projects, class:^(VSCode|code-url-handler)$"
-      "tag +im, class:^([Dd]iscord|[Ww]ebCord|[Vv]esktop)$"
-      "tag +im, class:^([Ff]erdium)$"
-      "tag +im, class:^([Ww]hatsapp-for-linux)$"
-      "tag +im, class:^(org.telegram.desktop|io.github.tdesktop_x64.TDesktop)$"
-      "tag +im, class:^(teams-for-linux)$"
+      "tag +msg, class:^([Dd]iscord|[Ww]ebCord|[Vv]esktop)$"
+      "tag +msg, class:^(org.telegram.desktop|io.github.tdesktop_x64.TDesktop)$"
+      "tag +msg, class:^(teams-for-linux)$"
       "tag +games, class:^(gamescope)$"
       "tag +games, class:^(steam_app_\\d+)$"
       "tag +gamestore, class:^([Ss]team)$"
@@ -34,9 +25,7 @@
 
       # Floating windows
       "float, tag:settings*"
-      "float, class:^([Ff]erdium)$"
       "float, title:^(Picture-in-Picture)$"
-      "float, class:^(mpv|com.github.rafostar.Clapper)$"
       "float, title:^(Authentication Required)$"
       "float, class:(codium|codium-url-handler|VSCodium), title:negative:(.*codium.*|.*VSCodium.*)"
       "float, class:^(com.heroicgameslauncher.hgl)$, title:negative:(Heroic Games Launcher)"
@@ -49,7 +38,6 @@
 
       # Window positions and behaviors
       "move 60% 6%,title:^(Picture-in-Picture)$"
-      "center, class:^([Ff]erdium)$"
       "center, class:^(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)$"
       "center, initialTitle:(Media viewer)"
       "center, class:([Tt]hunar), title:negative:(.*[Tt]hunar.*)"
@@ -63,15 +51,11 @@
       "size 60% 70%, class:^([Ff]erdium)$"
 
       # Opacity rules
-      "opacity 1.0 1.0, tag:browser*"
-      "opacity 0.9 0.8, tag:projects*"
-      "opacity 0.94 0.86, tag:im*"
+      "opacity 0.94 0.86, tag:msg*"
       "opacity 0.9 0.8, tag:file-manager*"
       "opacity 0.88 0.8, tag:terminal*"
       "opacity 0.8 0.7, tag:settings*"
-      "opacity 0.8 0.7, class:^(gedit|org.gnome.TextEditor|mousepad)$"
       "opacity 0.86 0.86 0.86, class:^(code|Code|code-oss)$"
-      "opacity 0.9 0.8, class:^(seahorse)$"
       "opacity 1.0 1.0, title:^(Picture-in-Picture)$"
 
       # Special rules

@@ -135,7 +135,7 @@
 
     # Media Creation & Editing
     gimp # Image manipulation program
-    unstable.audacity # Audio editor
+    # audacity # Audio editor
     vlc
     mpv # Media player
     yt-dlp # YouTube downloader
