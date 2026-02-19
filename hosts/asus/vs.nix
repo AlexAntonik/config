@@ -20,6 +20,7 @@
   libxi,
   libxcursor,
   libx11,
+  imagemagick,
   waylandSupport ? false,
   wayland ? null,
   libxkbcommon ? null,
@@ -32,16 +33,17 @@ assert waylandSupport -> libxkbcommon != null;
 stdenv.mkDerivation (finalAttrs: {
   pname = "vintagestory";
   channel = "pre";
-  version = "1.22.0-pre.2";
+  version = "1.22.0-pre.3";
 
   src = fetchurl {
     url = "https://cdn.vintagestory.at/gamefiles/${finalAttrs.channel}/vs_client_linux-x64_${finalAttrs.version}.tar.gz";
-    hash = "sha256-puFWMugKFAOWfntjFAMoH0hX5WxVYgwKcH+lawpKy84=";
+    hash = "sha256-pMXBNuKO5ZAh76JkGXabN+KeRvoGGBtUN5qWDmVnT1E=";
   };
 
   nativeBuildInputs = [
     makeWrapper
     copyDesktopItems
+    imagemagick
   ];
 
   runtimeLibs = [
@@ -92,7 +94,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     mkdir -p $out/share/vintagestory $out/bin $out/share/pixmaps $out/share/fonts/truetype
     cp -r * $out/share/vintagestory
-    # cp $out/share/vintagestory/assets/gameicon.xpm $out/share/pixmaps/vintagestory.xpm
+    magick $out/share/vintagestory/assets/gameicon.png $out/share/pixmaps/vintagestory.xpm
     cp $out/share/vintagestory/assets/game/fonts/*.ttf $out/share/fonts/truetype
 
     runHook postInstall
