@@ -16,13 +16,13 @@
 
       enable_touchpad() {
           printf "true" >"$STATUS_FILE"
-          noctalia-shell ipc call osd showTextWithIcon "Touchpad enabled" "hand-click"
+          noctalia-shell ipc call toast send '{"title": "Touchpad", "body": "Touchpad Enabled", "icon": "hand-click"}'
       hyprctl keyword $HYPRLAND_VARIABLE "true" -r
       }
 
       disable_touchpad() {
           printf "false" >"$STATUS_FILE"
-          noctalia-shell ipc call osd showTextWithIcon "Touchpad disabled" "hand-finger-off"
+          noctalia-shell ipc call toast send '{"title": "Touchpad", "body": "Touchpad Disabled", "icon": "hand-finger-off"}'
       hyprctl keyword $HYPRLAND_VARIABLE "false" -r
       }
 

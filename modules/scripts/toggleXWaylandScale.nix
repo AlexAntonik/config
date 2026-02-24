@@ -13,13 +13,13 @@
       enable_scaling() {
         printf "true" >"$STATUS_FILE"
         hyprctl keyword xwayland:force_zero_scaling true
-        noctalia-shell ipc call osd showTextWithIcon "XWayland Force Scale ON" "zoom"
+        noctalia-shell ipc call toast send '{"title": "Touchpad", "body": "XWayland Force Scale ON", "icon": "zoom"}'
       }
 
       disable_scaling() {
         printf "false" >"$STATUS_FILE"
         hyprctl keyword xwayland:force_zero_scaling false
-        noctalia-shell ipc call osd showTextWithIcon "XWayland Force Scale OFF" "zoom-cancel"
+        noctalia-shell ipc call toast send '{"title": "Touchpad", "body": "XWayland Force Scale OFF", "icon": "zoom-cancel"}'
       }
 
       if ! [ -f "$STATUS_FILE" ]; then
