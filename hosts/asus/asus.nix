@@ -111,7 +111,7 @@
     ninja # Build system
     nixfmt-rfc-style # Nix code formatter
     pkg-config # Package configuration tool
-    android-studio # Android IDE
+    # android-studio # Android IDE
     nodejs # JavaScript runtime
     opencode
     # unstable.vscode.fhs # Visual Studio Code with FHS environment
@@ -142,15 +142,10 @@
 
     # Gaming
     # starsector
-    vintagestory
+    # vintagestory
     # prismlauncher # Minecraft launcher
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
-  ];
-  nixpkgs.overlays = [
-    (final: prev: {
-      vintagestory = final.callPackage ./vs.nix { };
-    })
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -163,6 +158,7 @@
       "adbusers"
       "docker"
       "libvirtd"
+      "input"
       "kvm"
       "lp"
       "networkmanager"
