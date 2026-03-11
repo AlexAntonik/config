@@ -1,7 +1,7 @@
 {
   # Boot and kernel configuration
   # Note: sleep/suspend/hibernate are disabled as they can break Bluetooth
-  
+
   systemd = {
     targets = {
       sleep = {
