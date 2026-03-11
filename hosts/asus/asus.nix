@@ -39,6 +39,7 @@
 
     # Tools & utilities
     ./../../modules/utilities.nix
+    ./../../modules/nix-index.nix
     ./../../modules/btop.nix
     ./../../modules/starship.nix
     ./../../modules/fzf.nix
@@ -128,7 +129,7 @@
     # Communication & Internet
     discord # Chat and voice communication
     # protonvpn-gui # ProtonVPN client
-    telegram-desktop # Instant messaging
+    unstable.telegram-desktop # Instant messaging
     tor-browser # Privacy-focused browser
     # chromium
     # vesktop #discord alternative web thingne
