@@ -32,7 +32,6 @@ let
     # Create symbolic links for VS Code configuration
     create_symlink "$HOME/config/modules/vscode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
     create_symlink "$HOME/config/modules/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
-
   '';
 in
 {
@@ -111,6 +110,7 @@ in
           ]
           ++ (with pkgs.vscode-marketplace; [
             # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
+            xcyl.flat-dark-plus #theme 
             dbaeumer.vscode-eslint
             formulahendry.code-runner
             bierner.color-info
