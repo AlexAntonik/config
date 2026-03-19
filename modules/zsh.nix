@@ -42,7 +42,7 @@
       ];
     };
 
-    histSize = 10000;
+    histSize = 20000;
 
     shellAliases = {
       sv = "sudo nvim";
