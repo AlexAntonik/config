@@ -51,7 +51,7 @@
       "size 60% 70%, class:^([Ff]erdium)$"
 
       # Opacity rules
-      "opacity 0.94 0.86, tag:msg*"
+      "opacity 0.88 0.86, tag:msg*"
       "opacity 0.9 0.8, tag:file-manager*"
       "opacity 0.88 0.8, tag:terminal*"
       "opacity 0.8 0.7, tag:settings*"
