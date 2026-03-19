@@ -50,6 +50,10 @@ in {
       "SUPER, mouse:272, movewindow"
       "SUPER, mouse:273, resizewindow"
     ];
+    
+    bindr = [
+      "SUPER, SUPER_L, exec, double-click noctalia-shell ipc call bar showBar"
+    ];
 
     bind = [
       # --- Application Launchers ---
