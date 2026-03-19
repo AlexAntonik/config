@@ -260,6 +260,6 @@
     "editorInlayHint.foreground": "#aaaaaa"
   },
   "terminal.integrated.fontSize": 18,
-  "workbench.colorTheme": "flat dark+",
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "workbench.colorTheme": "flat dark+"
 }
