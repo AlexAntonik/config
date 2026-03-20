@@ -1,8 +1,6 @@
 { username, gitUsername, ... }:
-{
-  imports = [ ../secrets/sops.nix ];
-  
-  users.mutableUsers = false;
+{  
+  users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;
     description = "${gitUsername}";
@@ -16,7 +14,7 @@
       "networkmanager"
       "scanner"
       "wheel"
-    ];
+    ]; 
     ignoreShellProgramCheck = true;
   };
   nix.settings.allowed-users = [ "${username}" ];
