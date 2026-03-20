@@ -1,5 +1,6 @@
 { username, ... }:
 {
+  imports = [ ./../../modules/secrets/sops.nix ];
   sops.secrets.asus_cert = {
     sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
     owner = "alex";

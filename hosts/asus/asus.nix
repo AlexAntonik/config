@@ -1,9 +1,4 @@
-{
-  pkgs,
-  username,
-  gitUsername,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     # Host specific config
@@ -11,6 +6,9 @@
     ./hardware-gen.nix
     ./env.nix
     ./syncthing.nix
+
+    # Users
+    ./../../modules/users/desktop-default.nix
 
     # System boot & visuals
     ./../../modules/boot.nix
@@ -68,7 +66,6 @@
 
     # Config & misc
     ./../../modules/time.nix
-    ./../../modules/secrets/sops.nix
     ./../../modules/zsh.nix
     ./../../modules/lang-indicator.nix
     ./../../modules/tailscale.nix
@@ -150,23 +147,4 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  users.mutableUsers = true;
-  users.users.${username} = {
-    isNormalUser = true;
-    description = "${gitUsername}";
-    extraGroups = [
-      "adbusers"
-      "docker"
-      "libvirtd"
-      "input"
-      "kvm"
-      "lp"
-      "networkmanager"
-      "scanner"
-      "wheel"
-    ];
-    ignoreShellProgramCheck = true;
-  };
-  nix.settings.allowed-users = [ "${username}" ];
 }

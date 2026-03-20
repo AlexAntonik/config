@@ -1,15 +1,13 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  username,
-  gitUsername,
-  ...
-}:
-{
-    imports = [
+  imports = [
     # Host specific config
     ./hardware.nix
     ./hardware-gen.nix
     ./env.nix
+
+    # Users
+    ./../../modules/users/desktop-default.nix
 
     # System boot & visuals
     ./../../modules/boot.nix
@@ -143,22 +141,4 @@
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
-
-  users.mutableUsers = true;
-  users.users.${username} = {
-    isNormalUser = true;
-    description = "${gitUsername}";
-    extraGroups = [
-      "adbusers"
-      "docker"
-      "libvirtd"
-      "kvm"
-      "lp"
-      "networkmanager"
-      "scanner"
-      "wheel"
-    ];
-    ignoreShellProgramCheck = true;
-  };
-  nix.settings.allowed-users = [ "${username}" ];
 }
