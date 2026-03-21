@@ -2,7 +2,7 @@
   "settingsVersion": 59,
   "bar": {
     "barType": "simple",
-    "position": "top",
+    "position": "bottom",
     "monitors": [],
     "density": "compact",
     "showOutline": false,
@@ -15,7 +15,6 @@
     "enableExclusionZoneInset": true,
     "backgroundOpacity": 0.76,
     "useSeparateOpacity": false,
-    "floating": false,
     "marginVertical": 4,
     "marginHorizontal": 4,
     "frameThickness": 8,
@@ -476,6 +475,7 @@
     "position": "top",
     "displayMode": "auto_hide",
     "dockType": "attached",
+    "backgroundOpacity": 0.76,
     "floatingRatio": 1,
     "size": 1.2,
     "onlySameOutput": true,
@@ -484,6 +484,8 @@
     "colorizeIcons": false,
     "showLauncherIcon": true,
     "launcherPosition": "end",
+    "launcherUseDistroLogo": false,
+    "launcherIcon": "",
     "launcherIconColor": "none",
     "pinnedStatic": false,
     "inactiveIndicators": false,
@@ -603,6 +605,7 @@
     "volumeOverdrive": false,
     "spectrumFrameRate": 30,
     "visualizerType": "linear",
+    "spectrumMirrored": true,
     "mprisBlacklist": [],
     "preferredPlayer": "",
     "volumeFeedback": false,
@@ -646,10 +649,12 @@
     "performanceModeEnabled": "",
     "performanceModeDisabled": "",
     "startup": "",
-    "session": ""
+    "session": "",
+    "colorGeneration": ""
   },
   "plugins": {
-    "autoUpdate": true
+    "autoUpdate": true,
+    "notifyUpdates": true
   },
   "idle": {
     "enabled": false,
