@@ -51,12 +51,12 @@
       "size 60% 70%, class:^([Ff]erdium)$"
 
       # Opacity rules
-      "opacity 0.88 0.86, tag:msg*"
-      "opacity 0.9 0.8, tag:file-manager*"
-      "opacity 0.88 0.8, tag:terminal*"
-      "opacity 0.8 0.7, tag:settings*"
-      "opacity 0.86 0.86 0.86, class:^(code|Code|code-oss)$"
-      "opacity 1.0 1.0, title:^(Picture-in-Picture)$"
+      "opacity 0.86, tag:msg*"
+      "opacity 0.9, tag:file-manager*"
+      "opacity 0.86, tag:terminal*"
+      "opacity 0.8, tag:settings*"
+      "opacity 0.86, class:^(code|Code|code-oss)$"
+      "opacity 1.0, title:^(Picture-in-Picture)$"
 
       # Special rules
       "pin, title:^(Picture-in-Picture)$"

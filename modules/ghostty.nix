@@ -6,8 +6,7 @@
     systemd.enable = true;
     settings = {
       theme = "Dracula+";
-      background-opacity = 0.7;
-      background-blur-radius = 24;
+      background = "#161617";
       cursor-style = "bar";
       window-padding-balance = true;
       window-padding-x = 0;
