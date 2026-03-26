@@ -15,6 +15,5 @@
 
   environment.systemPackages = with pkgs; [
     nix-output-monitor  # Pretty output for Nix builds
-    nvd                 # Show differences between Nix derivations
   ];
 }

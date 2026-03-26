@@ -48,8 +48,8 @@
       sv = "sudo nvim";
       v = "nvim";
       c = "clear";
-      fr = "nh os switch --hostname ${host}";
-      fu = "nh os switch --hostname ${host} --update";
+      fr = "nh os switch --hostname ${host} --diff=always";
+      fu = "nh os switch --hostname ${host} --update --diff=always";
       change-host = "sh /home/${username}/config/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       lg = "lazygit";
