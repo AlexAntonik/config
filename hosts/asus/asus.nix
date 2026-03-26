@@ -28,6 +28,7 @@
     ./../../modules/vicinae.nix
     ./../../modules/media.nix
     ./../../modules/bluetooth.nix
+    ./../../modules/steam.nix
 
     # System services
     ./../../modules/services.nix
@@ -119,7 +120,7 @@
     # Desktop suite
     pom
     anki-bin # Spaced repetition flashcards
-    # libreoffice-qt-fresh # Office suite
+    libreoffice-qt-fresh # Office suite
     obsidian # Personal knowledge base
     zathura # PDF viewer
 
