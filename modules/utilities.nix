@@ -24,6 +24,8 @@
     htop # Simple terminal-based system monitor
     tldr # Simplified man
     inxi # System information tool
+    isd # Systemd services tui
+    ipinfo # Lookup ip info
     killall # Command to kill processes
     lm_sensors # Hardware monitoring
     lshw # Hardware information tool
