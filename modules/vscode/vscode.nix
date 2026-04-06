@@ -26,31 +26,12 @@ let
       ln -s "$real_source" "$target"
     }
 
-    merge_json() {
-      local base=$1
-      local theme=$2
-      local output=$3
-    
-      if command -v jq >/dev/null 2>&1; then
-        jq -s '.[0] * .[1]' "$base" "$theme" > "$output"
-      else
-        echo "jq is required"
-        return 1
-      fi
-    }
-
     # Ensure target directory exists
     mkdir -p "$HOME/.config/Code/User"
 
-    BASE="$HOME/config/modules/vscode/settings.json"
-    THEME="$HOME/config/modules/vscode/theme.json"
-    MERGED="$HOME/config/modules/vscode/settings.merged.json"
-    
-    merge_json "$BASE" "$THEME" "$MERGED"
-    
-    create_symlink "$MERGED" "$HOME/.config/Code/User/settings.json"
-    
+    # Create symbolic links for VS Code configuration
     create_symlink "$HOME/config/modules/vscode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
+    create_symlink "$HOME/config/modules/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
   '';
 in
 {
