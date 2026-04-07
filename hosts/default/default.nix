@@ -47,6 +47,7 @@
 
     # Development
     ./../../modules/git.nix
+    ./../../modules/direnv.nix
     ./../../modules/lazygit.nix
     ./../../modules/vscode/vscode.nix
     ./../../modules/docker.nix
