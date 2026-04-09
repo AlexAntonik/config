@@ -117,8 +117,10 @@ in
             golang.go
             # mtxr.sqltools-driver-sqlite
             tamasfe.even-better-toml
+            ms-azuretools.vscode-containers
             ms-vscode-remote.remote-ssh
             ms-vscode-remote.vscode-remote-extensionpack
+            ms-vscode.makefile-tools
             ms-vscode.remote-explorer
             adpyke.vscode-sql-formatter
             ms-vsliveshare.vsliveshare
