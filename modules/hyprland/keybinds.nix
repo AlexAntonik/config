@@ -163,6 +163,7 @@ in {
 
       # --- System Controls ---
       ",PRINT,exec,screenshot"
+      "SUPER,PRINT,exec,screenshot full"
       "SUPER, F11,exec,toggle_xwayland_scale"
       ",XF86TouchpadToggle , exec, toggle_touchpad"
       ",XF86AudioPlay, exec, playerctl play-pause"

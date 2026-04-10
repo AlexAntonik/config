@@ -1,9 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    (writeShellScriptBin
-    "screenshot"
-    ''
+    (writeShellScriptBin "screenshot" ''
       export PATH=${
         pkgs.lib.makeBinPath [
           pkgs.hyprshot
@@ -15,9 +13,7 @@
           pkgs.procps
         ]
       }:$PATH
-
       OUTPUT_DIR="$HOME/Pictures/Screenshots"
-
       if [[ ! -d "$OUTPUT_DIR" ]]; then
         mkdir -p "$OUTPUT_DIR"
         if [[ ! -d "$OUTPUT_DIR" ]]; then
@@ -25,15 +21,25 @@
           exit 1
         fi
       fi
-
-      pkill slurp || hyprshot -m ''${1:-region} --raw | \
-        satty --filename - \
-          --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
-          --early-exit \
-          --action-on-enter save-to-clipboard \
-          --save-after-copy \
-          --copy-command 'wl-copy' \
-          --disable-notifications
+      if [[ "''${1:-}" == "full" ]]; then
+        pkill slurp || hyprshot -m output -m active --raw | \
+          satty --filename - \
+            --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
+            --early-exit \
+            --action-on-enter save-to-clipboard \
+            --save-after-copy \
+            --copy-command 'wl-copy' \
+            --disable-notifications
+      else
+        pkill slurp || hyprshot -m ''${1:-region} --raw | \
+          satty --filename - \
+            --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
+            --early-exit \
+            --action-on-enter save-to-clipboard \
+            --save-after-copy \
+            --copy-command 'wl-copy' \
+            --disable-notifications
+      fi
     '')
   ];
 }
