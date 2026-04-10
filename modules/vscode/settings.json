@@ -40,6 +40,8 @@
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": false,
   "explorer.confirmPasteNative": false,
   "extensions.autoCheckUpdates": false,
   "files.autoSave": "afterDelay",
@@ -224,7 +226,8 @@
     "plaintext": false,
     "markdown": false,
     "scminput": false,
-    "go": false
+    "go": false,
+    "sql": true
   },
   "workbench.colorCustomizations": {
     "editor.background": "#161617",
@@ -249,6 +252,7 @@
     "input.border": "#16161700",
     "widget.shadow": "#16161700",
     "editorOverviewRuler.border": "#16161700",
+    "sideBarSectionHeader.border": "#16161700",
     "tab.border": "#16161700",
     "debugToolBar.background": "#161617",
     "editorWidget.background": "#161617",
@@ -258,9 +262,10 @@
     "list.hoverBackground": "#373730",
     "statusBar.focusBorder": "#161617",
     "editorInlayHint.background": "#16161700",
-    "editorInlayHint.foreground": "#aaaaaa"
+    "editorStickyScroll.border": "#111112",
+    "editorStickyScroll.shadow": "#111112"
   },
   "terminal.integrated.fontSize": 18,
   "workbench.activityBar.location": "hidden",
-  "workbench.colorTheme": "flat dark+"
+  "workbench.colorTheme": "Dark+"
 }
