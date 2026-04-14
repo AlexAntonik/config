@@ -58,7 +58,6 @@
     postgresql
   ];
 
-  users.mutableUsers = true;
   services.openssh = {
     settings = {
       PasswordAuthentication = lib.mkForce false; # Override from ssh.nix
