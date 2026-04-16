@@ -52,7 +52,7 @@ in {
     ];
     
     bindr = [
-      "SUPER, SUPER_L, exec, double-click noctalia-shell ipc call bar showBar"
+      "SUPER, SUPER_L, exec, double-click noctalia-shell ipc call bar peek"
     ];
 
     bind = [
