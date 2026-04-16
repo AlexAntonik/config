@@ -30,6 +30,7 @@
         {
           "colorizeDistroLogo": false,
           "colorizeSystemIcon": "primary",
+          "colorizeSystemText": "none",
           "customIconPath": "",
           "enableColorization": true,
           "icon": "noctalia",
@@ -125,10 +126,15 @@
             "compactMode": false,
             "defaultPeerAction": "copy-ip",
             "hideDisconnected": false,
+            "hideMullvadExitNodes": true,
             "pingCount": 5,
             "refreshInterval": 5000,
             "showIpAddress": true,
             "showPeerCount": true,
+            "sshUsername": "",
+            "taildropDownloadDir": "~/Downloads",
+            "taildropEnabled": true,
+            "taildropReceiveMode": "operator",
             "terminalCommand": ""
           },
           "id": "plugin:tailscale"
@@ -245,7 +251,8 @@
         "Del"
       ]
     },
-    "reverseScroll": false
+    "reverseScroll": false,
+    "smoothScrollEnabled": true
   },
   "ui": {
     "fontDefault": "Montserrat",
@@ -265,6 +272,7 @@
     "name": "Minsk, Belarus",
     "weatherEnabled": true,
     "weatherShowEffects": true,
+    "weatherTaliaMascotAlways": false,
     "useFahrenheit": false,
     "use12hourFormat": false,
     "showWeekNumberInCalendar": false,
@@ -273,7 +281,8 @@
     "analogClockInCalendar": true,
     "firstDayOfWeek": -1,
     "hideWeatherTimezone": true,
-    "hideWeatherCityName": true
+    "hideWeatherCityName": true,
+    "autoLocate": false
   },
   "calendar": {
     "cards": [
@@ -300,6 +309,7 @@
     "showHiddenFiles": false,
     "viewMode": "single",
     "setWallpaperOnAllMonitors": true,
+    "linkLightAndDarkWallpapers": true,
     "fillMode": "crop",
     "fillColor": "#000000",
     "useSolidColor": false,
@@ -320,6 +330,7 @@
     "transitionEdgeSmoothness": 0.05,
     "panelPosition": "follow_bar",
     "hideWallpaperFilenames": true,
+    "useOriginalImages": false,
     "overviewBlur": 0.4,
     "overviewTint": 0.6,
     "useWallhaven": true,
@@ -502,8 +513,6 @@
     "indicatorOpacity": 0.6
   },
   "network": {
-    "wifiEnabled": true,
-    "airplaneModeEnabled": false,
     "bluetoothRssiPollingEnabled": false,
     "bluetoothRssiPollIntervalMs": 10000,
     "networkPanelView": "wifi",
@@ -625,7 +634,8 @@
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
     "generationMethod": "tonal-spot",
-    "monitorForColors": ""
+    "monitorForColors": "",
+    "syncGsettings": true
   },
   "templates": {
     "activeTemplates": [],
