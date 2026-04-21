@@ -72,7 +72,7 @@
         lua.enable = true;
         css.enable = true;
         typst.enable = true;
-        ts.enable = true;
+        typescript.enable = true;
       };
 
       visuals = {
