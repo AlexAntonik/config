@@ -222,12 +222,13 @@
     { "before": ["Я"], "after": ["Z"] }
   ],
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "plaintext": false,
     "markdown": false,
     "scminput": false,
-    "go": false,
-    "sql": true
+    "go": true,
+    "sql": true,
+    "dockercompose": true
   },
   "workbench.colorCustomizations": {
     "editor.background": "#161617",
@@ -267,5 +268,6 @@
   },
   "terminal.integrated.fontSize": 18,
   "workbench.activityBar.location": "hidden",
-  "workbench.colorTheme": "Dark+"
+  "workbench.colorTheme": "Dark+",
+  "go.toolsManagement.autoUpdate": true
 }

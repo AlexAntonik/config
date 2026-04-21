@@ -121,7 +121,8 @@ in
             ms-vscode-remote.vscode-remote-extensionpack
             ms-vscode.makefile-tools
             ms-vscode.remote-explorer
-            adpyke.vscode-sql-formatter
+            inferrinizzard.prettier-sql-vscode
+            kdl-org.kdl 
             ms-vsliveshare.vsliveshare
             # codeforge.remix-forge
             amodio.toggle-excluded-files
