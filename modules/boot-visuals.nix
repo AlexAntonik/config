@@ -14,12 +14,4 @@
       };
     };
   };
-  boot = {
-        # Uncomment for fancy startup loading animation
-    # plymouth.enable = true;
-    # plymouth.themePackages = [
-    # pkgs.adi1090x-plymouth-themes
-    # ];
-    # plymouth.theme = "rings";
-  };
 }

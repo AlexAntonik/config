@@ -17,7 +17,6 @@
         name = gitUsername;
         email = gitEmail;
       };
-      # Useful defaults for better Git experience
       init.defaultBranch = "main";
       pull.rebase = false;
     };
