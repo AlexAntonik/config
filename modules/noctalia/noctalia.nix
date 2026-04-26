@@ -10,9 +10,6 @@
     ];
   };
   home.imports = [ inputs.noctalia.homeModules.default ];
-  environment.variables = {
-    QT_QPA_PLATFORMTHEME = "qt6ct";
-  };
   home.programs.noctalia-shell = {
     enable = true;
     settings = builtins.fromJSON (builtins.readFile ./settings.json);
