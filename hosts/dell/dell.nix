@@ -16,7 +16,7 @@
     ./../../modules/services.nix
     ./../../modules/ssh.nix
     ./../../modules/security.nix
-    ./../../modules/srv/network-wifi.nix
+    ./../../modules/server/network-wifi.nix
 
     # Tools & utilities
     ./../../modules/utilities.nix

@@ -39,8 +39,8 @@
     ./../../modules/options.nix
 
     # Services & ops
-    ./../../modules/srv/bkp.nix
-    ./../../modules/srv/supabase-restart.nix
+    ./../../modules/server/bkp.nix
+    ./../../modules/server/supabase-restart.nix
 
     # Config & misc
     ./../../modules/time.nix
