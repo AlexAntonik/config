@@ -573,8 +573,8 @@
     "backgroundOpacity": 0.6,
     "respectExpireTimeout": false,
     "lowUrgencyDuration": 3,
-    "normalUrgencyDuration": 8,
-    "criticalUrgencyDuration": 15,
+    "normalUrgencyDuration": 6,
+    "criticalUrgencyDuration": 12,
     "clearDismissed": true,
     "saveToHistory": {
       "low": true,
