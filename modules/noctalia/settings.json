@@ -127,6 +127,7 @@
             "defaultPeerAction": "copy-ip",
             "hideDisconnected": false,
             "hideMullvadExitNodes": true,
+            "loginServer": "",
             "pingCount": 5,
             "refreshInterval": 5000,
             "showIpAddress": true,
