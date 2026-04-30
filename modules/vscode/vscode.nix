@@ -35,7 +35,9 @@ let
   '';
 in
 {
-
+  nixpkgs.overlays = [
+    inputs.nix-vscode-extensions.overlays.default
+  ];
   home = {
     home.packages = with pkgs; [
       installScript
