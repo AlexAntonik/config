@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   installScript = pkgs.writeShellScriptBin "setvslinks" ''
     create_symlink() {
