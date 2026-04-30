@@ -271,5 +271,9 @@
         "key": "ctrl+space",
         "command": "-toggleSuggestionDetails",
         "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.view.extension.todo-tree-container"
     }
 ]

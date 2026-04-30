@@ -277,5 +277,6 @@
   "go.inlayHints.functionTypeParameters": true,
   "go.inlayHints.ignoredError": true,
   "go.inlayHints.parameterNames": true,
-  "go.inlayHints.rangeVariableTypes": true
+  "go.inlayHints.rangeVariableTypes": true,
+  "chat.viewSessions.enabled": false
 }
