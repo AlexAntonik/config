@@ -12,7 +12,7 @@
     ./syncthing.nix
 
     # Users
-    ./../../modules/users/swprod.nix
+    ./swprod-user.nix
 
     # System services
     ./../../modules/services.nix

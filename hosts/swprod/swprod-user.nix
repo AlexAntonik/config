@@ -11,7 +11,6 @@
     extraGroups = [
       "docker"
       "libvirtd"
-      "kvm"
       "networkmanager"
       "wheel"
     ];
