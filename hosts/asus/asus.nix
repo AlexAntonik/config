@@ -88,7 +88,6 @@
   ];
 
   programs = {
-    adb.enable = true; # Android Debug Bridge
     amnezia-vpn.enable = true;
     amnezia-vpn.package = pkgs.unstable.amnezia-vpn;
     localsend.enable = true;

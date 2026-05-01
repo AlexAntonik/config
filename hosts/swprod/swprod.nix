@@ -50,9 +50,6 @@
     ./../../modules/scripts/syncsupprep.nix
   ];
 
-  programs = {
-    # adb.enable = true; # Android Debug Bridge
-  };
   environment.systemPackages = with pkgs; [
     supabase-cli
     postgresql

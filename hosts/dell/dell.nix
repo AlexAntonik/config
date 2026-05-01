@@ -47,7 +47,6 @@
   ];
 
   programs = {
-    # adb.enable = true; # Android Debug Bridge
     # amnezia-vpn.enable = true;
   };
   environment.systemPackages = [
