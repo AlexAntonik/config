@@ -116,7 +116,6 @@
     # android-studio # Android IDE
     nodejs # JavaScript runtime
     opencode
-    # unstable.vscode.fhs # Visual Studio Code with FHS environment
     supabase-cli
     postgresql
     pgadmin4-desktopmode
