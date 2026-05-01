@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
+  users.users.${username}.extraGroups = [
+    "lp"
+    "scanner"
+  ];
   hardware = {
     sane = {
       enable = true;

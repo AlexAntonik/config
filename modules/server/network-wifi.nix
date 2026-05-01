@@ -2,9 +2,13 @@
   host,
   options,
   lib,
+  username,
   ...
 }:
 {
+  users.users.${username}.extraGroups = [
+    "networkmanager"
+  ];
   networking = {
     hostName = "${host}";
     # avoid checking if IP is already taken to boot a few seconds faster

@@ -6,9 +6,6 @@
     description = "${gitUsername}";
     extraGroups = [
       "input"
-      "lp"
-      "networkmanager"
-      "scanner"
       "wheel"
     ]; 
     ignoreShellProgramCheck = true;

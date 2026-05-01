@@ -3,9 +3,13 @@
   host,
   options,
   lib,
+  username,
   ...
 }:
 {
+  users.users.${username}.extraGroups = [
+    "networkmanager"
+  ];
   services.resolved.enable = true;
   networking = {
     hostName = "${host}";
