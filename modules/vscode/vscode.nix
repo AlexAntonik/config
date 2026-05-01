@@ -113,6 +113,7 @@ in
           ++ (with pkgs.vscode-marketplace; [
             # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
             dbaeumer.vscode-eslint
+            donjayamanne.githistory
             formulahendry.code-runner
             bierner.color-info
             golang.go
