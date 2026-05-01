@@ -69,7 +69,6 @@
     ./../../modules/zsh.nix
     ./../../modules/lang-indicator.nix
     ./../../modules/tailscale.nix
-    ./../../modules/virtmanager.nix
     ./../../modules/gtk.nix
     ./../../modules/qt.nix
     ./../../modules/ghostty.nix
@@ -106,8 +105,8 @@
     # pkg-config # Package configuration tool
     # android-studio # Android IDE
     # nodejs # JavaScript runtime
-    # unstable.code-cursor
-    # unstable.vscode.fhs # Visual Studio Code with FHS environment
+    # code-cursor
+    # vscode.fhs # Visual Studio Code with FHS environment
     # supabase-cli
     # unrar # RAR archive extractor
     # unzip # ZIP archive extractor
@@ -129,7 +128,7 @@
 
     # Media Creation & Editing
     # gimp # Image manipulation program
-    # unstable.audacity # Audio editor
+    # audacity # Audio editor
     # vlc
     # mpv # Media player
     # yt-dlp # YouTube downloader

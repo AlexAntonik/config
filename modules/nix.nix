@@ -17,18 +17,5 @@
       ];
     };
   };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      # Inline overlay for unstable packages
-      (final: prev: {
-        unstable = import inputs.unstable {
-          system = final.stdenv.hostPlatform.system;
-          config.allowUnfree = true;
-        };
-      })
-    ];
-  };
-
+  nixpkgs.config.allowUnfree = true;
 }

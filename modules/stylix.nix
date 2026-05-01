@@ -76,5 +76,6 @@
     starship.enable = false;
     firefox.enable = false;
     ghostty.enable = false;
+    noctalia-shell.enable = false;
   };
 }

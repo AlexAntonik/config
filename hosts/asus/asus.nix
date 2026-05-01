@@ -71,7 +71,6 @@
     ./../../modules/zsh.nix
     ./../../modules/lang-indicator.nix
     ./../../modules/tailscale.nix
-    ./../../modules/virtmanager.nix
     ./../../modules/gtk.nix
     ./../../modules/qt.nix
     ./../../modules/ghostty.nix
@@ -89,7 +88,7 @@
 
   programs = {
     amnezia-vpn.enable = true;
-    amnezia-vpn.package = pkgs.unstable.amnezia-vpn;
+    amnezia-vpn.package = pkgs.amnezia-vpn;
     localsend.enable = true;
   };
 
@@ -110,7 +109,7 @@
     meson # Build system
     gradle # Build system
     ninja # Build system
-    nixfmt-rfc-style # Nix code formatter
+    nixfmt # Nix code formatter
     pkg-config # Package configuration tool
     # android-studio # Android IDE
     nodejs # JavaScript runtime
@@ -129,7 +128,7 @@
     # Communication & Internet
     discord # Chat and voice communication
     # protonvpn-gui # ProtonVPN client
-    unstable.telegram-desktop # Instant messaging
+    telegram-desktop # Instant messaging
     tor-browser # Privacy-focused browser
     # chromium
     # vesktop #discord alternative web thingne
@@ -138,8 +137,8 @@
     gimp # Image manipulation program
     # audacity # Audio editor
     vlc
-    mpv # Media player
-    yt-dlp # YouTube downloader
+    # mpv # Media player
+    # yt-dlp # YouTube downloader
 
     # Gaming
     # starsector
@@ -148,6 +147,6 @@
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
-
+  home.gtk.gtk4.theme = null; # Remove on 26.05 hm stateVersion
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }

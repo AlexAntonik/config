@@ -1,7 +1,7 @@
 {
   "settingsVersion": 59,
   "bar": {
-    "barType": "simple",
+    "barType": "floating",
     "position": "bottom",
     "monitors": [],
     "density": "compact",
@@ -486,7 +486,7 @@
     "enabled": true,
     "position": "top",
     "displayMode": "auto_hide",
-    "dockType": "attached",
+    "dockType": "floating",
     "backgroundOpacity": 0.76,
     "floatingRatio": 1,
     "size": 1.2,
@@ -628,13 +628,13 @@
     "backlightDeviceMappings": []
   },
   "colorSchemes": {
-    "useWallpaperColors": false,
+    "useWallpaperColors": true,
     "predefinedScheme": "Noctalia (default)",
     "darkMode": true,
     "schedulingMode": "off",
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
-    "generationMethod": "tonal-spot",
+    "generationMethod": "monochrome",
     "monitorForColors": "",
     "syncGsettings": true
   },
