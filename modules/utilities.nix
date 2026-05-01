@@ -26,6 +26,7 @@
     inxi # System information tool
     isd # Systemd services tui
     ipinfo # Lookup ip info
+    whois # Lookup domain info
     killall # Command to kill processes
     lm_sensors # Hardware monitoring
     lshw # Hardware information tool
