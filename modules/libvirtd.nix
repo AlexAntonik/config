@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
+  users.users.${username}.extraGroups = [ "libvirtd" ];
   environment.systemPackages = with pkgs; [
     # Virtualization
     libvirt # Virtualization library
