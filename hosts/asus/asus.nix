@@ -88,7 +88,6 @@
 
   programs = {
     amnezia-vpn.enable = true;
-    amnezia-vpn.package = pkgs.amnezia-vpn;
     localsend.enable = true;
   };
 
