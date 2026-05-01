@@ -3,12 +3,12 @@
   imports = [ ./../../modules/secrets/sops.nix ];
   sops.secrets.asus_cert = {
     sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
-    owner = "alex";
+    owner = "${username}";
     path = "/home/${username}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.asus_key = {
     sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
-    owner = "alex";
+    owner = "${username}";
     path = "/home/${username}/.config/syncthing/keys/key.pem";
   };
   services.syncthing = {
