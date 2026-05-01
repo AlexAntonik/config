@@ -8,7 +8,6 @@
     isNormalUser = true;
     description = "${gitUsername}";
     extraGroups = [
-      "docker"
       "libvirtd"
       "networkmanager"
       "wheel"
