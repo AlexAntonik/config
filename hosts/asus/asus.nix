@@ -136,8 +136,8 @@
     gimp # Image manipulation program
     # audacity # Audio editor
     vlc
-    # mpv # Media player
-    # yt-dlp # YouTube downloader
+    mpv # Media player
+    yt-dlp # YouTube downloader
 
     # Gaming
     # starsector
