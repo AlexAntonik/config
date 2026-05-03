@@ -4,11 +4,26 @@
   ...
 }:
 {
+  env = {
+    # Flake locals
+    username = "user";
+    host = "swprod"; # Must be the same as dir name
+
+    gitUsername = "AlexAntonik";
+    gitEmail = "antonikavv@gmail.com";
+
+    # Time and Locale Settings
+    timeZone = "Europe/Minsk";
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = "en_US.UTF-8";
+
+    stateVersion = "23.11";
+  };
+
   imports = [
     # Host specific config
     ./hardware-configuration.nix
     ./networking.nix
-    ./env.nix
     ./syncthing.nix
 
     # Users

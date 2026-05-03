@@ -1,10 +1,32 @@
 { pkgs, ... }:
 {
+  env = {
+    # Locals
+    username = "alex";
+    host = "asus"; # Must be the same as dir name
+
+    gitUsername = "AlexAntonik";
+    gitEmail = "antonikavv@gmail.com";
+
+    # Devices for some features
+    touchpadID = "asue120b:00-04f3:31c0-touchpad"; # From hyprctl devices
+    keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
+    keyboardScreenOFFLightID = "asus::camera"; # From brightnessctl -l shines when screen and keyboard are off
+    languageLightID = "platform::micmute"; # Same used to indicate not en lang
+
+    # Time and Locale Settings
+    keyboardLayout = "us,ru";
+    timeZone = "Europe/Minsk";
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = "en_US.UTF-8";
+
+    stateVersion = "23.11";
+  };
+
   imports = [
     # Host specific config
     ./hardware.nix
     ./hardware-gen.nix
-    ./env.nix
     ./syncthing.nix
 
     # Users

@@ -1,9 +1,24 @@
 {
+  env = {
+    # Locals
+    username = "alex";
+    host = "dell"; # Must be the same as dir name
+
+    gitUsername = "AlexAntonik";
+    gitEmail = "antonikavv@gmail.com";
+
+    # Time and Locale Settings
+    timeZone = "Europe/Minsk";
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = "en_US.UTF-8";
+
+    stateVersion = "23.11";
+  };
+
   imports = [
     # Host specific config
     ./hardware.nix
     ./hardware-gen.nix
-    ./env.nix
     ./syncthing.nix
 
     # Users

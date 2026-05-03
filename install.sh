@@ -87,13 +87,13 @@ if [ ! -d "$HOME/config" ]; then
     git config --global --unset-all user.name 2>/dev/null || true
     git config --global --unset-all user.email 2>/dev/null || true
 
-    echo -e "${CYAN}Updating env.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./hosts/"$hostName"/env.nix; then
-        echo -e "${RED}Warning: failed to update hostname in env.nix${NC}"
+    echo -e "${CYAN}Updating $hostName.nix with hostname and username...${NC}"
+    if ! sed -i "/^\s*host[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$hostName\"/" ./hosts/"$hostName"/"$hostName".nix; then
+        echo -e "${RED}Warning: failed to update hostname in $hostName.nix${NC}"
     fi
     echo
-    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./hosts/"$hostName"/env.nix; then
-        echo -e "${RED}Warning: failed to update username in env.nix${NC}"
+    if ! sed -i "/^\s*username[[:space:]]*=[[:space:]]*\"/s/\"\(.*\)\"/\"$installusername\"/" ./hosts/"$hostName"/"$hostName".nix; then
+        echo -e "${RED}Warning: failed to update username in $hostName.nix${NC}"
     fi
     echo
     echo -e "${CYAN}Generating The Hardware Configuration${NC}"
@@ -131,12 +131,12 @@ else
     echo -e "${CYAN}Using username: $installusername${NC}"
     echo
 
-    echo -e "${CYAN}Updating env.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*host\s*=\s*\"[^\"]*\";/s/.*/  host = \"$hostName\";/" ./hosts/"$hostName"/env.nix; then
-        echo -e "${RED}Warning: failed to update hostname in env.nix${NC}"
+    echo -e "${CYAN}Updating $hostName.nix with hostname and username...${NC}"
+    if ! sed -i "/^\s*host\s*=\s*\"[^\"]*\";/s/.*/  host = \"$hostName\";/" ./hosts/"$hostName"/"$hostName".nix; then
+        echo -e "${RED}Warning: failed to update hostname in $hostName.nix${NC}"
     fi
-    if ! sed -i "/^\s*username\s*=\s*\"[^\"]*\";/s/.*/  username = \"$installusername\";/" ./hosts/"$hostName"/env.nix; then
-        echo -e "${RED}Warning: failed to update username in env.nix${NC}"
+    if ! sed -i "/^\s*username\s*=\s*\"[^\"]*\";/s/.*/  username = \"$installusername\";/" ./hosts/"$hostName"/"$hostName".nix; then
+        echo -e "${RED}Warning: failed to update username in $hostName.nix${NC}"
     fi
 
     echo
