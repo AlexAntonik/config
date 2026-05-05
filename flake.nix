@@ -26,14 +26,12 @@
   };
 
   outputs = inputs: {
-    nixosConfigurations = builtins.listToAttrs (
-      map (host: {
-        name = host;
-        value = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/${host}/${host}.nix ];
-        };
-      }) (builtins.attrNames (builtins.readDir ./hosts))
+    nixosConfigurations = inputs.nixpkgs.lib.genAttrs (builtins.attrNames (builtins.readDir ./hosts)) (
+      host:
+      inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/${host}/${host}.nix ];
+      }
     );
   };
 }
