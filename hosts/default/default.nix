@@ -136,7 +136,6 @@
     # ninja # Build system
     # nixfmt-rfc-style # Nix code formatter
     # pkg-config # Package configuration tool
-    # android-studio # Android IDE
     # nodejs # JavaScript runtime
     # code-cursor
     # vscode.fhs # Visual Studio Code with FHS environment
@@ -146,7 +145,6 @@
     # postgresql
 
     # Desktop suite
-    # anki # Spaced repetition flashcards
     # libreoffice-qt-still # Office suite
     # obsidian # Personal knowledge base
     # zathura # PDF viewer

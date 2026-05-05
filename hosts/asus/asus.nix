@@ -132,7 +132,6 @@
     ninja # Build system
     nixfmt # Nix code formatter
     pkg-config # Package configuration tool
-    # android-studio # Android IDE
     nodejs # JavaScript runtime
     opencode
     supabase-cli
