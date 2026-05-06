@@ -1,7 +1,7 @@
 name: Auto-merge dependabot pr
-
 on:
   pull_request:
+    branches: [ main, master ]
 
 jobs:
   automerge:
