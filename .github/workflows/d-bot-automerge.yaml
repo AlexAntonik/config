@@ -1,4 +1,5 @@
 name: Auto-merge dependabot pr
+
 on:
   pull_request:
     branches: [main, master]
@@ -9,7 +10,8 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     permissions:
       checks: read
-      contents: read
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Wait for all checks to pass
@@ -21,26 +23,21 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Get changed files
-        id: files
+      - name: Auto-merge if only flake.lock changed
         run: |
           git fetch origin ${{ github.base_ref }}
-          CHANGED=$(git diff --name-only origin/${{ github.base_ref }})
-          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "Changed files: $CHANGED"
 
-      - name: Check only flake.lock changed
-        id: check
-        run: |
-          if [ "${{ steps.files.outputs.changed }}" = "flake.lock" ]; then
-            echo "only_lock=true" >> $GITHUB_OUTPUT
+          if [ "$CHANGED" = "flake.lock" ]; then
+            echo "Only flake.lock changed, merging..."
+            gh pr merge --auto --merge "$PR_URL"
           else
-            echo "only_lock=false" >> $GITHUB_OUTPUT
+            echo "Skipping: changed files were: $CHANGED"
           fi
-
-      - name: Enable auto-merge
-        if: steps.check.outputs.only_lock == 'true'
-        run: gh pr merge --auto --merge "$PR_URL"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
