@@ -17,8 +17,10 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v24
 
-      - name: Evaluate all NixOS configurations
-        id: eval
+      - name: Build all NixOS configurations
+        id: build
+        env:
+          SOPS_DISABLED: 1
         run: |
           success=0
           fail=0
@@ -32,21 +34,21 @@ jobs:
           
           for host in $(ls hosts/ | sort); do
             echo "========================================="
-            echo "Evaluating configuration for $host..."
+            echo "Building configuration for $host..."
             echo "========================================="
             
-            # Evaluate without stopping on error
-            if nix eval .#nixosConfigurations.$host.config.system.build.toplevel.drvPath \
-              --show-trace 2>&1; then
+            # Build without stopping on error
+            if nix build ".#nixosConfigurations.$host.config.system.build.toplevel" \
+              --no-link --no-allow-dirty 2>&1; then
               color="green"
               status="passing"
               success=$((success + 1))
-              echo "✓ $host evaluation succeeded"
+              echo "✓ $host build succeeded"
             else
               color="red"
               status="failing"
               fail=$((fail + 1))
-              echo "✗ $host evaluation failed"
+              echo "✗ $host build failed"
             fi
             
             badges="${badges}![$host](https://badgen.net/badge/$host/$status/$color) "
