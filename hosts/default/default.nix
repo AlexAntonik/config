@@ -83,7 +83,7 @@
     ./../../modules/direnv.nix
     ./../../modules/lazygit.nix
     ./../../modules/vscode/vscode.nix
-    ./../../modules/docker.nix
+    # ./../../modules/docker.nix
     ./../../modules/nvf.nix
 
     # Nix related
@@ -92,16 +92,15 @@
     ./../../modules/options.nix
 
     # Applications
-    ./../../modules/steam.nix
+    # ./../../modules/steam.nix
     ./../../modules/firefox.nix
-    ./../../modules/obs.nix
+    # ./../../modules/obs.nix
 
     # Config & misc
     ./../../modules/time.nix
     ./../../modules/secrets/sops.nix
     ./../../modules/zsh.nix
-    ./../../modules/lang-indicator.nix
-    ./../../modules/tailscale.nix
+    # ./../../modules/tailscale.nix
     ./../../modules/gtk.nix
     ./../../modules/qt.nix
     ./../../modules/ghostty.nix
@@ -128,7 +127,7 @@
     # dart # Dart language
     # kotlin # Kotlin language
     # typescript # EXTREMLY BAD language
-    zulu # Open JDK fast
+    # zulu # Open JDK fast
 
     # Development tools
     # meson # Build system
@@ -141,7 +140,7 @@
     # vscode.fhs # Visual Studio Code with FHS environment
     # supabase-cli
     # unrar # RAR archive extractor
-    # unzip # ZIP archive extractor
+    unzip # ZIP archive extractor
     # postgresql
 
     # Desktop suite
