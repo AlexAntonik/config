@@ -65,7 +65,7 @@ jobs:
         run: |
           cat > hosts_badges.md << 'EOF'
           ## Hosts
-          ${{ steps.eval.outputs.badges }}
+          ${{ steps.build.outputs.badges }}
           EOF
           
           if grep -q "<!-- HOSTS_START -->" README.md && grep -q "<!-- HOSTS_END -->" README.md; then
@@ -90,15 +90,15 @@ jobs:
             git push
           fi
       
-      - name: Check evaluation results
+      - name: Check results
         if: always()
         run: |
-          fail_count="${{ steps.eval.outputs.fail }}"
-          success_count="${{ steps.eval.outputs.success }}"
+          fail_count="${{ steps.build.outputs.fail }}"
+          success_count="${{ steps.build.outputs.success }}"
           
-          echo "::notice::Evaluation summary: $success_count passed, $fail_count failed"
+          echo "::notice::Build summary: $success_count passed, $fail_count failed"
           
           if [ "$fail_count" -gt 0 ]; then
-            echo "::error::$fail_count host(s) failed to evaluate"
+            echo "::error::$fail_count host(s) failed to build"
             exit 1
           fi
