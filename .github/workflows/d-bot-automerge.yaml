@@ -1,36 +1,36 @@
 name: Auto-merge dependabot pr
 on:
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
 
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Get changed files
-      id: files
-      run: |
-        git fetch origin ${{ github.base_ref }}
-        CHANGED=$(git diff --name-only origin/${{ github.base_ref }})
-        echo "changed=$CHANGED" >> $GITHUB_OUTPUT
+      - name: Get changed files
+        id: files
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }})
+          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
 
-    - name: Check only flake.lock changed
-      id: check
-      run: |
-        if [ "${{ steps.files.outputs.changed }}" = "flake.lock" ]; then
-          echo "only_lock=true" >> $GITHUB_OUTPUT
-        else
-          echo "only_lock=false" >> $GITHUB_OUTPUT
-        fi
+      - name: Check only flake.lock changed
+        id: check
+        run: |
+          if [ "${{ steps.files.outputs.changed }}" = "flake.lock" ]; then
+            echo "only_lock=true" >> $GITHUB_OUTPUT
+          else
+            echo "only_lock=false" >> $GITHUB_OUTPUT
+          fi
 
-    - name: Enable auto-merge
-      if: steps.check.outputs.only_lock == 'true'
-      run: gh pr merge --auto --merge "$PR_URL"
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PR_URL: ${{ github.event.pull_request.html_url }}
+      - name: Enable auto-merge
+        if: steps.check.outputs.only_lock == 'true'
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
