@@ -17,6 +17,7 @@ jobs:
         with:
           treat_skipped_as_passed: false
           treat_neutral_as_passed: false
+          retries: '30'
 
       - name: Checkout repository
         uses: actions/checkout@v4
