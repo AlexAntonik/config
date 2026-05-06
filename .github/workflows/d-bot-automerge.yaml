@@ -7,8 +7,17 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
+    permissions:
+      checks: read
+      contents: read
 
     steps:
+      - name: Wait for all checks to pass
+        uses: wechuli/allcheckspassed@v2
+        with:
+          treat_skipped_as_passed: false
+          treat_neutral_as_passed: false
+
       - name: Checkout repository
         uses: actions/checkout@v4
 

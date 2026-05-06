@@ -23,6 +23,6 @@
     # This is the actual specification of the secrets.
     # sops.secrets.example-key = {};
     # sops.secrets."myservice/my_subdir/my_secret" = {};
-    validateSopsFiles = !builtins.pathExists ./.disable-sops;
+    validateSopsFiles = false;
   };
 }
