@@ -16,11 +16,12 @@ jobs:
       
       - name: Install Nix
         uses: cachix/install-nix-action@v24
+      
+      - name: Create .disable-sops for CI
+        run: touch .disable-sops
 
       - name: Build all NixOS configurations
         id: build
-        env:
-          SOPS_DISABLED: 1
         run: |
           success=0
           fail=0
