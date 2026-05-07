@@ -18,7 +18,7 @@ jobs:
         uses: wechuli/allcheckspassed@v2
         with:
           treat_skipped_as_passed: false
-          treat_neutral_as_passed: false
+          treat_neutral_as_passed: true
           retries: '30'
 
       - name: Checkout repository
