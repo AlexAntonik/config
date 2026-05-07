@@ -2,13 +2,7 @@ version: 2
 
 updates:
   - package-ecosystem: "nix"
+    open-pull-requests-limit: 1
     directory: "/"
     schedule:
       interval: "daily"
-
-    open-pull-requests-limit: 1
-
-    groups:
-      nix-deps:
-        patterns:
-          - "*"
