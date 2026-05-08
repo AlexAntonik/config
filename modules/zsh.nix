@@ -53,6 +53,8 @@
       change-host = "sh /home/${username}/config/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       lg = "lazygit";
+      gpl = "git pull --rebase";
+      gps = "git push";
       gst = "git status";
       man = "batman";
       ls = "eza --icons --group-directories-first -1";
