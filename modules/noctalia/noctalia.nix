@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 {
@@ -9,6 +10,9 @@
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
   };
+  environment.systemPackages = [
+    inputs.noctaliav5.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
   home.imports = [ inputs.noctalia.homeModules.default ];
   home.programs.noctalia-shell = {
     enable = true;
