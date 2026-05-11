@@ -8,7 +8,6 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
-    continue-on-error: true
     permissions:
       checks: read
       contents: write
@@ -16,6 +15,8 @@ jobs:
 
     steps:
       - name: Wait for all checks to pass
+        continue-on-error: true
+        id: checks
         uses: wechuli/allcheckspassed@v2
         with:
           treat_skipped_as_passed: false
