@@ -4,11 +4,11 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
-    plugins = {
-      lazygit = pkgs.yaziPlugins.lazygit;
-      full-border = pkgs.yaziPlugins.full-border;
-      git = pkgs.yaziPlugins.git;
-      smart-enter = pkgs.yaziPlugins.smart-enter;
+    plugins = with pkgs.yaziPlugins;{
+      inherit lazygit;
+      inherit full-border;
+      inherit git;
+      inherit smart-enter;
     };
 
     initLua = ''
