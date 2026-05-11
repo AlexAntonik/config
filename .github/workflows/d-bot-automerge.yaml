@@ -20,13 +20,24 @@ jobs:
           treat_skipped_as_passed: false
           treat_neutral_as_passed: true
           retries: '30'
+      
+      - name: Close PR if checks failed
+        if: steps.checks.outcome == 'failure'
+        run: |
+          echo "Checks failed, closing PR..."
+          gh pr close "$PR_URL" --comment "❌ Auto-closing: one or more checks failed."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
 
       - name: Checkout repository
+        if: steps.checks.outcome == 'success'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Auto-merge if only flake.lock changed
+        if: steps.checks.outcome == 'success'
         run: |
           git fetch origin ${{ github.base_ref }}
           CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
