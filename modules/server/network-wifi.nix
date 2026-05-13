@@ -2,15 +2,14 @@
   host,
   options,
   lib,
-  username,
   ...
 }:
 {
-  users.users.${username}.extraGroups = [
+  users.users.${host.username}.extraGroups = [
     "networkmanager"
   ];
   networking = {
-    hostName = "${host}";
+    hostName = "${host.hostname}";
     # avoid checking if IP is already taken to boot a few seconds faster
     dhcpcd.extraConfig = "noarp";
     # no need to wait interfaces to have an IP to continue booting

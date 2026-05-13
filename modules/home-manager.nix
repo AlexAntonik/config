@@ -1,9 +1,4 @@
-{
-  inputs,
-  username,
-  stateVersion,
-  ...
-}:
+{ host, inputs, ... }:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
@@ -13,11 +8,11 @@
     extraSpecialArgs = {
       inherit inputs;
     };
-    users.${username} = {
+    users.${host.username} = {
       home = {
-        username = "${username}";
-        homeDirectory = "/home/${username}";
-        stateVersion = "${stateVersion}";
+        username = "${host.username}";
+        homeDirectory = "/home/${host.username}";
+        stateVersion = "${host.stateVersion}";
       };
     };
   };

@@ -1,10 +1,6 @@
+{ inputs, host, ... }:
 {
-  inputs,
-  stateVersion,
-  ...
-}:
-{
-  system.stateVersion = "${stateVersion}";
+  system.stateVersion = "${host.stateVersion}";
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {

@@ -1,8 +1,8 @@
-{ pkgs, username, ... }:
+{ pkgs, host, ... }:
 {
   virtualisation.docker.enable = true;
   
-  users.users.${username}.extraGroups = [ "docker" ];
+  users.users.${host.username}.extraGroups = [ "docker" ];
 
   environment.systemPackages = with pkgs; [
     docker-compose     # Multi-container orchestration

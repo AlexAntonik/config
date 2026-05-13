@@ -1,7 +1,7 @@
-{ pkgs, username, ... }:
+{ pkgs, host, ... }:
 {
   virtualisation.libvirtd.enable = true;
-  users.users.${username}.extraGroups = [ "libvirtd" ];
+  users.users.${host.username}.extraGroups = [ "libvirtd" ];
   environment.systemPackages = with pkgs; [
     # Virtualization
     libvirt # Virtualization library

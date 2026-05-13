@@ -1,11 +1,11 @@
-{ touchpadID, pkgs, ... }:
+{ host, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
    (writeShellScriptBin
     "toggle_touchpad"
     ''
 
-      HYPRLAND_DEVICE="${touchpadID}"
+      HYPRLAND_DEVICE="${host.touchpadID}"
       HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
 
       if [ -z "$XDG_RUNTIME_DIR" ]; then

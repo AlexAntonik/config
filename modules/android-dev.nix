@@ -1,6 +1,6 @@
-{ pkgs, username, ... }:
+{ pkgs, host, ... }:
 {
-  users.users.${username}.extraGroups = [
+  users.users.${host.username}.extraGroups = [
     "kvm"
     "adbusers"
   ];

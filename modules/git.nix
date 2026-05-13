@@ -1,9 +1,4 @@
-{
-  gitEmail,
-  gitUsername,
-  pkgs,
-  ...
-}:
+{ host, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     gh # GitHub cli
@@ -14,8 +9,8 @@
     enable = true;
     config = {
       user = {
-        name = gitUsername;
-        email = gitEmail;
+        name = host.gitUsername;
+        email = host.gitEmail;
       };
       init.defaultBranch = "main";
       pull.rebase = false;

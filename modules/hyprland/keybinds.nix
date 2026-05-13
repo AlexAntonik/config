@@ -1,13 +1,10 @@
-{
-  keyboardLayout,
-  keyboardLightID,
-  pkgs,
-  ...
-}: let
+{ host, pkgs, ... }:
+let
   toggleoffspecial = pkgs.writeShellScript "toggleoffspecial" ''
     ${pkgs.hyprland}/bin/hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[] | select(.focused == true) | .specialWorkspace.name' | sed 's/special://' | xargs -I [] ${pkgs.hyprland}/bin/hyprctl dispatch togglespecialworkspace []
   '';
-in {
+in
+{
   wayland.windowManager.hyprland.settings = {
     # Gesture settings (for touchpads/touchscreens)
     gesture = [
@@ -19,7 +16,7 @@ in {
 
     # Input device settings
     input = {
-      kb_layout = "${keyboardLayout}";
+      kb_layout = "${host.keyboardLayout}";
       numlock_by_default = true;
       repeat_delay = 300;
       follow_mouse = 1; # Focus follows mouse
@@ -33,8 +30,8 @@ in {
 
     # Repeatable actions
     bindle = [
-      "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${keyboardLightID} s 1%-"
-      "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${keyboardLightID} s 1%+"
+      "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${host.keyboardLightID} s 1%-"
+      "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${host.keyboardLightID} s 1%+"
       ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
       ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
       ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -50,7 +47,7 @@ in {
       "SUPER, mouse:272, movewindow"
       "SUPER, mouse:273, resizewindow"
     ];
-    
+
     bindr = [
       "SUPER, SUPER_L, exec, double-click noctalia-shell ipc call bar peek"
     ];

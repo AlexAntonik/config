@@ -1,14 +1,14 @@
-{ username, gitUsername, ... }:
+{ host, ... }:
 {  
   users.mutableUsers = true;
-  users.users.${username} = {
+  users.users.${host.username} = {
     isNormalUser = true;
-    description = "${gitUsername}";
+    description = "${host.gitUsername}";
     extraGroups = [
       "input"
       "wheel"
     ]; 
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${username}" ];
+  nix.settings.allowed-users = [ "${host.username}" ];
 }

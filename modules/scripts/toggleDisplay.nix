@@ -1,11 +1,8 @@
-{
-  keyboardLightID,
-  keyboardScreenOFFLightID,
-  pkgs,
-  ...
-}:
+{host,  pkgs,  ...}:
 let
   statusFile = "$XDG_RUNTIME_DIR/display.status"; # must be same with hipridle
+  kbLightID = host.keyboardLightID;
+  kbScreenOFFLightID = host.keyboardScreenOFFLightID;
 in
 {
   environment.systemPackages = with pkgs; [
@@ -21,15 +18,15 @@ in
       enable_display() {
         printf "true" >"$STATUS_FILE"
         hyprctl dispatch dpms on
-        brightnessctl -d ${keyboardLightID} s 100
-        brightnessctl -d ${keyboardScreenOFFLightID} s 0
+        brightnessctl -d ${kbLightID} s 100
+        brightnessctl -d ${kbScreenOFFLightID} s 0
       }
 
       disable_display() {
         printf "false" >"$STATUS_FILE"
         hyprctl dispatch dpms off
-        brightnessctl -d ${keyboardLightID} s 0
-        brightnessctl -d ${keyboardScreenOFFLightID} s 100
+        brightnessctl -d ${kbLightID} s 0
+        brightnessctl -d ${kbScreenOFFLightID} s 100
       }
 
       if ! [ -f "$STATUS_FILE" ]; then

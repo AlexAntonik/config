@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  env = {
+  host = {
     # Locals
     username = "default";
-    host = "default"; # Must be the same as dir name(as in quotes - hosts/"default"/)
+    hostname = "default"; # Must be the same as dir name(as in quotes - hosts/"default"/)
 
     # Git Configuration ( For Pulling Software Repos )
     gitUsername = "AlexAntonik";

@@ -6,9 +6,9 @@
 }:
 {
   options = {
-    env = lib.mkOption {
+    host = lib.mkOption {
       type = lib.types.attrs;
-      description = "Host enviroment variables accessible in all modules";
+      description = "Host environment variables accessible in all modules";
     };
     home = lib.mkOption {
       type = lib.types.deferredModule;
@@ -16,11 +16,13 @@
     };
   };
 
-  config = {
-    _module.args = config.env;
+config = lib.mkMerge [
+  {
+    _module.args.host = config.host;
   }
-  // lib.optionalAttrs (options ? home-manager) {
-    home-manager.users."${config.env.username}" = config.home;
-    home-manager.extraSpecialArgs = config.env;
-  };
+  (lib.mkIf (options ? home-manager) {
+    home-manager.users.${config.host.username} = config.home;
+    home-manager.extraSpecialArgs.host = config.host;
+  })
+];
 }

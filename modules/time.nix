@@ -1,21 +1,16 @@
+{ host, ... }:
 {
-  timeZone,
-  defaultLocale,
-  extraLocaleSettings,
-  ...
-}:
-{
-  time.timeZone = "${timeZone}";
-  i18n.defaultLocale = "${defaultLocale}";
+  time.timeZone = "${host.timeZone}";
+  i18n.defaultLocale = "${host.defaultLocale}";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "${extraLocaleSettings}";
-    LC_IDENTIFICATION = "${extraLocaleSettings}";
-    LC_MEASUREMENT = "${extraLocaleSettings}";
-    LC_MONETARY = "${extraLocaleSettings}";
-    LC_NAME = "${extraLocaleSettings}";
-    LC_NUMERIC = "${extraLocaleSettings}";
-    LC_PAPER = "${extraLocaleSettings}";
-    LC_TELEPHONE = "${extraLocaleSettings}";
-    LC_TIME = "${extraLocaleSettings}";
+    LC_ADDRESS = "${host.extraLocaleSettings}";
+    LC_IDENTIFICATION = "${host.extraLocaleSettings}";
+    LC_MEASUREMENT = "${host.extraLocaleSettings}";
+    LC_MONETARY = "${host.extraLocaleSettings}";
+    LC_NAME = "${host.extraLocaleSettings}";
+    LC_NUMERIC = "${host.extraLocaleSettings}";
+    LC_PAPER = "${host.extraLocaleSettings}";
+    LC_TELEPHONE = "${host.extraLocaleSettings}";
+    LC_TIME = "${host.extraLocaleSettings}";
   };
 }

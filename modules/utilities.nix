@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs = {
     fuse.userAllowOther = true; # Allow users to mount FUSE filesystems
     mtr.enable = true; # My traceroute
@@ -10,7 +11,7 @@
 
   environment.systemPackages = with pkgs; [
     wireguard-tools # WireGuard tools
-    fastfetch # Modern neofetch    
+    fastfetch # Modern neofetch
     bottom # another tui system usage interface
     btop # Better htop
     fzf # Fuzzy search
@@ -18,7 +19,7 @@
     cloc # Count lines of code
     duf # Utility for viewing disk usage in terminal
     dysk # Get information on your mounted disks tool
-    dig # DNS tests 
+    dig # DNS tests
     eza # Beautiful ls replacement
     gawk # GNU awk
     htop # Simple terminal-based system monitor

@@ -1,8 +1,8 @@
 {
-  env = {
+  host = {
     # Locals
     username = "alex";
-    host = "dell"; # Must be the same as dir name
+    hostname = "dell"; # Must be the same as dir name
 
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";

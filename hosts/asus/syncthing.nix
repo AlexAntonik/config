@@ -1,24 +1,24 @@
-{ username, ... }:
+{ host, ... }:
 {
   imports = [ ./../../modules/secrets/sops.nix ];
   sops.secrets.asus_cert = {
-    sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
-    owner = "${username}";
-    path = "/home/${username}/.config/syncthing/keys/cert.pem";
+    sopsFile = "/home/${host.username}/config/modules/secrets/syncthing.yaml";
+    owner = "${host.username}";
+    path = "/home/${host.username}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.asus_key = {
-    sopsFile = "/home/${username}/config/modules/secrets/syncthing.yaml";
-    owner = "${username}";
-    path = "/home/${username}/.config/syncthing/keys/key.pem";
+    sopsFile = "/home/${host.username}/config/modules/secrets/syncthing.yaml";
+    owner = "${host.username}";
+    path = "/home/${host.username}/.config/syncthing/keys/key.pem";
   };
   services.syncthing = {
     enable = true;
-    key = "/home/${username}/.config/syncthing/keys/key.pem";
-    cert = "/home/${username}/.config/syncthing/keys/cert.pem";
+    key = "/home/${host.username}/.config/syncthing/keys/key.pem";
+    cert = "/home/${host.username}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
-    dataDir = "/home/${username}/.local/share/syncthing";
-    configDir = "/home/${username}/.config/syncthing";
-    user = "${username}";
+    dataDir = "/home/${host.username}/.local/share/syncthing";
+    configDir = "/home/${host.username}/.config/syncthing";
+    user = "${host.username}";
     settings = {
       devices = {
         "dell" = {
@@ -30,12 +30,12 @@
       };
       folders = {
         "Notes" = {
-          path = "/home/${username}/notes";
+          path = "/home/${host.username}/notes";
           devices = [ "dell" ];
           ignorePermissions = true;
         };
         "Server" = {
-          path = "/home/${username}/projects/srv";
+          path = "/home/${host.username}/projects/srv";
           devices = [
             "dell"
           ];
@@ -49,7 +49,7 @@
           ignorePermissions = true;
         };
         "Prod" = {
-          path = "/home/${username}/projects/prod/backup";
+          path = "/home/${host.username}/projects/prod/backup";
           type = "receiveonly";
           versioning = {
             type = "staggered";
@@ -62,7 +62,7 @@
           ignorePermissions = true;
         };
         "ServerTransfer" = {
-          path = "/home/${username}/projects/srv/transfer";
+          path = "/home/${host.username}/projects/srv/transfer";
           devices = [ "swop" ];
           ignorePermissions = true;
         };

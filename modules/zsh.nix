@@ -1,16 +1,11 @@
-{
-  pkgs,
-  host,
-  username,
-  ...
-}:
+{ pkgs, host, ... }:
 {
   environment.systemPackages = with pkgs; [
     ghostty # needed even on srv to proper ssh
     zsh-history-substring-search
   ];
   systemd.tmpfiles.rules = [
-    "f /home/${username}/.zshrc 0644 ${username} users - -"
+    "f /home/${host.username}/.zshrc 0644 ${host.username} users - -"
   ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
@@ -48,9 +43,9 @@
       sv = "sudo nvim";
       v = "nvim";
       c = "clear";
-      fr = "nh os switch --hostname ${host} --diff=always";
-      fu = "nh os switch --hostname ${host} --update --diff=always";
-      change-host = "sh /home/${username}/config/install.sh";
+      fr = "nh os switch --hostname ${host.hostname} --diff=always";
+      fu = "nh os switch --hostname ${host.hostname} --update --diff=always";
+      change-host = "sh /home/${host.username}/config/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       lg = "lazygit";
       gpl = "git pull --rebase";
@@ -63,23 +58,23 @@
       tree = "eza --icons --tree --group-directories-first";
       f = "fzf";
 
-      noctalia-export = "noctalia-shell ipc call state all | jq '.settings' > /home/${username}/config/modules/noctalia/settings.json";
+      noctalia-export = "noctalia-shell ipc call state all | jq '.settings' > /home/${host.username}/config/modules/noctalia/settings.json";
       ytdm = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
       ytdv = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(title)s.%(ext)s\"";
       ytdp = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s\"";
 
-      backup-list = "borg list /home/${username}/projects/srv/backup/borg-repo";
-      backup-info = "borg info /home/${username}/projects/srv/backup/borg-repo";
-      backup-show = "borg list /home/${username}/projects/srv/backup/borg-repo::";
+      backup-list = "borg list /home/${host.username}/projects/srv/backup/borg-repo";
+      backup-info = "borg info /home/${host.username}/projects/srv/backup/borg-repo";
+      backup-show = "borg list /home/${host.username}/projects/srv/backup/borg-repo::";
 
-      backup-restore-last = "mkdir -p /home/${username}/restored && cd /home/${username}/restored && borg extract \"/home/${username}/projects/srv/backup/borg-repo::\$(borg list /home/${username}/projects/srv/backup/borg-repo --short | tail -1)\"";
-      backup-restore = "mkdir -p /home/${username}/restored && cd /home/${username}/restored && borg extract \"/home/${username}/projects/srv/backup/borg-repo::\"";
+      backup-restore-last = "mkdir -p /home/${host.username}/restored && cd /home/${host.username}/restored && borg extract \"/home/${host.username}/projects/srv/backup/borg-repo::\$(borg list /home/${host.username}/projects/srv/backup/borg-repo --short | tail -1)\"";
+      backup-restore = "mkdir -p /home/${host.username}/restored && cd /home/${host.username}/restored && borg extract \"/home/${host.username}/projects/srv/backup/borg-repo::\"";
 
-      backup-mount = "mkdir -p /home/${username}/borg_mount && borg mount /home/${username}/projects/srv/backup/borg-repo /home/${username}/borg_mount";
-      backup-unmount = "fusermount -u /home/${username}/borg_mount";
+      backup-mount = "mkdir -p /home/${host.username}/borg_mount && borg mount /home/${host.username}/projects/srv/backup/borg-repo /home/${host.username}/borg_mount";
+      backup-unmount = "fusermount -u /home/${host.username}/borg_mount";
 
-      backup-stats = "borg info /home/${username}/projects/srv/backup/borg-repo --json | jq '.archives | length'";
-      backup-size = "borg info /home/${username}/projects/srv/backup/borg-repo";
+      backup-stats = "borg info /home/${host.username}/projects/srv/backup/borg-repo --json | jq '.archives | length'";
+      backup-size = "borg info /home/${host.username}/projects/srv/backup/borg-repo";
 
       backup-run = "sudo systemctl start borgbackup-job-daily-backup.service";
       backup-status = "systemctl status borgbackup-job-daily-backup.service";

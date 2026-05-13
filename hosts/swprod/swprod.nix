@@ -4,10 +4,10 @@
   ...
 }:
 {
-  env = {
+  host = {
     # Flake locals
     username = "user";
-    host = "swprod"; # Must be the same as dir name
+    hostname = "swprod"; # Must be the same as dir name
 
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";

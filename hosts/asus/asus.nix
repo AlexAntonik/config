@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  env = {
+  host = {
     # Locals
     username = "alex";
-    host = "asus"; # Must be the same as dir name
+    hostname = "asus"; # Must be the same as dir name
 
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";

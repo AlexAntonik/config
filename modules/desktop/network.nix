@@ -3,16 +3,15 @@
   host,
   options,
   lib,
-  username,
   ...
 }:
 {
-  users.users.${username}.extraGroups = [
+  users.users.${host.username}.extraGroups = [
     "networkmanager"
   ];
   services.resolved.enable = true;
   networking = {
-    hostName = "${host}";
+    hostName = "${host.hostname}";
     useDHCP = lib.mkDefault true;
 
     networkmanager = {

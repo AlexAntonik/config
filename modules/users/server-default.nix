@@ -1,16 +1,16 @@
-{ username, gitUsername, ... }:
+{ host, ... }:
 {
   users.mutableUsers = true;
-  users.users.${username} = {
+  users.users.${host.username} = {
     openssh.authorizedKeys.keys = [
       ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILUSJwUYV0e+h3Rj4+YvrsqHuolIh45KHg9Lttid1+KI alex@alex''
     ];
     isNormalUser = true;
-    description = "${gitUsername}";
+    description = "${host.gitUsername}";
     extraGroups = [
       "wheel"
     ];
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "${username}" ];
+  nix.settings.allowed-users = [ "${host.username}" ];
 }

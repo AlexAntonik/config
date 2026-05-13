@@ -119,7 +119,7 @@ in
       SearchSuggestEnabled = true;
 
       ExtensionSettings = builtins.listToAttrs (
-        builtins.map (id: {
+        map (id: {
           name = id;
           value = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
