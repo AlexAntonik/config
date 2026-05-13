@@ -21,7 +21,7 @@ jobs:
         with:
           treat_skipped_as_passed: false
           treat_neutral_as_passed: true
-          retries: '30'
+          retries: '60'
       
       - name: Close PR if checks failed
         if: steps.checks.outcome == 'failure'
