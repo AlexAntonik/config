@@ -2,7 +2,7 @@
 
 <!-- HOSTS_START -->
 ## Hosts
-![asus](https://badgen.net/badge/asus/passing/green) ![default](https://badgen.net/badge/default/passing/green) ![dell](https://badgen.net/badge/dell/passing/green) ![swprod](https://badgen.net/badge/swprod/passing/green) 
+![asus](https://badgen.net/badge/asus/passing/green) ![default](https://badgen.net/badge/default/passing/green) ![dell](https://badgen.net/badge/dell/failing/red) ![swprod](https://badgen.net/badge/swprod/failing/red) 
 <!-- HOSTS_END -->
 
 #### Requirements
