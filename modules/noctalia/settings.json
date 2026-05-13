@@ -256,8 +256,8 @@
     "smoothScrollEnabled": true
   },
   "ui": {
-    "fontDefault": "Montserrat",
-    "fontFixed": "JetBrains Mono",
+    "fontDefault": "Montserrat SemiBold",
+    "fontFixed": "JetBrainsMono NFM SemiBold",
     "fontDefaultScale": 1,
     "fontFixedScale": 1.24,
     "tooltipsEnabled": true,
