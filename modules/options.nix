@@ -16,13 +16,13 @@
     };
   };
 
-config = lib.mkMerge [
-  {
-    _module.args.host = config.host;
-  }
-  (lib.mkIf (options ? home-manager) {
-    home-manager.users.${config.host.username} = config.home;
-    home-manager.extraSpecialArgs.host = config.host;
-  })
-];
+  config = lib.mkMerge [
+    {
+      _module.args.host = config.host;
+    }
+    (lib.optionalAttrs (options ? home-manager) {
+      home-manager.users.${config.host.username} = config.home;
+      home-manager.extraSpecialArgs.host = config.host;
+    })
+  ];
 }
