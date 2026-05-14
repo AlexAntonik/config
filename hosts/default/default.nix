@@ -2,7 +2,7 @@
 {
   host = {
     # Locals
-    # username = "default";
+    username = "default";
     hostname = "default"; # Must be the same as dir name(as in quotes - hosts/"default"/)
 
     # Git Configuration ( For Pulling Software Repos )
