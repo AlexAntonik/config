@@ -83,7 +83,6 @@ jobs:
         with:
           pattern: result-*
           path: results
-          merge-multiple: true
 
       - name: Build badges and check failures
         id: summary
@@ -100,7 +99,8 @@ jobs:
           badges=""
 
           while IFS= read -r host; do
-            status=$(tr -d '[:space:]' < "results/${host}")
+            status=$(tr -d '[:space:]' < "results/result-${host}/${host}")
+
             if [ "${status}" = "passing" ]; then
               color="green"
               success=$(( success + 1 ))
@@ -115,3 +115,11 @@ jobs:
           echo "success=${success}" >> "${GITHUB_OUTPUT}"
           echo "fail=${fail}"       >> "${GITHUB_OUTPUT}"
           echo "Total: ${success} succeeded, ${fail} failed"
+
+      - name: Fail if any host failed
+        run: |
+          fail="${{ steps.summary.outputs.fail }}"
+          if [ "${fail:-0}" -gt 0 ]; then
+            echo "::error::${fail} host(s) failed to build"
+            exit 1
+          fi
