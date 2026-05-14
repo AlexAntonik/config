@@ -13,7 +13,7 @@ jobs:
       hosts: ${{ steps.list.outputs.hosts }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: List hosts
         id: list
@@ -34,7 +34,7 @@ jobs:
         host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install Nix
         uses: cachix/install-nix-action@v24
@@ -63,7 +63,7 @@ jobs:
 
       - name: Upload result artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: result-${{ matrix.host }}
           path: results/${{ matrix.host }}
@@ -76,10 +76,10 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download all results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: result-*
           path: results
@@ -88,13 +88,30 @@ jobs:
       - name: Build badges and check failures
         id: summary
         run: |
-          badges=""
-          fail=0
-          success=0
+          set -euo pipefail
 
-          if [ ! -d results ] || [ -z "$(ls -A results/)" ]; then
+          if [ ! -d results ] || [ -z "$(ls -A results/ 2>/dev/null)" ]; then
             echo "::error::No result files found"
             exit 1
           fi
 
-          for file in $(ls results/ |
+          fail=0
+          success=0
+          badges=""
+
+          while IFS= read -r host; do
+            status=$(tr -d '[:space:]' < "results/${host}")
+            if [ "${status}" = "passing" ]; then
+              color="green"
+              success=$(( success + 1 ))
+            else
+              color="red"
+              fail=$(( fail + 1 ))
+            fi
+            badges="${badges}![${host}](https://badgen.net/badge/${host}/${status}/${color}) "
+          done < <(ls results/ | sort)
+
+          echo "badges=${badges}"   >> "${GITHUB_OUTPUT}"
+          echo "success=${success}" >> "${GITHUB_OUTPUT}"
+          echo "fail=${fail}"       >> "${GITHUB_OUTPUT}"
+          echo "Total: ${success} succeeded, ${fail} failed"
