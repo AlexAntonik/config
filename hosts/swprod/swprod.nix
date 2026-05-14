@@ -51,7 +51,6 @@
     # Nix related
     ./../../modules/nix.nix
     ./../../modules/nh.nix
-    ./../../modules/options.nix
 
     # Services & ops
     ./../../modules/server/bkp.nix

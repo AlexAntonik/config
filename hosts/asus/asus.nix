@@ -81,7 +81,6 @@
     # Nix related
     ./../../modules/nix.nix
     ./../../modules/nh.nix
-    ./../../modules/options.nix
 
     # Applications
     ./../../modules/steam.nix

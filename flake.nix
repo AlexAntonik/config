@@ -22,7 +22,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     noctalia.url = "github:noctalia-dev/noctalia-shell";
-    noctaliav5.url ="github:noctalia-dev/noctalia-shell/v5";
+    noctaliav5.url = "github:noctalia-dev/noctalia-shell/v5";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -31,7 +31,10 @@
       host:
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [ ./hosts/${host}/${host}.nix ];
+        modules = [
+          ./lib/options.nix
+          ./hosts/${host}/${host}.nix
+        ];
       }
     );
   };

@@ -50,7 +50,6 @@
     # Nix related
     ./../../modules/nh.nix
     ./../../modules/nix.nix
-    ./../../modules/options.nix
 
     # Config & misc
     ./../../modules/time.nix
