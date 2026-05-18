@@ -3,8 +3,7 @@ name: Dependabot check
 on:
   pull_request:
     branches: [main, master]
-  pull_request_review:
-    types: [submitted]
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
   dependabot-check:
