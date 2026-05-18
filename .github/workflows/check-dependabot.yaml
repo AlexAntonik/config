@@ -1,0 +1,97 @@
+name: Dependabot check
+
+on:
+  pull_request:
+    branches: [main, master]
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  dependabot-check:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    permissions:
+      checks: read
+      contents: write
+      pull-requests: write
+      statuses: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check that only flake.lock changed
+        id: file_check
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "Changed files: $CHANGED"
+
+          if [ "$CHANGED" != "flake.lock" ]; then
+            echo "result=fail" >> "$GITHUB_OUTPUT"
+            echo "::error::Expected only flake.lock to change, but got: $CHANGED"
+          else
+            echo "result=ok" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fail if unexpected files changed
+        if: steps.file_check.outputs.result == 'fail'
+        run: |
+          echo "::error::Dependabot PR changed files other than flake.lock. Failing."
+          exit 1
+
+
+      - name: Wait for all checks to pass
+        if: steps.file_check.outputs.result == 'ok'
+        id: checks
+        uses: wechuli/allcheckspassed@v2
+        with:
+          treat_skipped_as_passed: true
+          treat_neutral_as_passed: true
+          retries: "120"
+          polling_interval: "30"
+          exclude_checks: "dependabot-check"
+
+      - name: Update PR if outdated (rebase onto base branch)
+        if: >
+          steps.file_check.outputs.result == 'ok' &&
+          steps.checks.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          # Check if the PR is behind the base branch
+          git fetch origin "$BASE_REF" "$HEAD_REF"
+
+          BASE_SHA=$(git rev-parse "origin/$BASE_REF")
+          MERGE_BASE=$(git merge-base "origin/$HEAD_REF" "origin/$BASE_REF")
+
+          if [ "$MERGE_BASE" != "$BASE_SHA" ]; then
+            echo "PR is outdated, updating via API..."
+            gh pr update-branch "$PR_NUMBER"
+            echo "::notice::PR updated. Checks will re-run automatically."
+            # Exit 0 — this check will be re-triggered after push
+            exit 0
+          fi
+
+          echo "PR is up to date."
+
+      - name: Automerge if passed
+        if: >
+          steps.file_check.outputs.result == 'ok' &&
+          steps.checks.outcome == 'success'
+        run: |
+          echo "::notice::All checks passed and only flake.lock was changed. ✅"
+          gh pr merge --auto --merge "$PR_URL"
+
+      - name: Fail if checks did not pass
+        if: >
+          steps.file_check.outputs.result == 'ok' &&
+          steps.checks.outcome != 'success'
+        run: |
+          echo "::error::One or more required checks failed or timed out."
+          exit 1

@@ -124,6 +124,7 @@
     # Development tools
 
     gcc
+    impression
     unrar # RAR archive extractor
     unzip # ZIP archive extractor
     meson # Build system
