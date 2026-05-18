@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  host,
   ...
 }:
 {
@@ -13,33 +14,37 @@
   environment.systemPackages = [
     inputs.noctaliav5.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-  home.imports = [ inputs.noctalia.homeModules.default ];
-  home.programs.noctalia-shell = {
-    enable = true;
-    settings = builtins.fromJSON (builtins.readFile ./settings.json);
-    plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
-      ];
-      states = {
-        timer = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        screen-recorder = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        tailscale = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+  home =
+    { config, ... }:
+    {
+      imports = [ inputs.noctalia.homeModules.default ];
+      home.file.".config/noctalia/settings.json".source = config.lib.file.mkOutOfStoreSymlink "/home/${host.username}/config/modules/noctalia/settings.json";
+      programs.noctalia-shell = {
+        enable = true;
+        plugins = {
+          sources = [
+            {
+              enabled = true;
+              name = "Official Noctalia Plugins";
+              url = "https://github.com/noctalia-dev/noctalia-plugins";
+            }
+          ];
+          states = {
+            timer = {
+              enabled = true;
+              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+            };
+            screen-recorder = {
+              enabled = true;
+              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+            };
+            tailscale = {
+              enabled = true;
+              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+            };
+          };
+          version = 1;
         };
       };
-      version = 1;
     };
-  };
 }
