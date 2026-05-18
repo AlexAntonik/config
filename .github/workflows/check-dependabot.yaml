@@ -51,7 +51,7 @@ jobs:
         with:
           treat_skipped_as_passed: true
           treat_neutral_as_passed: true
-          retries: "60"
+          retries: "120"
           polling_interval: "30"
           exclude_checks: "dependabot-check"
 
@@ -81,12 +81,13 @@ jobs:
 
           echo "PR is up to date."
 
-      - name: Mark check as passed
+      - name: Automerge if passed
         if: >
           steps.file_check.outputs.result == 'ok' &&
           steps.checks.outcome == 'success'
         run: |
           echo "::notice::All checks passed and only flake.lock was changed. ✅"
+          gh pr merge --auto --merge "$PR_URL"
 
       - name: Fail if checks did not pass
         if: >
