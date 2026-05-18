@@ -44,6 +44,7 @@ jobs:
           exit 1
 
 
+      - name: Wait for all checks to pass
         if: steps.file_check.outputs.result == 'ok'
         id: checks
         uses: wechuli/allcheckspassed@v2
@@ -52,7 +53,6 @@ jobs:
           treat_neutral_as_passed: true
           retries: "60"
           polling_interval: "30"
-          # Exclude this check itself to avoid a deadlock
           exclude_checks: "dependabot-check"
 
       - name: Update PR if outdated (rebase onto base branch)
