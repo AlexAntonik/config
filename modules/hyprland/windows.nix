@@ -97,7 +97,6 @@
 
     # Dwindle layout specific settings
     dwindle = {
-      pseudotile = true; # Master window takes half the screen
       preserve_split = true; # Preserve split direction when closing windows
     };
 

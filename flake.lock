@@ -232,6 +232,26 @@
         "type": "github"
       }
     },
+    "nirimod": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778959344,
+        "narHash": "sha256-hnTZCUABp9ruM3PWJUtfDCjOlgojd65JzflSWhZZ7IE=",
+        "owner": "srinivasr",
+        "repo": "nirimod",
+        "rev": "699483e1f809ac48402cfc200b9c0fee22a11cf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "srinivasr",
+        "repo": "nirimod",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -433,6 +453,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nirimod": "nirimod",
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",

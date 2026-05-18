@@ -5,6 +5,18 @@
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
+  xdg.portal = {
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    configPackages = [ pkgs.hyprland ];
+  };
+
+  home.xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland # Hyprland-specific portal
+    ];
+    config.common.default = [ "hyprland" ];
+  };
   home = {
     imports = [
       ./keybinds.nix

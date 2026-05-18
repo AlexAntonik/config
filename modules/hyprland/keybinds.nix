@@ -75,7 +75,6 @@ in
       # --- Window Management ---
       "SUPER,Q,killactive," # Close active window
       "SUPER SHIFT,P,pin," # Pin window
-      "SUPER SHIFT,I,togglesplit," # Toggle split
       "SUPER,F,fullscreen," # Toggle fullscreen
       "SUPER SHIFT,F,togglefloating," # Toggle floating
       "SUPER ALT,F,workspaceopt, allfloat" # Toggle all floating

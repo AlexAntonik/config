@@ -39,6 +39,7 @@
     ./../../modules/stylix.nix
     ./../../modules/eww-clock.nix
     ./../../modules/hyprland/hyprland.nix
+    ./../../modules/niri/niri.nix
     ./../../modules/fonts.nix
 
     # Desktop hardware & services
