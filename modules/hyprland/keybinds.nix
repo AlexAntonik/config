@@ -170,7 +170,7 @@ in
       ",XF86WebCam,exec,toggle_display"
 
       # Show temporary clock overlay
-      "SUPER,Z,exec,show-clock"
+      "SUPER,Z,exec, notify-send -a \"Current time \" \"🕒 $(date '+%H:%M')   📅 $(date '+%A, %d %B')\""
     ];
     #Changing kb layout
     input.kb_options = "caps:escape,grp:win_space_toggle";

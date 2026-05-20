@@ -47,7 +47,6 @@
     ./../../modules/boot-visuals.nix
     ./../../modules/noctalia/noctalia.nix
     ./../../modules/stylix.nix
-    ./../../modules/eww-clock.nix
     ./../../modules/hyprland/hyprland.nix
     ./../../modules/fonts.nix
 
