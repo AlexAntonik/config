@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.xdg = {
     enable = true;
@@ -9,9 +9,9 @@
     portal = {
       enable = true;
       extraPortals = [
-        pkgs.xdg-desktop-portal-gtk       # GTK fallback
+        pkgs.xdg-desktop-portal-gtk # GTK fallback
       ];
-      config.common.default = [ "gtk" ];
+      config.common.default = lib.mkDefault [ "gtk" ];
     };
   };
 }
