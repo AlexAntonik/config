@@ -38,7 +38,6 @@
     ./../../modules/noctalia/noctalia.nix
     ./../../modules/stylix.nix
     ./../../modules/hyprland/hyprland.nix
-    ./../../modules/niri/niri.nix
     ./../../modules/fonts.nix
 
     # Desktop hardware & services
