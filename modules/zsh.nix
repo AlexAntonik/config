@@ -45,7 +45,7 @@
       c = "clear";
       fr = "nh os switch --hostname ${host.hostname} --diff=always";
       fu = "nh os switch --hostname ${host.hostname} --update --diff=always";
-      change-host = "sh /home/${host.username}/config/install.sh";
+      change-host = "sh ${host.flakePath}/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       lg = "lazygit";
       gpl = "git pull --rebase";

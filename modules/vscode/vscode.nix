@@ -2,18 +2,18 @@
   pkgs,
   inputs,
   host,
-  symlink,
+  mkSymlinks,
   ...
 }:
 {
   nixpkgs.overlays = [
     inputs.nix-vscode-extensions.overlays.default
   ];
+  system.activationScripts = mkSymlinks "vscode" host {
+    ".config/Code/User/keybindings.json" = "modules/vscode/keybindings.json";
+    ".config/Code/User/settings.json" = "modules/vscode/settings.json";
+  };
   home = {
-    home.file.".config/Code/User/settings.json".source =
-      symlink "/home/${host.username}/config/modules/vscode/settings.json";
-    home.file.".config/Code/User/keybindings.json".source =
-      symlink "/home/${host.username}/config/modules/vscode/keybindings.json";
     home.packages = with pkgs; [
       shellcheck # Shell script analysis tool
       shfmt # Shell script formatter

@@ -3,6 +3,7 @@
   host = {
     # Locals
     username = "alex";
+    flakePath = "/home/alex/config";
     hostname = "asus"; # Must be the same as dir name
 
     gitUsername = "AlexAntonik";

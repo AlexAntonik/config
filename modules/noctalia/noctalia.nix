@@ -2,7 +2,7 @@
   inputs,
   pkgs,
   host,
-  symlink,
+  mkSymlinks,
   ...
 }:
 {
@@ -15,10 +15,11 @@
   environment.systemPackages = [
     inputs.noctaliav5.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+  system.activationScripts = mkSymlinks "noctalia" host {
+    ".config/noctalia/settings.json" = "modules/noctalia/settings.json";
+  };
   home = {
     imports = [ inputs.noctalia.homeModules.default ];
-    home.file.".config/noctalia/settings.json".source =
-      symlink "/home/${host.username}/config/modules/noctalia/settings.json";
     programs.noctalia-shell = {
       enable = true;
       plugins = {

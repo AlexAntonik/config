@@ -1,12 +1,11 @@
 {
   lib,
-  pkgs,
   config,
   options,
   ...
 }:
 let
-  symlink = import ./symlink.nix { inherit lib pkgs; };
+  symlinks = import ./symlinks.nix { inherit lib; };
 in
 {
   options = {
@@ -24,14 +23,14 @@ in
     {
       _module.args = {
         host = config.host;
-        inherit symlink;
+        inherit (symlinks) mkSymlinks;
       };
     }
     (lib.optionalAttrs (options ? home-manager) {
       home-manager.users.${config.host.username} = config.home;
       home-manager.extraSpecialArgs = {
         host = config.host;
-        inherit symlink;
+        inherit (symlinks) mkSymlinks;
       };
     })
   ];

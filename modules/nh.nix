@@ -6,7 +6,7 @@
       enable = true;
       extraArgs = "--keep-since 7d --keep 5";
     };
-    flake = "/home/${host.username}/config";
+    flake = host.flakePath;
   };
 
   environment.systemPackages = with pkgs; [
