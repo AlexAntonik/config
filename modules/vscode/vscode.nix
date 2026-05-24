@@ -9,9 +9,9 @@
   nixpkgs.overlays = [
     inputs.nix-vscode-extensions.overlays.default
   ];
-  system.activationScripts = mkSymlinks "vscode" host {
-    ".config/Code/User/keybindings.json" = "modules/vscode/keybindings.json";
-    ".config/Code/User/settings.json" = "modules/vscode/settings.json";
+  system.activationScripts = mkSymlinks "vscode" {
+    "/home/${host.username}/.config/Code/User/keybindings.json" = "${host.flakePath}/modules/vscode/keybindings.json";
+    "/home/${host.username}/.config/Code/User/settings.json" = "${host.flakePath}/modules/vscode/settings.json";
   };
   home = {
     home.packages = with pkgs; [

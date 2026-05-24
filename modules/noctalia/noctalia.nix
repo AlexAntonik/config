@@ -15,8 +15,8 @@
   environment.systemPackages = [
     inputs.noctaliav5.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-  system.activationScripts = mkSymlinks "noctalia" host {
-    ".config/noctalia/settings.json" = "modules/noctalia/settings.json";
+  system.activationScripts = mkSymlinks "noctalia" {
+     "/home/${host.username}/.config/noctalia/settings.json" = "${host.flakePath}/modules/noctalia/settings.json";
   };
   home = {
     imports = [ inputs.noctalia.homeModules.default ];

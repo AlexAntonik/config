@@ -1,30 +1,20 @@
 { lib }:
 let
-  mkActivation = moduleName: scripts:
-    lib.mapAttrs' (name: value:
-      lib.nameValuePair "${moduleName}-${name}" (
-        if builtins.isString value then { text = value; } else value
-      )
-    ) scripts;
-
-  # mkSymlinks "vscode" host { ".config/Code/User/settings.json" = "modules/vscode/settings.json"; }
-  # creates { vscode-.config-Code-User-settings.json = { text = "ln -sf ..."; }; }
-  mkSymlinks = moduleName: host: symlinks:
-    let
-      userHome = "/home/${host.username}";
-      flakeRoot = host.flakePath;
-    in
-    mkActivation moduleName (lib.mapAttrs' (targetRel: sourceRel:
+  # mkSymlinks "vscode" { "/home/user/.config/file" = "/nix/store/.../file"; }
+  # creates activation script "vscode--home-user-.config-file" with mkdir -p + ln -sf
+  mkSymlinks = moduleName: symlinks:
+    lib.mapAttrs' (target: source:
       let
-        name = builtins.replaceStrings [ "/" "." ] [ "-" "-" ] targetRel;
-        target = "${userHome}/${targetRel}";
-        source = "${flakeRoot}/${sourceRel}";
+        name = builtins.replaceStrings [ "/" "." ] [ "-" "-" ] target;
+        scriptName = "${moduleName}-${name}";
       in
-      lib.nameValuePair name ''
-        mkdir -p "$(dirname ${lib.escapeShellArg target})"
-        ln -sf ${lib.escapeShellArg source} ${lib.escapeShellArg target}
-      ''
-    ) symlinks);
+      lib.nameValuePair scriptName {
+        text = ''
+          mkdir -p "$(dirname ${lib.escapeShellArg target})"
+          ln -sf ${lib.escapeShellArg source} ${lib.escapeShellArg target}
+        '';
+      }
+    ) symlinks;
 in {
   inherit mkSymlinks;
 }
