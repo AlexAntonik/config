@@ -8,6 +8,7 @@
     # Flake locals
     username = "user";
     hostname = "swprod"; # Must be the same as dir name
+    flakePath = "/home/user/config";
 
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
