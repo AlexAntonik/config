@@ -3,6 +3,7 @@
     # Locals
     username = "alex";
     hostname = "dell"; # Must be the same as dir name
+    flakePath = "/home/alex/config";
 
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
