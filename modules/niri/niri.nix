@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   host,
+  mkSymlinks,
   ...
 }:
 {
@@ -9,9 +10,7 @@
     inputs.nirimod.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   programs.niri.enable = true;
-  home =
-    { config, ... }:
-    {
-      home.file.".config/niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "/home/${host.username}/config/modules/niri/config.kdl";
-    };
+  system.activationScripts = mkSymlinks "niri" {
+    "/home/${host.username}/.config/niri/config.kdl" = "${host.flakePath}/modules/niri/config.kdl";
+  };
 }

@@ -4,8 +4,9 @@
     # Locals
     username = "default";
     hostname = "default"; # Must be the same as dir name(as in quotes - hosts/"default"/)
+    flakePath = "/home/default/config"; # Where this flake lives
 
-    # Git Configuration ( For Pulling Software Repos )
+    # Git Configuration
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
 

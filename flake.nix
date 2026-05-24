@@ -35,7 +35,7 @@
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./lib/options.nix
+          ./lib/lib.nix
           ./hosts/${host}/${host}.nix
         ];
       }

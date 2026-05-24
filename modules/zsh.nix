@@ -45,7 +45,7 @@
       c = "clear";
       fr = "nh os switch --hostname ${host.hostname} --diff=always";
       fu = "nh os switch --hostname ${host.hostname} --update --diff=always";
-      change-host = "sh /home/${host.username}/config/install.sh";
+      change-host = "sh ${host.flakePath}/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       lg = "lazygit";
       gpl = "git pull --rebase";
@@ -58,7 +58,6 @@
       tree = "eza --icons --tree --group-directories-first";
       f = "fzf";
 
-      noctalia-export = "noctalia-shell ipc call state all | jq '.settings' > /home/${host.username}/config/modules/noctalia/settings.json";
       ytdm = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
       ytdv = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(title)s.%(ext)s\"";
       ytdp = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s\"";

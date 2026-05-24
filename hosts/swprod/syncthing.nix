@@ -1,12 +1,12 @@
 { host, ... }:
 {
   sops.secrets.swop_cert = {
-    sopsFile = "/home/${host.username}/config/modules/secrets/syncthing.yaml";
+    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
     owner = "${host.username}";
     path = "/home/${host.username}/.config/syncthing/keys/cert.pem";
   };
   sops.secrets.swop_key = {
-    sopsFile = "/home/${host.username}/config/modules/secrets/syncthing.yaml";
+    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
     owner = "${host.username}";
     path = "/home/${host.username}/.config/syncthing/keys/key.pem";
   };

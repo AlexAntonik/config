@@ -4,6 +4,9 @@
   options,
   ...
 }:
+let
+  symlinks = import ./symlinks.nix { inherit lib; };
+in
 {
   options = {
     host = lib.mkOption {
@@ -18,11 +21,17 @@
 
   config = lib.mkMerge [
     {
-      _module.args.host = config.host;
+      _module.args = {
+        host = config.host;
+        inherit (symlinks) mkSymlinks;
+      };
     }
     (lib.optionalAttrs (options ? home-manager) {
       home-manager.users.${config.host.username} = config.home;
-      home-manager.extraSpecialArgs.host = config.host;
+      home-manager.extraSpecialArgs = {
+        host = config.host;
+        inherit (symlinks) mkSymlinks;
+      };
     })
   ];
 }

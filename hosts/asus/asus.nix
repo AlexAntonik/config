@@ -3,6 +3,7 @@
   host = {
     # Locals
     username = "alex";
+    flakePath = "/home/alex/config";
     hostname = "asus"; # Must be the same as dir name
 
     gitUsername = "AlexAntonik";
@@ -38,7 +39,6 @@
     ./../../modules/noctalia/noctalia.nix
     ./../../modules/stylix.nix
     ./../../modules/hyprland/hyprland.nix
-    ./../../modules/niri/niri.nix
     ./../../modules/fonts.nix
 
     # Desktop hardware & services
