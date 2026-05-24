@@ -4,7 +4,7 @@ let
 in
 {
   sops.secrets.dell = {
-    sopsFile = "/home/${host.username}/config/modules/secrets/cloudflared.yaml";
+    sopsFile = "${host.flakePath}/modules/secrets/cloudflared.yaml";
     owner = "alex";
     path = credsFile;
   };
