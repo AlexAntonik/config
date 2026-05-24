@@ -1,9 +1,18 @@
 {
   lib,
+  pkgs,
   config,
   options,
   ...
 }:
+let
+  symlink = path:
+    let
+      pathStr = toString path;
+      name = builtins.replaceStrings [ "/" "." ] [ "-" "-" ] (baseNameOf pathStr);
+    in
+    pkgs.runCommandLocal name { } "ln -s ${lib.escapeShellArg pathStr} $out";
+in
 {
   options = {
     host = lib.mkOption {
@@ -18,11 +27,17 @@
 
   config = lib.mkMerge [
     {
-      _module.args.host = config.host;
+      _module.args = {
+        host = config.host;
+        inherit symlink;
+      };
     }
     (lib.optionalAttrs (options ? home-manager) {
       home-manager.users.${config.host.username} = config.home;
-      home-manager.extraSpecialArgs.host = config.host;
+      home-manager.extraSpecialArgs = {
+        host = config.host;
+        inherit symlink;
+      };
     })
   ];
 }
