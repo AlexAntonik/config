@@ -1,5 +1,4 @@
 name: Dependabot check
-
 on:
   pull_request:
     branches: [main, master]
@@ -16,8 +15,7 @@ jobs:
       statuses: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -28,70 +26,76 @@ jobs:
           git fetch origin ${{ github.base_ref }}
           CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
           echo "Changed files: $CHANGED"
-
           if [ "$CHANGED" != "flake.lock" ]; then
             echo "result=fail" >> "$GITHUB_OUTPUT"
-            echo "::error::Expected only flake.lock to change, but got: $CHANGED"
           else
             echo "result=ok" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Fail if unexpected files changed
         if: steps.file_check.outputs.result == 'fail'
-        run: |
-          echo "::error::Dependabot PR changed files other than flake.lock. Failing."
-          exit 1
+        run: exit 1
 
-
-      - name: Wait for all checks to pass
+      - name: Update PR branch if outdated
         if: steps.file_check.outputs.result == 'ok'
-        id: checks
-        uses: wechuli/allcheckspassed@v2
-        with:
-          treat_skipped_as_passed: true
-          treat_neutral_as_passed: true
-          retries: "120"
-          polling_interval: "30"
-          exclude_checks: "dependabot-check"
-
-      - name: Update PR if outdated (rebase onto base branch)
-        if: >
-          steps.file_check.outputs.result == 'ok' &&
-          steps.checks.outcome == 'success'
+        id: update
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          BASE_REF: ${{ github.base_ref }}
-          HEAD_REF: ${{ github.head_ref }}
         run: |
-          # Check if the PR is behind the base branch
-          git fetch origin "$BASE_REF" "$HEAD_REF"
-
-          BASE_SHA=$(git rev-parse "origin/$BASE_REF")
-          MERGE_BASE=$(git merge-base "origin/$HEAD_REF" "origin/$BASE_REF")
-
+          git fetch origin "${{ github.base_ref }}" "${{ github.head_ref }}"
+          BASE_SHA=$(git rev-parse "origin/${{ github.base_ref }}")
+          MERGE_BASE=$(git merge-base "origin/${{ github.head_ref }}" "origin/${{ github.base_ref }}")
           if [ "$MERGE_BASE" != "$BASE_SHA" ]; then
-            echo "PR is outdated, updating via API..."
-            gh pr update-branch "$PR_NUMBER"
-            echo "::notice::PR updated. Checks will re-run automatically."
-            # Exit 0 — this check will be re-triggered after push
-            exit 0
+            echo "PR is outdated, updating branch..."
+            gh pr update-branch "${{ github.event.pull_request.number }}"
+            echo "updated=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "PR is up to date."
+            echo "updated=false" >> "$GITHUB_OUTPUT"
           fi
 
-          echo "PR is up to date."
-
-      - name: Automerge if passed
-        if: >
-          steps.file_check.outputs.result == 'ok' &&
-          steps.checks.outcome == 'success'
+      - name: Wait for check-configs
+        if: steps.file_check.outputs.result == 'ok' && steps.update.outputs.updated == 'false'
+        id: wait_check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "::notice::All checks passed and only flake.lock was changed. ✅"
-          gh pr merge --auto --merge "$PR_URL"
+          SHA="${{ github.event.pull_request.head.sha }}"
+          echo "Waiting for check-configs on commit $SHA..."
+          for i in $(seq 1 120); do
+            CHECK_RUN=$(gh api "/repos/${{ github.repository }}/commits/$SHA/check-runs" \
+              --jq '.check_runs[] | select(.name == "check-configs" or .name == "Check Configurations / check-configs")' 2>/dev/null)
+            if [ -n "$CHECK_RUN" ]; then
+              STATUS=$(echo "$CHECK_RUN" | jq -r '.status')
+              CONCLUSION=$(echo "$CHECK_RUN" | jq -r '.conclusion // ""')
+              echo "check-configs: status=$STATUS, conclusion=$CONCLUSION"
+              if [ "$STATUS" = "completed" ]; then
+                echo "conclusion=$CONCLUSION" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+            fi
+            sleep 30
+          done
+          echo "Timed out waiting for check-configs"
+          echo "conclusion=timed_out" >> "$GITHUB_OUTPUT"
 
-      - name: Fail if checks did not pass
-        if: >
-          steps.file_check.outputs.result == 'ok' &&
-          steps.checks.outcome != 'success'
+      - name: Automerge if check-configs passed
+        if: steps.wait_check.outputs.conclusion == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "::error::One or more required checks failed or timed out."
+          echo "check-configs passed. Enabling auto-merge..."
+          gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
+
+      - name: Close PR if check-configs failed
+        if: >
+          always() &&
+          steps.wait_check.outputs.conclusion != '' &&
+          steps.wait_check.outputs.conclusion != 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "check-configs: ${{ steps.wait_check.outputs.conclusion }}"
+          gh pr close "${{ github.event.pull_request.html_url }}" \
+            --comment "Automatically closed: check-configs failed (${{ steps.wait_check.outputs.conclusion }})"
           exit 1
