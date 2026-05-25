@@ -1,104 +1,143 @@
-name: Check Configurations 
+name: Check Configurations
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
-  check-configs:
+  discover-hosts:
+    runs-on: ubuntu-latest
+    outputs:
+      hosts: ${{ steps.list.outputs.hosts }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        run: |
+          if [ ! -d "hosts" ]; then
+            echo "hosts=[]" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          HOSTS=$(ls hosts/ | sort | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "hosts=$HOSTS" >> $GITHUB_OUTPUT
+          echo "Found hosts: $HOSTS"
+
+  build:
+    needs: discover-hosts
+    if: fromJson(needs.discover-hosts.outputs.hosts)[0] != null
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        host: ${{ fromJson(needs.discover-hosts.outputs.hosts) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v24
+      - id: build
+        run: |
+          echo "Building configuration for ${{ matrix.host }}..."
+          if nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
+            --no-link --no-allow-dirty 2>&1; then
+            echo "passing" > status-${{ matrix.host }}.txt
+            echo "${{ matrix.host }}: ✓ build succeeded"
+          else
+            echo "failing" > status-${{ matrix.host }}.txt
+            echo "${{ matrix.host }}: ✗ build failed"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: status-${{ matrix.host }}
+          path: status-${{ matrix.host }}.txt
+
+  update-badges:
+    if: >
+      always() &&
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') &&
+      needs.discover-hosts.result == 'success' &&
+      needs.build.result != 'skipped'
+    needs: [discover-hosts, build]
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Install Nix
-        uses: cachix/install-nix-action@v24
-      
-      - name: Build all NixOS configurations
-        id: build
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: status-*
+          merge-multiple: true
+      - id: generate
         run: |
+          badges=""
           success=0
           fail=0
-          badges=""
-          
-          # Get list of hosts
-          if [ ! -d "hosts" ]; then
-            echo "::error::hosts directory not found"
-            exit 1
-          fi
-          
-          for host in $(ls hosts/ | sort); do
-            echo "========================================="
-            echo "Building configuration for $host..."
-            echo "========================================="
-            
-            # Build without stopping on error
-            if nix build ".#nixosConfigurations.$host.config.system.build.toplevel" \
-              --no-link --no-allow-dirty 2>&1; then
-              color="green"
-              status="passing"
-              success=$((success + 1))
-              echo "✓ $host build succeeded"
+          for host in $(ls hosts/ 2>/dev/null | sort); do
+            status_file="status-${host}.txt"
+            if [ -f "$status_file" ]; then
+              status=$(cat "$status_file" | xargs)
+              if [ "$status" = "passing" ]; then
+                badges="${badges}![$host](https://badgen.net/badge/$host/passing/green) "
+                success=$((success + 1))
+              else
+                badges="${badges}![$host](https://badgen.net/badge/$host/failing/red) "
+                fail=$((fail + 1))
+              fi
             else
-              color="red"
-              status="failing"
-              fail=$((fail + 1))
-              echo "✗ $host build failed"
+              badges="${badges}![$host](https://badgen.net/badge/$host/unknown/gray) "
             fi
-            
-            badges="${badges}![$host](https://badgen.net/badge/$host/$status/$color) "
           done
-          
-          # Output results
-          echo "badges=$badges" >> $GITHUB_OUTPUT
-          echo "success=$success" >> $GITHUB_OUTPUT
-          echo "fail=$fail" >> $GITHUB_OUTPUT
-          
-          # Summary
-          echo "Total: $success succeeded, $fail failed"
-      
+          echo "badges=$badges" >> "$GITHUB_OUTPUT"
+          echo "success=$success" >> "$GITHUB_OUTPUT"
+          echo "fail=$fail" >> "$GITHUB_OUTPUT"
+          echo "Summary: $success succeeded, $fail failed"
       - name: Update README with host badges
-        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         run: |
           cat > hosts_badges.md << 'EOF'
           ## Hosts
-          ${{ steps.build.outputs.badges }}
+          ${{ steps.generate.outputs.badges }}
           EOF
-          
           if grep -q "<!-- HOSTS_START -->" README.md && grep -q "<!-- HOSTS_END -->" README.md; then
-            awk '
-              /<!-- HOSTS_START -->/ {print; system("cat hosts_badges.md"); f=1; next}
-              /<!-- HOSTS_END -->/ {f=0}
-              !f
-            ' README.md > README.md.tmp
+            awk '/<!-- HOSTS_START -->/ {print; system("cat hosts_badges.md"); f=1; next}
+                 /<!-- HOSTS_END -->/ {f=0}
+                 !f' README.md > README.md.tmp
             mv README.md.tmp README.md
           else
             echo "::warning::Markers not found in README.md"
           fi
-      
       - name: Commit changes
-        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
           if ! git diff --quiet --staged; then
-            git commit -m "Update host badges ${{ github.event.head_commit.url }}"
+            git commit -m "Update host badges"
             git push
           fi
-      
-      - name: Check results
-        if: always()
-        run: |
-          fail_count="${{ steps.build.outputs.fail }}"
-          success_count="${{ steps.build.outputs.success }}"
-          
-          echo "::notice::Build summary: $success_count passed, $fail_count failed"
-          
-          if [ "$fail_count" -gt 0 ]; then
-            echo "::error::$fail_count host(s) failed to build"
+
+  check-results:
+    if: always() && needs.build.result != 'skipped'
+    needs: [discover-hosts, build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: status-*
+          merge-multiple: true
+      - run: |
+          shopt -s nullglob
+          success=0
+          fail=0
+          for f in status-*.txt; do
+            host=$(basename "$f" .txt | sed 's/^status-//')
+            status=$(cat "$f" | xargs)
+            echo "$host: $status"
+            if [ "$status" = "passing" ]; then
+              success=$((success + 1))
+            else
+              fail=$((fail + 1))
+            fi
+          done
+          echo "Summary: $success succeeded, $fail failed"
+          if [ "$fail" -gt 0 ]; then
+            echo "::error::$fail host(s) failed to build"
             exit 1
           fi
