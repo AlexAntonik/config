@@ -114,7 +114,7 @@ jobs:
           fi
 
   check-results:
-    if: always() && needs.build.result != 'skipped'
+    if: always()
     needs: [discover-hosts, build]
     runs-on: ubuntu-latest
     steps:
