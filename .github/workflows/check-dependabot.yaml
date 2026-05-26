@@ -64,7 +64,7 @@ jobs:
           echo "Waiting for check-configs on commit $SHA..."
           for i in $(seq 1 120); do
             CHECK_RUN=$(gh api "/repos/${{ github.repository }}/commits/$SHA/check-runs" \
-              --jq '.check_runs[] | select(.name == "check-configs" or .name == "Check Configurations / check-configs")' 2>/dev/null)
+              --jq '.check_runs[] | select(.name == "Check Configurations / check-results")' 2>/dev/null)
             if [ -n "$CHECK_RUN" ]; then
               STATUS=$(echo "$CHECK_RUN" | jq -r '.status')
               CONCLUSION=$(echo "$CHECK_RUN" | jq -r '.conclusion // ""')
