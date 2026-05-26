@@ -60,7 +60,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          SHA="${{ github.sha }}"
+          SHA="${{ github.event.pull_request.head.sha }}"
           echo "Waiting for check-configs on commit $SHA..."
           for i in $(seq 1 120); do
             CHECK_RUN=$(gh api "/repos/${{ github.repository }}/commits/$SHA/check-runs" \
