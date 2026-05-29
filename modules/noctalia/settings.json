@@ -40,7 +40,7 @@
         "volumeStep": 5
     },
     "bar": {
-        "autoHideDelay": 500,
+        "autoHideDelay": 700,
         "autoShowDelay": 150,
         "backgroundOpacity": 0.76,
         "barType": "floating",
