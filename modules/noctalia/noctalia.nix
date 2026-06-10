@@ -16,7 +16,7 @@
     ];
   };
   system.activationScripts = mkSymlinks "noctalia" {
-    "/home/${host.username}/.config/noctalia/settings.toml" =
+    "/home/${host.username}/.local/state/noctalia/settings.toml" =
       "${host.flakePath}/modules/noctalia/settings.toml";
   };
   home = {
@@ -24,30 +24,6 @@
     programs.noctalia = {
       enable = true;
       systemd.enable = true;
-      # plugins = {
-      #   sources = [
-      #     {
-      #       enabled = true;
-      #       name = "Official Noctalia Plugins";
-      #       url = "https://github.com/noctalia-dev/noctalia-plugins";
-      #     }
-      #   ];
-      #   states = {
-      #     timer = {
-      #       enabled = true;
-      #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-      #     };
-      #     screen-recorder = {
-      #       enabled = true;
-      #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-      #     };
-      #     tailscale = {
-      #       enabled = true;
-      #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-      #     };
-      #   };
-      #   version = 1;
-      # };
     };
   };
 }

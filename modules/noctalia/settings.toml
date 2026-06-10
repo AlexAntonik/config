@@ -108,7 +108,9 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         shadow = true
 
 [notification]
-position = "top_left"
+offset_y = 20
+position = "bottom_right"
+scale = 1.1000000089406967
 
 [osd]
 offset_y = 56
@@ -119,6 +121,8 @@ scale = 1.4000000134110451
 enabled = [ "noctalia/screen_recorder" ]
 
 [shell]
+clipboard_confirm_clear_history = true
+clipboard_history_max_entries = 1000
 launch_apps_as_systemd_services = true
 password_style = "random"
 settings_show_advanced = true
@@ -128,6 +132,7 @@ settings_show_advanced = true
 [theme]
 builtin = "Tokyo-Night"
 source = "wallpaper"
+wallpaper_scheme = "m3-monochrome"
 
 [wallpaper]
 directory = "/home/alex/Pictures/Wallpapers"
