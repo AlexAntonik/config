@@ -154,7 +154,7 @@
     # vesktop #discord alternative web thingne
 
     # Media Creation & Editing
-    gimp # Image manipulation program
+    krita # Photoshop
     # audacity # Audio editor
     vlc
     mpv # Media player
@@ -167,6 +167,5 @@
     # lutris # Game launchers gog epic games etc
     # hydralauncher #Games from different sources
   ];
-  home.gtk.gtk4.theme = null; # Remove on 26.05 hm stateVersion
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }

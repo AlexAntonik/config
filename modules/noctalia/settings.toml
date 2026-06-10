@@ -1,0 +1,175 @@
+[bar.default]
+auto_hide = true
+center = [ "media" ]
+contact_shadow = true
+end = [ "tray", "network", "bluetooth", "volume", "battery", "notifications", "clock" ]
+margin_edge = 4
+position = "bottom"
+reserve_space = false
+shadow = false
+start = [ "control-center", "cpu", "ram", "temp", "workspaces" ]
+widget_spacing = 8
+
+[config]
+
+[desktop_widgets]
+schema_version = 1
+widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002", "desktop-widget-0000000000000003" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 112.0
+    box_width = 208.0
+    cx = 720.0
+    cy = 669.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        format = "{:%H:%M}"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 670.146484375
+    box_width = 1440.0
+    cx = 720.0
+    cy = 0.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        aspect_ratio = 6.0
+        background = false
+        bands = 96.0
+        show_when_idle = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 720.0
+    cy = 752.5
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        background = false
+        format = "{:%D}"
+
+[dock]
+active_monitor_only = true
+auto_hide = true
+enabled = true
+launcher_position = "start"
+position = "top"
+
+[location]
+auto_locate = true
+
+[lockscreen]
+blurred_desktop = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 1
+widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 720.0
+    cy = 687.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 703.5
+    cy = 418.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        shadow = true
+
+[notification]
+position = "top_left"
+
+[osd]
+offset_y = 56
+position = "bottom_center"
+scale = 1.4000000134110451
+
+[plugins]
+enabled = [ "noctalia/screen_recorder" ]
+
+[shell]
+launch_apps_as_systemd_services = true
+password_style = "random"
+settings_show_advanced = true
+
+[templates]
+
+[theme]
+builtin = "Tokyo-Night"
+source = "wallpaper"
+
+[wallpaper]
+directory = "/home/alex/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_mlzzx8.jpg"
+
+    [wallpaper.last]
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_mlzzx8.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_mlzzx8.jpg"
+
+[widget.battery]
+show_label = false
+
+[widget.bongocat]
+script = "scripts/bongocat.lua"
+type = "scripted"
+
+[widget.control-center]
+glyph = "rosette-filled"
+
+[widget.cpu]
+show_label = false
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+show_label = false
+
+[widget.temp]
+show_label = false
+
+[widget.tray]
+drawer = true
+match_adjacent_spacing = true
+pinned = [ "AmneziaVPN" ]
+
+[widget.volume]
+show_label = false

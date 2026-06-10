@@ -15,7 +15,6 @@
   services = {
     libinput.enable = true;
     gvfs.enable = true;
-    upower.enable = true; # D-Bus service for power management
     xserver = {
       enable = false; # For Wayland/Hyprland
       xkb = {
