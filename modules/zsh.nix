@@ -61,23 +61,6 @@
       ytdm = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
       ytdv = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(title)s.%(ext)s\"";
       ytdp = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s\"";
-
-      backup-list = "borg list /home/${host.username}/projects/srv/backup/borg-repo";
-      backup-info = "borg info /home/${host.username}/projects/srv/backup/borg-repo";
-      backup-show = "borg list /home/${host.username}/projects/srv/backup/borg-repo::";
-
-      backup-restore-last = "mkdir -p /home/${host.username}/restored && cd /home/${host.username}/restored && borg extract \"/home/${host.username}/projects/srv/backup/borg-repo::\$(borg list /home/${host.username}/projects/srv/backup/borg-repo --short | tail -1)\"";
-      backup-restore = "mkdir -p /home/${host.username}/restored && cd /home/${host.username}/restored && borg extract \"/home/${host.username}/projects/srv/backup/borg-repo::\"";
-
-      backup-mount = "mkdir -p /home/${host.username}/borg_mount && borg mount /home/${host.username}/projects/srv/backup/borg-repo /home/${host.username}/borg_mount";
-      backup-unmount = "fusermount -u /home/${host.username}/borg_mount";
-
-      backup-stats = "borg info /home/${host.username}/projects/srv/backup/borg-repo --json | jq '.archives | length'";
-      backup-size = "borg info /home/${host.username}/projects/srv/backup/borg-repo";
-
-      backup-run = "sudo systemctl start borgbackup-job-daily-backup.service";
-      backup-status = "systemctl status borgbackup-job-daily-backup.service";
-      backup-logs = "journalctl -u borgbackup-job-daily-backup.service";
     };
   };
 }
