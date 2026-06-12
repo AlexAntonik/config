@@ -60,8 +60,10 @@
 
     layerrule = [
       "blur on, match:namespace vicinae"
-      "blur on, match:namespace noctalia-background-.*"
-      "ignore_alpha 0.5, match:namespace noctalia-background-.*"
+      "blur on, match:namespace noctalia-bar-.*"
+      "ignore_alpha 0.5, match:namespace noctalia-bar-.*"
+      "blur on, match:namespace noctalia-attached-.*"
+      "ignore_alpha 0.5, match:namespace noctalia-attached-.*"
       "ignore_alpha 0, match:namespace vicinae"
     ];
     misc = {

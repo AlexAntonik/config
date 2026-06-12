@@ -57,7 +57,7 @@ in
       "SUPER,Return,exec,ghostty +new-window" # Launch terminal
       "SUPER SHIFT,Return,exec,vicinae toggle"
       "SUPER ,GRAVE,exec,vicinae toggle"
-      "SUPER ,ESCAPE,exec,noctalia-shell ipc call sessionMenu toggle"
+      "SUPER ,ESCAPE,exec,noctalia msg panel-toggle session"
       "SUPER,W,exec,firefox" # Launch browser
       "SUPER,O,exec,obs" # Launch OBS Studio
       "SUPER,C,exec,code" # Launch VS Code

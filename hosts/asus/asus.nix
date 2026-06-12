@@ -10,6 +10,7 @@
     gitEmail = "antonikavv@gmail.com";
 
     # Devices for some features
+    mainMonitor = "eDP-1";
     touchpadID = "asue120b:00-04f3:31c0-touchpad"; # From hyprctl devices
     keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
     keyboardScreenOFFLightID = "asus::camera"; # From brightnessctl -l shines when screen and keyboard are off
@@ -91,6 +92,7 @@
     ./../../modules/time.nix
     ./../../modules/zsh.nix
     ./../../modules/lang-indicator.nix
+    ./../../modules/backlight-indicator.nix
     ./../../modules/tailscale.nix
     ./../../modules/gtk.nix
     ./../../modules/qt.nix

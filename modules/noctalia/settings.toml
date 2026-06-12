@@ -1,8 +1,10 @@
 [bar.default]
 auto_hide = true
+background_opacity = 0.69999998435378075
 center = [ "media" ]
 contact_shadow = true
-end = [ "tray", "network", "bluetooth", "volume", "battery", "notifications", "clock" ]
+end = [ "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications", "clock" ]
+layer = "top"
 margin_edge = 4
 position = "bottom"
 reserve_space = false
@@ -12,9 +14,31 @@ widget_spacing = 8
 
 [config]
 
+[control_center]
+sidebar = "compact"
+sidebar_section = "compact"
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "mic_mute"
+
 [desktop_widgets]
 schema_version = 1
-widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002", "desktop-widget-0000000000000003" ]
+widget_order = [ "desktop-widget-0000000000000002", "desktop-widget-0000000000000001", "desktop-widget-0000000000000003" ]
 
     [desktop_widgets.grid]
     cell_size = 16
@@ -22,16 +46,17 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
     visible = true
 
     [desktop_widgets.widget.desktop-widget-0000000000000001]
-    box_height = 112.0
-    box_width = 208.0
+    box_height = 144.0
+    box_width = 256.0
     cx = 720.0
-    cy = 669.0
+    cy = 661.0
     output = "eDP-1"
     rotation = 0.0
     type = "clock"
 
         [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
         background = false
+        color = "primary"
         format = "{:%H:%M}"
 
     [desktop_widgets.widget.desktop-widget-0000000000000002]
@@ -53,21 +78,50 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
     box_height = 0.0
     box_width = 0.0
     cx = 720.0
-    cy = 752.5
+    cy = 736.5
     output = "eDP-1"
     rotation = 0.0
     type = "clock"
 
         [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
         background = false
-        format = "{:%D}"
+        color = "primary"
+        format = "{: %d %b, %A}"
 
 [dock]
 active_monitor_only = true
 auto_hide = true
-enabled = true
+enabled = false
 launcher_position = "start"
-position = "top"
+position = "bottom"
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend", "idle-behavior", "idle-behavior-2" ]
+
+    [idle.behavior.idle-behavior]
+    action = "lock"
+    enabled = true
+    timeout = 600
+
+    [idle.behavior.idle-behavior-2]
+    action = "screen_off"
+    enabled = true
+    timeout = 900
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = false
+    timeout = 600
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = false
+    timeout = 660
 
 [location]
 auto_locate = true
@@ -78,7 +132,12 @@ blurred_desktop = true
 [lockscreen_widgets]
 enabled = true
 schema_version = 1
-widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001" ]
+widget_order = [
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000003"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -89,22 +148,53 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     box_height = 0.0
     box_width = 0.0
     cx = 720.0
-    cy = 687.0
+    cy = 668.0
     output = "eDP-1"
     rotation = 0.0
     type = "login_box"
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 703.5
-    cy = 418.0
+    box_height = 192.0
+    box_width = 320.0
+    cx = 720.0
+    cy = 341.0
     output = "eDP-1"
     rotation = 0.0
     type = "clock"
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
         background = false
+        color = "primary"
+        shadow = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 368.0
+    box_width = 1440.0
+    cx = 720.0
+    cy = 0.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        aspect_ratio = 4.0999999999999996
+        background = false
+        bands = 68.0
+        show_when_idle = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    box_height = 80.0
+    box_width = 560.0
+    cx = 720.0
+    cy = 429.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
+        background = false
+        color = "primary"
+        format = "{:%d %b, %A}"
         shadow = true
 
 [notification]
@@ -120,31 +210,91 @@ scale = 1.4000000134110451
 [plugins]
 enabled = [ "noctalia/screen_recorder" ]
 
+    [[plugins.source]]
+    auto_update = true
+    kind = "git"
+    location = "https://github.com/noctalia-dev/official-plugins"
+    name = "official"
+
+    [[plugins.source]]
+    auto_update = true
+    kind = "git"
+    location = "https://github.com/noctalia-dev/community-plugins"
+    name = "community"
+
 [shell]
 clipboard_confirm_clear_history = true
 clipboard_history_max_entries = 1000
+clipboard_image_action_command = "satty -f -"
 launch_apps_as_systemd_services = true
+offline_mode = false
 password_style = "random"
 settings_show_advanced = true
+telemetry_enabled = false
+
+    [shell.panel]
+    borders = false
+    open_near_click_control_center = true
+    shadow = true
+    transparency_mode = "soft"
+
+    [shell.screenshot]
+    directory = "/home/alex/Pictures/Screenshots"
+    pipe_command = "satty -f f"
+    pipe_to_command = true
+    save_to_file = true
+
+    [[shell.session.actions]]
+    action = "lock"
+    enabled = true
+    shortcut = "l"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    enabled = true
+    shortcut = "q"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    enabled = true
+    shortcut = "e"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    enabled = true
+    shortcut = "r"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    enabled = true
+    shortcut = "s"
+    variant = "destructive"
 
 [templates]
 
 [theme]
 builtin = "Tokyo-Night"
 source = "wallpaper"
-wallpaper_scheme = "m3-monochrome"
+wallpaper_scheme = "faithful"
+
+    [theme.templates]
+    community_ids = []
 
 [wallpaper]
 directory = "/home/alex/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_mlzzx8.jpg"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [wallpaper.last]
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_mlzzx8.jpg"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_mlzzx8.jpg"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
 [widget.battery]
 show_label = false
@@ -161,6 +311,7 @@ show_label = false
 
 [widget.media]
 hide_when_no_media = true
+title_scroll = "always"
 
 [widget.network]
 show_label = false
@@ -168,13 +319,19 @@ show_label = false
 [widget.ram]
 show_label = false
 
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
 [widget.temp]
 show_label = false
 
 [widget.tray]
 drawer = true
 match_adjacent_spacing = true
-pinned = [ "AmneziaVPN" ]
+pinned = [ "AmneziaVPN", "Discord", "steam", "TelegramDesktop" ]
 
 [widget.volume]
 show_label = false
+
+[widget.workspaces]
+minimal = false

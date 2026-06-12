@@ -1,8 +1,6 @@
-{host,  pkgs,  ...}:
+{ pkgs,  ...}:
 let
-  statusFile = "$XDG_RUNTIME_DIR/display.status"; # must be same with hipridle
-  kbLightID = host.keyboardLightID;
-  kbScreenOFFLightID = host.keyboardScreenOFFLightID;
+  statusFile = "$XDG_RUNTIME_DIR/display.status";
 in
 {
   environment.systemPackages = with pkgs; [
@@ -15,27 +13,16 @@ in
 
       export STATUS_FILE="${statusFile}"
 
-      enable_display() {
+      if ! [ -f "$STATUS_FILE" ]; then
         printf "true" >"$STATUS_FILE"
         hyprctl dispatch dpms on
-        brightnessctl -d ${kbLightID} s 100
-        brightnessctl -d ${kbScreenOFFLightID} s 0
-      }
-
-      disable_display() {
-        printf "false" >"$STATUS_FILE"
-        hyprctl dispatch dpms off
-        brightnessctl -d ${kbLightID} s 0
-        brightnessctl -d ${kbScreenOFFLightID} s 100
-      }
-
-      if ! [ -f "$STATUS_FILE" ]; then
-        enable_display
       else
         if [ $(cat "$STATUS_FILE") = "true" ]; then
-          disable_display
+          printf "false" >"$STATUS_FILE"
+          hyprctl dispatch dpms off
         elif [ $(cat "$STATUS_FILE") = "false" ]; then
-          enable_display
+          printf "true" >"$STATUS_FILE"
+          hyprctl dispatch dpms on
         fi
       fi
     '')

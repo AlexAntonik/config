@@ -22,8 +22,6 @@
       ./keybinds.nix
       ./windows.nix
       ./visual.nix
-      ./hypridle.nix
-      ./hyprlock.nix
     ];
     home.packages = with pkgs; [
       grim

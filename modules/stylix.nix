@@ -68,7 +68,6 @@
     # hyprland.enable = false;
     bat.enable = false;
     btop.enable = false;
-    hyprlock.enable = false;
     yazi.enable = false;
     qt.enable = false;
     vscode.enable = false;
@@ -76,6 +75,5 @@
     starship.enable = false;
     firefox.enable = false;
     ghostty.enable = false;
-    noctalia-shell.enable = false;
   };
 }

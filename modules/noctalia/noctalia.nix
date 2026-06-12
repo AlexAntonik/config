@@ -1,10 +1,14 @@
 {
   inputs,
   host,
+  pkgs,
   mkSymlinks,
   ...
 }:
 {
+  environment.systemPackages = with pkgs; [
+    satty # Screenshot editing tool
+  ];
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
   services.tuned.enable = true;
