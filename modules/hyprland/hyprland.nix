@@ -24,11 +24,7 @@
       ./visual.nix
     ];
     home.packages = with pkgs; [
-      grim
-      slurp
-      wl-clipboard
       hyprpicker # Color picker
-      ydotool
     ];
 
     systemd.user.targets.hyprland-session.Unit.Wants = [
