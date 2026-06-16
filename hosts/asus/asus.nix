@@ -55,6 +55,7 @@
     # System services
     ./../../modules/logs.nix
     ./../../modules/ssh.nix
+    ./../../modules/disk.nix
     ./../../modules/security.nix
     ./../../modules/home-manager.nix
 
