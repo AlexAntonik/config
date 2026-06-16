@@ -29,7 +29,7 @@
     ./../../modules/boot.nix
 
     # System services
-    ./../../modules/services.nix
+    ./../../modules/logs.nix
     ./../../modules/ssh.nix
     ./../../modules/security.nix
     ./../../modules/server/network-wifi.nix

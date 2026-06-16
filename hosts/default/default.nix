@@ -62,7 +62,7 @@
     ./../../modules/bluetooth.nix
 
     # System services
-    ./../../modules/services.nix
+    ./../../modules/logs.nix
     ./../../modules/ssh.nix
     ./../../modules/security.nix
     ./../../modules/home-manager.nix
