@@ -1,10 +1,9 @@
 { host, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-   (writeShellScriptBin
+  environment.systemPackages = [
+   (pkgs.writeShellScriptBin
     "toggle_touchpad"
     ''
-
       HYPRLAND_DEVICE="${host.touchpadID}"
       HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
 

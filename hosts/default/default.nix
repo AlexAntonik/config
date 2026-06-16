@@ -111,7 +111,6 @@
     ./../../modules/scripts/toggleTouchpad.nix
     ./../../modules/scripts/toggleDisplay.nix
     ./../../modules/scripts/hm-find.nix
-    ./../../modules/scripts/screenshot.nix
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 

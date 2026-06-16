@@ -1,11 +1,8 @@
 { pkgs, host, ... }:
-let
-  user = host.username;
-in
 {
-  environment.systemPackages = with pkgs; [
-    (writeShellScriptBin "syncsupprep" ''
-      sudo chown -R ${user}:users /home/${user}/projects/srv
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "syncsupprep" ''
+      sudo chown -R ${host.username}:users /home/${host.username}/projects/srv
     '')
   ];
 }

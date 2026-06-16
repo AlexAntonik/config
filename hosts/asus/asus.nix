@@ -51,7 +51,6 @@
     ./../../modules/vicinae.nix
     ./../../modules/media.nix
     ./../../modules/bluetooth.nix
-    ./../../modules/steam.nix
 
     # System services
     ./../../modules/services.nix
@@ -105,7 +104,6 @@
     ./../../modules/scripts/toggleTouchpad.nix
     ./../../modules/scripts/toggleDisplay.nix
     ./../../modules/scripts/hm-find.nix
-    ./../../modules/scripts/screenshot.nix
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 
