@@ -58,19 +58,19 @@
 
         # Environment variables set for the Hyprland session
         env = [
-          "NIXOS_OZONE_WL, 1" # Enable Wayland backend for Ozone-based apps (Electron)
-          "NIXPKGS_ALLOW_UNFREE, 1" # Allow unfree packages if needed
-          "XDG_CURRENT_DESKTOP, Hyprland"
-          "XDG_SESSION_DESKTOP, Hyprland"
-          "XDG_SESSION_TYPE, wayland"
-          "GDK_BACKEND, wayland, x11" # Prefer Wayland for GTK apps, fallback to X11
-          "CLUTTER_BACKEND, wayland" # Prefer Wayland for Clutter apps
+          "NIXOS_OZONE_WL,1" # Enable Wayland backend for Ozone-based apps (Electron)
+          "NIXPKGS_ALLOW_UNFREE,1" # Allow unfree packages if needed
+          "XDG_CURRENT_DESKTOP,Hyprland"
+          "XDG_SESSION_DESKTOP,Hyprland"
+          "XDG_SESSION_TYPE,wayland"
+          "GDK_BACKEND,wayland,x11" # Prefer Wayland for GTK apps, fallback to X11
+          "CLUTTER_BACKEND,wayland" # Prefer Wayland for Clutter apps
           "QT_QPA_PLATFORM=wayland;xcb" # Prefer Wayland for Qt apps, fallback to XCB (X11)
-          "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1" # Use server-side decorations for Qt Wayland apps
-          "QT_AUTO_SCREEN_SCALE_FACTOR, 1" # Auto-scaling for Qt apps
-          "SDL_VIDEODRIVER, wayland,x11" # Prefer Wayland for SDL apps (Corrected from just x11)
+          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # Use server-side decorations for Qt Wayland apps
+          "QT_AUTO_SCREEN_SCALE_FACTOR,1" # Auto-scaling for Qt apps
+          "SDL_VIDEODRIVER,wayland,x11" # Prefer Wayland for SDL apps (Corrected from just x11)
           "EDITOR,nvim" # Default editor
-          "MOZ_ENABLE_WAYLAND, 1" # Force Wayland backend for Firefox
+          "MOZ_ENABLE_WAYLAND,1" # Force Wayland backend for Firefox
         ];
 
         # Commands executed once on Hyprland startup

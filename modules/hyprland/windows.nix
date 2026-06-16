@@ -31,12 +31,14 @@
       "float on, match:class [Tt]hunar, match:title negative:.*[Tt]hunar.*"
       "float on, match:initial_title Add Folder to Workspace"
       "float on, match:initial_title Media viewer"
+      "float on, match:initial_title satty"
       "float on, match:initial_title Open Files"
       "float on, match:initial_title wants to save"
 
       "move 60% 6%, match:title Picture-in-Picture"
       "center on, match:class (pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)"
       "center on, match:initial_title Media viewer"
+      "center on, match:initial_title satty"
       "center on, match:class [Tt]hunar, match:title negative:.*[Tt]hunar.*"
       "center on, match:title Authentication Required"
 
@@ -101,6 +103,5 @@
     dwindle = {
       preserve_split = true; # Preserve split direction when closing windows
     };
-
   };
 }

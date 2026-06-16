@@ -1,16 +1,14 @@
 {
   wayland.windowManager.hyprland.settings = {
-    # Window decoration settings
-    # General window manager settings
     general = {
-      layout = "dwindle"; # Tiling layout engine
-      gaps_in = 0; # Gaps between windows
-      gaps_out = 0; # Gaps between windows and screen edges
-      border_size = 0; # Window border size
-      resize_on_border = true; # Allow resizing by dragging border
+      layout = "dwindle";
+      gaps_in = 0;
+      gaps_out = 0;
+      border_size = 0;
+      resize_on_border = true;
     };
     decoration = {
-      rounding = 0; # Window corner rounding
+      rounding = 0;
       dim_inactive = true;
       dim_strength = 0.16;
       blur = {

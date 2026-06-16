@@ -158,8 +158,8 @@ in
       "ALT,Tab,bringactivetotop,"
 
       # --- System Controls ---
-      ",PRINT,exec,screenshot"
-      "SUPER,PRINT,exec,screenshot full"
+      ",PRINT,exec,noctalia msg screenshot-region"
+      "SUPER,PRINT,exec,noctalia msg screenshot-fullscreen"
       "SUPER, F11,exec,toggle_xwayland_scale"
       ",XF86TouchpadToggle , exec, toggle_touchpad"
       ",XF86AudioPlay, exec, playerctl play-pause"
@@ -170,7 +170,7 @@ in
       ",XF86WebCam,exec,toggle_display"
 
       # Show temporary clock overlay
-      "SUPER,Z,exec, notify-send -a \"Current time \" \"🕒 $(date '+%H:%M')   📅 $(date '+%A, %d %B')\""
+      "SUPER,Z,exec, notify-send -i time -a \"\" \"$(date '+%H:%M')   $(date '+%A, %d %B')\""
     ];
     #Changing kb layout
     input.kb_options = "caps:escape,grp:win_space_toggle";
