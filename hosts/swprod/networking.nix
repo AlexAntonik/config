@@ -23,22 +23,10 @@
             prefixLength = 16;
           }
         ];
-        ipv6.addresses = [
-          {
-            address = "fe80::cc9:c9ff:feb2:f5cc";
-            prefixLength = 64;
-          }
-        ];
         ipv4.routes = [
           {
             address = "178.128.160.1";
             prefixLength = 32;
-          }
-        ];
-        ipv6.routes = [
-          {
-            address = "";
-            prefixLength = 128;
           }
         ];
       };
@@ -47,12 +35,6 @@
           {
             address = "10.106.0.2";
             prefixLength = 20;
-          }
-        ];
-        ipv6.addresses = [
-          {
-            address = "fe80::8055:3dff:fe97:803f";
-            prefixLength = 64;
           }
         ];
       };
