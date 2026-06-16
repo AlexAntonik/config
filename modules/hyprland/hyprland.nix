@@ -1,10 +1,6 @@
 { pkgs, ... }:
 {
   programs.hyprland.enable = true; # system-wide, needed for session in tuigreet
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
   xdg.portal = {
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
     configPackages = [ pkgs.hyprland ];
