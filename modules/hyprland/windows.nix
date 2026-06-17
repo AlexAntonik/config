@@ -97,9 +97,5 @@
       "special:yazi, on-created-empty:ghostty --class=com.mitchellh.ghostty-yazi -e yazi +new-window"
       "special:yazi, gapsout:26,rounding:false, decorate:false, shadow:false"
     ];
-
-    dwindle = {
-      preserve_split = true; # Preserve split direction when closing windows
-    };
   };
 }
