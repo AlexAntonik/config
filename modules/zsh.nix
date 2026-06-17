@@ -32,7 +32,6 @@
         "brackets"
         "pattern"
         "regexp"
-        # "root" #on root inveting colors with this
         "line"
       ];
     };

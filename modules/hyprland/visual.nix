@@ -25,7 +25,6 @@
       };
     };
 
-    # Animation settings
     animations = {
       enabled = true;
       bezier = [

@@ -1,6 +1,5 @@
 {
   wayland.windowManager.hyprland.settings = {
-    # Window rules
     windowrule = [
       "tag +file-manager, match:class ([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)"
       "tag +terminal, match:class (Alacritty|kitty|kitty-dropterm|com.mitchellh.ghostty|[Gg]hostty)"
@@ -99,7 +98,6 @@
       "special:yazi, gapsout:26,rounding:false, decorate:false, shadow:false"
     ];
 
-    # Dwindle layout specific settings
     dwindle = {
       preserve_split = true; # Preserve split direction when closing windows
     };
