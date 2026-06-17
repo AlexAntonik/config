@@ -3,7 +3,7 @@ auto_hide = true
 background_opacity = 0.69999999999999996
 center = [ "media" ]
 contact_shadow = true
-end = [ "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications", "clock" ]
+end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications", "clock" ]
 layer = "top"
 margin_edge = 4
 position = "bottom"
@@ -298,6 +298,9 @@ glyph = "rosette-filled"
 
 [widget.cpu]
 show_label = false
+
+[widget.keyboard_layout]
+show_icon = false
 
 [widget.media]
 hide_when_no_media = true
