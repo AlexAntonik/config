@@ -1,15 +1,16 @@
 [bar.default]
 auto_hide = true
 background_opacity = 0.69999999999999996
-center = [ "media" ]
+center = []
 contact_shadow = true
 end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications", "clock" ]
 layer = "top"
 margin_edge = 4
 position = "bottom"
+radius = 10
 reserve_space = false
-shadow = false
-start = [ "control-center", "cpu", "ram", "temp", "workspaces" ]
+shadow = true
+start = [ "control-center", "cpu", "ram", "temp", "workspaces", "media" ]
 widget_spacing = 8
 
 [config]
@@ -197,6 +198,9 @@ offset_y = 56
 position = "bottom_center"
 scale = 1.4000000134110451
 
+    [osd.kinds]
+    media = false
+
 [plugins]
 enabled = [ "noctalia/screen_recorder" ]
 
@@ -272,6 +276,7 @@ source = "wallpaper"
 wallpaper_scheme = "faithful"
 
     [theme.templates]
+    builtin_ids = []
     community_ids = []
 
 [wallpaper]
@@ -303,6 +308,7 @@ show_label = false
 show_icon = false
 
 [widget.media]
+art_size = 17.0
 hide_when_no_media = true
 title_scroll = "always"
 
