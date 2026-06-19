@@ -1,6 +1,8 @@
 { pkgs, host, ... }:
 {
   # Appimage Support
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
   boot.binfmt.registrations.appimage = {
     wrapInterpreterInShell = false;
     interpreter = "${pkgs.appimage-run}/bin/appimage-run";

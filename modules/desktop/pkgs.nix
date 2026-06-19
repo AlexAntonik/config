@@ -6,7 +6,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    appimage-run # Needed for AppImage support
     brightnessctl # For screen brightness control
     cliphist # Clipboard manager
     file-roller # Archive manager
