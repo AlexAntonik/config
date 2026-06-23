@@ -47,6 +47,7 @@
       change-host = "sh ${host.flakePath}/install.sh";
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       lg = "lazygit";
+      ld = "lazydocker";
       gpl = "git pull --rebase";
       gps = "git push";
       gst = "git status";

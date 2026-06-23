@@ -87,7 +87,6 @@
           ms-vscode.makefile-tools
           ms-vscode.remote-explorer
           inferrinizzard.prettier-sql-vscode
-          kdl-org.kdl
           ms-vsliveshare.vsliveshare
           # codeforge.remix-forge
           amodio.toggle-excluded-files
