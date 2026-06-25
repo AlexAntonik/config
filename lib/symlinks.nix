@@ -1,7 +1,6 @@
 { lib }:
 let
   # mkSymlinks "vscode" { "/home/user/.config/file" = "/nix/store/.../file"; }
-  # creates activation script "vscode--home-user-.config-file" with mkdir -p + ln -sf
   mkSymlinks = moduleName: symlinks:
     lib.mapAttrs' (target: source:
       let
