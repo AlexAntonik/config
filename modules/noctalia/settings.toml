@@ -59,10 +59,10 @@ widget_order = [ "desktop-widget-0000000000000002", "desktop-widget-000000000000
         format = "{:%H:%M}"
 
     [desktop_widgets.widget.desktop-widget-0000000000000002]
-    box_height = 288.0
+    box_height = 224.0
     box_width = 1440.0
     cx = 720.0
-    cy = 144.0
+    cy = 112.0
     flip_y = true
     output = "eDP-1"
     rotation = 0.0
