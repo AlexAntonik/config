@@ -1,17 +1,21 @@
 [bar.default]
 auto_hide = true
 background_opacity = 0.69999999999999996
-center = []
+center = [ "clock" ]
 contact_shadow = true
-end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications", "clock" ]
+end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
 layer = "top"
 margin_edge = 4
 position = "bottom"
 radius = 10
 reserve_space = false
 shadow = true
-start = [ "control-center", "cpu", "ram", "temp", "workspaces", "media" ]
+start = [ "cpu", "ram", "temp", "taskbar" ]
 widget_spacing = 8
+
+    [bar.default.dead_zone]
+    command = "noctalia msg panel-toggle control-center"
+    right_command = "noctalia msg panel-toggle session"
 
 [control_center]
 sidebar = "compact"
@@ -286,6 +290,11 @@ directory = "/home/alex/Pictures/Wallpapers"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+
+[widget.audio_visualizer]
+bands = 30
+scale = 1.5
+width = 400.0
 
 [widget.battery]
 show_label = false
