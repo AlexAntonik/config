@@ -93,7 +93,6 @@ jobs:
       - name: Update README with host badges
         run: |
           cat > hosts_badges.md << 'EOF'
-          ## Hosts
           ${{ steps.generate.outputs.badges }}
           EOF
           if grep -q "<!-- HOSTS_START -->" README.md && grep -q "<!-- HOSTS_END -->" README.md; then
