@@ -75,6 +75,7 @@
       }
     }
   },
+  "todo-tree.ripgrep":"/nix/store/9inzpl9kapx0bdiifqv0db1xz3d5l2m8-system-path/bin/grep",
   "shfmt.executablePath": "shfmt",
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace",
   "terminal.integrated.fontLigatures.featureSettings": "\"liga\" on",
@@ -278,5 +279,6 @@
   "go.inlayHints.ignoredError": true,
   "go.inlayHints.parameterNames": true,
   "go.inlayHints.rangeVariableTypes": true,
-  "chat.viewSessions.enabled": false
+  "chat.viewSessions.enabled": false,
+  "workbench.browser.searchEngine": "google"
 }
