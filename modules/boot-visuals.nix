@@ -1,7 +1,7 @@
 { config, pkgs, host,  ... }:
 {
-  environment.systemPackages = with pkgs; [
-    tuigreet  # TUI login manager
+  environment.systemPackages = [
+    pkgs.tuigreet  # TUI login manager
   ];
   services = {
     greetd = {

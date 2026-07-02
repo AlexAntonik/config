@@ -2,10 +2,10 @@
 {
   virtualisation.libvirtd.enable = true;
   users.users.${host.username}.extraGroups = [ "libvirtd" ];
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     # Virtualization
-    libvirt # Virtualization library
-    virt-viewer # Virtual machine viewer
+    pkgs.libvirt # Virtualization library
+    pkgs.virt-viewer # Virtual machine viewer
   ];
   programs.virt-manager.enable = true; # Virtual machine manager
   home.dconf.settings = {

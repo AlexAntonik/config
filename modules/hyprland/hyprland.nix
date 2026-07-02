@@ -19,8 +19,8 @@
       ./windows.nix
       ./visual.nix
     ];
-    home.packages = with pkgs; [
-      hyprpicker # Color picker
+    home.packages = [
+      pkgs.hyprpicker # Color picker
     ];
 
     systemd.user.targets.hyprland-session.Unit.Wants = [

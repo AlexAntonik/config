@@ -6,8 +6,8 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    satty # Screenshot editing tool
+  environment.systemPackages = [
+    pkgs.satty # Screenshot editing tool
   ];
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;

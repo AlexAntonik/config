@@ -1,8 +1,8 @@
 { pkgs, host, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    ghostty # needed even on srv to proper ssh
-    zsh-history-substring-search
+  environment.systemPackages = [
+    pkgs.ghostty # needed even on srv to proper ssh
+    pkgs.zsh-history-substring-search
   ];
   systemd.tmpfiles.rules = [
     "f /home/${host.username}/.zshrc 0644 ${host.username} users - -"

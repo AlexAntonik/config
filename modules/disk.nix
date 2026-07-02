@@ -1,7 +1,7 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    smartmontools
-    qdiskinfo 
+  environment.systemPackages = [
+    pkgs.smartmontools
+    pkgs.qdiskinfo 
   ];
   services.smartd = {
     enable = true;

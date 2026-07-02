@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    bluez # Bluetooth utilities
-    blueman # Bluetooth manager
+  environment.systemPackages = [
+    pkgs.bluez # Bluetooth utilities
+    pkgs.blueman # Bluetooth manager
   ];
 
   services.blueman.enable = true;
