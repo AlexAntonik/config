@@ -40,7 +40,6 @@
         enable = true;
         # hidpi = true;
       };
-      # enableNvidiaPatches = false;
 
       settings = {
         ecosystem = {
@@ -60,18 +59,13 @@
           "QT_QPA_PLATFORM=wayland;xcb" # Prefer Wayland for Qt apps, fallback to XCB (X11)
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # Use server-side decorations for Qt Wayland apps
           "QT_AUTO_SCREEN_SCALE_FACTOR,1" # Auto-scaling for Qt apps
-          "SDL_VIDEODRIVER,wayland,x11" # Prefer Wayland for SDL apps (Corrected from just x11)
-          "EDITOR,nvim" # Default editor
-          "MOZ_ENABLE_WAYLAND,1" # Force Wayland backend for Firefox
+          "SDL_VIDEODRIVER,wayland,x11" # Prefer Wayland for SDL apps
         ];
 
         # Commands executed once on Hyprland startup
         exec-once = [
           "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          # System tray applets and agents
-          "vicinae server"
-          "nm-applet --indicator"
           # --- Autostart applications ---
           "firefox"
           "[workspace 3 silent] ghostty"
