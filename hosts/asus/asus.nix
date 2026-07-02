@@ -17,6 +17,7 @@
     languageLightID = "platform::micmute"; # Same used to indicate not en lang
 
     # Time and Locale Settings
+    kbdIdleTimeout = "120"; # In seconds, time before keyboard backlight off
     keyboardLayout = "us,ru";
     timeZone = "Europe/Minsk";
     defaultLocale = "en_US.UTF-8";
@@ -93,6 +94,7 @@
     ./../../modules/zsh.nix
     ./../../modules/lang-indicator.nix
     ./../../modules/backlight-indicator.nix
+    ./../../modules/kbd-backlight-idle.nix
     ./../../modules/tailscale.nix
     ./../../modules/gtk.nix
     ./../../modules/qt.nix
