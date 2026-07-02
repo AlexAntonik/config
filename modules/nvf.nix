@@ -2,6 +2,11 @@
 {
   imports = [ inputs.nvf.nixosModules.default ];
 
+  environment.shellAliases = {
+    sv = "sudo nvim";
+    v = "nvim";
+  };
+
   environment.sessionVariables = {
     EDITOR = "nvim";
   };

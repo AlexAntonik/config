@@ -86,16 +86,13 @@
     # ./../../modules/docker.nix
     ./../../modules/nvf.nix
 
-    # Nix related
-    ./../../modules/nix.nix
-    ./../../modules/nh.nix
-
     # Applications
     # ./../../modules/steam.nix
     ./../../modules/firefox.nix
     # ./../../modules/obs.nix
 
     # Config & misc
+    ./../../modules/nix.nix
     ./../../modules/time.nix
     ./../../modules/secrets/sops.nix
     ./../../modules/zsh.nix
@@ -159,7 +156,6 @@
     # audacity # Audio editor
     # vlc
     # mpv # Media player
-    # yt-dlp # YouTube downloader
 
     # Gaming
     # starsector

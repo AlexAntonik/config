@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  environment.shellAliases = {
+    f = "fzf";
+  };
   programs.bat = {
     enable = true;
     settings = {

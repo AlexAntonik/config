@@ -5,6 +5,11 @@
     git-sizer # Git repo size info
     git-filter-repo # Git history ez rewrite
   ];
+  environment.shellAliases = {
+    gpl = "git pull --rebase";
+    gps = "git push";
+    gst = "git status";
+  };
   programs.git = {
     enable = true;
     config = {

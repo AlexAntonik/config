@@ -8,6 +8,13 @@
       enableSSHSupport = true;
     };
   };
+  environment.shellAliases = {
+    c = "clear";
+    ls = "eza --icons --group-directories-first -1";
+    ll = "eza --icons -lh --group-directories-first -1 --no-user --long";
+    la = "eza --icons -lah --group-directories-first -1";
+    tree = "eza --icons --tree --group-directories-first";
+  };
 
   environment.systemPackages = with pkgs; [
     wireguard-tools # WireGuard tools

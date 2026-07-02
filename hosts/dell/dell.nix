@@ -48,11 +48,8 @@
     ./../../modules/zoxide.nix
     ./../../modules/starship.nix
 
-    # Nix related
-    ./../../modules/nh.nix
-    ./../../modules/nix.nix
-
     # Config & misc
+    ./../../modules/nix.nix
     ./../../modules/time.nix
     ./../../modules/secrets/sops.nix
     ./../../modules/tailscale.nix

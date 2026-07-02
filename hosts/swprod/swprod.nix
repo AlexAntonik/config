@@ -49,15 +49,12 @@
     ./../../modules/zoxide.nix
     ./../../modules/starship.nix
 
-    # Nix related
-    ./../../modules/nix.nix
-    ./../../modules/nh.nix
-
     # Services & ops
     ./../../modules/server/bkp.nix
     ./../../modules/server/supabase-restart.nix
 
     # Config & misc
+    ./../../modules/nix.nix
     ./../../modules/time.nix
     ./../../modules/secrets/sops.nix
 

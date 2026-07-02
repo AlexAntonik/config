@@ -64,6 +64,7 @@
     ./../../modules/utilities.nix
     ./../../modules/nix-index.nix
     ./../../modules/btop.nix
+    ./../../modules/yt-download.nix
     ./../../modules/starship.nix
     ./../../modules/fzf.nix
     ./../../modules/yazi.nix
@@ -80,16 +81,13 @@
     ./../../modules/docker.nix
     ./../../modules/nvf.nix
 
-    # Nix related
-    ./../../modules/nix.nix
-    ./../../modules/nh.nix
-
     # Applications
     ./../../modules/steam.nix
     ./../../modules/firefox.nix
     ./../../modules/obs.nix
 
     # Config & misc
+    ./../../modules/nix.nix
     ./../../modules/time.nix
     ./../../modules/zsh.nix
     ./../../modules/lang-indicator.nix
@@ -161,7 +159,6 @@
     # audacity # Audio editor
     vlc
     mpv # Media player
-    yt-dlp # YouTube downloader
 
     # Gaming
     # starsector

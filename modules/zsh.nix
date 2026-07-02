@@ -37,30 +37,5 @@
     };
 
     histSize = 20000;
-
-    shellAliases = {
-      sv = "sudo nvim";
-      v = "nvim";
-      c = "clear";
-      fr = "nh os switch --hostname ${host.hostname} --diff=always";
-      fu = "nh os switch --hostname ${host.hostname} --update --diff=always";
-      change-host = "sh ${host.flakePath}/install.sh";
-      ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-      lg = "lazygit";
-      ld = "lazydocker";
-      gpl = "git pull --rebase";
-      gps = "git push";
-      gst = "git status";
-      man = "batman";
-      ls = "eza --icons --group-directories-first -1";
-      ll = "eza --icons -lh --group-directories-first -1 --no-user --long";
-      la = "eza --icons -lah --group-directories-first -1";
-      tree = "eza --icons --tree --group-directories-first";
-      f = "fzf";
-
-      ytdm = "noglob yt-dlp -t aac --embed-thumbnail -o \"~/Music/%(title)s\"";
-      ytdv = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(title)s.%(ext)s\"";
-      ytdp = "noglob yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' --embed-thumbnail -o \"~/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s\"";
-    };
   };
 }

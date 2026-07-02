@@ -1,5 +1,8 @@
 { lib, ... }:
 {
+  environment.shellAliases = {
+    lg = "lazygit";
+  };
   programs.lazygit = {
     enable = true;
     settings = lib.mkForce {
