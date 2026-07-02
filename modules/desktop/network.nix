@@ -1,10 +1,4 @@
-{
-  pkgs,
-  host,
-  options,
-  lib,
-  ...
-}:
+{ host, options, ... }:
 {
   users.users.${host.username}.extraGroups = [
     "networkmanager"
@@ -12,13 +6,11 @@
   services.resolved.enable = true;
   networking = {
     hostName = "${host.hostname}";
-    useDHCP = lib.mkDefault true;
 
     networkmanager = {
       wifi.powersave = false;
       enable = true;
       dns = "systemd-resolved";
-      # dns = "none"; # Prevent NetworkManager from managing DNS
     };
 
     # Make system-wide DNS settings
@@ -29,5 +21,9 @@
     ];
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
   };
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+
+  programs.nm-applet = {
+    enable = true;
+    indicator = true;
+  };
 }

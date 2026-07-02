@@ -1,9 +1,4 @@
-{
-  host,
-  options,
-  lib,
-  ...
-}:
+{ host, options, ... }:
 {
   users.users.${host.username}.extraGroups = [
     "networkmanager"
@@ -14,17 +9,11 @@
     dhcpcd.extraConfig = "noarp";
     # no need to wait interfaces to have an IP to continue booting
     dhcpcd.wait = "background";
-    useDHCP = lib.mkDefault true;
 
     networkmanager = {
       wifi.powersave = false;
       enable = true;
-      insertNameservers = [
-        "1.1.1.1" # BEST
-        "8.8.8.8" # Evil
-        "9.9.9.9" # Just for fun
-      ];
-      # dns = "none"; # Prevent NetworkManager from managing DNS
+      dns = "systemd-resolved";
     };
 
     # Make system-wide DNS settings
