@@ -46,6 +46,10 @@ in
     }
   '';
 
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1"; # Force Wayland backend for Firefox
+  };
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-bin;
