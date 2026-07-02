@@ -26,11 +26,6 @@
       chown -R ${host.username}:users /home/${host.username}/projects/srv
       echo "File ownership changed to ${host.username}:users for /home/${host.username}/projects/srv"
       
-      # Forced syncthing rescan, 
-      # but this pkgs not so popular,
-      # even than briefly checked source code, off by now
-      # ${pkgs.stc-cli}/bin/stc --homedir "/home/${host.username}/.config/syncthing" rescan "Prod"
-
       echo "Waiting 4 minutes..."
       sleep 240
       echo "Wait completed at $(date)"

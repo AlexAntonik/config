@@ -58,8 +58,6 @@ in
     serviceConfig = {
       Type = "simple";
       ExecStart = "${keyboard-layout-indicator}/bin/keyboard-layout-indicator";
-      ExecStop = "/bin/kill $MAINPID";
-      KillMode = "process";
       Restart = "always";
       RestartSec = "3";
       TimeoutStopSec = 5;
