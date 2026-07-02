@@ -1,18 +1,9 @@
-{ host, ... }:
-let
-  credsFile = "/home/${host.username}/.cloudflared/creds.json";
-in
-{
-  sops.secrets.dell = {
-    sopsFile = "${host.flakePath}/modules/secrets/cloudflared.yaml";
-    owner = "alex";
-    path = credsFile;
-  };
+{config, ...}:{
   services.cloudflared = {
     enable = true;
     tunnels = {
       "dell" = {
-        credentialsFile = credsFile;
+        credentialsFile = config.age.secrets.cloudflare-creds.path;
         default = "http_status:404";
       };
     };

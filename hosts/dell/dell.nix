@@ -21,6 +21,7 @@
     ./hardware.nix
     ./hardware-gen.nix
     ./syncthing.nix
+    ./secrets/secrets.nix
 
     # Users
     ./../../modules/users/server-default.nix
@@ -51,7 +52,6 @@
     # Config & misc
     ./../../modules/nix.nix
     ./../../modules/time.nix
-    ./../../modules/secrets/sops.nix
     ./../../modules/tailscale.nix
 
     # Scripts

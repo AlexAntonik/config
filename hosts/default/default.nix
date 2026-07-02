@@ -94,7 +94,6 @@
     # Config & misc
     ./../../modules/nix.nix
     ./../../modules/time.nix
-    ./../../modules/secrets/sops.nix
     ./../../modules/zsh.nix
     # ./../../modules/tailscale.nix
     ./../../modules/gtk.nix

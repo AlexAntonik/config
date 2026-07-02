@@ -1,19 +1,9 @@
-{ host, ... }:
+{ host, config, ... }:
 {
-  sops.secrets.dell_cert = {
-    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
-    owner = "${host.username}";
-    path = "/home/${host.username}/.config/syncthing/keys/cert.pem";
-  };
-  sops.secrets.dell_key = {
-    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
-    owner = "${host.username}";
-    path = "/home/${host.username}/.config/syncthing/keys/key.pem";
-  };
   services.syncthing = {
     enable = true;
-    key = "/home/${host.username}/.config/syncthing/keys/key.pem";
-    cert = "/home/${host.username}/.config/syncthing/keys/cert.pem";
+    key = config.age.secrets.dell-sync-key.path;
+    cert = config.age.secrets.dell-sync-cert.path;
     openDefaultPorts = true;
     dataDir = "/home/${host.username}/.local/share/syncthing";
     configDir = "/home/${host.username}/.config/syncthing";

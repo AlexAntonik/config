@@ -31,6 +31,7 @@
     ./hardware.nix
     ./hardware-gen.nix
     ./syncthing.nix
+    ./secrets/secrets.nix
 
     # Users
     ./../../modules/users/desktop-default.nix

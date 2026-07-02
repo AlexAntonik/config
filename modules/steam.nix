@@ -10,7 +10,7 @@
 
     gamescope = {
       enable = true;
-      capSysNice = true;
+      capSysNice = false;
       args = [
         "-W 2880"  # Width
         "-H 1620"  # Height

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 {
   host = {
     # Flake locals
@@ -26,6 +22,7 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./syncthing.nix
+    ./secrets/secrets.nix
 
     # Users
     ./swprod-user.nix
@@ -56,7 +53,6 @@
     # Config & misc
     ./../../modules/nix.nix
     ./../../modules/time.nix
-    ./../../modules/secrets/sops.nix
 
     # Scripts
     ./../../modules/scripts/syncsupprep.nix
@@ -66,10 +62,4 @@
     supabase-cli
     postgresql
   ];
-
-  services.openssh = {
-    settings = {
-      PasswordAuthentication = lib.mkForce false; # Override from ssh.nix
-    };
-  };
 }

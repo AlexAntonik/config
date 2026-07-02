@@ -1,20 +1,10 @@
-{ host, ... }:
+{ host, config, ... }:
 {
-  sops.secrets.swop_cert = {
-    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
-    owner = "${host.username}";
-    path = "/home/${host.username}/.config/syncthing/keys/cert.pem";
-  };
-  sops.secrets.swop_key = {
-    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
-    owner = "${host.username}";
-    path = "/home/${host.username}/.config/syncthing/keys/key.pem";
-  };
   services.syncthing = {
     enable = true;
-    key = "/home/${host.username}/.config/syncthing/keys/key.pem";
-    cert = "/home/${host.username}/.config/syncthing/keys/cert.pem";
     openDefaultPorts = true;
+    key = config.age.secrets.swprod-sync-key.path;
+    cert = config.age.secrets.swprod-sync-cert.path;
     dataDir = "/home/${host.username}/.local/share/syncthing";
     configDir = "/home/${host.username}/.config/syncthing";
     user = "${host.username}";

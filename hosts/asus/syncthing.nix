@@ -1,20 +1,9 @@
-{ host, ... }:
+{ host, config, ... }:
 {
-  imports = [ ./../../modules/secrets/sops.nix ];
-  sops.secrets.asus_cert = {
-    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
-    owner = "${host.username}";
-    path = "/home/${host.username}/.config/syncthing/keys/cert.pem";
-  };
-  sops.secrets.asus_key = {
-    sopsFile = "${host.flakePath}/modules/secrets/syncthing.yaml";
-    owner = "${host.username}";
-    path = "/home/${host.username}/.config/syncthing/keys/key.pem";
-  };
   services.syncthing = {
     enable = true;
-    key = "/home/${host.username}/.config/syncthing/keys/key.pem";
-    cert = "/home/${host.username}/.config/syncthing/keys/cert.pem";
+    key = config.age.secrets.asus-sync-key.path;
+    cert = config.age.secrets.asus-sync-cert.path;
     openDefaultPorts = true;
     dataDir = "/home/${host.username}/.local/share/syncthing";
     configDir = "/home/${host.username}/.config/syncthing";
