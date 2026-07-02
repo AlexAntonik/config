@@ -15,9 +15,8 @@ let
       done
     }
 
-    check_layout() {
-      current_layout=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main == true) | .active_keymap')
-      case "$current_layout" in
+    set_light() {
+      case "$1" in
         *"Russian"*|*"ru"*|*"RU"*|*"русский"*|*"Русский"*)
           brightnessctl -d ${host.languageLightID} s 100
           ;;
@@ -26,14 +25,24 @@ let
           ;;
       esac
     }
-
+    check_layout() {
+      current_layout=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main == true) | .active_keymap')
+      set_light "$current_layout"
+    }
     wait_for_socket
+    MAIN_KBD=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main == true) | .name')
     check_layout
-
+    
     ${pkgs.socat}/bin/socat -U - UNIX-CONNECT:"$SOCKET" | while read -r line; do
-      if [[ "$line" == activelayout* ]]; then
-        check_layout
-      fi
+      case "$line" in
+        "activelayout>>"*)
+          event_kbd="''${line#activelayout>>}"
+          event_kbd="''${event_kbd%%,*}"
+          if [ "$event_kbd" = "$MAIN_KBD" ]; then
+            set_light "''${line#*,}"
+          fi
+          ;;
+      esac
     done
   '';
 in
