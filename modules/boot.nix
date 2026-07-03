@@ -1,26 +1,11 @@
 {
   # Boot and kernel configuration
-  # Note: sleep/suspend/hibernate are disabled as they can break Bluetooth
-
-  systemd = {
-    targets = {
-      sleep = {
-        enable = false;
-        unitConfig.DefaultDependencies = "no";
-      };
-      suspend = {
-        enable = false;
-        unitConfig.DefaultDependencies = "no";
-      };
-      hibernate = {
-        enable = false;
-        unitConfig.DefaultDependencies = "no";
-      };
-      "hybrid-sleep" = {
-        enable = false;
-        unitConfig.DefaultDependencies = "no";
-      };
-    };
+  # sleep/suspend/hibernate are disabled as they can break Bluetooth
+  systemd.targets = {
+    sleep.enable = false;
+    suspend.enable = false;
+    hibernate.enable = false;
+    "hybrid-sleep".enable = false;
   };
 
   boot = {
