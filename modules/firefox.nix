@@ -10,16 +10,18 @@ let
   ];
 in
 {
-  environment.etc."firefox/profile-userchrome.sh".text = ''
-    for d in $HOME/.mozilla/firefox/*.default*; do
-      mkdir -p "$d/chrome"
-      ln -sf /etc/firefox/userChrome.css "$d/chrome/userChrome.css"
-    done
-  '';
-
-  environment.loginShellInit = ''
-    [ -f /etc/firefox/profile-userchrome.sh ] && sh /etc/firefox/profile-userchrome.sh
-  '';
+  systemd.user.services.firefox-userchrome-link = {
+    description = "Symlink custom userChrome.css into Firefox profiles";
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      for d in "$HOME"/.mozilla/firefox/*.default*; do
+        [ -d "$d" ] || continue
+        mkdir -p "$d/chrome"
+        ln -sf /etc/firefox/userChrome.css "$d/chrome/userChrome.css"
+      done
+    '';
+  };
 
   environment.etc."firefox/userChrome.css".text = ''
 
