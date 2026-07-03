@@ -24,7 +24,7 @@
     ./secrets/secrets.nix
 
     # Users
-    ./../../modules/users/server-default.nix
+    ./../../modules/users/server-user.nix
 
     # System boot
     ./../../modules/boot.nix

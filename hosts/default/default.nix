@@ -55,7 +55,8 @@
     ./../../modules/desktop/hardware.nix
     ./../../modules/desktop/services.nix
     ./../../modules/desktop/pkgs.nix
-    ./../../modules/desktop/network.nix
+    ./../../modules/desktop/polkit-power.nix
+    ./../../modules/networking/desktop-network.nix
     ./../../modules/thunar.nix
     ./../../modules/vicinae.nix
     ./../../modules/media.nix
