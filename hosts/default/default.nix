@@ -41,7 +41,7 @@
     ./hardware-gen.nix
 
     # Users
-    ./../../modules/users/desktop-default.nix
+    ./../../modules/users/desktop-user.nix
 
     # System boot & visuals
     ./../../modules/boot.nix

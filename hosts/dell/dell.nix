@@ -33,7 +33,7 @@
     ./../../modules/logs.nix
     ./../../modules/ssh.nix
     ./../../modules/security.nix
-    ./../../modules/server/network-wifi.nix
+    ./../../modules/networking/server-wifi-network.nix
 
     # Tools & utilities
     ./../../modules/utilities.nix
