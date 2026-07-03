@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ pkgs, ... }:
 {
   # Appimage Support
   programs.appimage.enable = true;
@@ -17,14 +17,6 @@
   services = {
     libinput.enable = true;
     gvfs.enable = true;
-    xserver = {
-      enable = false; # For Wayland/Hyprland
-      xkb = {
-        layout = "${host.keyboardLayout}";
-        variant = "";
-        options = "grp:win_space_toggle"; # also need to be changed in hyprland config
-      };
-    };
     gnome.gnome-keyring.enable = true;
   };
 }
