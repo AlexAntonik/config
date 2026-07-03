@@ -4,16 +4,11 @@
     # Flake locals
     username = "user";
     hostname = "swprod"; # Must be the same as dir name
-    flakePath = "/home/user/config";
 
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
 
-    # Time and Locale Settings
     timeZone = "Europe/Minsk";
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = "en_US.UTF-8";
-
     stateVersion = "23.11";
   };
 

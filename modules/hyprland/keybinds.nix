@@ -16,7 +16,7 @@ in
 
     # Input device settings
     input = {
-      kb_layout = "${host.keyboardLayout}";
+      kb_layout = host.keyboardLayout;
       numlock_by_default = true;
       repeat_delay = 300;
       follow_mouse = 1; # Focus follows mouse
@@ -174,7 +174,5 @@ in
     ];
     #Changing kb layout
     input.kb_options = "caps:escape,grp:win_space_toggle";
-    # also need to be changed here in binds up some lines
-    # and in sevices.xserver.xkb in separate file services.nix
   };
 }

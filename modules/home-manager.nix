@@ -10,9 +10,9 @@
     };
     users.${host.username} = {
       home = {
-        username = "${host.username}";
+        username = host.username;
         homeDirectory = "/home/${host.username}";
-        stateVersion = "${host.stateVersion}";
+        stateVersion = host.stateVersion;
       };
     };
   };

@@ -1,11 +1,10 @@
-{ lib, ... }:
 {
   environment.shellAliases = {
     lg = "lazygit";
   };
   programs.lazygit = {
     enable = true;
-    settings = lib.mkForce {
+    settings = {
       disableStartupPopups = true;
       notARepository = "skip";
       promptToReturnFromSubprocess = false;

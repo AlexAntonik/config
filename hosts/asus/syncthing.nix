@@ -7,7 +7,7 @@
     openDefaultPorts = true;
     dataDir = "/home/${host.username}/.local/share/syncthing";
     configDir = "/home/${host.username}/.config/syncthing";
-    user = "${host.username}";
+    user = host.username;
     settings = {
       devices = {
         "dell" = {

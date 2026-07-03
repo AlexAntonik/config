@@ -7,7 +7,7 @@
     cert = config.age.secrets.swprod-sync-cert.path;
     dataDir = "/home/${host.username}/.local/share/syncthing";
     configDir = "/home/${host.username}/.config/syncthing";
-    user = "${host.username}";
+    user = host.username;
     settings = {
       devices = {
         "asus" = {

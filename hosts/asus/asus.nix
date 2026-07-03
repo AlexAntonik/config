@@ -3,7 +3,6 @@
   host = {
     # Locals
     username = "alex";
-    flakePath = "/home/alex/config";
     hostname = "asus"; # Must be the same as dir name
 
     gitUsername = "AlexAntonik";
@@ -20,8 +19,6 @@
     kbdIdleTimeout = "120"; # In seconds, time before keyboard backlight off
     keyboardLayout = "us,ru";
     timeZone = "Europe/Minsk";
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = "en_US.UTF-8";
 
     stateVersion = "23.11";
   };
