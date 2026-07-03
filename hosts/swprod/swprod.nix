@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   host = {
     # Flake locals
@@ -52,7 +52,7 @@
     # Scripts
     ./../../modules/scripts/syncsupprep.nix
   ];
-
+  nix.settings.max-jobs = lib.mkForce 2;
   environment.systemPackages = with pkgs; [
     supabase-cli
     postgresql
