@@ -140,7 +140,7 @@ in
       "app.normandy.first_run" = false;
       "browser.ctrlTab.recentlyUsedOrder" = true;
       "devtools.accessibility.enabled" = false;
-      "browser.link.open_newwindow" = true;
+      "browser.link.open_newwindow" = 3;
       "browser.search.widget.inNavBar" = true;
       "browser.bookmarks.addedContextMenuItem" = false;
       "browser.startup.homepage" = "about:newtab";

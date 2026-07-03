@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.shellAliases = {
-    f = "fzf";
+    man = "batman";
   };
   programs.bat = {
     enable = true;

@@ -67,15 +67,14 @@
       },
       "options": {
         "home_manager": {
-          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.alex.options.home-manager.users.type.getSubOptions []"
+          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.asus.options.home-manager.users.type.getSubOptions []"
         },
         "nixos": {
-          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.alex.options"
+          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.asus.options"
         }
       }
     }
   },
-  "todo-tree.ripgrep":"/nix/store/9inzpl9kapx0bdiifqv0db1xz3d5l2m8-system-path/bin/grep",
   "shfmt.executablePath": "shfmt",
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Fira Code', monospace",
   "terminal.integrated.fontLigatures.featureSettings": "\"liga\" on",

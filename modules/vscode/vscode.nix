@@ -5,10 +5,10 @@
   mkSymlinks,
   ...
 }:
+let
+  ext = inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
+in
 {
-  nixpkgs.overlays = [
-    inputs.nix-vscode-extensions.overlays.default
-  ];
   system.activationScripts = mkSymlinks "vscode" {
     "/home/${host.username}/.config/Code/User/keybindings.json" = "${host.flakePath}/modules/vscode/keybindings.json";
     "/home/${host.username}/.config/Code/User/settings.json" = "${host.flakePath}/modules/vscode/settings.json";
@@ -23,7 +23,7 @@
       package = pkgs.vscode;
       mutableExtensionsDir = true;
       profiles.default = {
-        extensions = with pkgs.vscode-marketplace; [
+        extensions = with ext; [
           # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
           # Essentials
           mikestead.dotenv
@@ -82,10 +82,7 @@
           # mtxr.sqltools-driver-sqlite
           tamasfe.even-better-toml
           ms-azuretools.vscode-containers
-          ms-vscode-remote.remote-ssh
-          ms-vscode-remote.vscode-remote-extensionpack
           ms-vscode.makefile-tools
-          ms-vscode.remote-explorer
           inferrinizzard.prettier-sql-vscode
           ms-vsliveshare.vsliveshare
           # codeforge.remix-forge

@@ -145,6 +145,7 @@ else
         echo -e "${RED}Failed to generate hardware configuration${NC}"
         exit 1
     fi
+    git add . || echo -e "${RED}Warning: git add failed${NC}"
     echo
 fi
 

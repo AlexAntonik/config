@@ -56,7 +56,6 @@
           "XDG_SESSION_TYPE,wayland"
           "GDK_BACKEND,wayland,x11" # Prefer Wayland for GTK apps, fallback to X11
           "CLUTTER_BACKEND,wayland" # Prefer Wayland for Clutter apps
-          "QT_QPA_PLATFORM=wayland;xcb" # Prefer Wayland for Qt apps, fallback to XCB (X11)
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # Use server-side decorations for Qt Wayland apps
           "QT_AUTO_SCREEN_SCALE_FACTOR,1" # Auto-scaling for Qt apps
           "SDL_VIDEODRIVER,wayland,x11" # Prefer Wayland for SDL apps

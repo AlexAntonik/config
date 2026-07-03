@@ -1,6 +1,6 @@
 {
   environment.shellAliases = {
-    man = "batman";
+    f = "fzf";
   };
   home.programs.fzf = {
     enable = true;
