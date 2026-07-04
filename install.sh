@@ -39,12 +39,12 @@ if [ -z "$hostName" ]; then
   echo -e "${CYAN}============================================================${NC}"
   echo -e "${CYAN}Please enter a hostname for this machine.${NC}"
   echo -e "${CYAN}It will be used to generate config files for NixOS.${NC}"
-  echo -e "${CYAN}If unsure, press Enter to use the default hostname: ${YELLOW}default${NC}"
+  echo -e "${CYAN}If unsure, press Enter to use the default hostname: ${YELLOW}base${NC}"
   echo -e "${CYAN}============================================================${NC}"
   echo
 
   read -e -p "$(echo -e "${QUESTION}Hostname: ${NC}")" hostName
-  hostName="${hostName:-default}"
+  hostName="${hostName:-base}"
 
   echo
   echo -e "${CYAN}Using hostname: ${GREEN}$hostName${NC}"
@@ -69,14 +69,14 @@ if [ ! -d "$HOME/config" ]; then
         echo
         exit 1
     fi
-    if ! cp hosts/default/*.nix hosts/"$hostName"/; then
+    if ! cp hosts/base/*.nix hosts/"$hostName"/; then
         echo -e "${RED}Failed to copy configuration files${NC}"
         echo
         exit 1
     fi
-	if [ -f "hosts/$hostName/default.nix" ]; then
-        mv "hosts/$hostName/default.nix" "hosts/$hostName/${hostName}.nix"
-        echo -e "${CYAN}Renamed default.nix → ${hostName}.nix${NC}"
+	if [ -f "hosts/$hostName/base.nix" ]; then
+        mv "hosts/$hostName/base.nix" "hosts/$hostName/${hostName}.nix"
+        echo -e "${CYAN}Renamed base.nix → ${hostName}.nix${NC}"
     fi
     installusername="$USER"
     echo -e "${CYAN}Using username: $installusername${NC}"
@@ -117,14 +117,14 @@ else
         echo -e "${RED}Failed to create host directory${NC}"
         exit 1
     fi
-    if ! cp hosts/default/*.nix hosts/"$hostName"/; then
-        echo -e "${RED}Failed to copy configuration files from default${NC}"
+    if ! cp hosts/base/*.nix hosts/"$hostName"/; then
+        echo -e "${RED}Failed to copy configuration files from base${NC}"
         exit 1
     fi
-	# Rename default.nix to <hostname>.nix
-    if [ -f "hosts/$hostName/default.nix" ]; then
-        mv "hosts/$hostName/default.nix" "hosts/$hostName/${hostName}.nix"
-        echo -e "${CYAN}Renamed default.nix → ${hostName}.nix${NC}"
+	# Rename base.nix to <hostname>.nix
+    if [ -f "hosts/$hostName/base.nix" ]; then
+        mv "hosts/$hostName/base.nix" "hosts/$hostName/${hostName}.nix"
+        echo -e "${CYAN}Renamed base.nix → ${hostName}.nix${NC}"
     fi
 
     installusername="$USER"
