@@ -1,9 +1,12 @@
-{
+{pkgs, ...}:{
   environment.shellAliases = {
     f = "fzf";
   };
-  home.programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
+  environment.systemPackages = [
+    pkgs.fzf
+  ];
+  programs.fzf = {
+    keybindings = true;
+    fuzzyCompletion = true;
   };
 }
