@@ -24,8 +24,8 @@
     noctalia.url = "github:noctalia-dev/noctalia";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
-    nirimod.url = "github:srinivasr/nirimod";
-    nirimod.inputs.nixpkgs.follows = "nixpkgs";
+    # nirimod.url = "github:srinivasr/nirimod";
+    # nirimod.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: {
