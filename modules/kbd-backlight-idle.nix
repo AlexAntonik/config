@@ -1,19 +1,21 @@
 { pkgs, host, ... }:
 let
-  script = pkgs.writeShellScript "kbd-backlight-idle" ''
-    state_file=/run/user/$(id -u)/kbd-backlight-state
+script = pkgs.writeShellScript "kbd-backlight-idle" ''
+  state_file="/run/user/$(id -u)/kbd-backlight-state.kbd"
 
-    ${pkgs.swayidle}/bin/swayidle -w \
-      timeout ${host.kbdIdleTimeout} \
-        '${pkgs.bash}/bin/bash -c "
-          ${pkgs.brightnessctl}/bin/brightnessctl -d ${host.keyboardLightID} g > $state_file.kbd;
-          ${pkgs.brightnessctl}/bin/brightnessctl -d ${host.keyboardLightID} s 0;
-        "' \
-      resume \
-        '${pkgs.bash}/bin/bash -c "
-          ${pkgs.brightnessctl}/bin/brightnessctl -d ${host.keyboardLightID} s $(cat $state_file.kbd);
-        "'
-  '';
+  ${pkgs.swayidle}/bin/swayidle -w \
+    timeout ${host.kbdIdleTimeout} \
+      "${pkgs.brightnessctl}/bin/brightnessctl -d ${host.keyboardLightID} g > \"$state_file\"; \
+       ${pkgs.brightnessctl}/bin/brightnessctl -d ${host.keyboardLightID} s 0" \
+    resume \
+      "current=\$(${pkgs.brightnessctl}/bin/brightnessctl -d ${host.keyboardLightID} g); \
+       if [ \"\$current\" -eq 0 ]; then \
+         [ -f \"$state_file\" ] && \
+         ${pkgs.brightnessctl}/bin/brightnessctl -d ${host.keyboardLightID} s \$(cat \"$state_file\"); \
+       else \
+         echo \"\$current\" > \"$state_file\"; \
+       fi"
+'';
 in
 {
   systemd.user.services.kbd-backlight-idle = {
