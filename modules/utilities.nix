@@ -21,7 +21,6 @@
     fastfetch # Modern neofetch
     bottom # another tui system usage interface
     btop # Better htop
-    fzf # Fuzzy search
     yazi # TUI file explorer
     cloc # Count lines of code
     duf # Utility for viewing disk usage in terminal

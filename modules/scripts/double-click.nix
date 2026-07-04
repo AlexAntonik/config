@@ -17,8 +17,8 @@
         time_diff=$(echo "$current_time - $last_time" | ${bc}/bin/bc)
         
         if (( $(echo "$time_diff < $DELAY" | ${bc}/bin/bc -l) )); then
-          exec "$@"
           rm "$LAST_PRESS_FILE"
+          exec "$@"
           exit 0
         fi
       fi
