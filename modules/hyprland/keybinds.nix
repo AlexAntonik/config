@@ -49,7 +49,7 @@ in
     ];
 
     bindr = [
-      "SUPER, SUPER_L, exec, double-click noctalia-shell ipc call bar peek"
+      "SUPER, SUPER_L, exec, double-click noctalia msg bar-show && sleep 0.8 && noctalia msg bar-hide"
     ];
 
     bind = [
