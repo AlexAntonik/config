@@ -11,6 +11,7 @@
 
     # Devices for some features
     keyboardLayout = "us,ru";
+    keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
     timeZone = "Europe/Minsk";
 
     # This value determines the Home Manager/NixOs release that your configuration is
