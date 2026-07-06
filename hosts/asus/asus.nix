@@ -118,7 +118,7 @@
     nixd # Nix LSP
     dart # Dart language
     kotlin # Kotlin language
-    typescript # EXTREMLY BAD language
+    typescript # EXTREMELY BAD language
     # zulu # Open JDK fast
 
     # Development tools
