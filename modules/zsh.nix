@@ -4,9 +4,6 @@
     pkgs.ghostty # needed even on srv to proper ssh
     pkgs.zsh-history-substring-search
   ];
-  systemd.tmpfiles.rules = [
-    "f /home/${host.username}/.zshrc 0644 ${host.username} users - -"
-  ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
     enable = true;

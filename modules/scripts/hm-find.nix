@@ -4,8 +4,6 @@
     (writeShellScriptBin
     "hm-find"
     ''
-      #!/usr/bin/env bash
-
       FILES=$(journalctl --since "-300m" -xe | grep hm-activate | awk -F "'|'" '/would be clobbered by backing up/ {print $2}')
 
       if [ -z "$FILES" ]; then
