@@ -29,9 +29,7 @@ in
     }
     {
       warnings = lib.optional (!(options.home.definitions == [ ] || (options ? home-manager))) ''
-        `config.home` has some settings on host "${config.host.hostname}" but the
-        home-manager NixOS module isn't imported for this host, so this
-        config would silently be discarded. Import `modules/home-manager.nix` if hm options needed.
+        config.home defined without home-manager. Import modules/home-manager.nix if home config needed.
       '';
     }
     (lib.optionalAttrs (options ? home-manager) {
