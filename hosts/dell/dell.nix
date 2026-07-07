@@ -28,7 +28,7 @@
     ./../../modules/logs.nix
     ./../../modules/ssh.nix
     ./../../modules/security.nix
-    ./../../modules/networking/server-wifi-network.nix
+    ./../../modules/networking/base-network.nix
 
     # Tools & utilities
     ./../../modules/utilities.nix
