@@ -5,7 +5,7 @@
     "adbusers"
   ];
   environment.systemPackages = with pkgs; [
-    android-sdk
+    androidsdk
     android-tools
     android-studio
   ];
