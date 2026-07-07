@@ -70,8 +70,8 @@
         sql.enable = true;
         yaml.enable = true;
         html.enable = true;
-        java.enable = true;
-        kotlin.enable = true;
+        java.enable = false;
+        kotlin.enable = false;
         json.enable = true;
         bash.enable = true;
         lua.enable = true;
