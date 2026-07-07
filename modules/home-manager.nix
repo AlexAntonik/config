@@ -1,4 +1,9 @@
-{ host, inputs, ... }:
+{
+  host,
+  inputs,
+  mkSymlinks,
+  ...
+}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
@@ -6,7 +11,7 @@
     useGlobalPkgs = true;
     backupFileExtension = "backup";
     extraSpecialArgs = {
-      inherit inputs;
+      inherit inputs host mkSymlinks;
     };
     users.${host.username} = {
       home = {

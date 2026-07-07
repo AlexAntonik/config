@@ -82,10 +82,6 @@ in
     }
     (lib.optionalAttrs (options ? home-manager) {
       home-manager.users.${config.host.username} = config.home;
-      home-manager.extraSpecialArgs = {
-        host = config.host;
-        inherit (symlinks) mkSymlinks;
-      };
     })
   ];
 }
