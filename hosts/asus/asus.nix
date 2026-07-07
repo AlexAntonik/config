@@ -143,7 +143,6 @@
     libreoffice-qt-fresh # Office suite
     obsidian # Personal knowledge base
     zathura # PDF viewer
-    bottles
 
     # Communication & Internet
     discord # Chat and voice communication
