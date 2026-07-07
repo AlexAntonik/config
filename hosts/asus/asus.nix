@@ -130,7 +130,6 @@
     gradle # Build system
     ninja # Build system
     nixfmt # Nix code formatter
-    pkg-config # Package configuration tool
     nodejs # JavaScript runtime
     opencode
     supabase-cli
@@ -146,9 +145,8 @@
 
     # Communication & Internet
     discord # Chat and voice communication
-    # protonvpn-gui # ProtonVPN client
     telegram-desktop # Instant messaging
-    tor-browser # Privacy-focused browser
+    # tor-browser # Privacy-focused browser
     # chromium
     # vesktop #discord alternative web thingne
 
