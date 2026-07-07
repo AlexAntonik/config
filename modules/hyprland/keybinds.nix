@@ -55,9 +55,10 @@ in
     bind = [
       # --- Application Launchers ---
       "SUPER,Return,exec,ghostty +new-window" # Launch terminal
-      "SUPER SHIFT,Return,exec,vicinae toggle"
-      "SUPER ,GRAVE,exec,vicinae toggle"
-      "SUPER ,ESCAPE,exec,noctalia msg panel-toggle session"
+      "SUPER SHIFT,Return,exec,noctalia msg panel-toggle launcher"
+      "SUPER,GRAVE,exec,noctalia msg panel-toggle launcher"
+      "SUPER,ESCAPE,exec,noctalia msg panel-toggle session"
+      "SUPER SHIFT,C,exec,noctalia msg panel-toggle clipboard"
       "SUPER,W,exec,firefox" # Launch browser
       "SUPER,O,exec,obs" # Launch OBS Studio
       "SUPER,C,exec,code" # Launch VS Code

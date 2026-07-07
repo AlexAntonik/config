@@ -60,12 +60,10 @@
     ];
 
     layerrule = [
-      "blur on, match:namespace vicinae"
       "blur on, match:namespace noctalia-bar-.*"
       "ignore_alpha 0.5, match:namespace noctalia-bar-.*"
       "blur on, match:namespace noctalia-attached-.*"
       "ignore_alpha 0.5, match:namespace noctalia-attached-.*"
-      "ignore_alpha 0, match:namespace vicinae"
     ];
     misc = {
       layers_hog_keyboard_focus = true; # Allow layers (like Rofi) to grab focus

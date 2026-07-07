@@ -47,7 +47,6 @@
     ./../../modules/desktop/polkit-power.nix
     ./../../modules/networking/desktop-network.nix
     ./../../modules/thunar.nix
-    ./../../modules/vicinae.nix
     ./../../modules/media.nix
     ./../../modules/bluetooth.nix
 

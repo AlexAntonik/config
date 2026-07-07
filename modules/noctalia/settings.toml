@@ -1,23 +1,40 @@
-[bar.default]
-auto_hide = true
-background_opacity = 0.69999999999999996
-center = [ "clock" ]
-contact_shadow = true
-end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
-layer = "top"
-margin_edge = 4
-position = "bottom"
-radius = 10
-reserve_space = false
-shadow = true
-start = [ "cpu", "ram", "temp", "taskbar" ]
-widget_spacing = 8
+[bar]
+order = [ "default", "workspaces" ]
 
-    [bar.default.dead_zone]
-    command = "noctalia msg panel-toggle control-center"
-    right_command = "noctalia msg panel-toggle session"
+    [bar.default]
+    auto_hide = true
+    background_opacity = 0.69999999999999996
+    center = [ "clock" ]
+    contact_shadow = true
+    end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
+    layer = "top"
+    margin_edge = 4
+    position = "bottom"
+    radius = 10
+    reserve_space = false
+    shadow = true
+    show_on_workspace_switch = false
+    start = [ "cpu", "ram", "temp", "taskbar" ]
+    widget_spacing = 8
+
+        [bar.default.dead_zone]
+        command = "noctalia msg panel-toggle control-center"
+        right_command = "noctalia msg panel-toggle session"
+
+    [bar.workspaces]
+    auto_hide = true
+    background_opacity = 0.59999998658895493
+    center = [ "workspaces" ]
+    enabled = true
+    end = []
+    margin_edge = 6
+    margin_ends = 300
+    position = "left"
+    reserve_space = false
+    start = []
 
 [control_center]
+hidden_tabs = []
 sidebar = "compact"
 sidebar_section = "compact"
 
@@ -213,8 +230,11 @@ scale = 1.4000000134110451
     [osd.kinds]
     media = false
 
+[plugin_settings."noctalia/notes"]
+notes_dir = "~/notes"
+
 [plugins]
-enabled = [ "noctalia/screen_recorder" ]
+enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", "noctalia/translator" ]
 
     [[plugins.source]]
     auto_update = true
@@ -239,8 +259,15 @@ polkit_agent = false
 settings_show_advanced = true
 telemetry_enabled = false
 
+    [shell.launcher]
+    app_grid = false
+    compact = false
+    session_search = true
+
     [shell.panel]
     borders = false
+    clipboard_placement = "attached"
+    launcher_placement = "attached"
     open_near_click_control_center = true
     shadow = true
     transparency_mode = "soft"
@@ -283,6 +310,8 @@ telemetry_enabled = false
 
 [theme]
 builtin = "Tokyo-Night"
+community_palette = "Oxocarbon"
+mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "faithful"
 
@@ -320,8 +349,14 @@ art_size = 17.0
 hide_when_no_media = true
 title_scroll = "always"
 
+[widget.mpvpaper]
+type = "noctalia/mpvpaper:mpvpaper"
+
 [widget.network]
 show_label = false
+
+[widget.notes]
+type = "noctalia/notes:notes"
 
 [widget.ram]
 show_label = false
@@ -339,6 +374,9 @@ pinned = [ "AmneziaVPN", "Discord", "steam", "TelegramDesktop" ]
 
 [widget.volume]
 show_label = false
+
+[widget.wallhaven]
+type = "noctalia/wallhaven:wallhaven"
 
 [widget.workspaces]
 minimal = false

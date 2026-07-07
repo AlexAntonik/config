@@ -48,7 +48,6 @@
     ./../../modules/desktop/polkit-power.nix
     ./../../modules/networking/desktop-network.nix
     ./../../modules/thunar.nix
-    ./../../modules/vicinae.nix
     ./../../modules/media.nix
     ./../../modules/bluetooth.nix
 
@@ -144,6 +143,7 @@
     libreoffice-qt-fresh # Office suite
     obsidian # Personal knowledge base
     zathura # PDF viewer
+    bottles
 
     # Communication & Internet
     discord # Chat and voice communication

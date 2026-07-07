@@ -291,7 +291,6 @@ overview {
         
 spawn-sh-at-startup "dbus-update-activation-environment --all --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 spawn-sh-at-startup "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-spawn-at-startup "vicinae server"
 spawn-at-startup "nm-applet --indicator"
 
 
