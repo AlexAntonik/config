@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = [
     pkgs.ghostty # needed even on srv to proper ssh
