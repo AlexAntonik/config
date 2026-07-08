@@ -10,8 +10,10 @@ let
 in
 {
   system.activationScripts = mkSymlinks "vscode" {
-    "/home/${host.username}/.config/Code/User/keybindings.json" = "${host.flakePath}/modules/vscode/keybindings.json";
-    "/home/${host.username}/.config/Code/User/settings.json" = "${host.flakePath}/modules/vscode/settings.json";
+    "/home/${host.username}/.config/Code/User/keybindings.json" =
+      "${host.flakePath}/modules/vscode/keybindings.json";
+    "/home/${host.username}/.config/Code/User/settings.json" =
+      "${host.flakePath}/modules/vscode/settings.json";
   };
   home = {
     home.packages = with pkgs; [

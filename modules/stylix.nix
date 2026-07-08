@@ -65,7 +65,7 @@
   };
 
   home.stylix.targets = {
-    # hyprland.enable = false;
+    hyprland.enable = false;
     bat.enable = false;
     btop.enable = false;
     yazi.enable = false;
