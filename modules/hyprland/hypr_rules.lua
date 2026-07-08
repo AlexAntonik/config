@@ -12,91 +12,36 @@ hl.layer_rule({
 hl.window_rule({
     match = { class = "dev.noctalia.Noctalia" },
     float = true,
-    size = { 1080, 920 },
+    size = { 920, 720 },
 })
 
 hl.window_rule({
     match = {
         class = "([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)",
     },
-    tag = "+file-manager",
+    opacity = 0.9,
 })
 
 hl.window_rule({
     match = {
         class = "(Alacritty|kitty|kitty-dropterm|com.mitchellh.ghostty|[Gg]hostty)",
     },
-    tag = "+terminal",
+    opacity = 0.86,
 })
 
 hl.window_rule({
     match = {
-        class = "([Dd]iscord|[Ww]ebCord|[Vv]esktop)",
+        class = "(org.telegram.desktop|[Dd]iscord|teams-for-linux|)",
     },
-    tag = "+msg",
+    opacity = 0.86,
 })
 
 hl.window_rule({
     match = {
-        class = "(org.telegram.desktop|io.github.tdesktop_x64.TDesktop)",
+        class = "(gamescope|steam_app_\\d+)",
     },
-    tag = "+msg",
-})
-
-hl.window_rule({
-    match = {
-        class = "teams-for-linux",
-    },
-    tag = "+msg",
-})
-
-hl.window_rule({
-    match = {
-        class = "gamescope",
-    },
-    tag = "+games",
-})
-
-hl.window_rule({
-    match = {
-        class = "steam_app_\\d+",
-    },
-    tag = "+games",
-})
-
-hl.window_rule({
-    match = {
-        class = "[Ss]team",
-    },
-    tag = "+gamestore",
-})
-
-hl.window_rule({
-    match = {
-        title = "[Ll]utris",
-    },
-    tag = "+gamestore",
-})
-
-hl.window_rule({
-    match = {
-        class = "com.heroicgameslauncher.hgl",
-    },
-    tag = "+gamestore",
-})
-
-hl.window_rule({
-    match = {
-        class = "(gnome-disks|wihotspot(-gui)?)",
-    },
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        class = "[Rr]ofi",
-    },
-    tag = "+settings",
+    no_blur = true,
+    fullscreen = true,
 })
 
 hl.window_rule({
@@ -108,21 +53,7 @@ hl.window_rule({
 
 hl.window_rule({
     match = {
-        class = ".blueman-manager-wrapped",
-    },
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        class = "nwg-displays",
-    },
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        class = "(nm-applet|nm-connection-editor|blueman-manager)",
+        class = "(nm-applet|nm-connection-editor|blueman-manager|nwg-displays)",
     },
     tag = "+settings",
 })
@@ -131,19 +62,13 @@ hl.window_rule({
     match = {
         class = "(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)",
     },
+    center = true,
     tag = "+settings",
 })
 
 hl.window_rule({
     match = {
-        class = "(nwg-look|qt5ct|qt6ct|[Yy]ad)",
-    },
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        class = "xdg-desktop-portal-gtk",
+        class = "(nwg-look|qt5ct|qt6ct|[Yy]ad|xdg-desktop-portal-gtk)",
     },
     tag = "+settings",
 })
@@ -153,6 +78,8 @@ hl.window_rule({
         tag = "settings*",
     },
     float = true,
+    opacity = 0.8,
+    size = "70% 70%",
 })
 
 hl.window_rule({
@@ -160,6 +87,9 @@ hl.window_rule({
         title = "Picture-in-Picture",
     },
     float = true,
+    move = "60% 6%",
+    opacity = "1.0 override",
+    pin = true,
 })
 
 hl.window_rule({
@@ -167,38 +97,16 @@ hl.window_rule({
         title = "Authentication Required",
     },
     float = true,
+    center = true,
 })
 
 hl.window_rule({
     match = {
-        class = "(codium|codium-url-handler|VSCodium)",
-        title = "negative:.*codium.*|.*VSCodium.*",
+        class = "(codium|codium-url-handler|VSCodium|[Ss]team|[Tt]hunar)",
+        title = "negative:.*codium.*|.*VSCodium.*|*[Ss]team*|.*[Tt]hunar.*",
     },
     float = true,
-})
-
-hl.window_rule({
-    match = {
-        class = "com.heroicgameslauncher.hgl",
-        title = "negative:Heroic Games Launcher",
-    },
-    float = true,
-})
-
-hl.window_rule({
-    match = {
-        class = "[Ss]team",
-        title = "negative:[Ss]team",
-    },
-    float = true,
-})
-
-hl.window_rule({
-    match = {
-        class = "[Tt]hunar",
-        title = "negative:.*[Tt]hunar.*",
-    },
-    float = true,
+    center = true,
 })
 
 hl.window_rule({
@@ -206,6 +114,7 @@ hl.window_rule({
         initial_title = "Add Folder to Workspace",
     },
     float = true,
+    size = "70% 60%",
 })
 
 hl.window_rule({
@@ -213,12 +122,15 @@ hl.window_rule({
         initial_title = "Media viewer",
     },
     float = true,
+    center = true,
+    size = "86% 86%",
 })
 
 hl.window_rule({
     match = {
         initial_title = "satty",
     },
+    center = true,
     float = true,
 })
 
@@ -227,6 +139,7 @@ hl.window_rule({
         initial_title = "Open Files",
     },
     float = true,
+    size = "70% 60%",
 })
 
 hl.window_rule({
@@ -238,131 +151,9 @@ hl.window_rule({
 
 hl.window_rule({
     match = {
-        title = "Picture-in-Picture",
-    },
-    move = "60% 6%",
-})
-
-hl.window_rule({
-    match = {
-        class = "(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)",
-    },
-    center = true,
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "Media viewer",
-    },
-    center = true,
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "satty",
-    },
-    center = true,
-})
-
-hl.window_rule({
-    match = {
-        class = "[Tt]hunar",
-        title = "negative:.*[Tt]hunar.*",
-    },
-    center = true,
-})
-
-hl.window_rule({
-    match = {
-        title = "Authentication Required",
-    },
-    center = true,
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "Media viewer",
-    },
-    size = "86% 86%",
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "Open Files",
-    },
-    size = "70% 60%",
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "Add Folder to Workspace",
-    },
-    size = "70% 60%",
-})
-
-hl.window_rule({
-    match = {
-        tag = "settings*",
-    },
-    size = "70% 70%",
-})
-
-hl.window_rule({
-    match = {
-        class = "[Ff]erdium",
-    },
-    size = "60% 70%",
-})
-
-hl.window_rule({
-    match = {
-        tag = "msg*",
-    },
-    opacity = 0.86,
-})
-
-hl.window_rule({
-    match = {
-        tag = "file-manager*",
-    },
-    opacity = 0.9,
-})
-
-hl.window_rule({
-    match = {
-        tag = "terminal*",
-    },
-    opacity = 0.86,
-})
-
-hl.window_rule({
-    match = {
-        tag = "settings*",
-    },
-    opacity = 0.8,
-})
-
-hl.window_rule({
-    match = {
         class = "(code|Code|code-oss)",
     },
     opacity = 0.86,
-})
-
-hl.window_rule({
-    match = {
-        title = "Picture-in-Picture",
-    },
-    opacity = "1.0 override",
-    pin = true,
-})
-
-hl.window_rule({
-    match = {
-        tag = "games*",
-    },
-    no_blur = true,
-    fullscreen = true,
 })
 
 hl.workspace_rule({
@@ -372,8 +163,16 @@ hl.workspace_rule({
 })
 
 hl.workspace_rule({
+    workspace = "1",
+    on_created_empty = "firefox",
+})
+hl.workspace_rule({
     workspace = "2",
     on_created_empty = "code",
+})
+hl.workspace_rule({
+    workspace = "3",
+    on_created_empty = "ghostty +new-window",
 })
 
 hl.workspace_rule({
