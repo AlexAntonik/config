@@ -146,6 +146,7 @@ in
       "browser.startup.homepage" = "about:newtab";
       "browser.tabs.loadInBackground" = false;
       "browser.tabs.allowTabDetach" = false;
+      "widget.gtk.native-emoji-dialog" = false;
       "general.useragent.locale" = "en-US";
       # Alt-menu disable
       "ui.key.menuAccessKeyFocuses" = false;
