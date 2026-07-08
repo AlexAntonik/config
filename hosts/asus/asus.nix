@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   host = {
     # Locals
     username = "alex";
@@ -17,10 +16,9 @@
 
     # Time and Locale Settings
     kbdIdleTimeout = "120"; # In seconds, time before keyboard backlight off
-    keyboardLayout = "us,ru";
     timeZone = "Europe/Minsk";
 
-    stateVersion = "23.11";
+    stateVersion = "26.05";
   };
 
   imports = [

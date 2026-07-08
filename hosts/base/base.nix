@@ -10,7 +10,6 @@
     gitEmail = "antonikavv@gmail.com";
 
     # Devices for some features
-    keyboardLayout = "us,ru";
     keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
     timeZone = "Europe/Minsk";
 

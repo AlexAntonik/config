@@ -21,10 +21,6 @@ let
         default = "en_US.UTF-8";
       };
       stateVersion = lib.mkOption { type = lib.types.str; };
-      keyboardLayout = lib.mkOption {
-        type = lib.types.str;
-        default = "us";
-      };
 
       # Device IDs/settings for some features
       mainMonitor = lib.mkOption {
