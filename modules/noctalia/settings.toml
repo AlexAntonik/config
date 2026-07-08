@@ -23,15 +23,25 @@ order = [ "default", "workspaces" ]
 
     [bar.workspaces]
     auto_hide = true
-    background_opacity = 0.59999998658895493
+    background_opacity = 0.0
+    capsule = true
+    capsule_fill = "on_primary"
+    capsule_opacity = 0.59999998658895493
+    capsule_padding = 12.0
+    capsule_radius = 12
+    capsule_thickness = 0.83999998494982719
     center = [ "workspaces" ]
+    contact_shadow = false
     enabled = true
     end = []
-    margin_edge = 6
-    margin_ends = 300
-    position = "left"
+    margin_edge = 4
+    margin_ends = 600
+    margin_opposite_edge = 3
+    position = "top"
     reserve_space = false
+    shadow = false
     start = []
+    thickness = 38
 
 [control_center]
 hidden_tabs = []
