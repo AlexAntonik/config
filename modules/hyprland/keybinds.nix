@@ -6,7 +6,6 @@ let
 in
 {
   wayland.windowManager.hyprland.settings = {
-    # Gesture settings (for touchpads/touchscreens)
     gesture = [
       "3, horizontal, workspace"
       "3, up, close"
@@ -14,9 +13,9 @@ in
       "2, pinchout, mod: SUPER, move"
     ];
 
-    # Input device settings
     input = {
       kb_layout = host.keyboardLayout;
+      kb_options = "caps:escape,grp:win_space_toggle"; #win-spce changes layout
       numlock_by_default = true;
       repeat_delay = 300;
       follow_mouse = 1; # Focus follows mouse
@@ -30,8 +29,6 @@ in
 
     # Repeatable actions
     bindle = [
-      "SHIFT,XF86MonBrightnessDown,exec,brightnessctl -d ${host.keyboardLightID} s 1%-"
-      "SHIFT,XF86MonBrightnessUp,exec,brightnessctl -d ${host.keyboardLightID} s 1%+"
       ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
       ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
       ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -173,7 +170,5 @@ in
       # Show temporary clock overlay
       "SUPER,Z,exec, notify-send -i time -a \"\" \"$(date '+%H:%M')   $(date '+%A, %d %B')\""
     ];
-    #Changing kb layout
-    input.kb_options = "caps:escape,grp:win_space_toggle";
   };
 }
