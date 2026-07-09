@@ -78,7 +78,7 @@
     ./../../modules/nvf.nix
 
     # Applications
-    ./../../modules/steam.nix
+    # ./../../modules/steam.nix
     ./../../modules/firefox.nix
     ./../../modules/obs.nix
 
