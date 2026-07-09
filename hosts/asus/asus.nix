@@ -99,7 +99,6 @@
     ./../../modules/scripts/double-click.nix
     ./../../modules/scripts/syncsupprep.nix
     ./../../modules/scripts/toggleTouchpad.nix
-    ./../../modules/scripts/toggleDisplay.nix
     ./../../modules/scripts/hm-find.nix
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];

@@ -112,7 +112,7 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 hl.bind("SUPER + SHIFT + ESCAPE", hl.dsp.exit())
-hl.bind("XF86WebCam", hl.dsp.exec_cmd("toggle_display"))
+hl.bind("XF86WebCam", hl.dsp.exec_cmd("noctalia msg dpms-off"))
 hl.bind("SUPER + Z", hl.dsp.exec_cmd("notify-send -i time -a \"\" \"$(date '+%H:%M')   $(date '+%A, %d %B')\""))
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"), { locked = true, repeating = true })
