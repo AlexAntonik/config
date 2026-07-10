@@ -16,9 +16,9 @@ in
       "${host.flakePath}/modules/vscode/settings.json";
   };
   home = {
-    home.packages = with pkgs; [
-      shellcheck # Shell script analysis tool
-      shfmt # Shell script formatter
+    home.packages = [
+      pkgs.shellcheck # Shell script analysis tool
+      pkgs.shfmt # Shell script formatter
     ];
     programs.vscode = {
       enable = true;
@@ -43,7 +43,7 @@ in
           gruntfuggly.todo-tree
 
           # Web Dev
-          # dbaeumer.vscode-eslint
+          dbaeumer.vscode-eslint
           esbenp.prettier-vscode
           csstools.postcss
           stylelint.vscode-stylelint
@@ -75,7 +75,6 @@ in
           ms-vscode.test-adapter-converter
           # mtxr.sqltools
           # mtxr.sqltools-driver-pg
-          dbaeumer.vscode-eslint
           donjayamanne.githistory
           formulahendry.code-runner
           bierner.color-info
@@ -96,3 +95,15 @@ in
     };
   };
 }
+          # jacobdufault.fuzzy-search
+          # pflannery.vscode-versionlens
+          # csstools.postcss
+          # # zenclabs.previewjs # Error: EROFS: read-only file system
+          # rangav.vscode-thunder-client
+          # ms-playwright.playwright
+          # # mtxr.sqltools
+          # # mtxr.sqltools-driver-pg
+          # # mtxr.sqltools-driver-sqlite
+          # inferrinizzard.prettier-sql-vscode
+          # # codeforge.remix-forge
+          # amodio.toggle-excluded-files

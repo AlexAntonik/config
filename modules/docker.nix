@@ -8,9 +8,9 @@
     ld = "lazydocker";
   };
 
-  environment.systemPackages = with pkgs; [
-    docker-compose # Multi-container orchestration
-    docker-ls # Docker registry and image exploration
-    lazydocker # Terminal UI for Docker management
+  environment.systemPackages = [
+    pkgs.docker-compose # Multi-container orchestration
+    pkgs.docker-ls # Docker registry and image exploration
+    pkgs.lazydocker # Terminal UI for Docker management
   ];
 }
