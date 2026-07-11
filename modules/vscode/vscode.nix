@@ -5,26 +5,13 @@
   mkSymlinks,
   ...
 }:
+let
+  pkgsFork = import inputs.nixpkgs-fork {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      vscode-extensions = prev.vscode-extensions // {
-        jacobdufault.fuzzy-search =
-          (import inputs.nixpkgs-fork { system = prev.system; }).vscode-extensions.jacobdufault.fuzzy-search;
-        inferrinizzard.prettier-sql-vscode =
-          (import inputs.nixpkgs-fork { system = prev.system; })
-          .vscode-extensions.inferrinizzard.prettier-sql-vscode;
-        rangav.vscode-thunder-client =
-          (import inputs.nixpkgs-fork {
-            system = prev.system;
-            config.allowUnfree = true;
-          }).vscode-extensions.rangav.vscode-thunder-client;
-        pflannery.vscode-versionlens =
-          (import inputs.nixpkgs-fork { system = prev.system; })
-          .vscode-extensions.pflannery.vscode-versionlens;
-      };
-    })
-  ];
   system.activationScripts = mkSymlinks "vscode" {
     "/home/${host.username}/.config/Code/User/keybindings.json" =
       "${host.flakePath}/modules/vscode/keybindings.json";
@@ -47,13 +34,13 @@
           editorconfig.editorconfig
           vscodevim.vim
           alefragnani.project-manager
-          jacobdufault.fuzzy-search
+          pkgsFork.vscode-extensions.jacobdufault.fuzzy-search
 
           dbaeumer.vscode-eslint
           esbenp.prettier-vscode
           usernamehw.errorlens
           yoavbls.pretty-ts-errors
-          pflannery.vscode-versionlens
+          pkgsFork.vscode-extensions.pflannery.vscode-versionlens
           eamodio.gitlens
           gruntfuggly.todo-tree
 
@@ -62,7 +49,7 @@
           wix.vscode-import-cost
           unifiedjs.vscode-mdx
           davidanson.vscode-markdownlint
-          inferrinizzard.prettier-sql-vscode
+          pkgsFork.vscode-extensions.inferrinizzard.prettier-sql-vscode
 
           graphql.vscode-graphql
           graphql.vscode-graphql-syntax
@@ -72,7 +59,7 @@
           mads-hartmann.bash-ide-vscode
           mkhl.shfmt
 
-          rangav.vscode-thunder-client
+          pkgsFork.vscode-extensions.rangav.vscode-thunder-client
           vitest.explorer
           firefox-devtools.vscode-firefox-debug
           ms-vscode.test-adapter-converter
