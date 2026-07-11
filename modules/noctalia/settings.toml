@@ -10,7 +10,8 @@ order = [ "default", "workspaces" ]
     contact_shadow = true
     end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
     layer = "top"
-    margin_edge = 4
+    margin_edge = 6
+    margin_ends = 200
     position = "bottom"
     radius = 10
     reserve_space = false
@@ -21,6 +22,7 @@ order = [ "default", "workspaces" ]
 
         [bar.default.dead_zone]
         command = "noctalia msg panel-toggle control-center"
+        middle_command = "noctalia msg panel-toggle launcher"
         right_command = "noctalia msg panel-toggle session"
 
     [bar.workspaces]
@@ -236,6 +238,7 @@ scale = 1.1000000089406967
 
 [osd]
 offset_y = 56
+orientation = "horizontal"
 position = "bottom_center"
 scale = 1.4000000134110451
 
@@ -285,6 +288,7 @@ telemetry_enabled = false
     transparency_mode = "soft"
 
     [shell.screenshot]
+    confirm_region = false
     directory = "/home/alex/Pictures/Screenshots"
     pipe_command = "satty -f -"
     pipe_to_command = true
