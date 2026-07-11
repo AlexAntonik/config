@@ -5,7 +5,6 @@
     "toggle_touchpad"
     ''
       HYPRLAND_DEVICE="${host.touchpadID}"
-      HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
 
       if [ -z "$XDG_RUNTIME_DIR" ]; then
         export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -16,13 +15,13 @@
       enable_touchpad() {
           printf "true" >"$STATUS_FILE"
           notify-send -i input-touchpad-on "Touchpad Enabled"
-      hyprctl keyword $HYPRLAND_VARIABLE "true" -r
+          hyprctl eval "hl.device({name = '$HYPRLAND_DEVICE', enabled = true })"
       }
 
       disable_touchpad() {
           printf "false" >"$STATUS_FILE"
           notify-send -i input-touchpad-off "Touchpad Disabled"
-      hyprctl keyword $HYPRLAND_VARIABLE "false" -r
+          hyprctl eval "hl.device({name = '$HYPRLAND_DEVICE', enabled = false })"
       }
 
       if ! [ -f "$STATUS_FILE" ]; then
