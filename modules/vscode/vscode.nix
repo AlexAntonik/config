@@ -5,10 +5,26 @@
   mkSymlinks,
   ...
 }:
-let
-  ext = inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
-in
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      vscode-extensions = prev.vscode-extensions // {
+        jacobdufault.fuzzy-search =
+          (import inputs.nixpkgs-fork { system = prev.system; }).vscode-extensions.jacobdufault.fuzzy-search;
+        inferrinizzard.prettier-sql-vscode =
+          (import inputs.nixpkgs-fork { system = prev.system; })
+          .vscode-extensions.inferrinizzard.prettier-sql-vscode;
+        rangav.vscode-thunder-client =
+          (import inputs.nixpkgs-fork {
+            system = prev.system;
+            config.allowUnfree = true;
+          }).vscode-extensions.rangav.vscode-thunder-client;
+        pflannery.vscode-versionlens =
+          (import inputs.nixpkgs-fork { system = prev.system; })
+          .vscode-extensions.pflannery.vscode-versionlens;
+      };
+    })
+  ];
   system.activationScripts = mkSymlinks "vscode" {
     "/home/${host.username}/.config/Code/User/keybindings.json" =
       "${host.flakePath}/modules/vscode/keybindings.json";
@@ -17,93 +33,61 @@ in
   };
   home = {
     home.packages = [
-      pkgs.shellcheck # Shell script analysis tool
-      pkgs.shfmt # Shell script formatter
+      pkgs.shellcheck
+      pkgs.shfmt
     ];
     programs.vscode = {
       enable = true;
       package = pkgs.vscode;
       mutableExtensionsDir = true;
       profiles.default = {
-        extensions = with ext; [
-          # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
-          # Essentials
+        extensions = with pkgs.vscode-extensions; [
           mikestead.dotenv
           christian-kohler.path-intellisense
           editorconfig.editorconfig
-          jacobdufault.fuzzy-search
           vscodevim.vim
           alefragnani.project-manager
+          jacobdufault.fuzzy-search
 
-          # Interface Improvements
-          # eamodio.gitlens
-          pflannery.vscode-versionlens
-          yoavbls.pretty-ts-errors
-          wix.vscode-import-cost
-          gruntfuggly.todo-tree
-
-          # Web Dev
           dbaeumer.vscode-eslint
           esbenp.prettier-vscode
-          csstools.postcss
-          stylelint.vscode-stylelint
+          usernamehw.errorlens
+          yoavbls.pretty-ts-errors
+          pflannery.vscode-versionlens
+          eamodio.gitlens
+          gruntfuggly.todo-tree
+
           bradlc.vscode-tailwindcss
-          davidanson.vscode-markdownlint
+          stylelint.vscode-stylelint
+          wix.vscode-import-cost
           unifiedjs.vscode-mdx
-          # zenclabs.previewjs # Error: EROFS: read-only file system
+          davidanson.vscode-markdownlint
+          inferrinizzard.prettier-sql-vscode
 
-          # Deno
-          # denoland.vscode-deno
-
-          # GraphQL
-          graphql.vscode-graphql-syntax
           graphql.vscode-graphql
+          graphql.vscode-graphql-syntax
 
-          # Nix
           jnoortheen.nix-ide
-          # arrterian.nix-env-selector #like dev shells not needed rn
 
-          # Bash
           mads-hartmann.bash-ide-vscode
           mkhl.shfmt
 
-          # Testing
           rangav.vscode-thunder-client
           vitest.explorer
-          ms-playwright.playwright
           firefox-devtools.vscode-firefox-debug
           ms-vscode.test-adapter-converter
-          # mtxr.sqltools
-          # mtxr.sqltools-driver-pg
-          donjayamanne.githistory
           formulahendry.code-runner
-          bierner.color-info
+
           golang.go
-          usernamehw.errorlens
-          # mtxr.sqltools-driver-sqlite
           tamasfe.even-better-toml
           ms-azuretools.vscode-containers
           ms-vscode.makefile-tools
-          inferrinizzard.prettier-sql-vscode
+
+          donjayamanne.githistory
           ms-vsliveshare.vsliveshare
-          # codeforge.remix-forge
-          amodio.toggle-excluded-files
-          # github.copilot
-          # github.copilot-chat
+          bierner.color-info
         ];
       };
     };
   };
 }
-          # jacobdufault.fuzzy-search
-          # pflannery.vscode-versionlens
-          # csstools.postcss
-          # # zenclabs.previewjs # Error: EROFS: read-only file system
-          # rangav.vscode-thunder-client
-          # ms-playwright.playwright
-          # # mtxr.sqltools
-          # # mtxr.sqltools-driver-pg
-          # # mtxr.sqltools-driver-sqlite
-          # inferrinizzard.prettier-sql-vscode
-          # # codeforge.remix-forge
-          # amodio.toggle-excluded-files

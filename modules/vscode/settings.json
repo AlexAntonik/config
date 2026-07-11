@@ -267,7 +267,6 @@
     "editorStickyScroll.shadow": "#111112"
   },
   "terminal.integrated.fontSize": 18,
-  "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Dark+",
   "go.toolsManagement.autoUpdate": true,
   "go.inlayHints.assignVariableTypes": true,
@@ -279,5 +278,8 @@
   "go.inlayHints.parameterNames": true,
   "go.inlayHints.rangeVariableTypes": true,
   "chat.viewSessions.enabled": false,
-  "workbench.browser.searchEngine": "google"
+  "workbench.browser.searchEngine": "google",
+  "workbench.activityBar.location": "hidden",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4o-mini"
 }
