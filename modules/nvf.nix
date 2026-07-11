@@ -65,7 +65,7 @@
 
         go.enable = true;
         nix.enable = true;
-        clang.enable = true;
+        clang.enable = false;
         python.enable = true;
         sql.enable = true;
         yaml.enable = true;
@@ -105,7 +105,7 @@
       git = {
         enable = true;
         gitsigns.enable = true;
-        gitsigns.codeActions.enable = false; # throws an annoying debug message
+        gitsigns.codeActions.enable = false;
       };
       ui = {
         borders.enable = true;
