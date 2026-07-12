@@ -31,7 +31,7 @@ hl.window_rule({
 
 hl.window_rule({
     match = {
-        class = "(org.telegram.desktop|[Dd]iscord|teams-for-linux|)",
+        class = "(org.telegram.desktop|[Dd]iscord|teams-for-linux)",
     },
     opacity = 0.86,
 })
@@ -103,7 +103,7 @@ hl.window_rule({
 hl.window_rule({
     match = {
         class = "(codium|codium-url-handler|VSCodium|[Ss]team|[Tt]hunar)",
-        title = "negative:.*codium.*|.*VSCodium.*|*[Ss]team*|.*[Tt]hunar.*",
+        title = "negative:.*codium.*|.*VSCodium.*|.*[Ss]team.*|.*[Tt]hunar.*",
     },
     float = true,
     center = true,
