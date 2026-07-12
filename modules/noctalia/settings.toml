@@ -17,7 +17,7 @@ order = [ "default", "workspaces" ]
     reserve_space = false
     shadow = true
     show_on_workspace_switch = false
-    start = [ "cpu", "ram", "temp", "taskbar" ]
+    start = [ "launcher", "cpu", "ram", "temp", "taskbar" ]
     widget_spacing = 8
 
         [bar.default.dead_zone]
@@ -94,10 +94,10 @@ widget_order = [ "desktop-widget-0000000000000002", "desktop-widget-000000000000
         format = "{:%H:%M}"
 
     [desktop_widgets.widget.desktop-widget-0000000000000002]
-    box_height = 224.0
+    box_height = 192.0
     box_width = 1440.0
     cx = 720.0
-    cy = 112.0
+    cy = 96.0
     flip_y = true
     output = "eDP-1"
     rotation = 0.0
@@ -266,11 +266,11 @@ enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", 
 [shell]
 clipboard_confirm_clear_history = true
 clipboard_history_max_entries = 1000
-clipboard_image_action_command = "satty -f -"
+clipboard_image_action_command = "satty --early-exit copy  --copy-command wl-copy -f -"
 launch_apps_as_systemd_services = true
 offline_mode = false
 password_style = "random"
-polkit_agent = false
+polkit_agent = true
 settings_show_advanced = true
 telemetry_enabled = false
 
@@ -284,42 +284,48 @@ telemetry_enabled = false
     clipboard_placement = "attached"
     launcher_placement = "attached"
     open_near_click_control_center = true
+    polkit_placement = "attached"
     shadow = true
     transparency_mode = "soft"
 
     [shell.screenshot]
     confirm_region = false
     directory = "/home/alex/Pictures/Screenshots"
-    pipe_command = "satty -f -"
+    pipe_command = "satty --early-exit copy  --copy-command wl-copy -f -"
     pipe_to_command = true
     save_to_file = true
 
     [[shell.session.actions]]
     action = "lock"
+    countdown_seconds = 0.0
     enabled = true
     shortcut = "l"
     variant = "default"
 
     [[shell.session.actions]]
     action = "logout"
+    countdown_seconds = 0.0
     enabled = true
     shortcut = "q"
     variant = "default"
 
     [[shell.session.actions]]
     action = "lock_and_suspend"
-    enabled = true
+    countdown_seconds = 0.0
+    enabled = false
     shortcut = "e"
     variant = "default"
 
     [[shell.session.actions]]
     action = "reboot"
+    countdown_seconds = 0.0
     enabled = true
     shortcut = "r"
     variant = "default"
 
     [[shell.session.actions]]
     action = "shutdown"
+    countdown_seconds = 0.0
     enabled = true
     shortcut = "s"
     variant = "destructive"

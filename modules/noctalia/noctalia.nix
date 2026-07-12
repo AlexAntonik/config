@@ -8,6 +8,7 @@
 {
   environment.systemPackages = [
     pkgs.satty # Screenshot editing tool
+    pkgs.wl-clipboard # Clipboard manager neded for satty clipboard support
   ];
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
