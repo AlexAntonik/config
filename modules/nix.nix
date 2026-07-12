@@ -6,12 +6,12 @@
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
       download-buffer-size = 500000000;
-      auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"
       ];
     };
+    optimise.automatic = true;
   };
   environment.shellAliases = {
     fr = "nh os switch --hostname ${host.hostname} --diff=always";
