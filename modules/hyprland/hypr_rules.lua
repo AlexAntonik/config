@@ -15,25 +15,38 @@ hl.window_rule({
     size = { 920, 720 },
 })
 
+local function format(list)
+    return "^(" .. table.concat(list, "|") .. ")$"
+end
+
+local common_apps = {
+    "[Tt]hunar",  "org.gnome.Nautilus",  "[Pp]cmanfm-qt",
+    "Alacritty",  "kitty",  "kitty-dropterm",  "com.mitchellh.ghostty",  "[Gg]hostty",
+    "org.telegram.desktop",  "[Dd]iscord",  "teams-for-linux","code","Code","code-oss"
+}
+
 hl.window_rule({
     match = {
-        class = "([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)",
+        class = format(common_apps),
     },
     opacity = 0.9,
 })
 
-hl.window_rule({
-    match = {
-        class = "(Alacritty|kitty|kitty-dropterm|com.mitchellh.ghostty|[Gg]hostty)",
-    },
-    opacity = 0.86,
-})
+local settings_apps = {
+    "file-roller",  "org.gnome.FileRoller",  "nm-applet",  "nm-connection-editor",
+    "blueman-manager",  "nwg-displays",  "pavucontrol",  "org.pulseaudio.pavucontrol",
+    "com.saivert.pwvucontrol",  "nwg-look",  "qt5ct",  "qt6ct",  "[Yy]ad",
+    "xdg-desktop-portal-gtk",
+}
 
 hl.window_rule({
     match = {
-        class = "(org.telegram.desktop|[Dd]iscord|teams-for-linux)",
+        class = format(settings_apps),
     },
-    opacity = 0.86,
+    float = true,
+    center = true,
+    opacity = 0.8,
+    size = "70% 70%",
 })
 
 hl.window_rule({
@@ -46,58 +59,12 @@ hl.window_rule({
 
 hl.window_rule({
     match = {
-        class = "(file-roller|org.gnome.FileRoller)",
-    },
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        class = "(nm-applet|nm-connection-editor|blueman-manager|nwg-displays)",
-    },
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        class = "(pavucontrol|org.pulseaudio.pavucontrol|com.saivert.pwvucontrol)",
-    },
-    center = true,
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        class = "(nwg-look|qt5ct|qt6ct|[Yy]ad|xdg-desktop-portal-gtk)",
-    },
-    tag = "+settings",
-})
-
-hl.window_rule({
-    match = {
-        tag = "settings*",
-    },
-    float = true,
-    opacity = 0.8,
-    size = "70% 70%",
-})
-
-hl.window_rule({
-    match = {
         title = "Picture-in-Picture",
     },
     float = true,
     move = "60% 6%",
     opacity = "1.0 override",
     pin = true,
-})
-
-hl.window_rule({
-    match = {
-        title = "Authentication Required",
-    },
-    float = true,
-    center = true,
 })
 
 hl.window_rule({
@@ -147,13 +114,6 @@ hl.window_rule({
         initial_title = "wants to save",
     },
     float = true,
-})
-
-hl.window_rule({
-    match = {
-        class = "(code|Code|code-oss)",
-    },
-    opacity = 0.86,
 })
 
 hl.workspace_rule({

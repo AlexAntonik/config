@@ -2,7 +2,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
 hl.env("NIXOS_OZONE_WL", "1")
-hl.env("NIXPKGS_ALLOW_UNFREE", "1")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
@@ -57,12 +56,6 @@ hl.animation({
     style = "slide",
 })
 hl.animation({
-    leaf = "border",
-    enabled = true,
-    speed = 4,
-    bezier = "default",
-})
-hl.animation({
     leaf = "workspaces",
     enabled = true,
     speed = 4,
@@ -85,8 +78,8 @@ hl.config({
             enabled = true,
             ignore_opacity = false,
             new_optimizations = true,
-            passes = 3,
-            size = 3,
+            passes = 2,
+            size = 5,
         },
         shadow = {
             color = "rgba(0d0d0d99)",
