@@ -337,6 +337,10 @@ mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "faithful"
 
+    [theme.templates]
+    builtin_ids = []
+    community_ids = [ "telegram" ]
+
 [wallpaper]
 directory = "/home/alex/Pictures/Wallpapers"
 
@@ -348,6 +352,34 @@ directory = "/home/alex/Pictures/Wallpapers"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven-x8ye3z.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "faithful"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_0j8o75.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-content"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_7j96qv.jpg"
+    theme_mode = "auto"
+    wallpaper_scheme = "faithful"
+
+    [[wallpaper.favorite]]
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_4d38m0.jpg"
+    theme_mode = "auto"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "faithful"
 
 [widget.audio_visualizer]
 bands = 30
