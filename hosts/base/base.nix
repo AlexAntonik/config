@@ -35,7 +35,7 @@
     ./../../modules/boot.nix
     ./../../modules/boot-visuals.nix
     ./../../modules/noctalia/noctalia.nix
-    ./../../modules/stylix.nix
+    ./../../modules/theme.nix
     ./../../modules/hyprland/hyprland.nix
     ./../../modules/fonts.nix
 
@@ -83,8 +83,6 @@
     ./../../modules/time.nix
     ./../../modules/zsh.nix
     # ./../../modules/tailscale.nix
-    ./../../modules/gtk.nix
-    ./../../modules/qt.nix
     ./../../modules/ghostty.nix
     ./../../modules/xdg.nix
 

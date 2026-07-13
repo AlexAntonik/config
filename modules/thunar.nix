@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  programs.thunar = {
+  services.gvfs.enable = true;
+  programs.dconf.enable = true; # Add so thunar can see syspkkgs
+    programs.thunar = {
     enable = true;
     plugins = with pkgs; [
       thunar-archive-plugin

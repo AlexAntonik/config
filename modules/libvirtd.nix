@@ -8,6 +8,8 @@
     pkgs.virt-viewer # Virtual machine viewer
   ];
   programs.virt-manager.enable = true; # Virtual machine manager
+
+  programs.dconf.enable = true; # Configuration editor
   home.dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];

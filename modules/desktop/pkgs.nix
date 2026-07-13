@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   programs = {
-    dconf.enable = true; # Configuration editor
     seahorse.enable = true; # Password manager
   };
 

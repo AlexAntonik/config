@@ -9,6 +9,8 @@ order = [ "default", "workspaces" ]
     center = [ "clock" ]
     contact_shadow = true
     end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
+    font_family = "Montserrat"
+    font_weight = 700
     layer = "top"
     margin_edge = 6
     margin_ends = 200
@@ -38,6 +40,8 @@ order = [ "default", "workspaces" ]
     contact_shadow = false
     enabled = true
     end = []
+    font_family = "Montserrat"
+    font_weight = 800
     margin_edge = 4
     margin_ends = 600
     margin_opposite_edge = 3
@@ -112,10 +116,10 @@ widget_order = [ "desktop-widget-0000000000000002", "desktop-widget-000000000000
         show_when_idle = false
 
     [desktop_widgets.widget.desktop-widget-0000000000000003]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 720.0
-    cy = 736.5
+    box_height = 64.0
+    box_width = 480.0
+    cx = 727.5
+    cy = 735.5
     output = "eDP-1"
     rotation = 0.0
     type = "clock"
@@ -267,6 +271,7 @@ enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", 
 clipboard_confirm_clear_history = true
 clipboard_history_max_entries = 1000
 clipboard_image_action_command = "satty --early-exit copy  --copy-command wl-copy -f -"
+font_family = "DejaVu Sans"
 launch_apps_as_systemd_services = true
 offline_mode = false
 password_style = "random"
@@ -338,8 +343,8 @@ source = "wallpaper"
 wallpaper_scheme = "faithful"
 
     [theme.templates]
-    builtin_ids = []
-    community_ids = [ "telegram" ]
+    builtin_ids = [ "gtk3", "gtk4", "qt" ]
+    community_ids = [ "papirus-icons" ]
 
 [wallpaper]
 directory = "/home/alex/Pictures/Wallpapers"
