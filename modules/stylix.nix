@@ -23,12 +23,6 @@
       base0E = "#9a7fb0";
       base0F = "#8a6f5a";
     };
-    opacity = {
-      terminal = 0.8;
-      popups = 0.6;
-      applications = 0.8;
-      desktop = 0.76;
-    };
     polarity = "dark";
     cursor = {
       package = pkgs.bibata-cursors;
