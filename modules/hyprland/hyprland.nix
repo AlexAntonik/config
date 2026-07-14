@@ -11,7 +11,7 @@
     configPackages = [ pkgs.hyprland ];
     config.common.default = [ "hyprland" ];
   };
-  home = {
+  hm.${host.username} = {
     home.packages = [
       pkgs.hyprpicker
     ];

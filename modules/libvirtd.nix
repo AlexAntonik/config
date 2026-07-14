@@ -10,7 +10,7 @@
   programs.virt-manager.enable = true; # Virtual machine manager
 
   programs.dconf.enable = true; # Configuration editor
-  home.dconf.settings = {
+  hm.${host.username}.dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];

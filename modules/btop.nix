@@ -1,5 +1,6 @@
+{ host, ... }:
 {
-  home.programs.btop = {
+  hm.${host.username}.programs.btop = {
     enable = true;
     settings = {
       color_theme = "tokyo-night";

@@ -14,8 +14,8 @@ in
       type = hostSubmodule;
       description = "Host environment variables accessible in all modules";
     };
-    home = lib.mkOption {
-      type = lib.types.deferredModule;
+    hm = lib.mkOption {
+      type = lib.types.attrsOf lib.types.deferredModule;
       description = "home-manager.users.<username> alias";
     };
   };
@@ -28,12 +28,12 @@ in
       };
     }
     {
-      warnings = lib.optional (!(options.home.definitions == [ ] || (options ? home-manager))) ''
+      warnings = lib.optional (!(options.hm.definitions == [ ] || (options ? home-manager))) ''
         config.home defined without home-manager. Import modules/home-manager.nix if home config needed.
       '';
     }
     (lib.optionalAttrs (options ? home-manager) {
-      home-manager.users.${config.host.username} = config.home;
+      home-manager.users = config.hm;
     })
   ];
 }

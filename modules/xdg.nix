@@ -1,6 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, host, ... }:
 {
-  home.xdg = {
+  hm.${host.username}.xdg = {
     enable = true;
     mime.enable = true;
     mimeApps = {

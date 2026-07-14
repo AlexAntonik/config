@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, host, ... }:
 {
-  home.programs.ghostty = {
+  hm.${host.username}.programs.ghostty = {
     enable = true;
     package = pkgs.ghostty;
     systemd.enable = true;

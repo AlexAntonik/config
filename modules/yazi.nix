@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, host, ... }:
 {
-  home.programs.yazi = {
+  hm.${host.username}.programs.yazi = {
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;

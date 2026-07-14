@@ -24,7 +24,7 @@
     "/home/${host.username}/.local/state/noctalia/settings.toml" =
       "${host.flakePath}/modules/noctalia/settings.toml";
   };
-  home = {
+  hm.${host.username} = {
     imports = [ inputs.noctalia.homeModules.default ];
     programs.noctalia = {
       enable = true;

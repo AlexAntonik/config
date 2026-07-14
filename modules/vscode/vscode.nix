@@ -18,7 +18,7 @@ in
     "/home/${host.username}/.config/Code/User/settings.json" =
       "${host.flakePath}/modules/vscode/settings.json";
   };
-  home = {
+  hm.${host.username} = {
     home.packages = [
       pkgs.shellcheck
       pkgs.shfmt
