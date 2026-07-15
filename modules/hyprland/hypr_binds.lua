@@ -12,21 +12,12 @@ local function focusWorkspace(id)
   end
 end
 
-hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace",
-})
-hl.gesture({
-    fingers = 3,
-    direction = "up",
-    action = "close",
-})
-hl.gesture({
-    fingers = 2,
-    direction = "pinchout",
-    action = "resize",
-})
+local numberKeys = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "F1", "F2", "F3", "F4", "F5" }
+for i, key in ipairs(numberKeys) do
+  local ws = i%10 + 5*(i//10)
+  hl.bind("SUPER + " .. key, focusWorkspace(ws))
+  hl.bind("SUPER + SHIFT + " .. key, hl.dsp.window.move({ workspace = ws }))
+end
 
 hl.bind("SUPER + Return", hl.dsp.exec_cmd("ghostty +new-window"))
 hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
@@ -66,36 +57,6 @@ hl.bind("SUPER + h", hl.dsp.focus({ direction = "left" }))
 hl.bind("SUPER + l", hl.dsp.focus({ direction = "right" }))
 hl.bind("SUPER + k", hl.dsp.focus({ direction = "up" }))
 hl.bind("SUPER + j", hl.dsp.focus({ direction = "down" }))
-hl.bind("SUPER + 1", focusWorkspace(1))
-hl.bind("SUPER + 2", focusWorkspace(2))
-hl.bind("SUPER + 3", focusWorkspace(3))
-hl.bind("SUPER + 4", focusWorkspace(4))
-hl.bind("SUPER + 5", focusWorkspace(5))
-hl.bind("SUPER + 6", focusWorkspace(6))
-hl.bind("SUPER + 7", focusWorkspace(7))
-hl.bind("SUPER + 8", focusWorkspace(8))
-hl.bind("SUPER + 9", focusWorkspace(9))
-hl.bind("SUPER + 0", focusWorkspace(10))
-hl.bind("SUPER + F1", focusWorkspace(6))
-hl.bind("SUPER + F2", focusWorkspace(7))
-hl.bind("SUPER + F3", focusWorkspace(8))
-hl.bind("SUPER + F4", focusWorkspace(9))
-hl.bind("SUPER + F5", focusWorkspace(10))
-hl.bind("SUPER + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
-hl.bind("SUPER + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
-hl.bind("SUPER + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
-hl.bind("SUPER + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
-hl.bind("SUPER + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
-hl.bind("SUPER + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
-hl.bind("SUPER + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
-hl.bind("SUPER + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
-hl.bind("SUPER + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
-hl.bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
-hl.bind("SUPER + SHIFT + F1", hl.dsp.window.move({ workspace = 6 }))
-hl.bind("SUPER + SHIFT + F2", hl.dsp.window.move({ workspace = 7 }))
-hl.bind("SUPER + SHIFT + F3", hl.dsp.window.move({ workspace = 8 }))
-hl.bind("SUPER + SHIFT + F4", hl.dsp.window.move({ workspace = 9 }))
-hl.bind("SUPER + SHIFT + F5", hl.dsp.window.move({ workspace = 10 }))
 hl.bind("SUPER + CONTROL + right", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("SUPER + CONTROL + left", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -127,3 +88,19 @@ hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
 
 hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd("double-click noctalia msg bar-show && sleep 0.8 && noctalia msg bar-hide"), { release = true })
+
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace",
+})
+hl.gesture({
+    fingers = 3,
+    direction = "up",
+    action = "close",
+})
+hl.gesture({
+    fingers = 2,
+    direction = "pinchout",
+    action = "resize",
+})

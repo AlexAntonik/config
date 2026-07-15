@@ -35,8 +35,8 @@ hl.window_rule({
 local settings_apps = {
     "file-roller",  "org.gnome.FileRoller",  "nm-applet",  "nm-connection-editor",
     "blueman-manager",  "nwg-displays",  "pavucontrol",  "org.pulseaudio.pavucontrol",
-    "com.saivert.pwvucontrol",  "nwg-look",  "qt5ct",  "qt6ct",  "[Yy]ad",
-    "xdg-desktop-portal-gtk",
+    "com.saivert.pwvucontrol",  "nwg-look",  "qt5ct",  "qt6ct",  "[Yy]ad","wants to save" ,
+    "xdg-desktop-portal-gtk", "Add Folder to Workspace", "Media viewer", "Open Files",
 }
 
 hl.window_rule({
@@ -62,7 +62,6 @@ hl.window_rule({
         title = "Picture-in-Picture",
     },
     float = true,
-    move = "60% 6%",
     opacity = "1.0 override",
     pin = true,
 })
@@ -78,41 +77,9 @@ hl.window_rule({
 
 hl.window_rule({
     match = {
-        initial_title = "Add Folder to Workspace",
-    },
-    float = true,
-    size = "70% 60%",
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "Media viewer",
-    },
-    float = true,
-    center = true,
-    size = "86% 86%",
-})
-
-hl.window_rule({
-    match = {
         initial_title = "satty",
     },
     center = true,
-    float = true,
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "Open Files",
-    },
-    float = true,
-    size = "70% 60%",
-})
-
-hl.window_rule({
-    match = {
-        initial_title = "wants to save",
-    },
     float = true,
 })
 
@@ -147,37 +114,19 @@ hl.workspace_rule({
     decorate = false,
 })
 
-hl.workspace_rule({
-    workspace = "special:obsidian",
-    on_created_empty = "obsidian",
-    gaps_out = 20,
-    decorate = false,
-})
+local specials = {
+  { name = "obsidian",  cmd = "obsidian" },
+  { name = "discord",   cmd = "discord" },
+  { name = "telegram",  cmd = "Telegram"},
+  { name = "thunar",    cmd = "thunar" },
+  { name = "yazi",      cmd = "ghostty -e yazi +new-window" },
+}
 
-hl.workspace_rule({
-    workspace = "special:discord",
-    on_created_empty = "discord",
-    gaps_out = 20,
-    decorate = false,
-})
-
-hl.workspace_rule({
-    workspace = "special:telegram",
-    on_created_empty = "Telegram",
+for _, s in ipairs(specials) do
+  hl.workspace_rule({
+    workspace = "special:" .. s.name,
+    on_created_empty = s.cmd,
     gaps_out = 26,
     decorate = false,
-})
-
-hl.workspace_rule({
-    workspace = "special:thunar",
-    on_created_empty = "thunar",
-    gaps_out = 26,
-    decorate = false,
-})
-
-hl.workspace_rule({
-    workspace = "special:yazi",
-    on_created_empty = "ghostty --class=com.mitchellh.ghostty-yazi -e yazi +new-window",
-    gaps_out = 26,
-    decorate = false,
-})
+  })
+end

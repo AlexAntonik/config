@@ -28,7 +28,6 @@ hl.curve("overshot", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.00 } 
 hl.curve("smoothOut", { type = "bezier", points = { { 0.5, 0 }, { 0.99, 0.99 } } })
 hl.curve("smoothIn", { type = "bezier", points = { { 0.5, -0.5 }, { 0.68, 1.0 } } })
 hl.curve("specialSlideOut", { type = "bezier", points = { { 0.16, 1 }, { 0.3, 1 } } })
-hl.curve("specialSlideIn", { type = "bezier", points = { { 0.7, 0 }, { 0.84, 0 } } })
 hl.animation({
     leaf = "windows",
     enabled = true,
@@ -81,12 +80,6 @@ hl.config({
             passes = 2,
             size = 5,
         },
-        shadow = {
-            color = "rgba(0d0d0d99)",
-            enabled = true,
-            range = 4,
-            render_power = 3,
-        },
         dim_inactive = true,
         dim_strength = 0.160000,
         rounding = 0,
@@ -97,28 +90,10 @@ hl.config({
     },
     general = {
         border_size = 0,
-        col = {
-            active_border = "rgb(6b8fb8)",
-            inactive_border = "rgb(4a4a4a)",
-        },
         gaps_in = 0,
         gaps_out = 0,
         layout = "dwindle",
         resize_on_border = true,
-    },
-    group = {
-        groupbar = {
-            col = {
-                active = "rgb(6b8fb8)",
-                inactive = "rgb(4a4a4a)",
-            },
-            text_color = "rgb(b8b8b8)",
-        },
-        col = {
-            border_active = "rgb(6b8fb8)",
-            border_inactive = "rgb(4a4a4a)",
-            border_locked_active = "rgb(6fa3a3)",
-        },
     },
     input = {
         touchpad = {
@@ -135,7 +110,6 @@ hl.config({
     },
     misc = {
         anr_missed_pings = 20,
-        background_color = "rgb(0d0d0d)",
         disable_hyprland_logo = true,
         disable_splash_rendering = true,
         enable_anr_dialog = true,
