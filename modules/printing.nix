@@ -14,9 +14,6 @@
   services = {
     printing = {
       enable = true;
-      drivers = [
-        # pkgs.hplipWithPlugin
-      ];
     };
 
     avahi = {

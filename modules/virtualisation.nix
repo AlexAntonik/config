@@ -3,7 +3,6 @@
   virtualisation.libvirtd.enable = true;
   users.users.${host.username}.extraGroups = [ "libvirtd" ];
   environment.systemPackages = [
-    # Virtualization
     pkgs.libvirt # Virtualization library
     pkgs.virt-viewer # Virtual machine viewer
   ];

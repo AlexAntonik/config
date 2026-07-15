@@ -61,7 +61,6 @@
     ./../../modules/starship.nix
     ./../../modules/fzf.nix
     ./../../modules/yazi.nix
-    ./../../modules/htop.nix
     ./../../modules/bat.nix
     ./../../modules/zoxide.nix
 

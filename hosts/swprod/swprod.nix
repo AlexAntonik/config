@@ -30,7 +30,6 @@
     # Tools & utilities
     ./../../modules/utilities.nix
     ./../../modules/lazygit.nix
-    ./../../modules/htop.nix
     ./../../modules/bat.nix
     ./../../modules/docker.nix
 
