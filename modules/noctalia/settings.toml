@@ -4,7 +4,7 @@ config_version = 2
 order = [ "default", "workspaces" ]
 
     [bar.default]
-    auto_hide = true
+    auto_hide = false
     background_opacity = 0.69999999999999996
     center = [ "clock" ]
     contact_shadow = true
@@ -12,13 +12,14 @@ order = [ "default", "workspaces" ]
     font_family = "Montserrat"
     font_weight = 700
     layer = "top"
-    margin_edge = 6
+    margin_edge = 4
     margin_ends = 200
     position = "bottom"
     radius = 10
     reserve_space = false
     shadow = true
     show_on_workspace_switch = false
+    smart_auto_hide = true
     start = [ "launcher", "cpu", "ram", "temp", "taskbar" ]
     widget_spacing = 8
 
@@ -28,7 +29,7 @@ order = [ "default", "workspaces" ]
         right_command = "noctalia msg panel-toggle session"
 
     [bar.workspaces]
-    auto_hide = true
+    auto_hide = false
     background_opacity = 0.0
     capsule = true
     capsule_fill = "on_primary"
@@ -48,6 +49,7 @@ order = [ "default", "workspaces" ]
     position = "top"
     reserve_space = false
     shadow = false
+    smart_auto_hide = true
     start = []
     thickness = 38
 
