@@ -1,36 +1,40 @@
 { lib }:
 let
-  # mkSymlinks "vscode" { "/home/user/.config/file" = "/path/to/file"; }
-  # Runs as the home owner so links/dirs are not root-owned.
+  # mkSymlinks "vscode" {
+  #   "/home/alex/.config/Code/User/settings.json" = ".../settings.json";
+  #   "/etc/foo.conf" = ".../foo.conf";
+  # }
+  # Paths under /home/<user>/ run as that user; everything else as root.
+  homeUser =
+    target:
+    let
+      m = builtins.match "/home/([^/]+)/.*" target;
+    in
+    if m == null then null else builtins.head m;
+
   mkSymlinks =
     moduleName: symlinks:
     lib.mapAttrs' (
       target: source:
       let
         name = builtins.replaceStrings [ "/" "." ] [ "-" "-" ] target;
-        scriptName = "${moduleName}-${name}";
-        user =
-          let
-            m = builtins.match "/home/([^/]+)/.*" target;
-          in
-          if m == null then null else builtins.head m;
+        user = homeUser target;
+        q = lib.escapeShellArg;
       in
-      lib.nameValuePair scriptName {
+      lib.nameValuePair "${moduleName}-${name}" {
         deps = [ "users" ];
         text =
           if user == null then
             ''
-              mkdir -p "$(dirname ${lib.escapeShellArg target})"
-              ln -sfn ${lib.escapeShellArg source} ${lib.escapeShellArg target}
+              mkdir -p "$(dirname ${q target})"
+              ln -sfn ${q source} ${q target}
             ''
           else
             ''
-              runuser -u ${lib.escapeShellArg user} -- mkdir -p "$(dirname ${lib.escapeShellArg target})"
-              runuser -u ${lib.escapeShellArg user} -- ln -sfn ${lib.escapeShellArg source} ${lib.escapeShellArg target}
+              runuser -u ${q user} -- mkdir -p "$(dirname ${q target})"
+              runuser -u ${q user} -- ln -sfn ${q source} ${q target}
             '';
       }
     ) symlinks;
 in
-{
-  inherit mkSymlinks;
-}
+mkSymlinks

@@ -5,8 +5,8 @@
   ...
 }:
 let
-  symlinks = import ./symlinks.nix { inherit lib; };
   hostSubmodule = import ./host.nix { inherit lib; };
+  mkSymlinks = import ./symlinks.nix { inherit lib; };
 in
 {
   options = {
@@ -24,7 +24,7 @@ in
     {
       _module.args = {
         host = config.host;
-        inherit (symlinks) mkSymlinks;
+        inherit mkSymlinks;
       };
     }
     {
