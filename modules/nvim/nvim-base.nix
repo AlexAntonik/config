@@ -51,19 +51,6 @@
         enableFormat = true;
         enableTreesitter = true;
         enableExtraDiagnostics = true;
-
-        go.enable = true;
-        nix.enable = true;
-        python.enable = true;
-        sql.enable = true;
-        yaml.enable = true;
-        html.enable = true;
-        json.enable = true;
-        bash.enable = true;
-        lua.enable = true;
-        css.enable = true;
-        typst.enable = true;
-        typescript.enable = true;
       };
 
       telescope.enable = true;
