@@ -6,7 +6,7 @@ order = [ "default", "workspaces" ]
     [bar.default]
     auto_hide = false
     background_opacity = 0.69999999999999996
-    center = [ "clock" ]
+    center = [ "taskbar" ]
     contact_shadow = true
     end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
     font_family = "Montserrat"
@@ -20,7 +20,7 @@ order = [ "default", "workspaces" ]
     shadow = true
     show_on_workspace_switch = false
     smart_auto_hide = true
-    start = [ "launcher", "cpu", "ram", "temp", "taskbar" ]
+    start = [ "launcher", "temp", "cpu", "ram", "network_rx" ]
     widget_spacing = 8
 
         [bar.default.dead_zone]
@@ -29,7 +29,7 @@ order = [ "default", "workspaces" ]
         right_command = "noctalia msg panel-toggle session"
 
     [bar.workspaces]
-    auto_hide = false
+    auto_hide = true
     background_opacity = 0.0
     capsule = true
     capsule_fill = "on_primary"
@@ -49,7 +49,6 @@ order = [ "default", "workspaces" ]
     position = "top"
     reserve_space = false
     shadow = false
-    smart_auto_hide = true
     start = []
     thickness = 38
 
@@ -57,6 +56,9 @@ order = [ "default", "workspaces" ]
 hidden_tabs = []
 sidebar = "compact"
 sidebar_section = "compact"
+
+    [control_center.calendar]
+    show_events_card = false
 
     [[control_center.shortcuts]]
     type = "bluetooth"
@@ -178,17 +180,18 @@ widget_order = [
     box_height = 64.0
     box_width = 400.0
     cx = 720.0
-    cy = 690.4296875
+    cy = 677.0
     output = "eDP-1"
     rotation = 0.0
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
         background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        input_opacity = 1.0
-        input_radius = 6.0
+        background_opacity = 0.0
+        background_radius = 0.0
+        center_password_text = true
+        input_opacity = 0.70000000000000007
+        input_radius = 10.0
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
@@ -253,6 +256,9 @@ scale = 1.4000000134110451
 
 [plugin_settings."noctalia/notes"]
 notes_dir = "~/notes"
+
+[plugin_settings."noctalia/screen_recorder"]
+video_source = "focused"
 
 [plugins]
 enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", "noctalia/translator" ]
@@ -400,7 +406,7 @@ show_label = false
 glyph = "rosette-filled"
 
 [widget.cpu]
-show_label = false
+display = "text"
 
 [widget.keyboard_layout]
 show_icon = false
@@ -416,11 +422,14 @@ type = "noctalia/mpvpaper:mpvpaper"
 [widget.network]
 show_label = false
 
+[widget.network_rx]
+display = "text"
+
 [widget.notes]
 type = "noctalia/notes:notes"
 
 [widget.ram]
-show_label = false
+display = "text"
 
 [widget.recorder]
 type = "noctalia/screen_recorder:recorder"
