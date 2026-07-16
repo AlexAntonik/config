@@ -1,8 +1,7 @@
-{ pkgs, host, ... }:
+{ host, ... }:
 {
   hm.${host.username}.programs.ghostty = {
     enable = true;
-    package = pkgs.ghostty;
     systemd.enable = true;
     settings = {
       theme = "Dracula+";

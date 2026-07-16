@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = [
-    pkgs.ghostty # needed even on srv to proper ssh
     pkgs.zsh-history-substring-search
   ];
+  environment.enableAllTerminfo = true;
   users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
     enable = true;
