@@ -1,12 +1,11 @@
 { pkgs, ... }:
 
 let
-  # Check about:support for extension/add-on ID strings.
   extensions = [
-    "ATBC@EasonWong" # Adaptive tabbar color
-    "addon@darkreader.org"
-    "uBlock0@raymondhill.net" # uBlock Origin
-    "myallychou@gmail.com" # unhook youtube
+    "darkreader"
+    "ublock-origin"
+    "youtube-recommended-videos"
+    "adaptive-tab-bar-colour"
   ];
 in
 {

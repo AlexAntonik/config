@@ -4,9 +4,7 @@
 
   users.users.${host.username}.extraGroups = [ "docker" ];
   
-  environment.shellAliases = {
-    ld = "lazydocker";
-  };
+  environment.shellAliases.ld = "lazydocker";
 
   environment.systemPackages = [
     pkgs.docker-compose # Multi-container orchestration
