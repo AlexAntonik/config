@@ -10,6 +10,7 @@
   environment.sessionVariables = {
     EDITOR = "nvim";
   };
+
   programs.nvf = {
     enable = true;
 
@@ -37,18 +38,6 @@
         languages = [ "en" ];
       };
 
-      lsp = {
-        enable = true;
-        formatOnSave = true;
-        lspkind.enable = false;
-        lightbulb.enable = true;
-        lspsaga.enable = false;
-        trouble.enable = true;
-        lspSignature.enable = true;
-        otter-nvim.enable = false;
-        nvim-docs-view.enable = false;
-      };
-
       clipboard = {
         enable = true;
         registers = "unnamedplus";
@@ -65,13 +54,10 @@
 
         go.enable = true;
         nix.enable = true;
-        clang.enable = false;
         python.enable = true;
         sql.enable = true;
         yaml.enable = true;
         html.enable = true;
-        java.enable = false;
-        kotlin.enable = false;
         json.enable = true;
         bash.enable = true;
         lua.enable = true;
@@ -80,6 +66,8 @@
         typescript.enable = true;
       };
 
+      telescope.enable = true;
+
       visuals = {
         highlight-undo.enable = true;
         nvim-cursorline.enable = true;
@@ -87,37 +75,6 @@
         cinnamon-nvim.enable = true;
         indent-blankline.enable = true;
         rainbow-delimiters.enable = true;
-      };
-
-      telescope.enable = true;
-      statusline.lualine.enable = true;
-      autopairs.nvim-autopairs.enable = true;
-      autocomplete.nvim-cmp.enable = true;
-      tabline.nvimBufferline.enable = true;
-      comments.comment-nvim.enable = true;
-      projects.project-nvim.enable = true;
-
-      binds = {
-        whichKey.enable = true;
-        cheatsheet.enable = true;
-      };
-
-      git = {
-        enable = true;
-        gitsigns.enable = true;
-        gitsigns.codeActions.enable = false;
-      };
-      ui = {
-        borders.enable = true;
-        noice.enable = true;
-        smartcolumn.enable = true;
-        colorizer.enable = true;
-        illuminate.enable = true;
-        fastaction.enable = true;
-        breadcrumbs = {
-          enable = false;
-          navbuddy.enable = false;
-        };
       };
     };
   };

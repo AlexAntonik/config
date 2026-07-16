@@ -70,7 +70,7 @@
     ./../../modules/lazygit.nix
     ./../../modules/vscode/vscode.nix
     # ./../../modules/docker.nix
-    ./../../modules/nvf.nix
+    ./../../modules/nvim/full.nix
 
     # Applications
     # ./../../modules/steam.nix

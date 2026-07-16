@@ -38,7 +38,7 @@
 
     # Development & shell
     ./../../modules/git.nix
-    ./../../modules/nvf.nix
+    ./../../modules/nvim/base.nix
     ./../../modules/zsh.nix
     ./../../modules/zoxide.nix
     ./../../modules/starship.nix
