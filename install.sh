@@ -81,11 +81,7 @@ if [ ! -d "$HOME/config" ]; then
     installusername="$USER"
     echo -e "${CYAN}Using username: $installusername${NC}"
     echo
-    git config --global user.name "$installusername" || echo -e "${RED}Warning: failed to set git user.name${NC}"
-    git config --global user.email "$installusername@gmail.com" || echo -e "${RED}Warning: failed to set git user.email${NC}"
     git add . || echo -e "${RED}Warning: git add failed${NC}"
-    git config --global --unset-all user.name 2>/dev/null || true
-    git config --global --unset-all user.email 2>/dev/null || true
 
     echo -e "${CYAN}Updating $hostName.nix with hostname and username...${NC}"
     if ! sed -i "/^\s*hostname\s*=\s*\"[^\"]*\";/s/.*/    hostname = \"$hostName\";/" ./hosts/"$hostName"/"$hostName".nix; then

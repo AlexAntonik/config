@@ -10,16 +10,18 @@
 
 #### Installation
 
-Install git,curl:
+Install git:
 
 ```bash
-nix-shell -p git curl
+nix-shell -p git
 ```
 
-Run install script:
+Clone and run the install script:
 
 ```bash
-sh <(curl -L https://raw.githubusercontent.com/AlexAntonik/config/refs/heads/master/install.sh)
+git clone https://github.com/AlexAntonik/config.git
+cd config
+./install.sh
 ```
 
 ---
