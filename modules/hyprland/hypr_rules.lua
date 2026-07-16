@@ -35,8 +35,13 @@ hl.window_rule({
 local settings_apps = {
     "file-roller",  "org.gnome.FileRoller",  "nm-applet",  "nm-connection-editor",
     "blueman-manager",  "nwg-displays",  "pavucontrol",  "org.pulseaudio.pavucontrol",
-    "com.saivert.pwvucontrol",  "nwg-look",  "qt5ct",  "qt6ct",  "[Yy]ad","wants to save" ,
-    "xdg-desktop-portal-gtk", "Add Folder to Workspace", "Media viewer", "Open Files",
+    "com.saivert.pwvucontrol",  "nwg-look",  "qt5ct",  "qt6ct",  "[Yy]ad" ,
+    "xdg-desktop-portal-gtk",
+}
+
+local popup_apps = {
+    ".*Add.*", ".*wants.*",".*Open .*",".*Save.*", ".*Select.*",
+    ".*Choose.*", ".*Confirm.*", ".*Media.*",
 }
 
 hl.window_rule({
@@ -47,6 +52,14 @@ hl.window_rule({
     center = true,
     opacity = 0.8,
     size = "70% 70%",
+})
+
+hl.window_rule({
+    match = {
+        initial_title = format(popup_apps),
+    },
+    float = true,
+    center = true,
 })
 
 hl.window_rule({
