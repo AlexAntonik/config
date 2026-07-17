@@ -392,7 +392,7 @@ directory = "/home/alex/Pictures/Wallpapers"
     palette_source = "wallpaper"
     path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
     theme_mode = "dark"
-    wallpaper_scheme = "faithful"
+    wallpaper_scheme = "m3-monochrome"
 
 [widget.audio_visualizer]
 bands = 30
