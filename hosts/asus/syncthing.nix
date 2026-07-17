@@ -1,5 +1,18 @@
 { host, config, ... }:
 {
+  imports = [ ../../modules/secrets/agenix.nix ];
+  
+  age.secrets = {
+    asus-sync-cert = {
+      file = ./secrets/asus-sync-cert.pem.age;
+      owner = host.username;
+    };
+    asus-sync-key = {
+      file = ./secrets/asus-sync-key.pem.age;
+      owner = host.username;
+    };
+  };
+
   services.syncthing = {
     enable = true;
     key = config.age.secrets.asus-sync-key.path;

@@ -1,5 +1,18 @@
 { host, config, ... }:
 {
+  imports = [
+    ../../modules/secrets/agenix.nix
+  ];
+  age.secrets = {
+    dell-sync-cert = {
+      file = ./secrets/dell-sync-cert.pem.age;
+      owner = host.username;
+    };
+    dell-sync-key = {
+      file = ./secrets/dell-sync-key.pem.age;
+      owner = host.username;
+    };
+  };
   services.syncthing = {
     enable = true;
     key = config.age.secrets.dell-sync-key.path;

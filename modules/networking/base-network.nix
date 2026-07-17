@@ -1,4 +1,4 @@
-{ host, options, ... }:
+{ host, ... }:
 {
   users.users.${host.username}.extraGroups = [ "networkmanager" ];
   services.resolved.enable = true;
@@ -13,6 +13,5 @@
       "8.8.8.8"
       "9.9.9.9"
     ];
-    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
   };
 }

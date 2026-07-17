@@ -17,7 +17,6 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./syncthing.nix
-    ./secrets/secrets.nix
 
     # Users
     ./user-swprod.nix

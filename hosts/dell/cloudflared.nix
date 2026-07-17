@@ -1,4 +1,11 @@
-{config, ...}:{
+{ config, host, ... }: {
+  imports = [
+    ../../modules/secrets/agenix.nix
+  ];
+  age.secrets.cloudflare-creds = {
+    file = ./secrets/cloudflare-creds.json.age;
+    owner = host.username;
+  };
   services.cloudflared = {
     enable = true;
     tunnels = {
