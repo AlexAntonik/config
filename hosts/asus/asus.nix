@@ -29,7 +29,7 @@
     ./secrets/secrets.nix
 
     # Users
-    ./../../modules/users/desktop-user.nix
+    ./../../modules/users/user-desktop.nix
 
     # System boot & visuals
     ./../../modules/boot.nix
@@ -77,7 +77,7 @@
     ./../../modules/nvim/nvim-full.nix
 
     # Applications
-    # ./../../modules/steam.nix
+    ./../../modules/steam.nix
     ./../../modules/firefox.nix
     ./../../modules/obs.nix
 

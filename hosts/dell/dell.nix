@@ -19,7 +19,7 @@
     ./secrets/secrets.nix
 
     # Users
-    ./../../modules/users/server-user.nix
+    ./../../modules/users/user-server.nix
 
     # System boot
     ./../../modules/boot.nix

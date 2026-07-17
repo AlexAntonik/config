@@ -11,5 +11,9 @@
       file = ./swprod-sync-key.pem.age;
       owner = host.username;
     };
+    swprod-user-pwd-hash = {
+      file = ./swprod-user-pwd-hash.age;
+      owner = host.username;
+    };
   };
 }

@@ -33,4 +33,16 @@ in
     publicKeys = [ alex dell ];
     armor = true;
   };
+  "desktop-user-pwd-hash.age" = {
+    publicKeys = [ alex ];
+    armor = true;
+  };
+  "server-user-pwd-hash.age" = {
+    publicKeys = [ alex dell];
+    armor = true;
+  };
+  "swprod-user-pwd-hash.age" = {
+    publicKeys = [ alex swprod ];
+    armor = true;
+  };
 }

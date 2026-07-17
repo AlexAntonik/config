@@ -20,7 +20,7 @@
     ./secrets/secrets.nix
 
     # Users
-    ./swprod-user.nix
+    ./user-swprod.nix
 
     # System services
     ./../../modules/logs.nix

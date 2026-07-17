@@ -29,7 +29,7 @@
     ./hardware-gen.nix
 
     # Users
-    ./../../modules/users/desktop-user.nix
+    ./../../modules/users/user-desktop.nix
 
     # System boot & visuals
     ./../../modules/boot.nix
