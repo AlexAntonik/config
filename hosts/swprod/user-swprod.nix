@@ -4,7 +4,7 @@
     ../../modules/users/user-default.nix
     ../../modules/secrets/agenix.nix
   ];
-  swprod-user-pwd-hash.file = ./secrets/swprod-user-pwd-hash.age;
+  age.secrets.swprod-user-pwd-hash.file = ./secrets/swprod-user-pwd-hash.age;
   users.users.${host.username} = {
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILUSJwUYV0e+h3Rj4+YvrsqHuolIh45KHg9Lttid1+KI alex@alex"
