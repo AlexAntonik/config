@@ -5,7 +5,7 @@
     ./user-default.nix
   ];
   age.secrets.desktop-user-pwd-hash = {
-    file = ./desktop-user-pwd-hash.age;
+    file = ./sectets/desktop-user-pwd-hash.age;
     owner = host.username;
   };
   users.users.${host.username} = {

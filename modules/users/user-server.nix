@@ -5,7 +5,7 @@
     ./../secrets/agenix.nix
   ];
   age.secrets.server-user-pwd-hash = {
-    file = ./server-user-pwd-hash.age;
+    file = ./sectets/server-user-pwd-hash.age;
     owner = host.username;
   };
   users.users.${host.username} = {
