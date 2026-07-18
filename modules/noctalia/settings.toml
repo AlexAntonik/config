@@ -12,7 +12,6 @@ order = [ "default", "workspaces" ]
     font_family = "Montserrat"
     font_weight = 700
     layer = "top"
-    margin_edge = 4
     margin_ends = 200
     position = "bottom"
     radius = 10
@@ -402,6 +401,12 @@ width = 400.0
 [widget.battery]
 show_label = false
 
+[widget.clock]
+anchor = true
+font_family = "DejaVu Sans"
+font_weight = 700
+interactive = false
+
 [widget.control-center]
 glyph = "rosette-filled"
 
@@ -433,6 +438,9 @@ display = "text"
 
 [widget.recorder]
 type = "noctalia/screen_recorder:recorder"
+
+[widget.taskbar]
+inactive_opacity = 0.84999999999999998
 
 [widget.temp]
 show_label = false
