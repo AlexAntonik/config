@@ -1,40 +1,52 @@
 { lib }:
 let
+  # Less reproducible than hm, but more useful for faster iteration. Use with care. 
   # mkSymlinks "vscode" {
   #   "/home/alex/.config/Code/User/settings.json" = ".../settings.json";
   #   "/etc/foo.conf" = ".../foo.conf";
   # }
-  # Paths under /home/<user>/ run as that user; everything else as root.
-  homeUser =
-    target:
-    let
-      m = builtins.match "/home/([^/]+)/.*" target;
-    in
-    if m == null then null else builtins.head m;
-
   mkSymlinks =
     moduleName: symlinks:
-    lib.mapAttrs' (
-      target: source:
-      let
-        name = builtins.replaceStrings [ "/" "." ] [ "-" "-" ] target;
-        user = homeUser target;
-        q = lib.escapeShellArg;
-      in
-      lib.nameValuePair "${moduleName}-${name}" {
+    let
+      manifest = "/var/lib/mkSymlinks/${moduleName}.list";
+      entries = lib.concatStringsSep "\n" (
+        lib.mapAttrsToList (t: s: "${t}\t${s}") symlinks
+      );
+    in
+    {
+      "${moduleName}-symlinks" = {
         deps = [ "users" ];
-        text =
-          if user == null then
-            ''
-              mkdir -p "$(dirname ${q target})"
-              ln -sfn ${q source} ${q target}
-            ''
-          else
-            ''
-              runuser -u ${q user} -- mkdir -p "$(dirname ${q target})"
-              runuser -u ${q user} -- ln -sfn ${q source} ${q target}
-            '';
-      }
-    ) symlinks;
+        text = ''
+          set -eu
+          old=${lib.escapeShellArg manifest}
+          mkdir -p "$(dirname "$old")"
+          new=$(mktemp)
+          cat > "$new" <<'MANIFEST'
+          ${entries}
+          MANIFEST
+
+          # remove symlinks that were in the old manifest but are gone from config
+          [ -f "$old" ] && comm -23 <(cut -f1 "$old" | sort) <(cut -f1 "$new" | sort) \
+            | while read -r t; do
+                [ -L "$t" ] && rm -f "$t"
+              done
+
+          # create or update current symlinks
+          while IFS=$'\t' read -r target source; do
+            [ -z "$target" ] && continue
+            if [[ "$target" == /home/*/* ]]; then
+              user=$(cut -d/ -f3 <<< "$target")
+              runuser -u "$user" -- mkdir -p "$(dirname "$target")"
+              runuser -u "$user" -- ln -sfn "$source" "$target"
+            else
+              mkdir -p "$(dirname "$target")"
+              ln -sfn "$source" "$target"
+            fi
+          done < "$new"
+
+          mv "$new" "$old"
+        '';
+      };
+    };
 in
 mkSymlinks
