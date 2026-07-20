@@ -6,7 +6,7 @@ order = [ "default", "workspaces" ]
     [bar.default]
     auto_hide = false
     background_opacity = 0.69999999999999996
-    center = [ "taskbar" ]
+    center = [ "taskbar", "clock" ]
     contact_shadow = true
     end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
     font_family = "Montserrat"
@@ -402,10 +402,8 @@ width = 400.0
 show_label = false
 
 [widget.clock]
-anchor = true
 font_family = "DejaVu Sans"
 font_weight = 700
-interactive = false
 
 [widget.control-center]
 glyph = "rosette-filled"

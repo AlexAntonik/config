@@ -1,16 +1,9 @@
 {
   pkgs,
-  inputs,
   host,
   mkSymlinks,
   ...
 }:
-let
-  pkgsFork = import inputs.nixpkgs-fork {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
-in
 {
   system.activationScripts = mkSymlinks "vscode" {
     "/home/${host.username}/.config/Code/User/keybindings.json" =
@@ -34,13 +27,13 @@ in
           editorconfig.editorconfig
           vscodevim.vim
           alefragnani.project-manager
-          pkgsFork.vscode-extensions.jacobdufault.fuzzy-search
+          jacobdufault.fuzzy-search
 
           dbaeumer.vscode-eslint
           esbenp.prettier-vscode
           usernamehw.errorlens
           yoavbls.pretty-ts-errors
-          pkgsFork.vscode-extensions.pflannery.vscode-versionlens
+          pflannery.vscode-versionlens
           eamodio.gitlens
           gruntfuggly.todo-tree
 
@@ -49,7 +42,7 @@ in
           wix.vscode-import-cost
           unifiedjs.vscode-mdx
           davidanson.vscode-markdownlint
-          pkgsFork.vscode-extensions.inferrinizzard.prettier-sql-vscode
+          inferrinizzard.prettier-sql-vscode
 
           graphql.vscode-graphql
           graphql.vscode-graphql-syntax
@@ -59,7 +52,7 @@ in
           mads-hartmann.bash-ide-vscode
           mkhl.shfmt
 
-          pkgsFork.vscode-extensions.rangav.vscode-thunder-client
+          rangav.vscode-thunder-client
           vitest.explorer
           firefox-devtools.vscode-firefox-debug
           ms-vscode.test-adapter-converter
