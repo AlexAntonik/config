@@ -9,7 +9,10 @@
   xdg.portal = {
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
     configPackages = [ pkgs.hyprland ];
-    config.common.default = [ "hyprland" ];
+    config.common.default = [
+      "hyprland"
+      "gtk"
+    ];
   };
   hm.${host.username} = {
     home.packages = [
@@ -39,8 +42,11 @@
   };
 
   system.activationScripts = mkSymlinks "hyprland" {
-    "/home/${host.username}/.config/hypr/hypr_general.lua" = "${host.flakePath}/modules/hyprland/hypr_general.lua";
-    "/home/${host.username}/.config/hypr/hypr_binds.lua" = "${host.flakePath}/modules/hyprland/hypr_binds.lua";
-    "/home/${host.username}/.config/hypr/hypr_rules.lua" = "${host.flakePath}/modules/hyprland/hypr_rules.lua";
+    "/home/${host.username}/.config/hypr/hypr_general.lua" =
+      "${host.flakePath}/modules/hyprland/hypr_general.lua";
+    "/home/${host.username}/.config/hypr/hypr_binds.lua" =
+      "${host.flakePath}/modules/hyprland/hypr_binds.lua";
+    "/home/${host.username}/.config/hypr/hypr_rules.lua" =
+      "${host.flakePath}/modules/hyprland/hypr_rules.lua";
   };
 }

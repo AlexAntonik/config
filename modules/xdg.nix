@@ -1,15 +1,12 @@
-{ pkgs, lib, host, ... }:
+{ pkgs, lib, ... }:
 {
-  hm.${host.username}.xdg = {
-    enable = true;
+  xdg = {
     mime.enable = true;
-    mimeApps = {
-      enable = true;
-    };
     portal = {
       enable = true;
+      xdgOpenUsePortal = false;
       extraPortals = [
-        pkgs.xdg-desktop-portal-gtk # GTK fallback
+        pkgs.xdg-desktop-portal-gtk
       ];
       config.common.default = lib.mkDefault [ "gtk" ];
     };

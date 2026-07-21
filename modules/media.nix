@@ -2,12 +2,20 @@
 {
   environment.systemPackages = with pkgs; [
     ffmpeg # Terminal video/audio editing
+    imv # Image viewer
+    mpv # Video/audio player
     pavucontrol # PulseAudio volume control
     pamixer # Command-line mixer for PulseAudio
     easyeffects # Audio effects for PipeWire
     playerctl # Media player controller
     v4l-utils # Video4Linux utilities
   ];
+
+  xdg.mime.defaultApplications = {
+    "image/*" = "imv.desktop";
+    "video/*" = "mpv.desktop";
+    "audio/*" = "mpv.desktop";
+  };
 
   services.pipewire = {
     enable = true;

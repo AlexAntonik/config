@@ -118,9 +118,7 @@
     # postgresql
 
     # Desktop suite
-    # libreoffice-qt-still # Office suite
     # obsidian # Personal knowledge base
-    # zathura # PDF viewer
 
     # Communication & Internet
     # discord # Chat and voice communication
@@ -134,7 +132,6 @@
     # gimp # Image manipulation program
     # audacity # Audio editor
     # vlc
-    # mpv # Media player
 
     # Gaming
     # starsector

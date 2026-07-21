@@ -78,6 +78,7 @@
     ./../../modules/steam.nix
     ./../../modules/firefox.nix
     ./../../modules/obs.nix
+    ./../../modules/office.nix
 
     # Config & misc
     ./../../modules/nix.nix
@@ -130,9 +131,7 @@
     # Desktop suite
     pom
     anki-bin # Spaced repetition flashcards
-    libreoffice-qt-fresh # Office suite
     obsidian # Personal knowledge base
-    zathura # PDF viewer
 
     # Communication & Internet
     discord # Chat and voice communication
@@ -145,7 +144,6 @@
     krita # Photoshop
     # audacity # Audio editor
     vlc
-    mpv # Media player
 
     # Gaming
     # starsector

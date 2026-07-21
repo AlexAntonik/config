@@ -3,6 +3,11 @@
     ./nvim-base.nix
   ];
 
+  xdg.mime.defaultApplications = {
+    "text/plain" = "nvim.desktop";
+    "application/json" = "nvim.desktop";
+    "application/yaml" = "nvim.desktop";
+  };
   programs.nvf = {
     settings.vim = {
       lsp = {

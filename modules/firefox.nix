@@ -50,6 +50,13 @@ in
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1"; # Force Wayland backend for Firefox
   };
+  xdg.mime.defaultApplications = {
+    "text/html" = "firefox.desktop";
+    "x-scheme-handler/http" = "firefox.desktop";
+    "x-scheme-handler/https" = "firefox.desktop";
+    "x-scheme-handler/about" = "firefox.desktop";
+    "x-scheme-handler/unknown" = "firefox.desktop";
+  };
 
   programs.firefox = {
     enable = true;

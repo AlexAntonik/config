@@ -419,9 +419,6 @@ art_size = 17.0
 hide_when_no_media = true
 title_scroll = "always"
 
-[widget.mpvpaper]
-type = "noctalia/mpvpaper:mpvpaper"
-
 [widget.network]
 show_label = false
 
