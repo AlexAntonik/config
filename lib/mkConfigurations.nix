@@ -1,16 +1,18 @@
 { inputs }:
 let
   inherit (inputs.nixpkgs) lib;
-  root = toString ./..;
-  hosts = lib.filterAttrs (_: type: type == "directory") (builtins.readDir "${root}/hosts");
+  hostsDir = ../hosts;
+  hostNames = builtins.attrNames (
+    lib.filterAttrs (_: type: type == "directory") (builtins.readDir hostsDir)
+  );
 in
-lib.genAttrs (builtins.attrNames hosts) (
+lib.genAttrs hostNames (
   host:
   lib.nixosSystem {
     specialArgs = { inherit inputs; };
     modules = [
-      "${root}/lib/lib.nix"
-      "${root}/hosts/${host}/${host}.nix"
+      ./lib.nix
+      (hostsDir + "/${host}/${host}.nix")
     ];
   }
 )
