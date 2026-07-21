@@ -20,15 +20,6 @@
   };
 
   outputs = inputs: {
-    nixosConfigurations = inputs.nixpkgs.lib.genAttrs (builtins.attrNames (builtins.readDir ./hosts)) (
-      host:
-      inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./lib/lib.nix
-          ./hosts/${host}/${host}.nix
-        ];
-      }
-    );
+    nixosConfigurations = import ./lib/mkConfigurations.nix { inherit inputs; };
   };
 }
