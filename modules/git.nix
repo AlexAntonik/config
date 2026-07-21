@@ -6,7 +6,8 @@
     git-filter-repo # Git history ez rewrite
   ];
   environment.shellAliases = {
-    gpl = "git pull --rebase";
+    ga = "git add ."; 
+    gpl = "git pull";
     gps = "git push";
     gst = "git status";
   };
