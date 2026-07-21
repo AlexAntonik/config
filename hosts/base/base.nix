@@ -85,7 +85,6 @@
     ./../../modules/xdg.nix
 
     # Scripts
-    ./../../modules/scripts/double-click.nix
     ./../../modules/scripts/syncsupprep.nix
     ./../../modules/scripts/hm-find.nix
     ./../../modules/scripts/toggleXWaylandScale.nix

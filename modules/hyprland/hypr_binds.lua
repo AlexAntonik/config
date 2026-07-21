@@ -73,7 +73,6 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 hl.bind("SUPER + SHIFT + ESCAPE", hl.dsp.exit())
 hl.bind("XF86WebCam", hl.dsp.exec_cmd("noctalia msg dpms-off"))
-hl.bind("SUPER + Z", hl.dsp.exec_cmd("notify-send -i time -a \"\" \"$(date '+%H:%M')   $(date '+%A, %d %B')\""))
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"), { locked = true, repeating = true })
@@ -87,7 +86,8 @@ hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s +1%"), { locked 
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
 
-hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd("double-click noctalia msg bar-show && sleep 0.8 && noctalia msg bar-hide"), { release = true })
+hl.bind("SUPER_L", hl.dsp.exec_cmd("noctalia msg bar-show default"), { long_press = true, transparent = true, })
+hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd("noctalia msg bar-hide"), { release = true })
 
 hl.gesture({
     fingers = 3,
@@ -98,9 +98,4 @@ hl.gesture({
     fingers = 3,
     direction = "up",
     action = "close",
-})
-hl.gesture({
-    fingers = 2,
-    direction = "pinchout",
-    action = "resize",
 })

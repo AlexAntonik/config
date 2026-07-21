@@ -91,7 +91,6 @@
     ./../../modules/xdg.nix
 
     # Scripts
-    ./../../modules/scripts/double-click.nix
     ./../../modules/scripts/syncsupprep.nix
     ./../../modules/scripts/toggleTouchpad.nix
     ./../../modules/scripts/hm-find.nix
