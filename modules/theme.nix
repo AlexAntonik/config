@@ -1,4 +1,8 @@
 { pkgs, host, ... }:
+let
+  cursorTheme = "Bibata-Modern-Ice";
+  cursorSize = 24;
+in
 {
   hm.${host.username} = {
     gtk = {
@@ -20,16 +24,16 @@
       gtk.enable = true;
       x11.enable = true;
       package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-      size = 24;
+      name = cursorTheme;
+      size = cursorSize;
     };
   };
 
   environment.variables = {
-    XCURSOR_THEME = "Bibata-Modern-Ice";
-    XCURSOR_SIZE = "24";
-    HYPRCURSOR_THEME = "Bibata-Modern-Ice";
-    HYPRCURSOR_SIZE = "24";
+    XCURSOR_THEME = cursorTheme;
+    XCURSOR_SIZE = toString cursorSize;
+    HYPRCURSOR_THEME = cursorTheme;
+    HYPRCURSOR_SIZE = toString cursorSize;
   };
 
   environment.systemPackages = with pkgs; [

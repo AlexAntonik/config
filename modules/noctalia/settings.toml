@@ -253,9 +253,6 @@ scale = 1.4000000134110451
     [osd.kinds]
     media = false
 
-[plugin_settings."noctalia/notes"]
-notes_dir = "~/notes"
-
 [plugin_settings."noctalia/screen_recorder"]
 video_source = "focused"
 
@@ -263,13 +260,11 @@ video_source = "focused"
 enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", "noctalia/translator" ]
 
     [[plugins.source]]
-    auto_update = true
     kind = "git"
     location = "https://github.com/noctalia-dev/official-plugins"
     name = "official"
 
     [[plugins.source]]
-    auto_update = true
     kind = "git"
     location = "https://github.com/noctalia-dev/community-plugins"
     name = "community"
@@ -289,7 +284,6 @@ telemetry_enabled = false
     [shell.launcher]
     app_grid = false
     compact = false
-    session_search = true
 
     [shell.panel]
     borders = false
@@ -302,7 +296,7 @@ telemetry_enabled = false
 
     [shell.screenshot]
     confirm_region = false
-    directory = "/home/alex/Pictures/Screenshots"
+    directory = "~/Pictures/Screenshots"
     pipe_command = "satty --early-exit copy  --copy-command wl-copy -f -"
     pipe_to_command = true
     save_to_file = true
@@ -354,42 +348,42 @@ wallpaper_scheme = "faithful"
     community_ids = [ "papirus-icons" ]
 
 [wallpaper]
-directory = "/home/alex/Pictures/Wallpapers"
+directory = "~/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [wallpaper.last]
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "/home/alex/Pictures/Wallpapers/wallhaven-x8ye3z.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven-x8ye3z.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "faithful"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_0j8o75.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven_0j8o75.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "m3-content"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_7j96qv.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven_7j96qv.jpg"
     theme_mode = "auto"
     wallpaper_scheme = "faithful"
 
     [[wallpaper.favorite]]
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_4d38m0.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven_4d38m0.jpg"
     theme_mode = "auto"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "m3-monochrome"
 
@@ -425,9 +419,6 @@ show_label = false
 [widget.network_rx]
 display = "text"
 
-[widget.notes]
-type = "noctalia/notes:notes"
-
 [widget.ram]
 display = "text"
 
@@ -450,6 +441,3 @@ show_label = false
 
 [widget.wallhaven]
 type = "noctalia/wallhaven:wallhaven"
-
-[widget.workspaces]
-minimal = false

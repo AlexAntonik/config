@@ -63,14 +63,14 @@
         "command": ["nixfmt"]
       },
       "nixpkgs": {
-        "expr": "import (builtins.getFlake \"/home/alex/config\").inputs.nixpkgs { }"
+        "expr": "import (builtins.getFlake \"~/config\").inputs.nixpkgs { }"
       },
       "options": {
         "home_manager": {
-          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.asus.options.home-manager.users.type.getSubOptions []"
+          "expr": "(builtins.getFlake \"~/config\").nixosConfigurations.asus.options.home-manager.users.type.getSubOptions []"
         },
         "nixos": {
-          "expr": "(builtins.getFlake \"/home/alex/config\").nixosConfigurations.asus.options"
+          "expr": "(builtins.getFlake \"~/config\").nixosConfigurations.asus.options"
         }
       }
     }
@@ -90,11 +90,6 @@
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 5,
   "workbench.editor.showTabs": "single",
-  "leetcode.hint.configWebviewMarkdown": false,
-  "leetcode.workspaceFolder": "/home/alex/.leetcode",
-  "leetcode.defaultLanguage": "golang",
-  "leetcode.hint.commentDescription": false,
-  "leetcode.hint.commandShortcut": false,
   "editor.wordWrap": "on",
   "vim.langmap": "ФИСВУΑПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
   "github.copilot.enable": {
