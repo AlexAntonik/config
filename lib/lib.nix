@@ -28,7 +28,7 @@ in
       };
     }
     {
-      warnings = lib.optional (!(options.hm.definitions == [ ] || (options ? home-manager))) ''
+      warnings = lib.optional (options.hm.definitions != [ ] && !(options ? home-manager)) ''
         config.home defined without home-manager. Import modules/home-manager.nix if home config needed.
       '';
     }
