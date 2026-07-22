@@ -51,12 +51,6 @@
     ./../../modules/scripts/syncsupprep.nix
   ];
 
-  programs = {
-    # amnezia-vpn.enable = true;
-  };
-  environment.systemPackages = [
-  ];
-
   # ignore closed lid
   services.logind.settings.Login.HandleLidSwitch = "ignore";
 }

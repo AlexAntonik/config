@@ -98,22 +98,10 @@
     # Programming languages
     # go # Go programming language
     # nixd # Nix LSP
-    # dart # Dart language
-    # kotlin # Kotlin language
-    # typescript # EXTREMLY BAD language
-    # zulu # Open JDK fast
 
     # Development tools
     # meson # Build system
-    # gradle # Build system
     # ninja # Build system
-    # nixfmt-rfc-style # Nix code formatter
-    # pkg-config # Package configuration tool
-    # nodejs # JavaScript runtime
-    # code-cursor
-    # vscode.fhs # Visual Studio Code with FHS environment
-    # supabase-cli
-    # unrar # RAR archive extractor
     unzip # ZIP archive extractor
     # postgresql
 
@@ -122,22 +110,11 @@
 
     # Communication & Internet
     # discord # Chat and voice communication
-    # protonvpn-gui # ProtonVPN client
-    # telegram-desktop # Instant messaging
-    # tor-browser # Privacy-focused browser
-    # chromium
-    # vesktop #discord alternative web thingne
 
     # Media Creation & Editing
-    # gimp # Image manipulation program
     # audacity # Audio editor
-    # vlc
 
     # Gaming
-    # starsector
     # vintagestory
-    # prismlauncher # Minecraft launcher
-    # lutris # Game launchers gog epic games etc
-    # hydralauncher #Games from different sources
   ];
 }

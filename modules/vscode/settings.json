@@ -64,14 +64,6 @@
       },
       "nixpkgs": {
         "expr": "import (builtins.getFlake \"~/config\").inputs.nixpkgs { }"
-      },
-      "options": {
-        "home_manager": {
-          "expr": "(builtins.getFlake \"~/config\").nixosConfigurations.asus.options.home-manager.users.type.getSubOptions []"
-        },
-        "nixos": {
-          "expr": "(builtins.getFlake \"~/config\").nixosConfigurations.asus.options"
-        }
       }
     }
   },
