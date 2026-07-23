@@ -1,13 +1,16 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
-hl.env("NIXOS_OZONE_WL", "1")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("CLUTTER_BACKEND", "wayland")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+
+-- hl.on("config.props_refreshed", function(w)
+--   hl.notification.create({ text = "Window focused: " .. w.title, timeout = 5000, icon = "ok" })
+-- end)
 
 hl.monitor({
     output = "",
