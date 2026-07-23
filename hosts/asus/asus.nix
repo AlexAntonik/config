@@ -77,14 +77,11 @@
     ./../../modules/time.nix
     ./../../modules/zsh.nix
     (import ./../../modules/lang-indicator.nix { languageLightID = "platform::micmute"; })
-    (import ./../../modules/backlight-indicator.nix {
-      mainMonitor = "eDP-1";
-      keyboardLightID = "asus::kbd_backlight";
-      keyboardScreenOFFLightID = "asus::camera";
-    })
-    (import ./../../modules/kbd-backlight-idle.nix {
+    (import ./../../modules/kbd-backlight.nix {
       kbdIdleTimeout = "120";
       keyboardLightID = "asus::kbd_backlight";
+      mainMonitor = "eDP-1";
+      keyboardScreenOFFLightID = "asus::camera";
     })
     ./../../modules/tailscale.nix
     ./../../modules/ghostty.nix
