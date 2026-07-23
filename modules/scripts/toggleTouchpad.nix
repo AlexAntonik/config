@@ -1,10 +1,11 @@
-{ host, pkgs, ... }:
+{ touchpadID }:
+{ pkgs, ... }:
 {
   environment.systemPackages = [
    (pkgs.writeShellScriptBin
     "toggle_touchpad"
     ''
-      HYPRLAND_DEVICE="${host.touchpadID}"
+      HYPRLAND_DEVICE="${touchpadID}"
 
       if [ -z "$XDG_RUNTIME_DIR" ]; then
         export XDG_RUNTIME_DIR=/run/user/$(id -u)

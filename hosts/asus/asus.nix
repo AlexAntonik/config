@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   host = {
     # Locals
     username = "alex";
@@ -7,15 +7,7 @@
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
 
-    # Devices for some features
-    mainMonitor = "eDP-1";
-    touchpadID = "asue120b:00-04f3:31c0-touchpad"; # From hyprctl devices
-    keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
-    keyboardScreenOFFLightID = "asus::camera"; # From brightnessctl -l shines when screen and keyboard are off
-    languageLightID = "platform::micmute"; # Same used to indicate not en lang
-
     # Time and Locale Settings
-    kbdIdleTimeout = "120"; # In seconds, time before keyboard backlight off
     timeZone = "Europe/Minsk";
 
     stateVersion = "26.05";
@@ -84,16 +76,25 @@
     ./../../modules/nix.nix
     ./../../modules/time.nix
     ./../../modules/zsh.nix
-    ./../../modules/lang-indicator.nix
-    ./../../modules/backlight-indicator.nix
-    ./../../modules/kbd-backlight-idle.nix
+    (import ./../../modules/lang-indicator.nix { languageLightID = "platform::micmute"; })
+    (import ./../../modules/backlight-indicator.nix {
+      mainMonitor = "eDP-1";
+      keyboardLightID = "asus::kbd_backlight";
+      keyboardScreenOFFLightID = "asus::camera";
+    })
+    (import ./../../modules/kbd-backlight-idle.nix {
+      kbdIdleTimeout = "120";
+      keyboardLightID = "asus::kbd_backlight";
+    })
     ./../../modules/tailscale.nix
     ./../../modules/ghostty.nix
     ./../../modules/xdg.nix
 
     # Scripts
     ./../../modules/scripts/syncsupprep.nix
-    ./../../modules/scripts/toggleTouchpad.nix
+    (import ./../../modules/scripts/toggleTouchpad.nix {
+      touchpadID = "asue120b:00-04f3:31c0-touchpad";
+    })
     ./../../modules/scripts/hm-find.nix
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];

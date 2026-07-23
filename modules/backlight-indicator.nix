@@ -1,4 +1,5 @@
-{ pkgs, host, ... }:
+{ mainMonitor, keyboardLightID, keyboardScreenOFFLightID }:
+{ pkgs, ... }:
 let
   backlightDaemon = pkgs.writeShellScriptBin "backlight-daemon" ''
     export PATH="${pkgs.brightnessctl}/bin:$PATH"
@@ -6,7 +7,7 @@ let
     LAST_STATUS=""
 
     while true; do
-      if IFS= read -r CURRENT_STATUS < "/sys/class/drm/card1-${host.mainMonitor}/enabled" 2>/dev/null; then
+      if IFS= read -r CURRENT_STATUS < "/sys/class/drm/card1-${mainMonitor}/enabled" 2>/dev/null; then
         DRM_STATUS="$CURRENT_STATUS"
       else
         DRM_STATUS="unknown"
@@ -14,11 +15,11 @@ let
 
       if [ "$DRM_STATUS" != "$LAST_STATUS" ]; then
         if [ "$DRM_STATUS" = "disabled" ]; then
-          brightnessctl -d "${host.keyboardLightID}" s 0
-          brightnessctl -d "${host.keyboardScreenOFFLightID}" s 100
+          brightnessctl -d "${keyboardLightID}" s 0
+          brightnessctl -d "${keyboardScreenOFFLightID}" s 100
         else
-          brightnessctl -d "${host.keyboardLightID}" s 3
-          brightnessctl -d "${host.keyboardScreenOFFLightID}" s 0
+          brightnessctl -d "${keyboardLightID}" s 3
+          brightnessctl -d "${keyboardScreenOFFLightID}" s 0
         fi
         LAST_STATUS="$DRM_STATUS"
       fi

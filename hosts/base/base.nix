@@ -9,8 +9,6 @@
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
 
-    # Devices for some features
-    keyboardLightID = "asus::kbd_backlight"; # From brightnessctl -l
     timeZone = "Europe/Minsk";
 
     # This value determines the Home Manager/NixOs release that your configuration is

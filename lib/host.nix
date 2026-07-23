@@ -21,32 +21,6 @@ let
         default = "en_US.UTF-8";
       };
       stateVersion = lib.mkOption { type = lib.types.str; };
-
-      # Device IDs/settings for some features
-      mainMonitor = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = null;
-      };
-      touchpadID = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = null;
-      };
-      keyboardLightID = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = null;
-      };
-      keyboardScreenOFFLightID = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = null;
-      };
-      languageLightID = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = null;
-      };
-      kbdIdleTimeout = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = null;
-      };
     };
   });
 in

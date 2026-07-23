@@ -1,4 +1,5 @@
-{ host, pkgs, ... }:
+{ languageLightID }:
+{ pkgs, ... }:
 let
   keyboard-layout-indicator = pkgs.writeShellScriptBin "keyboard-layout-indicator" ''
     set -e
@@ -18,10 +19,10 @@ let
     set_light() {
       case "$1" in
         *"Russian"*|*"ru"*|*"RU"*|*"русский"*|*"Русский"*)
-          brightnessctl -d ${host.languageLightID} s 100
+          brightnessctl -d ${languageLightID} s 100
           ;;
         *)
-          brightnessctl -d ${host.languageLightID} s 0
+          brightnessctl -d ${languageLightID} s 0
           ;;
       esac
     }
@@ -32,7 +33,7 @@ let
     wait_for_socket
     MAIN_KBD=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main == true) | .name')
     check_layout
-    
+
     ${pkgs.socat}/bin/socat -U - UNIX-CONNECT:"$SOCKET" | while read -r line; do
       case "$line" in
         "activelayout>>"*)
