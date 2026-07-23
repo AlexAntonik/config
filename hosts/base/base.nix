@@ -84,7 +84,6 @@
 
     # Scripts
     ./../../modules/scripts/syncsupprep.nix
-    ./../../modules/scripts/hm-find.nix
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 

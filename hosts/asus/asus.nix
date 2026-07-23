@@ -92,7 +92,6 @@
     (import ./../../modules/scripts/toggleTouchpad.nix {
       touchpadID = "asue120b:00-04f3:31c0-touchpad";
     })
-    ./../../modules/scripts/hm-find.nix
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 
