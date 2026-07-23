@@ -1,13 +1,4 @@
 {
-  # Boot and kernel configuration
-  # sleep/suspend/hibernate are disabled as they can break Bluetooth
-  systemd.targets = {
-    sleep.enable = false;
-    suspend.enable = false;
-    hibernate.enable = false;
-    "hybrid-sleep".enable = false;
-  };
-
   boot = {
     # kernelPackages = pkgs.linuxPackages_zen;
     kernel.sysctl = {
