@@ -22,8 +22,8 @@
         exit 1
       fi
       
-      echo "Waiting 4 minutes..."
-      sleep 240
+      echo "Waiting a minute"
+      sleep 60
       echo "Wait completed at $(date)"
       
       if [ -d "$COMPOSE_DIR" ]; then
