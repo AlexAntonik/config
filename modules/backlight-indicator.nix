@@ -28,7 +28,7 @@ let
   '';
 in
 {
-  systemd.services.backlight-deamon = {
+  systemd.services.backlight-daemon = {
     description = "Daemon to check DRM display status and toggle keyboard LED";
     wantedBy = [ "multi-user.target" ];
 
