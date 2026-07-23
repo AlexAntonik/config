@@ -4,7 +4,7 @@ config_version = 2
 order = [ "default", "workspaces" ]
 
     [bar.default]
-    auto_hide = false
+    auto_hide = true
     background_opacity = 0.69999999999999996
     center = [ "taskbar", "clock" ]
     contact_shadow = true
@@ -18,7 +18,6 @@ order = [ "default", "workspaces" ]
     reserve_space = false
     shadow = true
     show_on_workspace_switch = false
-    smart_auto_hide = true
     start = [ "launcher", "temp", "cpu", "ram", "network_rx" ]
     widget_spacing = 8
 
