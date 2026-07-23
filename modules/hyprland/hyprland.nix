@@ -6,14 +6,6 @@
 }:
 {
   programs.hyprland.enable = true;
-  xdg.portal = {
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-    configPackages = [ pkgs.hyprland ];
-    config.common.default = [
-      "hyprland"
-      "gtk"
-    ];
-  };
   hm.${host.username} = {
     home.packages = [
       pkgs.hyprpicker
@@ -23,7 +15,6 @@
     ];
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.hyprland;
       systemd = {
         enable = true;
         enableXdgAutostart = true;

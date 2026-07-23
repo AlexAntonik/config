@@ -22,10 +22,6 @@
         exit 1
       fi
       
-      echo "Changing file ownership..."
-      chown -R ${host.username}:users /home/${host.username}/projects/srv
-      echo "File ownership changed to ${host.username}:users for /home/${host.username}/projects/srv"
-      
       echo "Waiting 4 minutes..."
       sleep 240
       echo "Wait completed at $(date)"
