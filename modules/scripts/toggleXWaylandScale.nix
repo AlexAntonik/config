@@ -23,9 +23,9 @@
       if ! [ -f "$STATUS_FILE" ]; then
         enable_scaling
       else
-        if [ $(cat "$STATUS_FILE") = "true" ]; then
+        if [ "$(cat "$STATUS_FILE")" = "true" ]; then
           disable_scaling
-        elif [ $(cat "$STATUS_FILE") = "false" ]; then
+        elif [ "$(cat "$STATUS_FILE")" = "false" ]; then
           enable_scaling
         fi
       fi
