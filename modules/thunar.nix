@@ -2,6 +2,7 @@
 {
   services.gvfs.enable = true;
   programs.dconf.enable = true; # Add so thunar can see syspkgs
+  services.tumbler.enable = true;  # Thumbnail support for images
   environment.systemPackages = [ pkgs.file-roller ]; # Archive manager
   xdg.mime.defaultApplications = {
     "inode/directory" = "thunar.desktop";
