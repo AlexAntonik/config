@@ -1,12 +1,25 @@
 config_version = 2
 
 [bar]
-order = [ "default", "workspaces" ]
+order = [ "default", "workspaces", "apps" ]
+
+    [bar.apps]
+    auto_hide = true
+    background_opacity = 0.0
+    capsule = true
+    capsule_fill = "on_primary"
+    center = [ "taskbar" ]
+    enabled = true
+    end = []
+    margin_ends = 250
+    position = "left"
+    reserve_space = false
+    show_on_workspace_switch = false
+    start = []
 
     [bar.default]
     auto_hide = true
     background_opacity = 0.69999999999999996
-    center = [ "taskbar", "clock" ]
     contact_shadow = true
     end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
     font_family = "Montserrat"
@@ -283,6 +296,15 @@ telemetry_enabled = false
     [shell.launcher]
     app_grid = false
     compact = false
+
+        [shell.launcher.providers.emoji]
+        global = false
+
+        [shell.launcher.providers.session]
+        global = true
+
+        [shell.launcher.providers.windows]
+        global = true
 
     [shell.panel]
     borders = false
