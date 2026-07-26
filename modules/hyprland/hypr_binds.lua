@@ -86,7 +86,7 @@ hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s +1%"), { locked 
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
 
-hl.bind("SUPER_L", hl.dsp.exec_cmd("noctalia msg bar-show default"), { long_press = true, transparent = true, })
+hl.bind("SUPER_L", hl.dsp.exec_cmd("noctalia msg bar-show default | sleep 6 && noctalia msg bar-hide default"), { long_press = true, transparent = true, })
 hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd("noctalia msg bar-hide"), { release = true })
 
 hl.gesture({
