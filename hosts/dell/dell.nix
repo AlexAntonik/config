@@ -46,9 +46,6 @@
     ./../../modules/nix.nix
     ./../../modules/time.nix
     ./../../modules/tailscale.nix
-
-    # Scripts
-    ./../../modules/scripts/syncsupprep.nix
   ];
 
   # ignore closed lid

@@ -46,9 +46,6 @@
     # Config & misc
     ./../../modules/nix.nix
     ./../../modules/time.nix
-
-    # Scripts
-    ./../../modules/scripts/syncsupprep.nix
   ];
   nix.settings.max-jobs = lib.mkForce 2;
   environment.systemPackages = with pkgs; [

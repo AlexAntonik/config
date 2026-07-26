@@ -88,7 +88,6 @@
     ./../../modules/xdg.nix
 
     # Scripts
-    ./../../modules/scripts/syncsupprep.nix
     (import ./../../modules/scripts/toggleTouchpad.nix {
       touchpadID = "asue120b:00-04f3:31c0-touchpad";
     })

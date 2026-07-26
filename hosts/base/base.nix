@@ -83,7 +83,6 @@
     ./../../modules/xdg.nix
 
     # Scripts
-    ./../../modules/scripts/syncsupprep.nix
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 
