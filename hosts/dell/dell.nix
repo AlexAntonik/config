@@ -1,6 +1,5 @@
 {
   host = {
-    # Locals
     username = "alex";
     hostname = "dell"; # Must be the same as dir name
 

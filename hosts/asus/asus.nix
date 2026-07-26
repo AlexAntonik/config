@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   host = {
-    # Locals
     username = "alex";
     hostname = "asus"; # Must be the same as dir name
 

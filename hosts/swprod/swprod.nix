@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 {
   host = {
-    # Flake locals
     username = "user";
     hostname = "swprod"; # Must be the same as dir name
 
