@@ -83,11 +83,7 @@ if [ ! -d "$HOME/config" ]; then
     echo
     git add . || echo -e "${RED}Warning: git add failed${NC}"
 
-    echo -e "${CYAN}Updating $hostName.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*hostname\s*=\s*\"[^\"]*\";/s/.*/    hostname = \"$hostName\";/" ./hosts/"$hostName"/"$hostName".nix; then
-        echo -e "${RED}Warning: failed to update hostname in $hostName.nix${NC}"
-    fi
-    echo
+    echo -e "${CYAN}Updating $hostName.nix with username...${NC}"
     if ! sed -i "/^\s*username\s*=\s*\"[^\"]*\";/s/.*/    username = \"$installusername\";/" ./hosts/"$hostName"/"$hostName".nix; then
         echo -e "${RED}Warning: failed to update username in $hostName.nix${NC}"
     fi
@@ -127,10 +123,7 @@ else
     echo -e "${CYAN}Using username: $installusername${NC}"
     echo
 
-    echo -e "${CYAN}Updating $hostName.nix with hostname and username...${NC}"
-    if ! sed -i "/^\s*hostname\s*=\s*\"[^\"]*\";/s/.*/    hostname = \"$hostName\";/" ./hosts/"$hostName"/"$hostName".nix; then
-        echo -e "${RED}Warning: failed to update hostname in $hostName.nix${NC}"
-    fi
+    echo -e "${CYAN}Updating $hostName.nix with username...${NC}"
     if ! sed -i "/^\s*username\s*=\s*\"[^\"]*\";/s/.*/    username = \"$installusername\";/" ./hosts/"$hostName"/"$hostName".nix; then
         echo -e "${RED}Warning: failed to update username in $hostName.nix${NC}"
     fi

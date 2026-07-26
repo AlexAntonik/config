@@ -2,6 +2,7 @@
   lib,
   config,
   options,
+  hostName,
   ...
 }:
 let
@@ -22,6 +23,7 @@ in
 
   config = lib.mkMerge [
     {
+      host.hostName = hostName;
       _module.args = {
         host = config.host;
         inherit mkSymlinks;

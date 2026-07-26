@@ -3,7 +3,7 @@ let
   hostSubmodule = lib.types.submodule (hostCfg: {
     options = {
       username = lib.mkOption { type = lib.types.str; };
-      hostname = lib.mkOption { type = lib.types.str; };
+      hostName = lib.mkOption { type = lib.types.str; };
       flakePath = lib.mkOption {
         type = lib.types.str;
         default = "/home/${hostCfg.config.username}/config";

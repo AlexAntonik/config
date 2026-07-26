@@ -9,7 +9,10 @@ in
 lib.genAttrs hostNames (
   host:
   lib.nixosSystem {
-    specialArgs = { inherit inputs; };
+    specialArgs = {
+      inherit inputs;
+      hostName = host;
+    };
     modules = [
       ./lib.nix
       (hostsDir + "/${host}/${host}.nix")

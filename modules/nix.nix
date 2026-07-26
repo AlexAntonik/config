@@ -14,8 +14,8 @@
     optimise.automatic = true;
   };
   environment.shellAliases = {
-    fr = "nh os switch --hostname ${host.hostname} --diff=always";
-    fu = "nh os switch --hostname ${host.hostname} --update --diff=always";
+    fr = "nh os switch --hostname ${host.hostName} --diff=always";
+    fu = "nh os switch --hostname ${host.hostName} --update --diff=always";
     change-host = "sh ${host.flakePath}/install.sh";
     ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
   };

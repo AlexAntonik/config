@@ -1,8 +1,6 @@
 { pkgs, ... }: {
   host = {
     username = "alex";
-    hostname = "asus"; # Must be the same as dir name
-
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
 

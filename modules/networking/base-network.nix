@@ -3,7 +3,7 @@
   users.users.${host.username}.extraGroups = [ "networkmanager" ];
   services.resolved.enable = true;
   networking = {
-    hostName = host.hostname;
+    hostName = host.hostName;
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";

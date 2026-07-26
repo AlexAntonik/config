@@ -3,8 +3,6 @@
   host = {
     # Locals
     username = "base";
-    hostname = "base"; # Must be the same as dir name(as in quotes - hosts/"base"/)
-
     # Git Configuration
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";

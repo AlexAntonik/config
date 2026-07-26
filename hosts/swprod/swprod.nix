@@ -2,8 +2,6 @@
 {
   host = {
     username = "user";
-    hostname = "swprod"; # Must be the same as dir name
-
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
 
