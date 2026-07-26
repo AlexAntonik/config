@@ -18,11 +18,11 @@ let
 
     set_light() {
       case "$1" in
-        *"Russian"*|*"ru"*|*"RU"*|*"русский"*|*"Русский"*)
-          brightnessctl -d ${languageLightID} s 100
+        *"English"*|*"english"*)
+          brightnessctl -d ${languageLightID} s 0
           ;;
         *)
-          brightnessctl -d ${languageLightID} s 0
+          brightnessctl -d ${languageLightID} s 100
           ;;
       esac
     }
