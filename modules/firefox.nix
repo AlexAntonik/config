@@ -1,11 +1,22 @@
 { pkgs, ... }:
-
 let
   extensions = [
-    "darkreader"
-    "ublock-origin"
-    "youtube-recommended-videos"
-    "adaptive-tab-bar-colour"
+    {
+      id = "addon@darkreader.org";
+      slug = "darkreader";
+    }
+    {
+      id = "uBlock0@raymondhill.net";
+      slug = "ublock-origin";
+    }
+    {
+      id = "myallychou@gmail.com";
+      slug = "youtube-recommended-videos";
+    }
+    {
+      id = "ATBC@EasonWong";
+      slug = "adaptive-tab-bar-colour";
+    }
   ];
 in
 {
@@ -129,12 +140,11 @@ in
         Default = "Google.com";
       };
       SearchSuggestEnabled = true;
-
       ExtensionSettings = builtins.listToAttrs (
-        map (id: {
-          name = id;
+        map (ext: {
+          name = ext.id;
           value = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/${ext.slug}/latest.xpi";
             installation_mode = "force_installed";
           };
         }) extensions
