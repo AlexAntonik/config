@@ -26,15 +26,13 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
+      xwayland.enable = true;
       systemd = {
         enable = true;
         enableXdgAutostart = true;
         variables = [ "--all" ];
       };
 
-      xwayland = {
-        enable = true;
-      };
       extraConfig = ''
         require("hypr_general")
         require("hypr_binds")

@@ -1,7 +1,6 @@
 {
   host,
   inputs,
-  mkSymlinks,
   ...
 }:
 {
@@ -10,7 +9,7 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
-      inherit inputs host mkSymlinks;
+      inherit inputs host;
     };
     users.${host.username} = {
       home = {
