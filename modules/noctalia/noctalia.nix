@@ -1,7 +1,7 @@
 {
   host,
   pkgs,
-  mkSymlinks,
+  mkOutOfStoreSymlink,
   ...
 }:
 {
@@ -9,10 +9,9 @@
     pkgs.satty # Screenshot editing tool
     pkgs.wl-clipboard # Clipboard manager neded for satty clipboard support
   ];
-
-  system.activationScripts = mkSymlinks "noctalia" {
-    "/home/${host.username}/.local/state/noctalia/settings.toml" =
-      "${host.flakePath}/modules/noctalia/settings.toml";
+  hm.${host.username}.home.file.".local/state/noctalia/settings.toml" = {
+    source = mkOutOfStoreSymlink "${host.flakePath}/modules/noctalia/settings.toml";
+    force = true;
   };
 
   programs.noctalia = {

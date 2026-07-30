@@ -1,21 +1,25 @@
 {
   pkgs,
   host,
-  mkSymlinks,
+  mkOutOfStoreSymlink,
   ...
 }:
 {
-  system.activationScripts = mkSymlinks "vscode" {
-    "/home/${host.username}/.config/Code/User/keybindings.json" =
-      "${host.flakePath}/modules/vscode/keybindings.json";
-    "/home/${host.username}/.config/Code/User/settings.json" =
-      "${host.flakePath}/modules/vscode/settings.json";
-  };
   hm.${host.username} = {
     home.packages = [
       pkgs.shellcheck
       pkgs.shfmt
     ];
+    home.file = {
+      ".config/Code/User/keybindings.json" = {
+        source = mkOutOfStoreSymlink "${host.flakePath}/modules/vscode/keybindings.json";
+        force = true;
+      };
+      ".config/Code/User/settings.json" = {
+        source = mkOutOfStoreSymlink "${host.flakePath}/modules/vscode/settings.json";
+        force = true;
+      };
+    };
     programs.vscode = {
       enable = true;
       package = pkgs.vscode;

@@ -361,7 +361,6 @@ settings_show_advanced = true
 [theme]
 builtin = "Tokyo-Night"
 community_palette = "Oxocarbon"
-mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "faithful"
 

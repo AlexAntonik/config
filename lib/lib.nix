@@ -3,11 +3,19 @@
   config,
   options,
   hostName,
+  pkgs,
   ...
 }:
 let
   hostSubmodule = import ./host.nix { inherit lib; };
-  mkSymlinks = import ./symlinks.nix { inherit lib; };
+  mkOutOfStoreSymlink = # system wide hm alternative
+    path:
+    let 
+      pathStr = toString path;
+    in 
+    pkgs.runCommandLocal (lib.strings.sanitizeDerivationName (baseNameOf pathStr)) { } ''
+      ln -s "${pathStr}" $out
+    '';
 in
 {
   options = {
@@ -26,7 +34,7 @@ in
       host.hostName = hostName;
       _module.args = {
         host = config.host;
-        inherit mkSymlinks;
+        inherit mkOutOfStoreSymlink;
       };
     }
     {
