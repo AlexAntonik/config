@@ -1,4 +1,4 @@
-config_version = 2
+config_version = 8
 
 [bar]
 order = [ "default", "workspaces", "apps" ]
@@ -34,10 +34,10 @@ order = [ "default", "workspaces", "apps" ]
     start = [ "launcher", "temp", "cpu", "ram", "network_rx" ]
     widget_spacing = 8
 
-        [bar.default.dead_zone]
-        command = "noctalia msg panel-toggle control-center"
-        middle_command = "noctalia msg panel-toggle launcher"
-        right_command = "noctalia msg panel-toggle session"
+        [bar.default.dead_zone.actions]
+        left = "exec noctalia msg panel-toggle control-center"
+        middle = "exec noctalia msg panel-toggle launcher"
+        right = "exec noctalia msg panel-toggle session"
 
     [bar.workspaces]
     auto_hide = true
@@ -64,7 +64,6 @@ order = [ "default", "workspaces", "apps" ]
     thickness = 38
 
 [control_center]
-hidden_tabs = []
 sidebar = "compact"
 sidebar_section = "compact"
 
@@ -188,10 +187,10 @@ widget_order = [
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 64.0
-    box_width = 400.0
+    box_height = 161.0
+    box_width = 720.0
     cx = 720.0
-    cy = 677.0
+    cy = 709.5
     output = "eDP-1"
     rotation = 0.0
     type = "login_box"
@@ -203,10 +202,13 @@ widget_order = [
         center_password_text = true
         input_opacity = 0.70000000000000007
         input_radius = 10.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = false
+        show_media = false
+        show_session_buttons = true
+        show_weather = false
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 192.0
@@ -291,7 +293,6 @@ offline_mode = false
 password_style = "random"
 polkit_agent = true
 settings_show_advanced = true
-telemetry_enabled = false
 
     [shell.launcher]
     app_grid = false
