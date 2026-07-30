@@ -4,11 +4,7 @@
   ...
 }:
 {
-
-  services.tlp.enable = lib.mkDefault (
-    (lib.versionOlder (lib.versions.majorMinor lib.version) "21.05")
-    || !config.services.power-profiles-daemon.enable
-  );
+  services.tlp.enable = lib.mkDefault (!config.services.power-profiles-daemon.enable);
   # services.xserver.videoDrivers = [ "nvidia" ];
   # hardware.nvidia = {
   #   prime = {
