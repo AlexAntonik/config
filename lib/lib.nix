@@ -4,6 +4,7 @@
   options,
   hostName,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -32,6 +33,10 @@ in
   config = lib.mkMerge [
     {
       host.hostName = hostName;
+      host.flakePath = lib.mkDefault (
+        let localPath = "/home/${config.host.username}/config";
+        in if builtins.pathExists localPath then localPath else toString inputs.self
+      );
       _module.args = {
         host = config.host;
         inherit mkOutOfStoreSymlink;
