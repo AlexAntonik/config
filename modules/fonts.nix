@@ -14,7 +14,7 @@
     ];
     fontconfig = {
       defaultFonts = {
-        serif = [ "Montserrat" ];
+        serif = [ "Noto Serif" ];
         sansSerif = [ "Montserrat" ];
         monospace = [ "JetBrains Mono" ];
         emoji = [ "Noto Color Emoji" ];
