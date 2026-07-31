@@ -2,8 +2,9 @@
 {
   systemd.services.docker-compose-maintenance = {
     description = "Docker Compose Maintenance Service";
-    path = [ #bkp.sh
-      pkgs.postgresql 
+    path = [
+      # bkp.sh
+      pkgs.postgresql
       pkgs.coreutils
       pkgs.findutils
     ];
@@ -14,9 +15,9 @@
     };
     script = ''
       echo "Starting Docker Compose maintenance at $(date)"
-      
+
       COMPOSE_DIR="/home/${host.username}/projects/srv"
-      
+
       if [ -d "$COMPOSE_DIR" ]; then
         echo "Stopping Docker Compose services..."
         cd $COMPOSE_DIR
@@ -27,11 +28,11 @@
         echo "Error: Docker Compose file not found at $COMPOSE_DIR"
         exit 1
       fi
-      
+
       echo "Waiting a minute"
       sleep 60
       echo "Wait completed at $(date)"
-      
+
       if [ -d "$COMPOSE_DIR" ]; then
         echo "Starting Docker Compose services..."
         cd $COMPOSE_DIR
@@ -41,9 +42,13 @@
         echo "Error: Docker Compose file not found at $COMPOSE_DIR"
         exit 1
       fi
-      
+
       echo "Docker Compose maintenance completed at $(date)"
     '';
+  };
+  systemd.sockets.postgres-proxy = {
+    listenStreams = [ "127.0.0.1:5432" ];
+    socketConfig.Service = "docker-compose-maintenance.service";
   };
 
   systemd.timers.docker-compose-maintenance = {
