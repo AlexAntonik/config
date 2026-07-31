@@ -2,6 +2,11 @@
 {
   systemd.services.docker-compose-maintenance = {
     description = "Docker Compose Maintenance Service";
+    path = [ #bkp.sh
+      pkgs.postgresql 
+      pkgs.coreutils
+      pkgs.findutils
+    ];
     serviceConfig = {
       Type = "oneshot";
       StandardOutput = "journal";

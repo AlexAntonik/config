@@ -6,7 +6,7 @@
     gitEmail = "antonikavv@gmail.com";
 
     timeZone = "Europe/Minsk";
-    stateVersion = "23.11";
+    stateVersion = "26.05";
   };
 
   imports = [
