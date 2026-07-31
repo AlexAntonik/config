@@ -3,7 +3,6 @@
   systemd.services.docker-compose-maintenance = {
     description = "Docker Compose Maintenance Service";
     path = [
-      # bkp.sh
       pkgs.postgresql
       pkgs.coreutils
       pkgs.findutils
@@ -46,8 +45,8 @@
       echo "Docker Compose maintenance completed at $(date)"
     '';
   };
-  systemd.sockets.postgres-proxy = {
-    listenStreams = [ "127.0.0.1:5432" ];
+  systemd.sockets.postgres-bkp = {
+    listenStreams = [ "127.0.0.1:50432" ];
     socketConfig.Service = "docker-compose-maintenance.service";
   };
 
