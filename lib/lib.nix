@@ -15,7 +15,7 @@ let
       pathStr = toString path;
     in 
     pkgs.runCommandLocal (lib.strings.sanitizeDerivationName (baseNameOf pathStr)) { } ''
-      ln -s "${pathStr}" $out
+      ln -s "${lib.escapeShellArg pathStr}" $out
     '';
 in
 {
