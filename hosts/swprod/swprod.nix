@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./syncthing.nix
+    ./bkp.nix
 
     # Users
     ./user-swprod.nix
@@ -36,8 +37,6 @@
     ./../../modules/zoxide.nix
     ./../../modules/starship.nix
 
-    # Services & ops
-    ./../../modules/server/bkp.nix
 
     # Config & misc
     ./../../modules/nix.nix
