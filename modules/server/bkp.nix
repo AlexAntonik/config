@@ -15,7 +15,7 @@
       if [ -d "$COMPOSE_DIR" ]; then
         echo "Stopping Docker Compose services..."
         cd $COMPOSE_DIR
-        bash bkp.sh
+        ${pkgs.bash}/bin/bash bkp.sh
         ${pkgs.docker}/bin/docker compose down
         echo "Docker Compose services stopped at $(date)"
       else
