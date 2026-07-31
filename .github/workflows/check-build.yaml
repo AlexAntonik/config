@@ -34,6 +34,9 @@ jobs:
       - uses: jlumbroso/free-disk-space@main
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v24
+        with:
+          extra_nix_config: |
+            sandbox = false
       - id: build
         run: |
           echo "Building configuration for ${{ matrix.host }}..."
@@ -42,7 +45,7 @@ jobs:
             && sudo mkdir -p "$(dirname "$FLAKE_PATH")" \
             && sudo ln -sfn "$GITHUB_WORKSPACE" "$FLAKE_PATH" \
             && nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
-              --no-link --no-allow-dirty 2>&1; then
+              --no-link --no-allow-dirty --no-sandbox 2>&1; then
             echo "passing" > status-${{ matrix.host }}.txt
             echo "${{ matrix.host }}: ✓ build succeeded"
           else
