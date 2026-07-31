@@ -36,21 +36,7 @@
           devices = [ "dell" ];
           ignorePermissions = true;
         };
-        "Server" = {
-          path = "/home/${host.username}/projects/srv";
-          devices = [
-            "dell"
-          ];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600";
-              maxAge = "15768000";
-            };
-          };
-          ignorePermissions = true;
-        };
-        "Prod" = {
+        "Backups" = {
           path = "/home/${host.username}/projects/prod/backup";
           type = "receiveonly";
           versioning = {
@@ -60,11 +46,6 @@
               maxAge = "2764800";
             };
           };
-          devices = [ "swop" ];
-          ignorePermissions = true;
-        };
-        "ServerTransfer" = {
-          path = "/home/${host.username}/projects/srv/transfer";
           devices = [ "swop" ];
           ignorePermissions = true;
         };

@@ -1,75 +1,52 @@
 { host, pkgs, ... }:
 {
-  services.borgbackup.jobs = {
-    "daily-backup" = {
-      paths = [
-        "/home/${host.username}/projects/srv/volumes"
-      ];
-
-      repo = "/home/${host.username}/projects/srv/backup/borg-repo";
-
-      startAt = "04:00";
-
-      compression = "zstd,3";
-      encryption.mode = "none";
-
-      exclude = [ ];
-
-      prune.keep = {
-        daily = 7;
-      };
-
-      extraCreateArgs = "--stats --show-rc";
-
-      extraPruneArgs = "--stats --show-rc";
-
-      environment.BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK = "yes";
-
-      preHook = ''
-        echo "Starting backup at $(date)"
-      '';
-
-      postHook = ''
-        echo "Backup completed at $(date)"
-        chown -R ${host.username}:users /home/${host.username}/projects/srv/backup/borg-repo
-      '';
-    };
-  };
-
-  systemd.tmpfiles.rules = [
-    "d /home/${host.username}/projects/srv/backup 0755 ${host.username} users -"
-    "d /home/${host.username}/projects/srv/backup/borg-repo 0755 ${host.username} users -"
-  ];
-  systemd.services.borgbackup-init = {
-    description = "Initialize Borg Repository";
-    wantedBy = [ "multi-user.target" ];
-    before = [ "borgbackup-job-daily-backup.service" ];
-
+  systemd.services.docker-compose-maintenance = {
+    description = "Docker Compose Maintenance Service";
     serviceConfig = {
       Type = "oneshot";
-      User = host.username;
-      Group = "users";
-      RemainAfterExit = true;
+      StandardOutput = "journal";
+      StandardError = "journal";
     };
-
     script = ''
-      REPO_PATH="/home/${host.username}/projects/srv/backup/borg-repo"
-
-      if ! ${pkgs.borgbackup}/bin/borg info "$REPO_PATH" &>/dev/null; then
-        echo "Initializing Borg repository at $REPO_PATH"
-        ${pkgs.borgbackup}/bin/borg init --encryption=none "$REPO_PATH"
-        echo "Borg repository initialized successfully"
+      echo "Starting Docker Compose maintenance at $(date)"
+      
+      COMPOSE_DIR="/home/${host.username}/projects/srv"
+      
+      if [ -d "$COMPOSE_DIR" ]; then
+        echo "Stopping Docker Compose services..."
+        cd $COMPOSE_DIR
+        bash bkp.sh
+        ${pkgs.docker}/bin/docker compose down
+        echo "Docker Compose services stopped at $(date)"
       else
-        echo "Borg repository already exists at $REPO_PATH"
+        echo "Error: Docker Compose file not found at $COMPOSE_DIR"
+        exit 1
       fi
+      
+      echo "Waiting a minute"
+      sleep 60
+      echo "Wait completed at $(date)"
+      
+      if [ -d "$COMPOSE_DIR" ]; then
+        echo "Starting Docker Compose services..."
+        cd $COMPOSE_DIR
+        ${pkgs.docker}/bin/docker compose up -d
+        echo "Docker Compose services started at $(date)"
+      else
+        echo "Error: Docker Compose file not found at $COMPOSE_DIR"
+        exit 1
+      fi
+      
+      echo "Docker Compose maintenance completed at $(date)"
     '';
   };
-  systemd.services = {
-    "borgbackup-job-daily-backup" = {
-      serviceConfig = {
-        StandardOutput = "journal";
-        StandardError = "journal";
-      };
+
+  systemd.timers.docker-compose-maintenance = {
+    description = "Run Docker Compose Maintenance";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "03:00";
+      Persistent = true;
     };
   };
 }

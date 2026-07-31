@@ -38,7 +38,6 @@
 
     # Services & ops
     ./../../modules/server/bkp.nix
-    ./../../modules/server/supabase-restart.nix
 
     # Config & misc
     ./../../modules/nix.nix

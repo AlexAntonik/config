@@ -29,15 +29,10 @@
         };
       };
       folders = {
-        "Prod" = {
+        "Backups" = {
           path = "/home/${host.username}/projects/srv/backup";
           devices = [ "asus" ];
           type = "sendonly";
-          ignorePermissions = true;
-        };
-        "ServerTransfer" = {
-          path = "/home/${host.username}/projects/srv/transfer";
-          devices = [ "asus" ];
           ignorePermissions = true;
         };
       };
