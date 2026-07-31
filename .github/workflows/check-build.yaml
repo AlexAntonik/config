@@ -37,8 +37,12 @@ jobs:
       - id: build
         run: |
           echo "Building configuration for ${{ matrix.host }}..."
-          if nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
-            --no-link --no-allow-dirty 2>&1; then
+          if FLAKE_PATH=$(nix eval --raw ".#nixosConfigurations.${{ matrix.host }}.config.host.flakePath") \
+            && [ -n "$FLAKE_PATH" ] \
+            && sudo mkdir -p "$(dirname "$FLAKE_PATH")" \
+            && sudo ln -sfn "$GITHUB_WORKSPACE" "$FLAKE_PATH" \
+            && nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
+              --no-link --no-allow-dirty 2>&1; then
             echo "passing" > status-${{ matrix.host }}.txt
             echo "${{ matrix.host }}: ✓ build succeeded"
           else

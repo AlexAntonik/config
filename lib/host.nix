@@ -7,6 +7,7 @@ let
       flakePath = lib.mkOption {
         type = lib.types.str;
         description = "Absolute path where this flake is checked out on this machine.";
+        default = "/home/${hostCfg.config.username}/config";
       };
       gitUsername = lib.mkOption { type = lib.types.str; };
       gitEmail = lib.mkOption { type = lib.types.str; };
