@@ -8,7 +8,6 @@
       background = "#101010";
       cursor-style = "bar";
       window-padding-balance = true;
-      window-padding-x = 0;
       window-padding-y = 0;
       window-padding-color = "extend";
       window-show-tab-bar = "never";
