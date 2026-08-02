@@ -36,18 +36,6 @@
           devices = [ "asus" ];
           ignorePermissions = true;
         };
-        "Server" = {
-          path = "/home/${host.username}/projects/srv";
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600";
-              maxAge = "15768000";
-            };
-          };
-          devices = [ "asus" ];
-          ignorePermissions = true;
-        };
       };
     };
   };
