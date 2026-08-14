@@ -11,6 +11,12 @@
       inherit smart-enter;
     };
 
+    settings.mgr = {
+      linemode = "size";
+      sort_by = "size";
+      sort_reverse = true;
+    };
+
     initLua = ''
       require("full-border"):setup()
       require("git"):setup()
