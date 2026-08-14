@@ -1,7 +1,7 @@
-config_version = 8
+config_version = 12
 
 [bar]
-order = [ "default", "workspaces", "apps" ]
+order = [ "bottom", "workspaces", "apps" ]
 
     [bar.apps]
     auto_hide = true
@@ -20,11 +20,11 @@ order = [ "default", "workspaces", "apps" ]
         [bar.apps.dead_zone.actions]
         right = "none"
 
-    [bar.default]
+    [bar.bottom]
     auto_hide = true
     background_opacity = 0.69999999999999996
     contact_shadow = true
-    end = [ "keyboard_layout", "tray", "recorder", "network", "bluetooth", "volume", "battery", "notifications" ]
+    end = [ "keyboard_layout", "tray", "network", "bluetooth", "volume", "battery", "notifications" ]
     font_family = "Montserrat"
     font_weight = 700
     layer = "top"
@@ -34,13 +34,23 @@ order = [ "default", "workspaces", "apps" ]
     reserve_space = false
     shadow = true
     show_on_workspace_switch = false
-    start = [ "launcher", "temp", "cpu", "ram", "network_rx" ]
+    start = [ "group:g1", "temp", "cpu", "ram", "network_rx" ]
     widget_spacing = 8
 
-        [bar.default.dead_zone.actions]
+        [bar.bottom.dead_zone.actions]
         left = "exec noctalia msg panel-toggle control-center"
         middle = "exec noctalia msg panel-toggle launcher"
         right = "exec noctalia msg panel-toggle session"
+
+        [[bar.bottom.capsule_group]]
+        accordion = true
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g1"
+        members = [ "launcher", "recorder", "bar", "widget" ]
+        opacity = 0.0
+        padding = 6.0
 
     [bar.workspaces]
     auto_hide = true
@@ -274,11 +284,16 @@ scale = 1.4000000134110451
     [osd.kinds]
     media = false
 
+[plugin_settings."kenn/keybind-cheatsheet"]
+hyprland_lua_config = "~/.config/hypr/hypr_binds.lua"
+hyprland_parser = "lua"
+show_actions = true
+
 [plugin_settings."noctalia/screen_recorder"]
 video_source = "focused"
 
 [plugins]
-enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", "noctalia/translator" ]
+enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", "noctalia/translator", "thepunkoff/pomodoro" ]
 
     [[plugins.source]]
     kind = "git"
@@ -367,7 +382,7 @@ settings_show_advanced = true
 
 [theme]
 builtin = "Tokyo-Night"
-community_palette = "Oxocarbon"
+community_palette = "ADW"
 source = "wallpaper"
 wallpaper_scheme = "faithful"
 
@@ -379,39 +394,39 @@ wallpaper_scheme = "faithful"
 directory = "~/Pictures/Wallpapers"
 
     [wallpaper.default]
-    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [wallpaper.last]
-    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "/home/alex/Pictures/Wallpapers/wallhaven_n65epw.jpg"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "~/Pictures/Wallpapers/wallhaven-x8ye3z.jpg"
+    path = "/home/alex/~/Pictures/Wallpapers/wallhaven-x8ye3z.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "faithful"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "~/Pictures/Wallpapers/wallhaven_0j8o75.jpg"
+    path = "/home/alex/~/Pictures/Wallpapers/wallhaven_0j8o75.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "m3-content"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "~/Pictures/Wallpapers/wallhaven_7j96qv.jpg"
+    path = "/home/alex/~/Pictures/Wallpapers/wallhaven_7j96qv.jpg"
     theme_mode = "auto"
     wallpaper_scheme = "faithful"
 
     [[wallpaper.favorite]]
-    path = "~/Pictures/Wallpapers/wallhaven_4d38m0.jpg"
+    path = "/home/alex/~/Pictures/Wallpapers/wallhaven_4d38m0.jpg"
     theme_mode = "auto"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
+    path = "/home/alex/~/Pictures/Wallpapers/wallhaven_n65epw.jpg"
     theme_mode = "dark"
     wallpaper_scheme = "m3-monochrome"
 
@@ -419,6 +434,11 @@ directory = "~/Pictures/Wallpapers"
 bands = 30
 scale = 1.5
 width = 400.0
+
+[widget.bar]
+enable_scroll = false
+show_idle_on_horizontal = false
+type = "noctalia/timer:bar"
 
 [widget.battery]
 show_label = false
@@ -432,9 +452,11 @@ glyph = "rosette-filled"
 
 [widget.cpu]
 display = "text"
+label_show_units = false
+show_value = false
 
 [widget.keyboard_layout]
-show_icon = false
+show_glyph = false
 
 [widget.media]
 art_size = 17.0
@@ -458,10 +480,10 @@ inactive_opacity = 0.84999999999999998
 
 [widget.temp]
 show_label = false
+show_value = false
 
 [widget.tray]
 drawer = true
-match_adjacent_spacing = true
 pinned = [ "AmneziaVPN", "Discord", "steam", "TelegramDesktop" ]
 
 [widget.volume]
@@ -469,3 +491,6 @@ show_label = false
 
 [widget.wallhaven]
 type = "noctalia/wallhaven:wallhaven"
+
+[widget.widget]
+type = "thepunkoff/pomodoro:widget"

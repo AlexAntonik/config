@@ -100,9 +100,9 @@
     # Programming languages
     go # Go programming language
     nixd # Nix LSP
-    dart # Dart language
+    # dart # Dart language
     kotlin # Kotlin language
-    typescript # EXTREMELY BAD language
+    typescript # Bad language
     # zulu # Open JDK fast
 
     # Development tools
