@@ -292,6 +292,9 @@ show_actions = true
 [plugin_settings."noctalia/screen_recorder"]
 video_source = "focused"
 
+[plugin_settings."thepunkoff/pomodoro"]
+use-bundled-alarm-sound = true
+
 [plugins]
 enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", "noctalia/translator", "thepunkoff/pomodoro" ]
 
