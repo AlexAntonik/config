@@ -63,6 +63,9 @@
           formulahendry.code-runner
 
           golang.go
+          ms-python.python
+          ms-python.vscode-pylance
+          ms-python.black-formatter
           tamasfe.even-better-toml
           ms-azuretools.vscode-containers
           ms-vscode.makefile-tools

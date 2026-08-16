@@ -85,13 +85,14 @@
   "editor.wordWrap": "on",
   "vim.langmap": "ФИСВУΑПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
     "markdown": false,
     "scminput": false,
     "go": true,
     "sql": true,
-    "dockercompose": true
+    "dockercompose": true,
+    "python": false
   },
   "workbench.colorCustomizations": {
     "editor.background": "#090909",
@@ -144,5 +145,10 @@
   "workbench.browser.searchEngine": "google",
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4o-mini",
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "github.copilot.nextEditSuggestions.eagerness": "low",
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
 }

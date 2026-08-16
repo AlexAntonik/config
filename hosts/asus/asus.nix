@@ -99,6 +99,7 @@
   environment.systemPackages = with pkgs; [
     # Programming languages
     go # Go programming language
+    python3
     nixd # Nix LSP
     # dart # Dart language
     kotlin # Kotlin language
