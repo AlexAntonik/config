@@ -16,15 +16,15 @@
   environment.shellAliases = {
     fr = "nh os switch --hostname ${host.hostName} --diff=always";
     fu = "nh os switch --hostname ${host.hostName} --update --diff=always";
+    nhc = "nh clean all";
     change-host = "sh ${host.flakePath}/install.sh";
-    ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
   };
   programs.nh = {
     enable = true;
+    flake = host.flakePath;
     clean = {
       enable = true;
-      extraArgs = "--keep-since 7d --keep 5";
+      extraArgs = "--keep 5 --keep-since 7d";
     };
-    flake = host.flakePath;
   };
 }
