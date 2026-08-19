@@ -26,7 +26,7 @@
         "dell" = {
           id = "DEEMPVX-NTNLLUM-IXRXV3N-47N6AB7-CETLFHL-5PXB25D-KT5HNL5-ZMQ4SQT";
         };
-        "swop" = {
+        "swprod" = {
           id = "PAZXHAF-J3ZFUS5-R576QL2-EOUCZJ3-RBY3YSV-QG5XGTU-JWQGARY-FOM4JQF";
         };
       };
@@ -46,7 +46,7 @@
               maxAge = "2764800";
             };
           };
-          devices = [ "swop" ];
+          devices = [ "swprod" ];
           ignorePermissions = true;
         };
       };
