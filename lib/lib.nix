@@ -10,9 +10,9 @@ let
   hostSubmodule = import ./host.nix { inherit lib; };
   mkOutOfStoreSymlink = # system wide hm alternative
     path:
-    let 
+    let
       pathStr = toString path;
-    in 
+    in
     pkgs.runCommandLocal (lib.strings.sanitizeDerivationName (baseNameOf pathStr)) { } ''
       ln -s "${lib.escapeShellArg pathStr}" $out
     '';
@@ -36,10 +36,9 @@ in
         host = config.host;
         inherit mkOutOfStoreSymlink;
       };
-    }
-    {
+
       warnings = lib.optional (options.hm.definitions != [ ] && !(options ? home-manager)) ''
-        config.home defined without home-manager. Import modules/home-manager.nix if home config needed.
+        config.hm defined without home-manager. Import modules/home-manager.nix if home config needed.
       '';
     }
     (lib.optionalAttrs (options ? home-manager) {
