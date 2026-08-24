@@ -1,4 +1,4 @@
-config_version = 12
+config_version = 13
 
 [bar]
 order = [ "bottom", "workspaces", "apps" ]
@@ -119,6 +119,8 @@ widget_order = [ "desktop-widget-0000000000000002", "desktop-widget-000000000000
     cx = 720.0
     cy = 661.0
     output = "eDP-1"
+    placement_height = 810.0
+    placement_width = 1440.0
     rotation = 0.0
     type = "clock"
 
@@ -134,6 +136,8 @@ widget_order = [ "desktop-widget-0000000000000002", "desktop-widget-000000000000
     cy = 96.0
     flip_y = true
     output = "eDP-1"
+    placement_height = 810.0
+    placement_width = 1440.0
     rotation = 0.0
     type = "audio_visualizer"
 
@@ -151,6 +155,8 @@ widget_order = [ "desktop-widget-0000000000000002", "desktop-widget-000000000000
     cx = 727.5
     cy = 735.5
     output = "eDP-1"
+    placement_height = 810.0
+    placement_width = 1440.0
     rotation = 0.0
     type = "clock"
 
@@ -208,6 +214,8 @@ widget_order = [
     cx = 720.0
     cy = 709.5
     output = "eDP-1"
+    placement_height = 810.0
+    placement_width = 1440.0
     rotation = 0.0
     type = "login_box"
 
@@ -233,6 +241,8 @@ widget_order = [
     cx = 720.0
     cy = 229.0
     output = "eDP-1"
+    placement_height = 810.0
+    placement_width = 1440.0
     rotation = 0.0
     type = "clock"
 
@@ -247,6 +257,8 @@ widget_order = [
     cx = 720.0
     cy = 0.0
     output = "eDP-1"
+    placement_height = 810.0
+    placement_width = 1440.0
     rotation = 0.0
     type = "audio_visualizer"
 
@@ -261,6 +273,8 @@ widget_order = [
     cx = 720.0
     cy = 309.0
     output = "eDP-1"
+    placement_height = 810.0
+    placement_width = 1440.0
     rotation = 0.0
     type = "clock"
 
