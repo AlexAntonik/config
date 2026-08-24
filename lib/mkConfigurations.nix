@@ -7,17 +7,14 @@ let
   );
 in
 lib.genAttrs hostNames (
-  host:
+  hostName:
   lib.nixosSystem {
-    specialArgs = {
-      hostName = host;
-      inherit inputs;
-    };
+    specialArgs = { inherit hostName inputs; };
     modules = [
       ./host.nix
       ./home-manager.nix
       ./mkOutOfStoreSymlink.nix
-      (hostsDir + "/${host}/${host}.nix")
+      (hostsDir + "/${hostName}/${hostName}.nix")
     ];
   }
 )

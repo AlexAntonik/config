@@ -6,7 +6,7 @@
 }:
 {
   options.host = lib.mkOption {
-    type = lib.types.submodule (hostCfg: {
+    type = lib.types.submodule {
       options = {
         username = lib.mkOption { type = lib.types.str; };
         hostName = lib.mkOption {
@@ -16,7 +16,7 @@
         flakePath = lib.mkOption {
           type = lib.types.str;
           description = "Absolute path where this flake is checked out on this machine.";
-          default = "/home/${hostCfg.config.username}/config";
+          default = "/home/${config.host.username}/config";
         };
         gitUsername = lib.mkOption { type = lib.types.str; };
         gitEmail = lib.mkOption { type = lib.types.str; };
@@ -31,8 +31,7 @@
         };
         stateVersion = lib.mkOption { type = lib.types.str; };
       };
-    });
-
+    };
     description = "Host environment variables accessible in all modules";
   };
 
