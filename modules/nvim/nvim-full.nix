@@ -37,7 +37,13 @@
         typescript.enable = true;
       };
 
-      statusline.lualine.enable = true;
+      statusline.lualine = {
+        enable = true;
+        integrations.breadcrumbs = {
+          nvim-navic.enable = true;
+          navbuddy.enable = true;
+        };
+      };
       autopairs.nvim-autopairs.enable = true;
       autocomplete.nvim-cmp.enable = true;
       tabline.nvimBufferline.enable = true;
@@ -62,10 +68,6 @@
         colorizer.enable = true;
         illuminate.enable = true;
         fastaction.enable = true;
-        breadcrumbs = {
-          enable = false;
-          navbuddy.enable = false;
-        };
       };
     };
   };
