@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   host = {
     username = "alex";
     gitUsername = "AlexAntonik";
@@ -10,6 +11,7 @@
     stateVersion = "26.05";
   };
 
+  homeManager.enable = true;
   imports = [
     # Host specific config
     ./hardware.nix
@@ -41,7 +43,6 @@
     ./../../modules/ssh.nix
     ./../../modules/disk.nix
     ./../../modules/security.nix
-    ./../../modules/home-manager.nix
 
     # Tools & utilities
     ./../../modules/utilities.nix

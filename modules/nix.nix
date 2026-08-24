@@ -1,6 +1,8 @@
 { inputs, host, ... }:
 {
   system.stateVersion = host.stateVersion;
+  hm.${host.username}.home.stateVersion = host.stateVersion;
+
   nixpkgs.config.allowUnfree = true;
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];

@@ -10,11 +10,13 @@ lib.genAttrs hostNames (
   host:
   lib.nixosSystem {
     specialArgs = {
-      inherit inputs;
       hostName = host;
+      inherit inputs;
     };
     modules = [
-      ./lib.nix
+      ./host.nix
+      ./home-manager.nix
+      ./mkOutOfStoreSymlink.nix
       (hostsDir + "/${host}/${host}.nix")
     ];
   }

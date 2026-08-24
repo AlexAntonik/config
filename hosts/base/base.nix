@@ -19,6 +19,7 @@
     stateVersion = "25.11";
   };
 
+  homeManager.enable = true;
   imports = [
     # Host specific config
     ./hardware.nix
@@ -48,7 +49,6 @@
     ./../../modules/logs.nix
     ./../../modules/ssh.nix
     ./../../modules/security.nix
-    ./../../modules/home-manager.nix
 
     # Tools & utilities
     ./../../modules/utilities.nix

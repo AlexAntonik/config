@@ -43,7 +43,7 @@ if [ -z "$hostName" ]; then
   echo -e "${CYAN}============================================================${NC}"
   echo
 
-  read -e -p "$(echo -e "${QUESTION}Hostname: ${NC}")" hostName
+  read -r -e -p "$(echo -e "${QUESTION}Hostname: ${NC}")" hostName
   hostName="${hostName:-base}"
 
   echo
@@ -149,7 +149,7 @@ echo
 sleep 1
 
 while true; do
-    read -e -p "$(echo -e "${QUESTION}Have you already configured hardware in $HOME/config/hosts/$hostName/hardware.nix? (y/n): ${NC}")" drivers_ready
+    read -r -e -p "$(echo -e "${QUESTION}Have you already configured hardware in $HOME/config/hosts/$hostName/hardware.nix? (y/n): ${NC}")" drivers_ready
     case $drivers_ready in
         [Yy]* ) 
             echo
@@ -163,15 +163,7 @@ while true; do
             echo -e "${YELLOW}Please configure hardware before continuing installation.${NC}"
             echo
             echo -e "${CYAN}Opening the hardware.nix file location: $HOME/config/hosts/$hostName/hardware.nix${NC}"
-            # Spinner for 2 seconds
-            spin='-\|/'
-            echo -n " "
-            for i in {1..16}; do
-                i_mod=$((i % 4))
-                printf "\b${spin:$i_mod:1}"
-                sleep 0.2
-            done
-            printf "\b"
+			sleep 4
             echo
             vim "$HOME/config/hosts/$hostName/hardware.nix" || nano "$HOME/config/hosts/$hostName/hardware.nix"
             echo -e "${RED}============================================================${NC}"

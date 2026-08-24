@@ -1,27 +1,40 @@
-{ lib }:
-let
-  hostSubmodule = lib.types.submodule (hostCfg: {
-    options = {
-      username = lib.mkOption { type = lib.types.str; };
-      hostName = lib.mkOption { type = lib.types.str; };
-      flakePath = lib.mkOption {
-        type = lib.types.str;
-        description = "Absolute path where this flake is checked out on this machine.";
-        default = "/home/${hostCfg.config.username}/config";
+{
+  lib,
+  hostName,
+  config,
+  ...
+}:
+{
+  options.host = lib.mkOption {
+    type = lib.types.submodule (hostCfg: {
+      options = {
+        username = lib.mkOption { type = lib.types.str; };
+        hostName = lib.mkOption {
+          type = lib.types.str;
+          default = hostName;
+        };
+        flakePath = lib.mkOption {
+          type = lib.types.str;
+          description = "Absolute path where this flake is checked out on this machine.";
+          default = "/home/${hostCfg.config.username}/config";
+        };
+        gitUsername = lib.mkOption { type = lib.types.str; };
+        gitEmail = lib.mkOption { type = lib.types.str; };
+        timeZone = lib.mkOption { type = lib.types.str; };
+        defaultLocale = lib.mkOption {
+          type = lib.types.str;
+          default = "en_US.UTF-8";
+        };
+        extraLocaleSettings = lib.mkOption {
+          type = lib.types.str;
+          default = "en_US.UTF-8";
+        };
+        stateVersion = lib.mkOption { type = lib.types.str; };
       };
-      gitUsername = lib.mkOption { type = lib.types.str; };
-      gitEmail = lib.mkOption { type = lib.types.str; };
-      timeZone = lib.mkOption { type = lib.types.str; };
-      defaultLocale = lib.mkOption {
-        type = lib.types.str;
-        default = "en_US.UTF-8";
-      };
-      extraLocaleSettings = lib.mkOption {
-        type = lib.types.str;
-        default = "en_US.UTF-8";
-      };
-      stateVersion = lib.mkOption { type = lib.types.str; };
-    };
-  });
-in
-hostSubmodule
+    });
+
+    description = "Host environment variables accessible in all modules";
+  };
+
+  config._module.args.host = config.host;
+}
