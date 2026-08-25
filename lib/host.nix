@@ -25,10 +25,6 @@
           type = lib.types.str;
           default = "en_US.UTF-8";
         };
-        extraLocaleSettings = lib.mkOption {
-          type = lib.types.str;
-          default = "en_US.UTF-8";
-        };
         stateVersion = lib.mkOption { type = lib.types.str; };
       };
     };
