@@ -19,7 +19,6 @@
     fr = "nh os switch --hostname ${host.hostName} --diff=always";
     fu = "nh os switch --hostname ${host.hostName} --update --diff=always";
     nhc = "nh clean all";
-    change-host = "sh ${host.flakePath}/install.sh";
   };
   programs.nh = {
     enable = true;

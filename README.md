@@ -6,22 +6,27 @@
 #### Requirements
 
 - NixOS
-- EFI partition ≥ 512MB
+- EFI partition >= 512MB
 
 #### Installation
 
-Install git:
+Replace `<hostname>` with new machine's hostname throughout.
 
 ```bash
 nix-shell -p git
+git clone https://github.com/AlexAntonik/config.git ~/config
+mkdir -p ~/config/hosts/<hostname>
+cp ~/config/hosts/base/*.nix ~/config/hosts/<hostname>/
+mv ~/config/hosts/<hostname>/base.nix ~/config/hosts/<hostname>/<hostname>.nix
 ```
 
-Clone and run the install script:
+Edit `~/config/hosts/<hostname>/<hostname>.nix` , `~/config/hosts/<hostname>/hardware.nix`.
+
+Generate hardware config, then rebuild:
 
 ```bash
-git clone https://github.com/AlexAntonik/config.git
-cd config
-./install.sh
+sudo nixos-generate-config --show-hardware-config | sudo tee ~/config/hosts/<hostname>/hardware-gen.nix
+sudo nixos-rebuild switch --flake ~/config/#<hostname>
 ```
 
 ---
