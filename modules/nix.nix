@@ -16,8 +16,8 @@
     optimise.automatic = true;
   };
   environment.shellAliases = {
-    fr = "nh os switch --hostname ${host.hostName} --diff=always";
-    fu = "nh os switch --hostname ${host.hostName} --update --diff=always";
+    fr = "nh os switch --diff=always";
+    fu = "nh os switch --update --diff=always";
     nhc = "nh clean all";
   };
   programs.nh = {
