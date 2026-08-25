@@ -79,12 +79,22 @@ order = [ "bottom", "workspaces", "apps" ]
         [bar.workspaces.dead_zone.actions]
         right = "none"
 
+[battery]
+warning_threshold = 15
+
+    [battery.device."/org/freedesktop/UPower/devices/headset_dev_F0_E7_52_1D_81_3A"]
+    warning_threshold = 25
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    name = "Google"
+    type = "google"
+
 [control_center]
 sidebar = "compact"
 sidebar_section = "compact"
-
-    [control_center.calendar]
-    show_events_card = false
 
     [[control_center.shortcuts]]
     type = "bluetooth"
@@ -331,6 +341,7 @@ launch_apps_as_systemd_services = true
 offline_mode = false
 password_style = "random"
 polkit_agent = true
+screen_time_enabled = true
 settings_show_advanced = true
 
     [shell.launcher]
@@ -356,7 +367,7 @@ settings_show_advanced = true
     transparency_mode = "soft"
 
     [shell.screenshot]
-    confirm_region = false
+    confirm_region = true
     directory = "~/Pictures/Screenshots"
     pipe_command = "satty --early-exit copy  --copy-command wl-copy -f -"
     pipe_to_command = true
