@@ -346,10 +346,6 @@ settings_show_advanced = true
 
     [shell.launcher]
     app_grid = false
-    compact = false
-
-        [shell.launcher.providers.emoji]
-        global = false
 
         [shell.launcher.providers.session]
         global = true
