@@ -32,6 +32,9 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
   "bashIde.shellcheckPath": "shellcheck",
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
@@ -148,7 +151,6 @@
   "workbench.activityBar.location": "hidden",
   "github.copilot.nextEditSuggestions.eagerness": "low",
   "github.copilot.nextEditSuggestions.enabled": false,
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  }
+  "workbench.experimental.modernUI": false,
+  "window.density.editorTabHeight": "compact"
 }

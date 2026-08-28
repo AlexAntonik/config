@@ -275,5 +275,15 @@
     {
         "key": "ctrl+shift+t",
         "command": "workbench.view.extension.todo-tree-container"
+    },
+    {
+        "key": "shift+space",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+]",
+        "command": "-editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]
