@@ -63,6 +63,7 @@ in
   };
   xdg.mime.defaultApplications = {
     "text/html" = "firefox.desktop";
+    "x-scheme-handler/tg" = "org.telegram.desktop";
     "x-scheme-handler/http" = "firefox.desktop";
     "x-scheme-handler/https" = "firefox.desktop";
     "x-scheme-handler/about" = "firefox.desktop";
