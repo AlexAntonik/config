@@ -43,8 +43,8 @@ in
       display: none !important;
     }
 
-    #statuspanel {
-      display: none;
+    #statuspanel[type="status"] {
+      display: none !important;
     }
 
     #tabbrowser-tabs {
