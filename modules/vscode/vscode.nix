@@ -69,6 +69,7 @@
           tamasfe.even-better-toml
           ms-azuretools.vscode-containers
           ms-vscode.makefile-tools
+          mechatroner.rainbow-csv
 
           donjayamanne.githistory
           ms-vsliveshare.vsliveshare
