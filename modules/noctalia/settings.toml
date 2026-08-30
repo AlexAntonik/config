@@ -94,7 +94,6 @@ enabled = true
 
 [control_center]
 sidebar = "compact"
-sidebar_section = "compact"
 
     [[control_center.shortcuts]]
     type = "bluetooth"
