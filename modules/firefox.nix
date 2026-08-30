@@ -47,6 +47,12 @@ in
       display: none !important;
     }
 
+    #statuspanel-label {
+      background-color: var(--lwt-accent-color) !important;
+      color: var(--lwt-tab-text) !important;
+      border-color: transparent !important;
+    }
+
     #tabbrowser-tabs {
       border-inline-start: none !important;
     }
