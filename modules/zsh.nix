@@ -3,7 +3,7 @@
   environment.systemPackages = [
     pkgs.zsh-history-substring-search
   ];
-  environment.enableAllTerminfo = true;
+  environment.enableAllTerminfo = true; # only 0.5mb
   users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
     enable = true;
