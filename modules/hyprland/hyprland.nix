@@ -12,17 +12,19 @@
     ];
 
     home.file = {
-      ".config/hypr/hypr_general.lua".source =
-        mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_general.lua";
-      ".config/hypr/hypr_binds.lua".source =
-        mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_binds.lua";
-      ".config/hypr/hypr_rules.lua".source =
-        mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_rules.lua";
+      ".config/hypr/hypr_general.lua" = {
+        source = mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_general.lua";
+        force = true;
+      };
+      ".config/hypr/hypr_binds.lua" = {
+        source = mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_binds.lua";
+        force = true;
+      };
+      ".config/hypr/hypr_rules.lua" = {
+        source = mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_rules.lua";
+        force = true;
+      };
     };
-
-    systemd.user.targets.hyprland-session.Unit.Wants = [
-      "xdg-desktop-autostart.target"
-    ];
 
     wayland.windowManager.hyprland = {
       enable = true;
