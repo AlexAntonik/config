@@ -24,10 +24,9 @@ jobs:
 
   build:
     needs: discover-hosts
-    if: fromJson(needs.discover-hosts.outputs.hosts)[0] != null
     runs-on: ubuntu-latest
-    continue-on-error: true
     strategy:
+      fail-fast: false
       matrix:
         host: ${{ fromJson(needs.discover-hosts.outputs.hosts) }}
     steps:
@@ -121,7 +120,6 @@ jobs:
           fi
 
   check-results:
-    if: always()
     needs: [discover-hosts, build]
     runs-on: ubuntu-latest
     steps:
