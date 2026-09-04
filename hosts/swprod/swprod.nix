@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  # host = {
+  host = {
     username = "user";
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
