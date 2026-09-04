@@ -49,6 +49,7 @@ in
     path = [ pkgs.coreutils ];
     serviceConfig = {
       Type = "oneshot";
+      TimeoutStartSec = "30m";
       User = host.username;
       ExecStart = maintenanceScript;
       UMask = "0077";
