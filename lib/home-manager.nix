@@ -31,7 +31,10 @@
           inherit inputs;
           host = config.host;
         };
-        users = config.hm;
+        users = lib.mkMerge [
+          { ${config.host.username}.home.stateVersion = config.host.stateVersion; }
+          config.hm
+        ];
       };
     })
   ];
