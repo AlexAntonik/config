@@ -6,6 +6,6 @@
       pathStr = toString path;
     in
     pkgs.runCommandLocal (lib.strings.sanitizeDerivationName (baseNameOf pathStr)) { } ''
-      ln -s "${lib.escapeShellArg pathStr}" $out
+      ln -s ${lib.escapeShellArg pathStr} $out
     '';
 }
