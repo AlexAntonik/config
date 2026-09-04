@@ -15,7 +15,7 @@
 
       font-size = 13;
       adjust-cell-height = 10;
-      font-family = "BerkeleyMono Nerd Font";
+      font-family = "JetBrainsMono Nerd Font";
       wait-after-command = false;
       mouse-hide-while-typing = true;
       shell-integration = "detect";
