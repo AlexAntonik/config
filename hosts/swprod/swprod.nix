@@ -1,6 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
-  host = {
+  # host = {
     username = "user";
     gitUsername = "AlexAntonik";
     gitEmail = "antonikavv@gmail.com";
@@ -42,7 +42,7 @@
     ./../../modules/nix.nix
     ./../../modules/time.nix
   ];
-  nix.settings.max-jobs = lib.mkForce 2;
+  nix.settings.max-jobs = 2;
   environment.systemPackages = with pkgs; [
     supabase-cli
     postgresql
