@@ -10,10 +10,6 @@ let
       slug = "ublock-origin";
     }
     {
-      id = "myallychou@gmail.com";
-      slug = "youtube-recommended-videos";
-    }
-    {
       id = "ATBC@EasonWong";
       slug = "adaptive-tab-bar-colour";
     }
@@ -152,7 +148,7 @@ in
           name = ext.id;
           value = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/${ext.slug}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
           };
         }) extensions
       );
@@ -353,7 +349,7 @@ in
       #### SSL ###
       # Security: Disable TLS1.3 0-RTT as key encryption may not be forward secret
       # https://github.com/tlswg/tls13-spec/issues/1001
-      "security.tls.enable_0rtt_data" = 2;
+      "security.tls.enable_0rtt_data" = false;
       # Security: Enable CRLite to ensure that revoked certificates are detected
       "security.pki.crlite_mode" = 2;
       # Security: Display more information on Insecure Connection warning pages
