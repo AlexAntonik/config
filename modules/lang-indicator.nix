@@ -27,14 +27,14 @@ let
       esac
     }
     check_layout() {
-      current_layout=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main == true) | .active_keymap')
+      current_layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap')
       set_light "$current_layout"
     }
     wait_for_socket
-    MAIN_KBD=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main == true) | .name')
+    MAIN_KBD=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .name')
     check_layout
 
-    ${pkgs.socat}/bin/socat -U - UNIX-CONNECT:"$SOCKET" | while read -r line; do
+    socat -U - UNIX-CONNECT:"$SOCKET" | while read -r line; do
       case "$line" in
         "activelayout>>"*)
           event_kbd="''${line#activelayout>>}"
@@ -55,6 +55,13 @@ in
     partOf = [ "graphical-session.target" ];
     wantedBy = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
+    path = with pkgs; [
+      hyprland
+      brightnessctl
+      jq
+      socat
+      coreutils
+    ];
 
     serviceConfig = {
       Type = "simple";
@@ -62,9 +69,6 @@ in
       Restart = "always";
       RestartSec = "3";
       TimeoutStopSec = 5;
-      Environment = [
-        "PATH=${pkgs.hyprland}/bin:${pkgs.brightnessctl}/bin:${pkgs.jq}/bin:${pkgs.socat}/bin:$PATH"
-      ];
     };
   };
 }
