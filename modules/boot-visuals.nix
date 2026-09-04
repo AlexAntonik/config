@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 {
-  environment.systemPackages = [
-    pkgs.tuigreet # TUI login manager
-  ];
   boot.kernelParams = [ "consoleblank=300" ]; # TUI greetd display timeout
   services = {
     greetd = {
