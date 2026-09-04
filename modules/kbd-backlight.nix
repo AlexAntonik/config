@@ -55,6 +55,8 @@ in
   systemd.user.services.kbd-backlight-idle = {
     description = "Turn off keyboard backlight and light indicator LED after idle";
     wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
 
     serviceConfig = {
       ExecStart = "${kbdIdleScript}";
