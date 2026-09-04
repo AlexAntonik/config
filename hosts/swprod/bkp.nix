@@ -44,7 +44,7 @@ in
 {
   systemd.services.docker-compose-maintenance = {
     description = "Docker Compose Maintenance Service";
-    after = [ "network-online.target" "docker.service" ];
+    after = [ "docker.service" ];
     requires = [ "docker.service" ];
     path = [ pkgs.coreutils ];
     serviceConfig = {
