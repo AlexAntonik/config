@@ -20,7 +20,6 @@ for i, key in ipairs(numberKeys) do
 end
 
 hl.bind("SUPER + Return", hl.dsp.exec_cmd("ghostty +new-window"))
-hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind("SUPER + GRAVE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
