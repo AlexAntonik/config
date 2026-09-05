@@ -66,7 +66,7 @@
         "command": ["nixfmt"]
       },
       "nixpkgs": {
-        "expr": "import (builtins.getFlake \"~/config\").inputs.nixpkgs { }"
+        "expr": "import /etc/nix/nixd-pkgs.nix"
       }
     }
   },
