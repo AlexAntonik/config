@@ -10,8 +10,7 @@
       system = ${builtins.toJSON pkgs.stdenv.hostPlatform.system};
       config.allowUnfree = true;
     }
-  ''; 
-  
+  '';
 
   hm.${host.username} = {
     home.packages = [
