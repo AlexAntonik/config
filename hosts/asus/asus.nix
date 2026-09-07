@@ -121,7 +121,6 @@
     opencode
     supabase-cli
     postgresql
-    pgadmin4-desktopmode
 
     # Desktop suite
     pom
