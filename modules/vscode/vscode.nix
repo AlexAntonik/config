@@ -39,6 +39,7 @@
           vscodevim.vim
           alefragnani.project-manager
           jacobdufault.fuzzy-search
+          continue.continue
 
           dbaeumer.vscode-eslint
           esbenp.prettier-vscode

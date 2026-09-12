@@ -146,11 +146,11 @@
   "go.inlayHints.rangeVariableTypes": true,
   "chat.viewSessions.enabled": false,
   "workbench.browser.searchEngine": "google",
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4o-mini",
   "workbench.activityBar.location": "hidden",
   "github.copilot.nextEditSuggestions.eagerness": "low",
   "github.copilot.nextEditSuggestions.enabled": false,
   "workbench.experimental.modernUI": false,
-  "window.density.editorTabHeight": "compact"
+  "window.density.editorTabHeight": "compact",
+  "continue.enableNextEdit": true,
+  "continue.enableTabAutocomplete": false
 }
