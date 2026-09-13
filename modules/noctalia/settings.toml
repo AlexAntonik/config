@@ -362,10 +362,9 @@ settings_show_advanced = true
     transparency_mode = "soft"
 
     [shell.screenshot]
+    annotate = true
     confirm_region = true
     directory = "~/Pictures/Screenshots"
-    pipe_command = "satty --early-exit copy  --copy-command wl-copy -f -"
-    pipe_to_command = true
     save_to_file = true
 
     [[shell.session.actions]]
