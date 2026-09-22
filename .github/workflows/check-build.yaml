@@ -18,7 +18,7 @@ jobs:
             echo "hosts=[]" >> $GITHUB_OUTPUT
             exit 0
           fi
-          HOSTS=$(ls hosts/ | sort | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          HOSTS=$(shopt -s nullglob; for d in hosts/*/; do [ -f "$d/.template" ] || basename "$d"; done | sort | jq -R -s -c 'split("\n") | map(select(length > 0))')
           echo "hosts=$HOSTS" >> $GITHUB_OUTPUT
           echo "Found hosts: $HOSTS"
 
@@ -78,6 +78,7 @@ jobs:
           success=0
           fail=0
           for host in $(ls hosts/ 2>/dev/null | sort); do
+            [ -f "hosts/$host/.template" ] && continue
             status_file="status-${host}.txt"
             if [ -f "$status_file" ]; then
               status=$(cat "$status_file" | xargs)

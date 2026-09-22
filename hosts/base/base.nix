@@ -16,7 +16,7 @@
     # You should not change this , even if you update Home Manager/NixOs. If you do
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
-    stateVersion = "25.11";
+    stateVersion = "26.11";
   };
 
   homeManager.enable = true;

@@ -3,7 +3,10 @@ let
   inherit (inputs.nixpkgs) lib;
   hostsDir = ../hosts;
   hostNames = builtins.attrNames (
-    lib.filterAttrs (_: type: type == "directory") (builtins.readDir hostsDir)
+    lib.filterAttrs (
+      name: type:
+      type == "directory" && !builtins.pathExists (hostsDir + "/${name}/.template")
+    ) (builtins.readDir hostsDir)
   );
 in
 lib.genAttrs hostNames (
