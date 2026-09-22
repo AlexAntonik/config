@@ -112,7 +112,6 @@
     gcc
     impression
     unrar # RAR archive extractor
-    unzip # ZIP archive extractor
     meson # Build system
     gradle # Build system
     ninja # Build system

@@ -96,7 +96,6 @@
     # Development tools
     # meson # Build system
     # ninja # Build system
-    unzip # ZIP archive extractor
     # postgresql
 
     # Desktop suite

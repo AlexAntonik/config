@@ -17,34 +17,69 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wireguard-tools # WireGuard tools
-    fastfetch # Modern neofetch
-    bottom # another tui system usage interface
-    btop # Better htop
-    yazi # TUI file explorer
-    cloc # Count lines of code
+    # System info & monitoring
+    fastfetch
+    inxi # System information tool
+    btop
+    bottom # like btop but different
+    htop
+    isd # Systemd services tui
+
+    # Disks & filesystems
     duf # Utility for viewing disk usage in terminal
     dysk # Get information on your mounted disks tool
-    dig # DNS tests
-    eza # Beautiful ls replacement
-    gawk # GNU awk
-    htop # Simple terminal-based system monitor
-    tldr # Simplified man
-    inxi # System information tool
-    isd # Systemd services tui
-    ipinfo # Lookup ip info
-    whois # Lookup domain info
-    killall # Command to kill processes
-    lm_sensors # Hardware monitoring
-    lshw # Hardware information tool
-    ncdu # Disk usage analyzer
-    pciutils # PCI utilities
-    jq # Command-line JSON processor
-    ripgrep # Fast search tool
-    socat # Multipurpose relay
-    sops # Securely edit files with encryption
+    ncdu
+
+    # Hardware info
+    lm_sensors
+    lshw
+    pciutils
+    usbutils
+
+    # Files & navigation
+    yazi
+    eza
+    ripgrep
+    file # Detect file type by content
+
+    # Processes & debugging
+    killall
+    lsof
+    strace # Trace syscalls of a process
+
+    # Network & diagnostics
+    wireguard-tools
+    curl # HTTP client
+    dig
+    traceroute
+    nmap 
+    ethtool # NIC inspection & tuning
+    tcpdump 
+    nethogs # Per-process network usage
+    iotop-c # Per-process disk I/O
+    socat
+    ipinfo
+    whois
     speedtest-cli # Terminal speedtest
-    usbutils # USB utilities
-    wget # Network downloader
+    wget
+
+    # Text & data processing
+    gawk
+    jq
+    yq-go # Like jq but for YAML/XML/TOML
+    cloc
+
+    # Archives & transfer
+    zip
+    unzip
+    rsync # File sync & transfer
+    pv # Progress bar in pipes
+
+    # Secrets
+    sops
+    age
+
+    # Docs
+    tldr # Simplified man
   ];
 }
