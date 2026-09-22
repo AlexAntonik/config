@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  options,
   inputs,
   ...
 }:
@@ -18,9 +17,9 @@
 
   config = lib.mkMerge [
     {
-      warnings = lib.optional (options.hm.definitions != [ ] && !config.homeManager.enable) ''
-        config.hm defined without home-manager NixOS module.
-        Enable home-manager to apply hm configuration ' homeManager.enable = true; '
+      warnings = lib.optional (builtins.attrNames config.hm != [ ] && !config.homeManager.enable) ''
+        config.hm is defined but home-manager integration is disabled.
+        Enable it with: homeManager.enable = true;
       '';
     }
     (lib.mkIf config.homeManager.enable {
