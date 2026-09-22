@@ -89,15 +89,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Programming languages
-    # go # Go programming language
-    # nixd # Nix LSP
-
-    # Development tools
-    # meson # Build system
-    # ninja # Build system
-    # postgresql
-
     # Desktop suite
     # obsidian # Personal knowledge base
 

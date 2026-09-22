@@ -72,6 +72,7 @@
     # Archives & transfer
     zip
     unzip
+    unrar # RAR archive extractor
     rsync # File sync & transfer
     pv # Progress bar in pipes
 

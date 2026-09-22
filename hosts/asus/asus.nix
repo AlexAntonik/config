@@ -58,6 +58,7 @@
 
     # Development
     ./../../modules/git.nix
+    ./../../modules/dev-tools.nix
     ./../../modules/direnv.nix
     ./../../modules/lazygit.nix
     ./../../modules/vscode/vscode.nix
@@ -98,29 +99,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Programming languages
-    go # Go programming language
-    python3
-    nixd # Nix LSP
-    # dart # Dart language
-    kotlin # Kotlin language
-    typescript # Bad language
-    # zulu # Open JDK fast
-
-    # Development tools
-
-    gcc
-    impression
-    unrar # RAR archive extractor
-    meson # Build system
-    gradle # Build system
-    ninja # Build system
-    nodejs # JavaScript runtime
-    opencode
-    supabase-cli
-    postgresql
-
     # Desktop suite
+    impression # Bootable drive creator
     pom
     anki-bin # Spaced repetition flashcards
     obsidian # Personal knowledge base
