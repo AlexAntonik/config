@@ -187,6 +187,7 @@ behavior_order = [ "lock", "idle-behavior" ]
     [idle.behavior.idle-behavior]
     action = "screen_off"
     enabled = true
+    locked_timeout = 60.0
     timeout = 660.0
 
     [idle.behavior.lock]
