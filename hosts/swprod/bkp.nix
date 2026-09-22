@@ -29,16 +29,7 @@ let
       rm -f "''${dumps[@]:0:''${#dumps[@]}-5}"
     fi
 
-    echo "Stopping Docker Compose services at $(date)"
-    "$docker" compose down
-    echo "Docker Compose services stopped at $(date)"
-
-    echo "Waiting a minute"
-    sleep 60
-
-    echo "Starting Docker Compose services at $(date)"
-    "$docker" compose up -d
-    echo "Docker Compose maintenance completed at $(date)"
+    echo "Database maintenance completed at $(date)"
   '';
 in
 {
@@ -72,6 +63,7 @@ in
     timerConfig = {
       OnCalendar = "03:00";
       Persistent = true;
+      RandomizedDelaySec = "30m";
     };
   };
 }
