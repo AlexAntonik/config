@@ -151,6 +151,6 @@
   "github.copilot.nextEditSuggestions.enabled": false,
   "workbench.experimental.modernUI": false,
   "window.density.editorTabHeight": "compact",
-  "continue.enableNextEdit": true,
-  "continue.enableTabAutocomplete": false
+  "continue.enableNextEdit": false,
+  "continue.enableTabAutocomplete": true
 }
