@@ -16,6 +16,7 @@
     home.packages = [
       pkgs.shellcheck
       pkgs.shfmt
+      pkgs.nixfmt
     ];
     home.file = {
       ".config/Code/User/keybindings.json" = {

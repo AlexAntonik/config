@@ -115,7 +115,6 @@
     meson # Build system
     gradle # Build system
     ninja # Build system
-    nixfmt # Nix code formatter
     nodejs # JavaScript runtime
     opencode
     supabase-cli
