@@ -182,17 +182,17 @@ launcher_position = "start"
 position = "bottom"
 
 [idle]
-behavior_order = [ "lock", "screen-off" ]
+behavior_order = [ "lock", "idle-behavior" ]
 
     [idle.behavior.idle-behavior]
     action = "screen_off"
     enabled = true
-    timeout = 900
+    timeout = 660.0
 
     [idle.behavior.lock]
     action = "lock"
     enabled = true
-    timeout = 600
+    timeout = 600.0
 
 [location]
 auto_locate = true
