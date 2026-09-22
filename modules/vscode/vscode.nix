@@ -20,11 +20,11 @@
     ];
     home.file = {
       ".config/Code/User/keybindings.json" = {
-        source = mkOutOfStoreSymlink "${host.flakePath}/modules/vscode/keybindings.json";
+        source = mkOutOfStoreSymlink ./keybindings.json;
         force = true;
       };
       ".config/Code/User/settings.json" = {
-        source = mkOutOfStoreSymlink "${host.flakePath}/modules/vscode/settings.json";
+        source = mkOutOfStoreSymlink ./settings.json;
         force = true;
       };
     };

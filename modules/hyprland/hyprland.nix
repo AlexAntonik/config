@@ -13,15 +13,15 @@
 
     home.file = {
       ".config/hypr/hypr_general.lua" = {
-        source = mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_general.lua";
+        source = mkOutOfStoreSymlink ./hypr_general.lua;
         force = true;
       };
       ".config/hypr/hypr_binds.lua" = {
-        source = mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_binds.lua";
+        source = mkOutOfStoreSymlink ./hypr_binds.lua;
         force = true;
       };
       ".config/hypr/hypr_rules.lua" = {
-        source = mkOutOfStoreSymlink "${host.flakePath}/modules/hyprland/hypr_rules.lua";
+        source = mkOutOfStoreSymlink ./hypr_rules.lua;
         force = true;
       };
     };

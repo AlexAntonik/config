@@ -1,7 +1,7 @@
 { host, mkOutOfStoreSymlink, ... }:
 {
   hm.${host.username}.home.file.".local/state/noctalia/settings.toml" = {
-    source = mkOutOfStoreSymlink "${host.flakePath}/modules/noctalia/settings.toml";
+    source = mkOutOfStoreSymlink ./settings.toml;
     force = true;
   };
 
