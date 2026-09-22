@@ -5,8 +5,8 @@
   nixpkgs.config.allowUnfree = true;
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
     settings = {
-      download-buffer-size = 500000000;
       experimental-features = [
         "nix-command"
         "flakes"
