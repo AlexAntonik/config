@@ -1,6 +1,11 @@
-{ languageLightID }:
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
+  cfg = config.services.langIndicator;
   keyboard-layout-indicator = pkgs.writeShellScriptBin "keyboard-layout-indicator" ''
     set -e
 
@@ -19,10 +24,10 @@ let
     set_light() {
       case "$1" in
         *"English"*|*"english"*)
-          brightnessctl -d ${languageLightID} s 0
+          brightnessctl -d ${cfg.lightID} s 0
           ;;
         *)
-          brightnessctl -d ${languageLightID} s 100
+          brightnessctl -d ${cfg.lightID} s 100
           ;;
       esac
     }
@@ -48,27 +53,37 @@ let
   '';
 in
 {
-  environment.systemPackages = [ keyboard-layout-indicator ];
+  options.services.langIndicator = {
+    enable = lib.mkEnableOption "keyboard layout LED indicator for Hyprland";
+    lightID = lib.mkOption {
+      type = lib.types.str;
+      description = "brightnessctl device used as the layout indicator LED";
+    };
+  };
 
-  systemd.user.services.keyboard-layout-indicator = {
-    description = "Keyboard Layout Indicator for Hyprland";
-    partOf = [ "graphical-session.target" ];
-    wantedBy = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    path = with pkgs; [
-      hyprland
-      brightnessctl
-      jq
-      socat
-      coreutils
-    ];
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = [ keyboard-layout-indicator ];
 
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${keyboard-layout-indicator}/bin/keyboard-layout-indicator";
-      Restart = "always";
-      RestartSec = "3";
-      TimeoutStopSec = 5;
+    systemd.user.services.keyboard-layout-indicator = {
+      description = "Keyboard Layout Indicator for Hyprland";
+      partOf = [ "graphical-session.target" ];
+      wantedBy = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      path = with pkgs; [
+        hyprland
+        brightnessctl
+        jq
+        socat
+        coreutils
+      ];
+
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${keyboard-layout-indicator}/bin/keyboard-layout-indicator";
+        Restart = "always";
+        RestartSec = "3";
+        TimeoutStopSec = 5;
+      };
     };
   };
 }

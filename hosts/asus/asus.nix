@@ -75,21 +75,11 @@
     ./../../modules/nix.nix
     ./../../modules/time.nix
     ./../../modules/zsh.nix
-    (import ./../../modules/lang-indicator.nix { languageLightID = "platform::micmute"; })
-    (import ./../../modules/kbd-backlight.nix {
-      kbdIdleTimeout = "120";
-      keyboardLightID = "asus::kbd_backlight";
-      mainMonitor = "eDP-1";
-      keyboardScreenOFFLightID = "asus::camera";
-    })
     ./../../modules/tailscale.nix
     ./../../modules/ghostty.nix
     ./../../modules/xdg.nix
 
     # Scripts
-    (import ./../../modules/scripts/toggleTouchpad.nix {
-      touchpadID = "asue120b:00-04f3:31c0-touchpad";
-    })
     ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 
