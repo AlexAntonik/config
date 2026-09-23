@@ -29,10 +29,6 @@ in
     publicKeys = [ alex swprod ];
     armor = true;
   };
-  "cloudflare-creds.json.age" = {
-    publicKeys = [ alex dell ];
-    armor = true;
-  };
   "desktop-user-pwd-hash.age" = {
     publicKeys = [ alex ];
     armor = true;
