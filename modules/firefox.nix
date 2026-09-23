@@ -130,7 +130,6 @@ in
           "Bing"
           "Ecosia"
           "Wikipedia"
-          "Perplexity"
         ];
         Add = [
           {
@@ -140,7 +139,7 @@ in
             "Alias" = "wiki";
           }
         ];
-        Default = "Google.com";
+        Default = "Google";
       };
       SearchSuggestEnabled = true;
       ExtensionSettings = builtins.listToAttrs (
