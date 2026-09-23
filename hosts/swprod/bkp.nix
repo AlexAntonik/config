@@ -5,22 +5,30 @@ let
 
     compose_dir="/home/${host.username}/projects/srv"
     backup_dir="$compose_dir/backup"
+    staging_dir="$compose_dir/.backup-staging"
     docker="${pkgs.docker}/bin/docker"
 
     if [ ! -d "$compose_dir" ]; then
       echo "Error: $compose_dir not found" >&2
       exit 1
     fi
+    mkdir -p "$backup_dir" "$staging_dir"
     cd "$compose_dir"
 
     timestamp="$(date +%Y%m%d_%H%M%S)"
-    dump_file="$backup_dir/database-dump_$timestamp.sql"
-    mkdir -p "$backup_dir"
+    staged_file="$staging_dir/database-dump_$timestamp.sql"
+    final_file="$backup_dir/database-dump_$timestamp.sql"
+
+    cleanup() {
+      rm -f "$staged_file"
+    }
+    trap cleanup EXIT
+    trap 'exit 130' INT
+    trap 'exit 143' TERM
 
     echo "Dumping database at $(date)"
-    trap 'rm -f "$dump_file"' ERR
-    "$docker" compose exec -T db pg_dump -U postgres --clean --if-exists >"$dump_file"
-    trap - ERR
+    "$docker" compose exec -T db pg_dump -U postgres --clean --if-exists >"$staged_file"
+    mv "$staged_file" "$final_file"
 
     # keep the 5 newest dumps; zero-padded timestamps sort lexicographically
     shopt -s nullglob
