@@ -18,11 +18,11 @@
 
   environment.systemPackages = with pkgs; [
     # System info & monitoring
-    fastfetch
-    inxi # System information tool
-    btop
     bottom # like btop but different
+    btop
+    fastfetch
     htop
+    inxi # System information tool
     isd # Systemd services tui
 
     # Disks & filesystems
@@ -48,20 +48,20 @@
     strace # Trace syscalls of a process
 
     # Network & diagnostics
-    wireguard-tools
     curl # HTTP client
     dig
-    traceroute
-    nmap 
     ethtool # NIC inspection & tuning
-    tcpdump 
-    nethogs # Per-process network usage
     iotop-c # Per-process disk I/O
-    socat
     ipinfo
-    whois
+    nethogs # Per-process network usage
+    nmap 
+    socat
     speedtest-cli # Terminal speedtest
+    tcpdump 
+    traceroute
     wget
+    whois
+    wireguard-tools
 
     # Text & data processing
     gawk
