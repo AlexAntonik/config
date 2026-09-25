@@ -5,7 +5,7 @@
   ...
 }:
 {
-  environment.etc."nix/nixd-pkgs.nix".text = ''
+  environment.etc."nix/nixd-pkgs.nix".source = pkgs.writeText "nixd-pkgs.nix" ''
     import ${pkgs.path} {
       system = ${builtins.toJSON pkgs.stdenv.hostPlatform.system};
       config.allowUnfree = true;
