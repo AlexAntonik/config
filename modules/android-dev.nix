@@ -1,5 +1,6 @@
 { pkgs, host, ... }:
 {
+  programs.adb.enable = true;
   users.users.${host.username}.extraGroups = [
     "kvm"
     "adbusers"
