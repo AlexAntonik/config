@@ -403,6 +403,9 @@ settings_show_advanced = true
     shortcut = "s"
     variant = "destructive"
 
+    [shell.window_switcher]
+    mru = true
+
 [theme]
 builtin = "Tokyo-Night"
 community_palette = "ADW"
