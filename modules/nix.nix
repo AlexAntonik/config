@@ -4,14 +4,12 @@
 
   nixpkgs.config.allowUnfree = true;
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    channel.enable = false;
     registry.nixpkgs.flake = inputs.nixpkgs;
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     optimise.automatic = true;
   };
   environment.shellAliases = {
