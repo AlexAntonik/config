@@ -177,8 +177,6 @@ in
       # disable overscroll at the top of opened website or bottom
       "apz.overscroll.enabled" = false;
 
-      "extensions.activeThemeID" = "{9631ec37-35f2-4719-815e-2f84ff28b901}";
-
       # disable all the annoying quick actions
       "browser.urlbar.quickactions.enabled" = false;
       "browser.urlbar.quickactions.showPrefs" = false;
