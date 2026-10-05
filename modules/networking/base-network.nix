@@ -1,4 +1,4 @@
-{ host, ... }:
+{ host, lib, ... }:
 {
   users.users.${host.username}.extraGroups = [ "networkmanager" ];
   services.resolved.enable = true;
@@ -6,7 +6,7 @@
     hostName = host.hostName;
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
+      dns = lib.mkForce "none";
     };
     nameservers = [
       "1.1.1.1"
