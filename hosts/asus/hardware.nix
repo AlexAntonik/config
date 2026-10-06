@@ -7,26 +7,20 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./../../modules/lang-indicator.nix
-    ./../../modules/kbd-backlight.nix
-    ./../../modules/scripts/toggleTouchpad.nix
+    ./../../modules/hardware-aliases.nix
   ];
   boot.blacklistedKernelModules = [ "ucsi_acpi" ];
   boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
-  services.kbdBacklight = {
+  services.hardwareAliases = {
     enable = true;
-    idleTimeout = "120";
     keyboardLightID = "asus::kbd_backlight";
-    mainMonitor = "eDP-1";
     screenOffLightID = "asus::camera";
+    touchpadDeviceID = "asue120b:00-04f3:31c0-touchpad";
   };
   services.langIndicator = {
     enable = true;
     lightID = "platform::micmute";
-  };
-  programs.touchpadToggle = {
-    enable = true;
-    deviceID = "asue120b:00-04f3:31c0-touchpad";
   };
 
   # AMD has better battery life with PPD over TLP:

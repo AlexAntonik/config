@@ -182,18 +182,28 @@ launcher_position = "start"
 position = "bottom"
 
 [idle]
-behavior_order = [ "lock", "idle-behavior" ]
+behavior_order = [ "kbd_backlight_off", "lock", "screen off" ]
+pre_action_fade_seconds = 0
 
-    [idle.behavior.idle-behavior]
-    action = "screen_off"
+    [idle.behavior.kbd_backlight_off]
+    action = "command"
+    command = "kbd_backlight_off"
     enabled = true
-    locked_timeout = 60.0
-    timeout = 660.0
+    resume_command = "kbd_backlight_on"
+    timeout = 120.0
 
     [idle.behavior.lock]
     action = "lock"
     enabled = true
     timeout = 600.0
+
+    [idle.behavior."screen off"]
+    action = "command"
+    command = "screen_off"
+    enabled = true
+    locked_timeout = 60.0
+    resume_command = "screen_on"
+    timeout = 660.0
 
 [location]
 auto_locate = true

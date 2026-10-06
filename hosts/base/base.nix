@@ -79,9 +79,6 @@
     # ./../../modules/tailscale.nix
     ./../../modules/ghostty.nix
     ./../../modules/xdg.nix
-
-    # Scripts
-    ./../../modules/scripts/toggleXWaylandScale.nix
   ];
 
   programs = {
