@@ -1,8 +1,12 @@
-{ host, config, ... }:
+{ inputs, ... }: { host, config, lib, ... }:
+let
+  withArgs = import ../../lib/importApplyWithArgs.nix {
+    inherit lib;
+    staticArgs = { inherit inputs; };
+  };
+in
 {
-  imports = [
-    ../../modules/secrets/agenix.nix
-  ];
+  imports = map withArgs [ ../../modules/secrets/agenix.nix ];
   age.secrets = {
     dell-sync-cert = {
       file = ./secrets/dell-sync-cert.pem.age;

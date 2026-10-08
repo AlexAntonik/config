@@ -1,5 +1,4 @@
-{ inputs, host, ... }:
-{
+{ inputs, ... }: { host, ... }: {
   system.stateVersion = host.stateVersion;
 
   nixpkgs.config.allowUnfree = true;

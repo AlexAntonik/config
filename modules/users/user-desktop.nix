@@ -1,6 +1,12 @@
-{ host, config, ... }:
+{ inputs, ... }: { host, config, lib, ... }:
+let
+  withArgs = import ../../lib/importApplyWithArgs.nix {
+    inherit lib;
+    staticArgs = { inherit inputs; };
+  };
+in
 {
-  imports = [
+  imports = map withArgs [
     ./../secrets/agenix.nix
     ./user-default.nix
   ];

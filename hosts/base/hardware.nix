@@ -1,8 +1,4 @@
-{
-  inputs,
-  ...
-}:
-{
+{ ... }: {
   imports = [
     # ===========================
     # HARDWARE CONFIGURATION

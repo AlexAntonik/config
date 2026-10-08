@@ -1,10 +1,4 @@
-{
-  lib,
-  hostName,
-  config,
-  ...
-}:
-{
+{ hostName, ... }: { lib, config, ... }: {
   options.host = lib.mkOption {
     type = lib.types.submodule {
       options = {

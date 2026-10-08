@@ -1,11 +1,4 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  host,
-  ...
-}:
-{
+{ inputs, ... }: { pkgs, lib, host, ... }: {
   _module.args.mkOutOfStoreSymlink =
     path:
     let

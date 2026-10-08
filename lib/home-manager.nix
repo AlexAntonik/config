@@ -1,10 +1,4 @@
-{
-  lib,
-  config,
-  inputs,
-  ...
-}:
-{
+{ inputs, ... }: { lib, config, ... }: {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   options = {
@@ -26,10 +20,6 @@
       home-manager = {
         useUserPackages = true;
         useGlobalPkgs = true;
-        extraSpecialArgs = {
-          inherit inputs;
-          host = config.host;
-        };
         users = lib.mkMerge [
           { ${config.host.username}.home.stateVersion = config.host.stateVersion; }
           config.hm

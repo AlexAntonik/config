@@ -1,5 +1,12 @@
+{ inputs, ... }: { lib, ... }:
+let
+  withArgs = import ../../lib/importApplyWithArgs.nix {
+    inherit lib;
+    staticArgs = { inherit inputs; };
+  };
+in
 {
-  imports = [
+  imports = map withArgs [
     ./nvim-base.nix
   ];
 

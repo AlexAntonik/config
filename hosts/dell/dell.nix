@@ -1,3 +1,10 @@
+{ inputs, ... }: { lib, ... }:
+let
+  withArgs = import ../../lib/importApplyWithArgs.nix {
+    inherit lib;
+    staticArgs = { inherit inputs; };
+  };
+in
 {
   host = {
     username = "alex";
@@ -8,7 +15,7 @@
     stateVersion = "23.11";
   };
 
-  imports = [
+  imports = map withArgs [
     # Host specific config
     ./hardware.nix
     ./hardware-gen.nix

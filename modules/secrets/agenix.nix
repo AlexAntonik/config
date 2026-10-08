@@ -1,5 +1,4 @@
-{ inputs, pkgs, ... }:
-{
+{ inputs, ... }: { pkgs, ... }: {
   imports = [ inputs.agenix.nixosModules.default ];
 
   environment.etc."agenix/rules.nix".source = ./rules.nix;

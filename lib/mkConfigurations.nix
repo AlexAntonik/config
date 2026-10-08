@@ -11,9 +11,14 @@ let
 in
 lib.genAttrs hostNames (
   hostName:
+  let
+    withArgs = import ./importApplyWithArgs.nix {
+      inherit lib;
+      staticArgs = { inherit inputs hostName; };
+    };
+  in
   lib.nixosSystem {
-    specialArgs = { inherit hostName inputs; };
-    modules = [
+    modules = map withArgs [
       ./host.nix
       ./home-manager.nix
       ./mkOutOfStoreSymlink.nix

@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: { ... }: {
   imports = [ inputs.nix-index-database.nixosModules.default ];
   environment.shellAliases = {
     nixzsh = "nix-shell --run zsh -p";
