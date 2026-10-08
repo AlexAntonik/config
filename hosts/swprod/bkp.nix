@@ -69,7 +69,8 @@ in
     description = "Run Docker Compose Maintenance";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "03:00";
+      OnBootSec = "12h";
+      OnUnitActiveSec = "3d";
       Persistent = true;
       RandomizedDelaySec = "30m";
     };
