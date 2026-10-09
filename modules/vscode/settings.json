@@ -152,5 +152,5 @@
   "workbench.experimental.modernUI": false,
   "window.density.editorTabHeight": "compact",
   "continue.enableNextEdit": false,
-  "continue.enableTabAutocomplete": true
+  "continue.enableTabAutocomplete": false
 }
