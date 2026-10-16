@@ -5,8 +5,8 @@
   programs = {
     steam = {
       enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
+      # remotePlay.openFirewall = true; Enable if needed for server host or rp
+      # dedicatedServer.openFirewall = true;
       gamescopeSession.enable = true;
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
