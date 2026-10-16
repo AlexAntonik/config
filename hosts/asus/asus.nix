@@ -40,6 +40,7 @@
 
     # System services
     ./../../modules/logs.nix
+    ./../../modules/oom.nix
     ./../../modules/ssh.nix
     ./../../modules/disk.nix
     ./../../modules/security.nix

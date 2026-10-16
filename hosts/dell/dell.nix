@@ -22,6 +22,7 @@
 
     # System services
     ./../../modules/logs.nix
+    ./../../modules/oom.nix
     ./../../modules/ssh.nix
     ./../../modules/security.nix
     ./../../modules/networking/base-network.nix
