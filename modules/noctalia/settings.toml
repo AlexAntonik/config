@@ -207,6 +207,9 @@ pre_action_fade_seconds = 0
 
 [location]
 auto_locate = true
+custom_schedule = true
+sunrise = "07:00"
+sunset = "20:00"
 
 [lockscreen]
 blur_intensity = 0.0
@@ -303,6 +306,9 @@ widget_order = [
         color = "primary"
         format = "{:%d %b, %A}"
         shadow = true
+
+[nightlight]
+enabled = true
 
 [notification]
 offset_y = 20
