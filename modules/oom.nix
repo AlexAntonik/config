@@ -7,15 +7,6 @@
     priority = lib.mkDefault 5; # must be higher than any disk swap
   };
 
-  # Userspace
-  services.earlyoom = {
-    enable = true;
-    freeMemThreshold = 5;
-    freeMemKillThreshold = 2;
-    freeSwapThreshold = 10;
-    freeSwapKillThreshold = 5;
-  };
-
   systemd.oomd = {
     enableRootSlice = true;
     enableSystemSlice = true;
