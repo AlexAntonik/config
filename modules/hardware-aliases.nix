@@ -30,7 +30,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
       (pkgs.writeShellScriptBin "kbd_backlight_off" ''
-        KBD="${cfg.keyboardLightID}"
+        KBD=${lib.escapeShellArg cfg.keyboardLightID}
 
         if [ -z "$XDG_RUNTIME_DIR" ]; then
           export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -47,7 +47,7 @@ in
       '')
 
       (pkgs.writeShellScriptBin "kbd_backlight_on" ''
-        KBD="${cfg.keyboardLightID}"
+        KBD=${lib.escapeShellArg cfg.keyboardLightID}
 
         if [ -z "$XDG_RUNTIME_DIR" ]; then
           export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -68,17 +68,17 @@ in
       '')
 
       (pkgs.writeShellScriptBin "screen_off" ''
-        brightnessctl -d "${cfg.screenOffLightID}" s 100
+        brightnessctl -d ${lib.escapeShellArg cfg.screenOffLightID} s 100
         noctalia msg dpms-off
       '')
 
       (pkgs.writeShellScriptBin "screen_on" ''
-        brightnessctl -d "${cfg.screenOffLightID}" s 0
+        brightnessctl -d ${lib.escapeShellArg cfg.screenOffLightID} s 0
         noctalia msg dpms-on
       '')
 
       (pkgs.writeShellScriptBin "toggle_touchpad" ''
-        HYPRLAND_DEVICE="${cfg.touchpadDeviceID}"
+        HYPRLAND_DEVICE=${lib.escapeShellArg (builtins.toJSON cfg.touchpadDeviceID)}
 
         if [ -z "$XDG_RUNTIME_DIR" ]; then
           export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -89,13 +89,13 @@ in
         enable_touchpad() {
             printf "true" >"$STATUS_FILE"
             notify-send -i input-touchpad-on "Touchpad Enabled"
-            hyprctl eval "hl.device({name = \"$HYPRLAND_DEVICE\", enabled = true })"
+            hyprctl eval "hl.device({name = $HYPRLAND_DEVICE, enabled = true })"
         }
 
         disable_touchpad() {
             printf "false" >"$STATUS_FILE"
             notify-send -i input-touchpad-off "Touchpad Disabled"
-            hyprctl eval "hl.device({name = \"$HYPRLAND_DEVICE\", enabled = false })"
+            hyprctl eval "hl.device({name = $HYPRLAND_DEVICE, enabled = false })"
         }
 
         if ! [ -f "$STATUS_FILE" ]; then

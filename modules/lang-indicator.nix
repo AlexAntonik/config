@@ -24,10 +24,10 @@ let
     set_light() {
       case "$1" in
         *"English"*|*"english"*)
-          brightnessctl -d ${cfg.lightID} s 0
+          brightnessctl -d ${lib.escapeShellArg cfg.lightID} s 0
           ;;
         *)
-          brightnessctl -d ${cfg.lightID} s 100
+          brightnessctl -d ${lib.escapeShellArg cfg.lightID} s 100
           ;;
       esac
     }
