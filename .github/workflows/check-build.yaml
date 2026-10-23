@@ -53,6 +53,9 @@ jobs:
           name: status-${{ matrix.host }}
           path: status-${{ matrix.host }}.txt
 
+      - name: Enforce build result
+        run: test "$(cat status-${{ matrix.host }}.txt)" = passing
+
   update-badges:
     if: >
       always() &&
