@@ -26,7 +26,6 @@ hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboar
 hl.bind("SUPER + W", hl.dsp.exec_cmd("firefox"))
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obs"))
 hl.bind("SUPER + C", hl.dsp.exec_cmd("code"))
-hl.bind("SUPER + G", hl.dsp.exec_cmd("gimp"))
 hl.bind("SUPER + N", hl.dsp.exec_cmd("obsidian"))
 hl.bind("SUPER + M", hl.dsp.exec_cmd("pavucontrol"))
 hl.bind("SUPER + P", hl.dsp.exec_cmd("hyprpicker -a"))
