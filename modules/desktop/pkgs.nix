@@ -7,7 +7,6 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl # For screen brightness control
-    cliphist # Clipboard manager
     libnotify # Notification library (notify-send)
     nwg-displays # configure monitor configs via GUI
     gpu-screen-recorder # needed for noctalia screen recorder plugin
