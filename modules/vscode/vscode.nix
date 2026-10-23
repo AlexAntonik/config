@@ -5,12 +5,15 @@
   ...
 }:
 {
-  environment.etc."nix/nixd-pkgs.nix".source = pkgs.writeText "nixd-pkgs.nix" ''
-    import ${pkgs.path} {
-      system = ${builtins.toJSON pkgs.stdenv.hostPlatform.system};
-      config.allowUnfree = true;
-    }
-  '';
+  environment = {
+    systemPackages = [ pkgs.nixd ];
+    etc."nix/nixd-pkgs.nix".source = pkgs.writeText "nixd-pkgs.nix" ''
+      import ${pkgs.path} {
+        system = ${builtins.toJSON pkgs.stdenv.hostPlatform.system};
+        config.allowUnfree = true;
+      }
+    '';
+  };
 
   hm.${host.username} = {
     home.packages = [
