@@ -346,7 +346,6 @@ enabled = [ "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/timer", 
 [shell]
 clipboard_confirm_clear_history = true
 clipboard_history_max_entries = 1000
-clipboard_image_action_command = "satty --early-exit copy  --copy-command wl-copy -f -"
 font_family = "Montserrat Medium"
 launch_apps_as_systemd_services = true
 offline_mode = false
