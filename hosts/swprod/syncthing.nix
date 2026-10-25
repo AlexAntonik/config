@@ -3,11 +3,11 @@
   imports = [ ../../modules/secrets/agenix.nix ];
   age.secrets = {
     swprod-sync-cert = {
-      file = ./secrets/swprod-sync-cert.pem.age;
+      file = ../../modules/secrets/swprod-sync-cert.pem.age;
       owner = host.username;
     };
     swprod-sync-key = {
-      file = ./secrets/swprod-sync-key.pem.age;
+      file = ../../modules/secrets/swprod-sync-key.pem.age;
       owner = host.username;
     };
   };

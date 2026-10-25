@@ -5,11 +5,11 @@
   ];
   age.secrets = {
     dell-sync-cert = {
-      file = ./secrets/dell-sync-cert.pem.age;
+      file = ../../modules/secrets/dell-sync-cert.pem.age;
       owner = host.username;
     };
     dell-sync-key = {
-      file = ./secrets/dell-sync-key.pem.age;
+      file = ../../modules/secrets/dell-sync-key.pem.age;
       owner = host.username;
     };
   };

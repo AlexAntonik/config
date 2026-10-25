@@ -4,7 +4,7 @@
     ./../secrets/agenix.nix
     ./user-default.nix
   ];
-  age.secrets.desktop-user-pwd-hash.file = ./secrets/desktop-user-pwd-hash.age;
+  age.secrets.desktop-user-pwd-hash.file = ../secrets/desktop-user-pwd-hash.age;
   users.users.${host.username} = {
     extraGroups = [
       "input"

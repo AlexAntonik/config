@@ -4,11 +4,11 @@
   
   age.secrets = {
     asus-sync-cert = {
-      file = ./secrets/asus-sync-cert.pem.age;
+      file = ../../modules/secrets/asus-sync-cert.pem.age;
       owner = host.username;
     };
     asus-sync-key = {
-      file = ./secrets/asus-sync-key.pem.age;
+      file = ../../modules/secrets/asus-sync-key.pem.age;
       owner = host.username;
     };
   };
