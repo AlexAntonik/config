@@ -32,7 +32,22 @@
       };
       folders = {
         "Notes" = {
-          path = "/home/${host.username}/notes";
+          path = "/home/${host.username}/bkp/asus/notes";
+          devices = [ "asus" ];
+          ignorePermissions = true;
+        };
+        "Documents" = {
+          path = "/home/${host.username}/bkp/asus/Documents";
+          devices = [ "asus" ];
+          ignorePermissions = true;
+        };
+        "Videos" = {
+          path = "/home/${host.username}/bkp/asus/Videos";
+          devices = [ "asus" ];
+          ignorePermissions = true;
+        };
+        "Pictures" = {
+          path = "/home/${host.username}/bkp/asus/Pictures";
           devices = [ "asus" ];
           ignorePermissions = true;
         };

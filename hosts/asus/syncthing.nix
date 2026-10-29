@@ -36,6 +36,21 @@
           devices = [ "dell" ];
           ignorePermissions = true;
         };
+        "Documents" = {
+          path = "/home/${host.username}/Documents";
+          devices = [ "dell" ];
+          ignorePermissions = true;
+        };
+        "Videos" = {
+          path = "/home/${host.username}/Videos";
+          devices = [ "dell" ];
+          ignorePermissions = true;
+        };
+        "Pictures" = {
+          path = "/home/${host.username}/Pictures";
+          devices = [ "dell" ];
+          ignorePermissions = true;
+        };
         "Backups" = {
           path = "/home/${host.username}/projects/prod/backup";
           type = "receiveonly";
