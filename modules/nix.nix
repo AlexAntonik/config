@@ -29,6 +29,7 @@
     fr = "nh os switch --diff=always";
     fu = "nh os switch --update --diff=always";
     nhc = "nh clean all";
+    ns = "nix shell";
   };
   programs.nh = {
     enable = true;
