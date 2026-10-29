@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 16
 
 [bar]
 order = [ "bottom", "workspaces", "apps" ]
@@ -46,7 +46,7 @@ order = [ "bottom", "workspaces", "apps" ]
         accordion = true
         accordion_direction = "end"
         enabled = true
-        fill = "surface_variant"
+        fill = "surface_container"
         id = "g1"
         members = [ "launcher", "recorder", "bar", "widget" ]
         opacity = 0.0
@@ -243,7 +243,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.0
         background_radius = 0.0
         center_password_text = true
@@ -254,6 +254,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = false
+        show_password_reveal = false
         show_session_buttons = true
         show_unlock_hint = false
         show_weather = false
