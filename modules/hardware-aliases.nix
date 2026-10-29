@@ -26,6 +26,14 @@ in
       description = "libinput device identifier as shown by hyprctl devices";
     };
   };
+  #TODO rewrite with for shellcheck
+  # pkgs.writeShellApplication {
+  #   name = "cow";
+  #   runtimeInputs = [ pkgs.cowsay ];
+  #   text = ''
+  #     cowsay "hello, $USER"
+  #   '';
+  # }
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
