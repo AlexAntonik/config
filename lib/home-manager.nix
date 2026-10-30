@@ -26,6 +26,7 @@
       home-manager = {
         useUserPackages = true;
         useGlobalPkgs = true;
+        backupFileExtension = "hm-bkp";
         extraSpecialArgs = {
           inherit inputs;
           host = config.host;
