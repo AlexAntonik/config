@@ -88,6 +88,7 @@
 
   environment.systemPackages = with pkgs; [
     # Desktop suite
+    parted
     impression # Bootable drive creator
     pom
     anki-bin # Spaced repetition flashcards
