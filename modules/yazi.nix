@@ -9,6 +9,8 @@
       inherit full-border;
       inherit git;
       inherit smart-enter;
+      inherit rsync;
+      inherit time-travel;
     };
 
     settings.mgr = {
