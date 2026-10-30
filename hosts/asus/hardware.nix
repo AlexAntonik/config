@@ -11,7 +11,9 @@
   ];
   boot.blacklistedKernelModules = [ "ucsi_acpi" ];
   boot.kernelParams = [ "usbcore.autosuspend=-1" ];
-
+  
+  boot.kernel.sysctl."net.ipv4.tcp_mtu_probing" = 1;
+  boot.extraModprobeConfig = "options mt7921e disable_aspm=1";
   services.hardwareAliases = {
     enable = true;
     keyboardLightID = "asus::kbd_backlight";
