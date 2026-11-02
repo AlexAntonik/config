@@ -41,6 +41,14 @@ in
     publicKeys = [ alex dell ];
     armor = true;
   };
+  "acme-cloudflare-creds.age" = {
+    publicKeys = [ alex dell ];
+    armor = true;
+  };
+  "forgejo-admin-password.age" = {
+    publicKeys = [ alex dell ];
+    armor = true;
+  };
   "swprod-user-pwd-hash.age" = {
     publicKeys = [ alex swprod ];
     armor = true;

@@ -1,5 +1,6 @@
 {
   pkgs,
+  host,
   config,
   ...
 }:
@@ -12,7 +13,10 @@
       DEFAULT.APP_NAME = "forgejo";
 
       server = {
-        HTTP_ADDR = "0.0.0.0";
+        DOMAIN = "git.happygin.net";
+        ROOT_URL = "https://git.happygin.net/";
+
+        HTTP_ADDR = "127.0.0.1";
         HTTP_PORT = 3000;
 
         START_SSH_SERVER = false;
@@ -21,6 +25,7 @@
         PROTOCOL = "http";
       };
 
+      # Served over HTTPS by nginx.
       session.COOKIE_SECURE = true;
 
       service = {
@@ -36,37 +41,78 @@
     };
   };
 
-  systemd.services.forgejo-fqdn = {
-    description = "Resolve Tailscale DNS name for forgejo ROOT_URL";
-    after = [ "tailscaled.service" ];
-    wants = [ "tailscaled.service" ];
-    before = [ "forgejo.service" ];
-    wantedBy = [ "forgejo.service" ];
-    path = [
-      pkgs.jq
-      pkgs.gnused
-      config.services.tailscale.package
-    ];
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = host.gitEmail;
+      dnsProvider = "cloudflare";
+      credentialFiles."CF_DNS_API_TOKEN_FILE" = config.age.secrets.acme-cloudflare-creds.path;
+
+      dnsResolver = "1.1.1.1:53";
+    };
+    certs."git.happygin.net".group = "nginx";
+  };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts."git.happygin.net" = {
+      onlySSL = true;
+      useACMEHost = "git.happygin.net";
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3000";
+        proxyWebsockets = true; # live log streaming of Actions jobs
+        extraConfig = ''
+          client_max_body_size 512m; # git push limit
+        '';
+      };
+    };
+  };
+
+  systemd.services.forgejo-admin-user = {
+    description = "Ensure forgejo admin user exists";
+    after = [ "forgejo.service" ];
+    wants = [ "forgejo.service" ];
+    wantedBy = [ "multi-user.target" ];
+    path = [ config.services.forgejo.package ];
     serviceConfig = {
       Type = "oneshot";
-      RemainAfterExit = true;
+      User = config.services.forgejo.user;
+      Group = config.services.forgejo.group;
+      Environment = [
+        "HOME=${config.services.forgejo.stateDir}"
+        "FORGEJO_WORK_DIR=${config.services.forgejo.stateDir}"
+      ];
     };
     script = ''
-      fqdn="$(tailscale status --json | jq -r '.Self.DNSName' | sed 's/\.$//')"
-      if [ -n "$fqdn" ]; then
-        mkdir -p /run/forgejo
-        printf 'FORGEJO__server__DOMAIN=%s\nFORGEJO__server__ROOT_URL=https://%s/\n' "$fqdn" "$fqdn" > /run/forgejo/root-url.env
-        echo "forgejo-fqdn: ROOT_URL = https://$fqdn/"
+      if ! forgejo admin user list | awk '{print $2}' | grep -qx "${host.username}"; then
+        forgejo admin user create \
+          --admin \
+          --username "${host.username}" \
+          --email "${host.gitEmail}" \
+          --password "$(cat ${config.age.secrets.forgejo-admin-password.path})" \
+          --must-change-password=false
       fi
     '';
   };
 
-  systemd.services.forgejo = {
-    after = [ "forgejo-fqdn.service" ];
-    serviceConfig.EnvironmentFile = "-/run/forgejo/root-url.env";
+  age.secrets = {
+    acme-cloudflare-creds = {
+      file = ../../modules/secrets/acme-cloudflare-creds.age;
+      owner = "acme";
+      group = "acme";
+      mode = "0400";
+    };
+
+    forgejo-admin-password = {
+      file = ../../modules/secrets/forgejo-admin-password.age;
+      owner = "forgejo";
+      group = "forgejo";
+      mode = "0400";
+    };
+
+    forgejo-runner-dell-token.file = ../../modules/secrets/forgejo-runner-dell-token.age;
   };
 
-  age.secrets.forgejo-runner-dell-token.file = ../../modules/secrets/forgejo-runner-dell-token.age;
   services.forgejo-runner.instances.dell = {
     enable = false;
 
@@ -85,5 +131,4 @@
 
     secrets.server.connections.dell.token_url = config.age.secrets.forgejo-runner-dell-token.path;
   };
-
 }
