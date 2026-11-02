@@ -73,7 +73,10 @@
     after = [ "forgejo.service" ];
     wants = [ "forgejo.service" ];
     wantedBy = [ "multi-user.target" ];
-    path = [ config.services.forgejo.package ];
+    path = [
+      config.services.forgejo.package
+      pkgs.gawk
+    ];
     serviceConfig = {
       Type = "oneshot";
       User = config.services.forgejo.user;
@@ -84,7 +87,7 @@
       ];
     };
     script = ''
-      if ! forgejo admin user list | awk '{print $2}' | grep -qx "${host.username}"; then
+      if ! forgejo admin user list 2>&1 | awk '{print $2}' | grep -qx "${host.username}"; then
         forgejo admin user create \
           --admin \
           --username "${host.username}" \
@@ -114,7 +117,7 @@
   };
 
   services.forgejo-runner.instances.dell = {
-    enable = false;
+    enable = true;
 
     settings = {
       runner.labels = [
@@ -124,8 +127,7 @@
 
       server.connections.dell = {
         url = "http://127.0.0.1:3000/";
-        # Fill in after registration:
-        uuid = "";
+        uuid = "3094b785-db1e-499c-948b-8da162b95879";
       };
     };
 
