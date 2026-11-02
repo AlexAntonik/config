@@ -21,7 +21,8 @@ in
     wantedBy = [ "graphical-session.target" ];
     serviceConfig.Type = "oneshot";
     script = ''
-      for d in "$HOME"/.mozilla/firefox/*.default*; do
+      shopt -s nullglob
+      for d in "$HOME"/.mozilla/firefox/*.default* "$HOME"/.config/mozilla/firefox/*.default*; do
         [ -d "$d" ] || continue
         mkdir -p "$d/chrome"
         ln -sf /etc/firefox/userChrome.css "$d/chrome/userChrome.css"
@@ -31,7 +32,7 @@ in
 
   environment.etc."firefox/userChrome.css".text = ''
 
-    .titlebar-buttonbox-container .titlebar-close {
+    .titlebar-buttonbox-container {
       display: none !important;
     }
 
