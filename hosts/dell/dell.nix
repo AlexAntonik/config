@@ -13,6 +13,7 @@
     ./hardware.nix
     ./hardware-gen.nix
     ./syncthing.nix
+    ./forgejo.nix
 
     # Users
     ./../../modules/users/user-server.nix

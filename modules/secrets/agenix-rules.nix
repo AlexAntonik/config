@@ -37,6 +37,10 @@ in
     publicKeys = [ alex dell];
     armor = true;
   };
+  "forgejo-runner-dell-token.age" = {
+    publicKeys = [ alex dell ];
+    armor = true;
+  };
   "swprod-user-pwd-hash.age" = {
     publicKeys = [ alex swprod ];
     armor = true;
