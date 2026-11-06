@@ -107,6 +107,9 @@ hl.config({
         repeat_delay = 300,
         sensitivity = 0,
     },
+    layers = {
+        layers_hog_keyboard_focus = true,
+    },
     misc = {
         anr_missed_pings = 20,
         disable_hyprland_logo = true,
@@ -115,7 +118,6 @@ hl.config({
         focus_on_activate = true,
         initial_workspace_tracking = 0,
         key_press_enables_dpms = false,
-        layers_hog_keyboard_focus = true,
         mouse_move_enables_dpms = true,
     },
 })

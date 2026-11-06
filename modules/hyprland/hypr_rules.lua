@@ -103,21 +103,7 @@ hl.workspace_rule({
 })
 
 hl.workspace_rule({
-    workspace = "1",
-    on_created_empty = "firefox",
-})
-hl.workspace_rule({
-    workspace = "2",
-    on_created_empty = "code",
-})
-hl.workspace_rule({
-    workspace = "3",
-    on_created_empty = "ghostty +new-window",
-})
-
-hl.workspace_rule({
     workspace = "special:term",
-    on_created_empty = "ghostty +new-window",
     gaps_out ={
         top = 70,
         right = 140,
@@ -126,6 +112,13 @@ hl.workspace_rule({
     },
     decorate = false,
 })
+
+local workspace_programs = {
+  ["1"] = "firefox",
+  ["2"] = "code",
+  ["3"] = "ghostty +new-window",
+  ["special:term"] = "ghostty +new-window",
+}
 
 local specials = {
   { name = "obsidian",  cmd = "obsidian" },
@@ -136,10 +129,20 @@ local specials = {
 }
 
 for _, s in ipairs(specials) do
+  workspace_programs["special:" .. s.name] = s.cmd
+
   hl.workspace_rule({
     workspace = "special:" .. s.name,
-    on_created_empty = s.cmd,
     gaps_out = 26,
     decorate = false,
   })
 end
+
+hl.on("workspace.created", function(ws)
+  if not ws.is_empty then return end
+
+  local cmd = workspace_programs[ws.name]
+  if not cmd then return end
+
+  hl.exec_cmd(cmd, { workspace = ws.name .. " silent" })
+end)
