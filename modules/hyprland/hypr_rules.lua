@@ -40,7 +40,7 @@ local settings_apps = {
 }
 
 local popup_apps = {
-    ".*Add.*", ".*wants.*",".*Open .*",".*Save.*", ".*Select.*",
+    ".*Add.*", ".*wants.*",".*Open.*",".*Save.*", ".*Select.*",
     ".*Choose.*", ".*Confirm.*", ".*Media.*",
 }
 
@@ -60,6 +60,7 @@ hl.window_rule({
     },
     float = true,
     center = true,
+    size = "70% 70%",
 })
 
 hl.window_rule({
