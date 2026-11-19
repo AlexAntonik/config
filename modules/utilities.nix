@@ -29,6 +29,7 @@
     duf # Utility for viewing disk usage in terminal
     dysk # Get information on your mounted disks tool
     ncdu
+    nix-graph
 
     # Hardware info
     lm_sensors
